@@ -519,7 +519,10 @@ public class JCdmBuilderMain {
 				dbSettings.dbType = DbType.MSSQL;
 				if (sourceUserField.getText().length() != 0) { // Not using windows authentication
 					String[] parts = sourceUserField.getText().split("/");
-					if (parts.length == 2) {
+					if (parts.length < 2) {
+						dbSettings.user = sourceUserField.getText();
+						dbSettings.domain = null;
+					} else {
 						dbSettings.user = parts[1];
 						dbSettings.domain = parts[0];
 					}
@@ -576,7 +579,8 @@ public class JCdmBuilderMain {
 			if (targetUserField.getText().length() != 0) { // Not using windows authentication
 				String[] parts = targetUserField.getText().split("/");
 				if (parts.length < 2) {
-					throw new RuntimeException("For SQL server you need to specify the domain in the user name field (e.g. Mydomain/Joe)");
+					dbSettings.user = targetUserField.getText();
+					dbSettings.domain = null;
 				} else {
 					dbSettings.user = parts[1];
 					dbSettings.domain = parts[0];
