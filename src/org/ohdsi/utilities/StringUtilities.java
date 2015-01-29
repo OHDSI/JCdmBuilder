@@ -548,7 +548,7 @@ public class StringUtilities {
 		long ms = days * DAY;
 		ms -= calendar.getTimeZone().getOffset(ms);
 		calendar.setTimeInMillis(ms);
-		return Integer.toString(calendar.get(Calendar.DATE) + 1);
+		return Integer.toString(calendar.get(Calendar.DATE));
 	}
 	
 	public static String daysToCalendarQuarterYear(long days) {
