@@ -51,11 +51,11 @@ import javax.swing.JTextField;
 
 import org.ohdsi.jCdmBuilder.cdm.Cdm;
 import org.ohdsi.jCdmBuilder.etls.ars.ARSETL;
+import org.ohdsi.jCdmBuilder.etls.cdm.CdmEtl;
 import org.ohdsi.jCdmBuilder.etls.hcup.HCUPETL;
 import org.ohdsi.jCdmBuilder.vocabulary.InsertVocabularyInServer;
 import org.ohdsi.utilities.DirectoryUtilities;
 import org.ohdsi.utilities.StringUtilities;
-
 import org.ohdsi.databases.DbType;
 import org.ohdsi.databases.RichConnection;
 
@@ -314,7 +314,7 @@ public class JCdmBuilderMain {
 		JPanel etlTypePanel = new JPanel();
 		etlTypePanel.setLayout(new BoxLayout(etlTypePanel, BoxLayout.X_AXIS));
 		etlTypePanel.setBorder(BorderFactory.createTitledBorder("ETL type"));
-		etlType = new JComboBox<String>(new String[] { "ARS -> OMOP CDM V4", "HCUP -> OMOP CDM V4" });
+		etlType = new JComboBox<String>(new String[] { "Load CSV files in CDM format to server", "ARS -> OMOP CDM V4", "HCUP -> OMOP CDM V4" });
 		etlType.setToolTipText("Select the appropriate ETL process");
 		etlTypePanel.add(etlType);
 		etlTypePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, etlTypePanel.getPreferredSize().height));
@@ -630,6 +630,13 @@ public class JCdmBuilderMain {
 				component.setEnabled(false);
 
 			try {
+				if (etlType.getSelectedItem().equals("Load CSV files in CDM format to server")) {
+					CdmEtl etl = new CdmEtl();
+					DbSettings dbSettings = getTargetDbSettings();
+					testConnection(dbSettings, false);
+					if (dbSettings != null)
+						etl.process(folderField.getText(), dbSettings, maxPersons);
+				}
 				if (etlType.getSelectedItem().equals("ARS -> OMOP CDM V4")) {
 					ARSETL etl = new ARSETL();
 					DbSettings dbSettings = getTargetDbSettings();
