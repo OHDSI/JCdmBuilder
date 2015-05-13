@@ -21,20 +21,25 @@ import java.util.Map;
 import org.ohdsi.utilities.collections.CountingSet;
 
 public class CodeToConceptMap {
-	
+
 	private String					name;
 	private Map<String, CodeData>	codeToData	= new HashMap<String, CodeData>();
 	private CountingSet<String>		codeCounts	= new CountingSet<String>();
-	
+
 	public CodeToConceptMap(String name) {
 		this.name = name;
 	}
-	
+
 	public void add(String code, String description, int targetConceptId, String targetCode, String targetDescription) {
+		add(code, description, 0, targetConceptId, targetCode, targetDescription);
+	}
+
+	public void add(String code, String description, int sourceConceptId, int targetConceptId, String targetCode, String targetDescription) {
 		CodeData data = codeToData.get(code);
 		if (data == null) {
 			data = new CodeData();
 			data.description = description;
+			data.sourceConceptId = sourceConceptId;
 			codeToData.put(code, data);
 			data.targetCodes = new String[] { targetCode };
 			data.targetDescriptions = new String[] { targetDescription };
@@ -54,11 +59,11 @@ public class CodeToConceptMap {
 			data.targetConceptIds = targetConceptIds;
 		}
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public Integer getConceptId(String code) {
 		codeCounts.add(code);
 		CodeData data = codeToData.get(code);
@@ -67,7 +72,7 @@ public class CodeToConceptMap {
 		} else
 			return data.targetConceptIds[0];
 	}
-	
+
 	public int[] getConceptIds(String code) {
 		codeCounts.add(code);
 		CodeData data = codeToData.get(code);
@@ -76,19 +81,28 @@ public class CodeToConceptMap {
 		else
 			return data.targetConceptIds;
 	}
-	
+
 	public CountingSet<String> getCodeCounts() {
 		return codeCounts;
 	}
-	
+
 	public CodeData getCodeData(String code) {
 		return codeToData.get(code);
 	}
-	
+
 	public class CodeData {
 		public String	description;
+		public int		sourceConceptId;
 		public int[]	targetConceptIds;
 		public String[]	targetCodes;
 		public String[]	targetDescriptions;
+	}
+
+	public int getSourceConceptId(String code) {
+		CodeData data = codeToData.get(code);
+		if (data == null) {
+			return 0;
+		} else
+			return data.sourceConceptId;
 	}
 }

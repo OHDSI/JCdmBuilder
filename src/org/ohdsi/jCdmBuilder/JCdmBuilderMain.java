@@ -50,9 +50,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import org.ohdsi.jCdmBuilder.cdm.Cdm;
+import org.ohdsi.jCdmBuilder.cdm.EraBuilder;
 import org.ohdsi.jCdmBuilder.etls.ars.ARSETL;
 import org.ohdsi.jCdmBuilder.etls.cdm.CdmEtl;
 import org.ohdsi.jCdmBuilder.etls.hcup.HCUPETL;
+import org.ohdsi.jCdmBuilder.etls.hcup.HCUPETLToV5;
 import org.ohdsi.jCdmBuilder.vocabulary.InsertVocabularyInServer;
 import org.ohdsi.utilities.DirectoryUtilities;
 import org.ohdsi.utilities.StringUtilities;
@@ -68,6 +70,8 @@ public class JCdmBuilderMain {
 	private JComboBox<String>	etlType;
 	private JComboBox<String>	cdmVersion;
 	private JComboBox<String>	cdmVersionForIndices;
+	private JComboBox<String>	cdmVersionForEras;
+	private JComboBox<String>	domainForEras;
 	private JComboBox<String>	sourceType;
 	private JComboBox<String>	targetType;
 	private JTextField			targetUserField;
@@ -127,6 +131,9 @@ public class JCdmBuilderMain {
 		JPanel etlPanel = createEtlPanel();
 		tabbedPane.addTab("ETL", null, etlPanel, "Extract, Transform and Load the data into the OMOP CDM");
 
+		JPanel erasPanel = createErasPanel();
+		tabbedPane.addTab("Eras", null, erasPanel, "Populate the condition_era and drug_era tables");
+
 		JPanel indicesPanel = createIndicesPanel();
 		tabbedPane.addTab("Indices", null, indicesPanel, "Create recommended indices to improve performance");
 
@@ -166,7 +173,7 @@ public class JCdmBuilderMain {
 		sourcePanel.setLayout(new GridLayout(0, 2));
 		sourcePanel.setBorder(BorderFactory.createTitledBorder("Source data location"));
 		sourcePanel.add(new JLabel("Data type"));
-		sourceType = new JComboBox<String>(new String[] { "Delimited text files", "MySQL", "Oracle", "SQL Server", "PostgreSQL" });
+		sourceType = new JComboBox<String>(new String[] { "Delimited text files", "Oracle", "SQL Server", "PostgreSQL" });
 		sourceType.setToolTipText("Select the type of source data available");
 		sourceType.addItemListener(new ItemListener() {
 
@@ -236,7 +243,7 @@ public class JCdmBuilderMain {
 		targetPanel.setLayout(new GridLayout(0, 2));
 		targetPanel.setBorder(BorderFactory.createTitledBorder("Target data location"));
 		targetPanel.add(new JLabel("Data type"));
-		targetType = new JComboBox<String>(new String[] { "PostgreSQL", "MySQL", "Oracle", "SQL Server" });
+		targetType = new JComboBox<String>(new String[] { "PostgreSQL", "Oracle", "SQL Server" });
 		targetType.setToolTipText("Select the type of server where the CDM and vocabulary will be stored");
 		targetPanel.add(targetType);
 		targetPanel.add(new JLabel("Server location"));
@@ -314,7 +321,8 @@ public class JCdmBuilderMain {
 		JPanel etlTypePanel = new JPanel();
 		etlTypePanel.setLayout(new BoxLayout(etlTypePanel, BoxLayout.X_AXIS));
 		etlTypePanel.setBorder(BorderFactory.createTitledBorder("ETL type"));
-		etlType = new JComboBox<String>(new String[] { "Load CSV files in CDM format to server", "ARS -> OMOP CDM V4", "HCUP -> OMOP CDM V4" });
+		etlType = new JComboBox<String>(new String[] { "Load CSV files in CDM format to server", "ARS -> OMOP CDM V4", "HCUP -> OMOP CDM V4",
+				"HCUP -> OMOP CDM V5" });
 		etlType.setToolTipText("Select the appropriate ETL process");
 		etlTypePanel.add(etlType);
 		etlTypePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, etlTypePanel.getPreferredSize().height));
@@ -386,6 +394,49 @@ public class JCdmBuilderMain {
 		return panel;
 	}
 
+	private JPanel createErasPanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+		JPanel cdmVersionPanel = new JPanel();
+		cdmVersionPanel.setLayout(new BoxLayout(cdmVersionPanel, BoxLayout.X_AXIS));
+		cdmVersionPanel.setBorder(BorderFactory.createTitledBorder("CDM version"));
+		cdmVersionForEras = new JComboBox<String>(new String[] { "Version 4", "Version 5" });
+		cdmVersionForEras.setToolTipText("Select the appropriate CDM version");
+		cdmVersionPanel.add(cdmVersionForEras);
+		cdmVersionPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, cdmVersionPanel.getPreferredSize().height));
+		panel.add(cdmVersionPanel);
+
+		JPanel domainPanel = new JPanel();
+		domainPanel.setLayout(new BoxLayout(domainPanel, BoxLayout.X_AXIS));
+		domainPanel.setBorder(BorderFactory.createTitledBorder("Domain"));
+		domainForEras = new JComboBox<String>(new String[] { "Drugs", "Conditions" });
+		domainForEras.setToolTipText("Select the appropriate domain");
+		domainPanel.add(domainForEras);
+		domainPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, cdmVersionPanel.getPreferredSize().height));
+		panel.add(domainPanel);
+
+		panel.add(Box.createVerticalGlue());
+
+		JPanel indicesButtonPanel = new JPanel();
+		indicesButtonPanel.setLayout(new BoxLayout(indicesButtonPanel, BoxLayout.X_AXIS));
+		indicesButtonPanel.add(Box.createHorizontalGlue());
+
+		JButton erasButton = new JButton("Create eras");
+		erasButton.setBackground(new Color(151, 220, 141));
+		erasButton.setToolTipText("Create the eras for the CDM");
+		erasButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createEras();
+			}
+		});
+		componentsToDisableWhenRunning.add(erasButton);
+		indicesButtonPanel.add(erasButton);
+		panel.add(indicesButtonPanel);
+
+		return panel;
+	}
+
 	private JPanel createIndicesPanel() {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -405,16 +456,16 @@ public class JCdmBuilderMain {
 		indicesButtonPanel.setLayout(new BoxLayout(indicesButtonPanel, BoxLayout.X_AXIS));
 		indicesButtonPanel.add(Box.createHorizontalGlue());
 
-		JButton IndicesButton = new JButton("Create indices");
-		IndicesButton.setBackground(new Color(151, 220, 141));
-		IndicesButton.setToolTipText("Create the recommended indices for the CDM");
-		IndicesButton.addActionListener(new ActionListener() {
+		JButton indicesButton = new JButton("Create indices");
+		indicesButton.setBackground(new Color(151, 220, 141));
+		indicesButton.setToolTipText("Create the recommended indices for the CDM");
+		indicesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createIndices();
 			}
 		});
-		componentsToDisableWhenRunning.add(IndicesButton);
-		indicesButtonPanel.add(IndicesButton);
+		componentsToDisableWhenRunning.add(indicesButton);
+		indicesButtonPanel.add(indicesButton);
 		panel.add(indicesButtonPanel);
 
 		return panel;
@@ -612,6 +663,11 @@ public class JCdmBuilderMain {
 		indexThread.start();
 	}
 
+	private void createEras() {
+		EraThread eraThread = new EraThread();
+		eraThread.start();
+	}
+
 	private void vocabRun() {
 		VocabRunThread thread = new VocabRunThread();
 		thread.start();
@@ -646,6 +702,16 @@ public class JCdmBuilderMain {
 				}
 				if (etlType.getSelectedItem().equals("HCUP -> OMOP CDM V4")) {
 					HCUPETL etl = new HCUPETL();
+					DbSettings sourceDbSettings = getSourceDbSettings();
+					DbSettings targetDbSettings = getTargetDbSettings();
+					if (sourceDbSettings != null && targetDbSettings != null) {
+						testConnection(sourceDbSettings, true);
+						testConnection(targetDbSettings, false);
+						etl.process(folderField.getText(), sourceDbSettings, targetDbSettings, maxPersons);
+					}
+				}
+				if (etlType.getSelectedItem().equals("HCUP -> OMOP CDM V5")) {
+					HCUPETLToV5 etl = new HCUPETLToV5();
 					DbSettings sourceDbSettings = getSourceDbSettings();
 					DbSettings targetDbSettings = getTargetDbSettings();
 					if (sourceDbSettings != null && targetDbSettings != null) {
@@ -711,8 +777,27 @@ public class JCdmBuilderMain {
 				component.setEnabled(false);
 			try {
 				DbSettings dbSettings = getTargetDbSettings();
-				int version = cdmVersionForIndices.getSelectedItem().equals("Version 5") ? 5 : 4;
+				int version = cdmVersionForIndices.getSelectedItem().equals("Version 5") ? Cdm.VERSION_5 : Cdm.VERSION_4;
 				Cdm.createIndices(dbSettings, version);
+			} catch (Exception e) {
+				handleError(e);
+			} finally {
+				for (JComponent component : componentsToDisableWhenRunning)
+					component.setEnabled(true);
+			}
+		}
+	}
+
+	private class EraThread extends Thread {
+
+		public void run() {
+			for (JComponent component : componentsToDisableWhenRunning)
+				component.setEnabled(false);
+			try {
+				DbSettings dbSettings = getTargetDbSettings();
+				int version = cdmVersionForEras.getSelectedItem().equals("Version 5") ? EraBuilder.VERSION_5 : EraBuilder.VERSION_4;
+				int domain = domainForEras.getSelectedItem().equals("Drugs") ? EraBuilder.DRUG_ERA : EraBuilder.CONDITION_ERA;
+				EraBuilder.buildEra(dbSettings, version, domain);
 			} catch (Exception e) {
 				handleError(e);
 			} finally {
