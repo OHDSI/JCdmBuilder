@@ -12,6 +12,6 @@ WHERE (
 		)
 	AND target_vocabulary_id = 1
 	AND (
-		invalid_reason = ''
-		OR invalid_reason IS NULL
+		concept.invalid_reason = ''
+		OR concept.invalid_reason IS NULL
 		);

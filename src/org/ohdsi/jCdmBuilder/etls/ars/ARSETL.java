@@ -137,14 +137,9 @@ public class ARSETL {
 	
 	private void checkTablesForFormattingErrors() {
 		StringUtilities.outputWithTime("Checking tables for formatting errors");
-		
-		// for (String table : TABLES) {
-		// StringUtilities.outputWithTime("- Checking " + table);
 		CSVFileChecker checker = new CSVFileChecker();
 		checker.setFrame(ObjectExchange.frame);
-		// checker.checkFile(folder + "/" + table + ".csv");
 		checker.checkSpecifiedFields(folder, new ReadCSVFileWithHeader(this.getClass().getResourceAsStream("Fields.csv")).iterator());
-		// }
 		StringUtilities.outputWithTime("Finished checking tables");
 	}
 	
@@ -220,7 +215,7 @@ public class ARSETL {
 		@SuppressWarnings("unchecked")
 		Iterator<Row>[] iterators = new Iterator[TABLES.length];
 		for (int i = 0; i < TABLES.length; i++)
-			iterators[i] = new ReadCSVFileWithHeader(folder + "/" + TABLES[i] + ".csv").iterator();
+			iterators[i] = new ReadCSVFileWithHeader(folder + "/" + TABLES[i] + ".csv", true).iterator();
 		return new MultiRowIterator("PERSON_ID", TABLES, iterators);
 	}
 	

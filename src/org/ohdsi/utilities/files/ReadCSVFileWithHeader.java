@@ -23,52 +23,64 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-
-public class ReadCSVFileWithHeader implements Iterable<Row>{
-	private InputStream inputstream;
+public class ReadCSVFileWithHeader implements Iterable<Row> {
+	private InputStream	inputstream;
+	private boolean		upperCaseColumnNames	= false;
 	
-  public ReadCSVFileWithHeader(String filename) {
-    try {
-    	inputstream = new FileInputStream(filename);
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    }
-  }
+	public ReadCSVFileWithHeader(String filename) {
+		try {
+			inputstream = new FileInputStream(filename);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	
-  public ReadCSVFileWithHeader(InputStream inputstream){
-  	this.inputstream = inputstream;
-  }
-  
+	public ReadCSVFileWithHeader(String filename, boolean upperCaseColumnNames) {
+		this.upperCaseColumnNames = upperCaseColumnNames;
+		try {
+			inputstream = new FileInputStream(filename);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ReadCSVFileWithHeader(InputStream inputstream) {
+		this.inputstream = inputstream;
+	}
+	
 	@Override
 	public Iterator<Row> iterator() {
 		return new RowIterator();
 	}
 	
-	public class RowIterator implements Iterator<Row>{
-
-		private Iterator<List<String>> iterator;
-		private Map<String, Integer> fieldName2ColumnIndex;
+	public class RowIterator implements Iterator<Row> {
 		
-		public RowIterator(){
+		private Iterator<List<String>>	iterator;
+		private Map<String, Integer>	fieldName2ColumnIndex;
+		
+		public RowIterator() {
 			iterator = new ReadCSVFile(inputstream).iterator();
 			fieldName2ColumnIndex = new HashMap<String, Integer>();
 			for (String header : iterator.next())
-				fieldName2ColumnIndex.put(header, fieldName2ColumnIndex.size());
+				if (upperCaseColumnNames)
+					fieldName2ColumnIndex.put(header.toUpperCase(), fieldName2ColumnIndex.size());
+				else
+					fieldName2ColumnIndex.put(header, fieldName2ColumnIndex.size());
 		}
 		
 		@Override
 		public boolean hasNext() {
 			return iterator.hasNext();
 		}
-
+		
 		@Override
 		public Row next() {
-			return new Row(iterator.next(),fieldName2ColumnIndex);
+			return new Row(iterator.next(), fieldName2ColumnIndex);
 		}
-
+		
 		@Override
 		public void remove() {
-			throw new RuntimeException("Remove not supported");			
+			throw new RuntimeException("Remove not supported");
 		}
 		
 	}
