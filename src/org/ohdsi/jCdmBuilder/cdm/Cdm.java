@@ -87,7 +87,7 @@ public class Cdm {
 
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setContext(cdm.getClass());
-		connection.setVerbose(false);
+		connection.setVerbose(true);
 
 		StringUtilities.outputWithTime("Creating CDM indices");
 		connection.use(dbSettings.database);

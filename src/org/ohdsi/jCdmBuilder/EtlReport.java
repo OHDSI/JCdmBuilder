@@ -32,6 +32,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.ohdsi.jCdmBuilder.utilities.CodeToConceptMap;
 import org.ohdsi.jCdmBuilder.utilities.CodeToConceptMap.CodeData;
+import org.ohdsi.jCdmBuilder.utilities.CodeToDomainConceptMap;
+import org.ohdsi.jCdmBuilder.utilities.CodeToDomainConceptMap.CodeDomainData;
+import org.ohdsi.jCdmBuilder.utilities.CodeToDomainConceptMap.TargetConcept;
 import org.ohdsi.utilities.StringUtilities;
 import org.ohdsi.utilities.collections.CountingSet;
 import org.ohdsi.utilities.collections.IntegerComparator;
@@ -136,6 +139,14 @@ public class EtlReport {
 	 * @return the full path to the ETL report
 	 */
 	public String generateETLReport(CodeToConceptMap... codeToConceptMaps) {
+		return generateETLReport(codeToConceptMaps, CodeToConceptMap.class);
+	}
+
+	public String generateETLReport(CodeToDomainConceptMap... codeToDomainConceptMaps) {
+		return generateETLReport(codeToDomainConceptMaps, CodeToDomainConceptMap.class);
+	}
+
+	private String generateETLReport(Object codeData, Class<?> codeDataClass) {
 		StringUtilities.outputWithTime("Generating ETL report");
 		String filename = generateFilename(folder);
 		XSSFWorkbook workbook = new XSSFWorkbook();
@@ -158,6 +169,29 @@ public class EtlReport {
 		addRow(sheet, "Number of problems encountered", Long.valueOf(totalProblemCount));
 		addRow(sheet, "");
 		addRow(sheet, "Mapping", "Mapped unique codes", "Unmapped unique codes", "Mapped total codes", "Unmapped total codes");
+
+		XSSFSheet problemSheet = workbook.createSheet("Problems");
+		addRow(problemSheet, "Table", "Description", "Nr of rows");
+		for (Problem problem : problems.values())
+			addRow(problemSheet, problem.table, problem.problemType, Long.valueOf(problem.count));
+
+		if (codeDataClass == CodeToDomainConceptMap.class)
+			addCodeMappingInfo((CodeToDomainConceptMap[]) codeData, sheet, workbook);
+		else
+			addCodeMappingInfo((CodeToConceptMap[]) codeData, sheet, workbook);
+
+		try {
+			FileOutputStream out = new FileOutputStream(new File(filename));
+			workbook.write(out);
+			out.close();
+		} catch (IOException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
+		return filename;
+	}
+
+	private void addCodeMappingInfo(CodeToConceptMap[] codeToConceptMaps, XSSFSheet sheet, XSSFWorkbook workbook) {
 		for (CodeToConceptMap codeToConceptMap : codeToConceptMaps) {
 			int uniqueMapped = 0;
 			int uniqueUnmapped = 0;
@@ -198,16 +232,42 @@ public class EtlReport {
 								Integer.valueOf(codeData.targetConceptIds[i]), codeData.targetCodes[i], codeData.targetDescriptions[i]);
 			}
 		}
+	}
 
-		try {
-			FileOutputStream out = new FileOutputStream(new File(filename));
-			workbook.write(out);
-			out.close();
-		} catch (IOException e) {
-			throw new RuntimeException(e.getMessage());
+	private void addCodeMappingInfo(CodeToDomainConceptMap[] codeToDomainConceptMaps, XSSFSheet sheet, XSSFWorkbook workbook) {
+		for (CodeToDomainConceptMap codeToDomainConceptMap : codeToDomainConceptMaps) {
+			int uniqueMapped = 0;
+			int uniqueUnmapped = 0;
+			long totalMapped = 0;
+			long totalUnmapped = 0;
+			CountingSet<String> codeCounts = codeToDomainConceptMap.getCodeCounts();
+			for (String code : codeCounts) {
+				if (codeToDomainConceptMap.hasMapping(code)) {
+					uniqueMapped++;
+					totalMapped += codeCounts.getCount(code);
+				} else {
+					uniqueUnmapped++;
+					totalUnmapped += codeCounts.getCount(code);
+				}
+			}
+			addRow(sheet, codeToDomainConceptMap.getName(), Integer.valueOf(uniqueMapped), Integer.valueOf(uniqueUnmapped), Long.valueOf(totalMapped),
+					Long.valueOf(totalUnmapped));
 		}
 
-		return filename;
+		for (CodeToDomainConceptMap codeToDomainConceptMap : codeToDomainConceptMaps) {
+			sheet = workbook.createSheet(codeToDomainConceptMap.getName());
+			addRow(sheet, "Frequency", "Source code", "Source code description", "Target domain", "Target concept ID", "Target code",
+					"Target concept description");
+			CountingSet<String> codeCounts = codeToDomainConceptMap.getCodeCounts();
+			List<Map.Entry<String, CountingSet.Count>> codes = new ArrayList<Map.Entry<String, CountingSet.Count>>(codeCounts.key2count.entrySet());
+			reverseFrequencySort(codes);
+			for (Map.Entry<String, CountingSet.Count> code : codes) {
+				CodeDomainData codeData = codeToDomainConceptMap.getCodeData(code.getKey());
+				for (TargetConcept targetConcept : codeData.targetConcepts)
+					addRow(sheet, Integer.valueOf(code.getValue().count), code.getKey(), codeData.sourceConceptName, targetConcept.domainId,
+							Integer.valueOf(targetConcept.conceptId), targetConcept.conceptCode, targetConcept.conceptName);
+			}
+		}
 	}
 
 	private void reverseFrequencySort(List<Entry<String, CountingSet.Count>> codes) {
