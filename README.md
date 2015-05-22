@@ -1,15 +1,18 @@
 JCdmBuilder
 ==============
 
-Introduction
-========
-
-The JCdmBuilder is a Java program that can be used to transform observational datasets from their native formats and schemas into the OMOP Common Data Model (version 4).  
+The JCdmBuilder is a Java program that offers various tools that can be used when contructing a data in the OMOP Common Data Model (CDM). It can also be used to transform some specific observational datasets from their native formats and schemas into the CDM.  
 
 Features
 ========
-* This builder can convert the following database:
-  * Healthcare Cost and Utilization Project (HCUP) - Nationwide Inpatient Sample (NIS)
+* This builder supports the following ETLs:
+  * Healthcare Cost and Utilization Project (HCUP) - Nationwide Inpatient Sample (NIS) to CDM version 4
+  * Healthcare Cost and Utilization Project (HCUP) - Nationwide Inpatient Sample (NIS) to CDM version 5
+* Creating the database structure and indices for CDM versions 4 or 5
+* Loading the vocabulary from files into the database
+* Load data in CDM format from CSV files into the database
+* Automatically creating condition and drug eras 
+* Supports SQL Server, Oracle and PostgreSQL
 
 Screenshot
 ===========
@@ -17,7 +20,7 @@ Screenshot
 
 Technology
 ============
-JCdmBuilder is a Java program. It has been tested on SQL Server, but should support other platforms as well, including PostgreSQL and Oracle. JCdmBuilder pulls all data, and simultaneously insert the transformed data, so it could read from one platform, and write to another. 
+JCdmBuilder is a Java program.  
 
 System Requirements
 ============
@@ -25,11 +28,11 @@ System Requirements
 
 Dependencies
 ============
-Requires the OMOP Vocabulary to be already present in the target database, or else JCdmBuilder has a feature to insert the Vocabulary from a zip file containing the Vocabulary tables in CSV format.
+None
  
 Getting Started
 ===============
-JCdmBuilder is still under development. Once officially released, you can download the application from the releases tab.
+JCdmBuilder is still under development. 
 
 Getting Involved
 =============
