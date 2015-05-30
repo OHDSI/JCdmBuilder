@@ -215,7 +215,7 @@ public class ARSETL {
 		@SuppressWarnings("unchecked")
 		Iterator<Row>[] iterators = new Iterator[TABLES.length];
 		for (int i = 0; i < TABLES.length; i++)
-			iterators[i] = new ReadCSVFileWithHeader(folder + "/" + TABLES[i] + ".csv", true).iterator();
+			iterators[i] = new ReadCSVFileWithHeader(folder + "/" + TABLES[i] + ".csv").iterator();
 		return new MultiRowIterator("PERSON_ID", TABLES, iterators);
 	}
 	

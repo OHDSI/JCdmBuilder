@@ -15,59 +15,81 @@
  ******************************************************************************/
 package org.ohdsi.jCdmBuilder.vocabulary;
 
-import java.io.IOException;
-import java.util.Enumeration;
+import java.io.File;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.Set;
 
+import org.ohdsi.databases.RichConnection;
 import org.ohdsi.jCdmBuilder.DbSettings;
 import org.ohdsi.utilities.StringUtilities;
 import org.ohdsi.utilities.files.ReadCSVFileWithHeader;
 import org.ohdsi.utilities.files.Row;
 
-import org.ohdsi.databases.RichConnection;
-
 public class InsertVocabularyInServer {
-	
+
 	// private static String[] tables = new String[] { "CONCEPT", "CONCEPT_ANCESTOR", "CONCEPT_RELATIONSHIP", "CONCEPT_SYNONYM", "RELATIONSHIP",
 	// "SOURCE_TO_CONCEPT_MAP", "VOCABULARY", "DRUG_STRENGTH", "DRUG_APPROVAL" };
-	
-	public void process(String sourceVocabDataFile, DbSettings dbSettings) {
+
+	public void process(String folder, DbSettings dbSettings) {
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
-		connection.setContext(this.getClass());
-		connection.setVerbose(false);
-		
 		connection.use(dbSettings.database);
-		// StringUtilities.outputWithTime("Creating vocabulary data structure");
-		// if (dbSettings.dbType == DbType.MYSQL)
-		// connection.executeResource("CreateVocabStructureMySQL.sql");
-		// else if (dbSettings.dbType == DbType.MSSQL)
-		// connection.executeResource("CreateVocabStructureSQLServer.sql");
-		// else if (dbSettings.dbType == DbType.POSTGRESQL)
-		// connection.executeResource("CreateVocabStructurePostgreSQL.sql");
-		// else
-		// throw new RuntimeException("DBMS not supported");
-		//
-		try {
-			
-			ZipFile zipFile = new ZipFile(sourceVocabDataFile);
-			Enumeration<? extends ZipEntry> e = zipFile.entries();
-			while (e.hasMoreElements()) {
-				ZipEntry entry = (ZipEntry) e.nextElement();
-				String table = entry.getName().substring(0, entry.getName().length() - 4);
-				StringUtilities.outputWithTime("Inserting data for table " + table);
-				connection.execute("TRUNCATE TABLE " + table);
-				Iterator<Row> iterator = new ReadCSVFileWithHeader(zipFile.getInputStream(entry)).iterator();
-				boolean stringToNull = table.toLowerCase().equals("relationship") || table.toLowerCase().equals("drug_strength");
-				connection.insertIntoTable(iterator, table, false, stringToNull);
+
+		Set<String> tables = new HashSet<String>();
+		for (String table : connection.getTableNames(dbSettings.database))
+			tables.add(table.toLowerCase());
+
+		for (File file : new File(folder).listFiles()) {
+			if (file.getName().toLowerCase().endsWith(".csv")) {
+				String table = file.getName().substring(0, file.getName().length() - 4);
+				if (tables.contains(table.toLowerCase())) {
+					StringUtilities.outputWithTime("Inserting data for table " + table);
+					connection.execute("TRUNCATE " + table);
+					Iterator<Row> iterator = new ReadCSVFileWithHeader(file.getAbsolutePath(), '\t').iterator();
+					Iterator<Row> filteredIterator = new RowFilterIterator(iterator, connection.getFieldNames(table), table);
+					connection.insertIntoTable(filteredIterator, table, false, true);
+				}
 			}
-			zipFile.close();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
-		// StringUtilities.outputWithTime("Creating vocabulary indices");
-		// connection.executeResource("CreateVocabIndices.sql");
-		StringUtilities.outputWithTime("Finished inserting vocabulary in server");
+		System.out.println("Finished inserting tables");
+	}
+
+	private static class RowFilterIterator implements Iterator<Row> {
+
+		private Set<String>		allowedFields;
+		private Iterator<Row>	iterator;
+		private Set<String>		ignoredFields;
+
+		public RowFilterIterator(Iterator<Row> iterator, Collection<String> allowedFields, String tableName) {
+			this.allowedFields = new HashSet<String>();
+			for (String field : allowedFields)
+				this.allowedFields.add(field.toLowerCase());
+			this.iterator = iterator;
+			ignoredFields = new HashSet<String>();
+		}
+
+		@Override
+		public boolean hasNext() {
+			return iterator.hasNext();
+		}
+
+		@Override
+		public Row next() {
+			Row row = iterator.next();
+			Row filteredRow = new Row();
+			for (String fieldName : row.getFieldNames()) {
+				if (allowedFields.contains(fieldName.toLowerCase()))
+					filteredRow.add(fieldName, row.get(fieldName));
+				else if (ignoredFields.add(fieldName))
+					System.err.println("Ignoring field " + fieldName);
+			}
+			return filteredRow;
+		}
+
+		@Override
+		public void remove() {
+			throw new RuntimeException("Calling unimplemented method");
+		}
 	}
 }

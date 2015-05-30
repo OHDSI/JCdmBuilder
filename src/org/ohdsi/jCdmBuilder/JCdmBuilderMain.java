@@ -275,14 +275,14 @@ public class JCdmBuilderMain {
 
 		JPanel vocabFilePanel = new JPanel();
 		vocabFilePanel.setLayout(new BoxLayout(vocabFilePanel, BoxLayout.X_AXIS));
-		vocabFilePanel.setBorder(BorderFactory.createTitledBorder("Vocabulary data file"));
+		vocabFilePanel.setBorder(BorderFactory.createTitledBorder("Vocabulary data folder"));
 
 		vocabFileField = new JTextField();
-		vocabFileField.setText("Vocabulary.zip");
-		vocabFileField.setToolTipText("Specify the name of the file containing the vocabulary here");
+		vocabFileField.setText("");
+		vocabFileField.setToolTipText("Specify the name of the folder containing the vocabulary CSV files here");
 		vocabFilePanel.add(vocabFileField);
 		JButton pickButton = new JButton("Pick file");
-		pickButton.setToolTipText("Select a different vocabulary file");
+		pickButton.setToolTipText("Select the folder containing the vocabulary CSV files");
 		vocabFilePanel.add(pickButton);
 		pickButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -535,8 +535,8 @@ public class JCdmBuilderMain {
 
 	private void pickVocabFile() {
 		JFileChooser fileChooser = new JFileChooser(new File(folderField.getText()));
-		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-		int returnVal = fileChooser.showDialog(frame, "Select vocabulary file");
+		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		int returnVal = fileChooser.showDialog(frame, "Select vocabulary folder");
 		if (returnVal == JFileChooser.APPROVE_OPTION)
 			vocabFileField.setText(DirectoryUtilities.getRelativePath(new File(folderField.getText()), fileChooser.getSelectedFile()));
 	}

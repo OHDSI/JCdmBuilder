@@ -15,7 +15,6 @@
 	<classpathentry kind="lib" path="lib/postgresql-9.3-1101.jdbc4.jar"/>
 	<classpathentry kind="lib" path="lib/postgresql-9.3-1101.jdbc41.jar"/>
 	<classpathentry kind="lib" path="lib/sqljdbc4.jar"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.30-bin.jar"/>
 	<classpathentry kind="lib" path="lib/SqlRender.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

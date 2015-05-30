@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2015 Observational Health Data Sciences and Informatics
+ * Copyright 2014 Observational Health Data Sciences and Informatics
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,13 @@ import java.util.Map;
 
 public class ReadCSVFileWithHeader implements Iterable<Row> {
 	private InputStream	inputstream;
-	private boolean		upperCaseColumnNames	= false;
-	
+	private char		delimiter	= ',';
+
+	public ReadCSVFileWithHeader(String filename, char delimiter) {
+		this(filename);
+		this.delimiter = delimiter;
+	}
+
 	public ReadCSVFileWithHeader(String filename) {
 		try {
 			inputstream = new FileInputStream(filename);
@@ -34,54 +39,42 @@ public class ReadCSVFileWithHeader implements Iterable<Row> {
 			e.printStackTrace();
 		}
 	}
-	
-	public ReadCSVFileWithHeader(String filename, boolean upperCaseColumnNames) {
-		this.upperCaseColumnNames = upperCaseColumnNames;
-		try {
-			inputstream = new FileInputStream(filename);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	public ReadCSVFileWithHeader(InputStream inputstream) {
 		this.inputstream = inputstream;
 	}
-	
+
 	@Override
 	public Iterator<Row> iterator() {
 		return new RowIterator();
 	}
-	
+
 	public class RowIterator implements Iterator<Row> {
-		
+
 		private Iterator<List<String>>	iterator;
 		private Map<String, Integer>	fieldName2ColumnIndex;
-		
+
 		public RowIterator() {
-			iterator = new ReadCSVFile(inputstream).iterator();
+			iterator = new ReadCSVFile(inputstream, delimiter).iterator();
 			fieldName2ColumnIndex = new HashMap<String, Integer>();
 			for (String header : iterator.next())
-				if (upperCaseColumnNames)
-					fieldName2ColumnIndex.put(header.toUpperCase(), fieldName2ColumnIndex.size());
-				else
-					fieldName2ColumnIndex.put(header, fieldName2ColumnIndex.size());
+				fieldName2ColumnIndex.put(header, fieldName2ColumnIndex.size());
 		}
-		
+
 		@Override
 		public boolean hasNext() {
 			return iterator.hasNext();
 		}
-		
+
 		@Override
 		public Row next() {
 			return new Row(iterator.next(), fieldName2ColumnIndex);
 		}
-		
+
 		@Override
 		public void remove() {
 			throw new RuntimeException("Remove not supported");
 		}
-		
+
 	}
 }

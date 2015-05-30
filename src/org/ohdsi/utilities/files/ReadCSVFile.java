@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2015 Observational Health Data Sciences and Informatics
+ * Copyright 2014 Observational Health Data Sciences and Informatics
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,96 +22,130 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.ohdsi.utilities.StringUtilities;
 
-public class ReadCSVFile implements Iterable<List<String>>{
-  protected BufferedReader bufferedReader;
-  public boolean EOF = false;
-  private char delimiter = ',';
+public class ReadCSVFile implements Iterable<List<String>> {
+	protected BufferedReader	bufferedReader;
+	public boolean				EOF			= false;
+	private char				delimiter	= ',';
 
-  public ReadCSVFile(String filename) {
-    try {
-      FileInputStream textFileStream = new FileInputStream(filename);
-      bufferedReader = new BufferedReader(new InputStreamReader(textFileStream, "UTF-8"));
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (UnsupportedEncodingException e) {
+	public ReadCSVFile(String filename, char delimiter) {
+		this(filename);
+		this.delimiter = delimiter;
+	}
+
+	public ReadCSVFile(String filename) {
+		try {
+			FileInputStream textFileStream = new FileInputStream(filename);
+			bufferedReader = new BufferedReader(new InputStreamReader(textFileStream, "ISO-8859-1"));
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-  }
-  
-  public ReadCSVFile(InputStream inputstream){
-  	try {
-			bufferedReader = new BufferedReader(new InputStreamReader(inputstream, "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-  }
-  
-  public Iterator<List<String>> getIterator() {
-    return iterator();
-  }
+	}
 
-  private class CSVFileIterator implements Iterator<List<String>> {
-    private String buffer;
-    
-    public CSVFileIterator() {
-      try {
-        buffer = bufferedReader.readLine();
-        if (buffer == null){
-          EOF = true;
-          bufferedReader.close();
-        }
-      }
-      catch (IOException e) {
-        e.printStackTrace();
-      }
-      
-    }
+	public ReadCSVFile(InputStream inputstream, char delimiter) {
+		this(inputstream);
+		this.delimiter = delimiter;
+	}
 
-    public boolean hasNext() {
-      return !EOF;
-    }
+	public ReadCSVFile(InputStream inputstream) {
+		try {
+			bufferedReader = new BufferedReader(new InputStreamReader(inputstream, "ISO-8859-1"));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public List<String> next() {
-      String result = buffer;
-      try {
-        buffer = bufferedReader.readLine();
-        if (buffer == null){
-          EOF = true;
-          bufferedReader.close();
-        }
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+	public Iterator<List<String>> getIterator() {
+		return iterator();
+	}
 
-      return line2columns(result);
-    }
+	private class CSVFileIterator implements Iterator<List<String>> {
+		private String	buffer;
 
-    public void remove() {
-      System.err.println("Unimplemented method 'remove' called");
-    }
-  }
+		public CSVFileIterator() {
+			try {
+				buffer = bufferedReader.readLine();
+				if (buffer == null) {
+					EOF = true;
+					bufferedReader.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-  public Iterator<List<String>> iterator() {
-    return new CSVFileIterator();
-  }
-  
-  private List<String> line2columns(String line){
-    List<String> columns = StringUtilities.safeSplit(line, delimiter);
-    for (int i = 0; i < columns.size(); i++){
-      String column = columns.get(i);
-      if (column.startsWith("\"") && column.endsWith("\"") && column.length() > 1)
-        column = column.substring(1, column.length()-1);
-      column = column.replace("\\\"", "\"");
-      column = column.replaceAll("\\\\\\\\", "\\\\");
-      columns.set(i, column);
-    }
-    return columns;
-  }
+		}
+
+		public boolean hasNext() {
+			return !EOF;
+		}
+
+		public List<String> next() {
+			String result = buffer;
+			try {
+				buffer = bufferedReader.readLine();
+				if (buffer == null) {
+					EOF = true;
+					bufferedReader.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			return line2columns(result);
+		}
+
+		public void remove() {
+			System.err.println("Unimplemented method 'remove' called");
+		}
+	}
+
+	public Iterator<List<String>> iterator() {
+		return new CSVFileIterator();
+	}
+
+	private List<String> line2columns(String line) {
+		if (delimiter == '\t') {
+			List<String> columns = tabSplit(line);
+			for (int i = 0; i < columns.size(); i++) {
+				String column = columns.get(i);
+				column = column.replaceAll("\\t", "\t");
+				columns.set(i, column);
+			}
+			return columns;
+		} else {
+			List<String> columns = StringUtilities.safeSplit(line, delimiter);
+			for (int i = 0; i < columns.size(); i++) {
+				String column = columns.get(i);
+				if (column.startsWith("\"") && column.endsWith("\"") && column.length() > 1)
+					column = column.substring(1, column.length() - 1);
+				column = column.replace("\\\"", "\"");
+				column = column.replaceAll("\\\\\\\\", "\\\\");
+				columns.set(i, column);
+			}
+			return columns;
+		}
+	}
+
+	private List<String> tabSplit(String line) {
+		List<String> columns = new ArrayList<String>();
+		int start = 0;
+		for (int i = 0; i < line.length(); i++) {
+			if (line.charAt(i) == '\t') {
+				if (i >= start)
+					columns.add(line.substring(start, i));
+				start = i + 1;
+			}
+		}
+		columns.add(line.substring(start, line.length()));
+		return columns;
+	}
 
 	public void setDelimiter(char delimiter) {
 		this.delimiter = delimiter;
