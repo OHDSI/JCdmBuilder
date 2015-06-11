@@ -40,7 +40,7 @@ public class EraBuilder {
 		else if (dbSettings.dbType == DbType.POSTGRESQL)
 			dbms = "postgresql";
 
-		SqlTranslate.translateSql(sql, "sql server", dbms);
+		sql = SqlTranslate.translateSql(sql, "sql server", dbms);
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setVerbose(false);
 		connection.use(dbSettings.database);
