@@ -15,8 +15,10 @@
  ******************************************************************************/
 package org.ohdsi.jCdmBuilder.etls.hcup;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -121,6 +123,9 @@ public class HCUPETLToV5 {
 		measurementId = 0;
 		observationId = 0;
 
+		StringUtilities.outputWithTime("Populating CDM_Source table");
+		populateCdmSourceTable();
+
 		StringUtilities.outputWithTime("Processing persons");
 		for (Row row : sourceConnection.query("SELECT * FROM core")) {
 			processPerson(row);
@@ -146,6 +151,11 @@ public class HCUPETLToV5 {
 		}
 
 		StringUtilities.outputWithTime("Finished ETL");
+	}
+
+	private void populateCdmSourceTable() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		targetConnection.executeResource("PopulateCdmSourceTable.sql", "@today", df.format(new Date()));
 	}
 
 	private void truncateTables(RichConnection targetConnection) {
@@ -514,8 +524,6 @@ public class HCUPETLToV5 {
 	}
 
 	private void insertBatch() {
-		// addToDrugEra();
-		// addToConditionEra();
 		removeRowsWithNonNullableNulls();
 
 		etlReport.registerOutgoingData(tableToRows);
