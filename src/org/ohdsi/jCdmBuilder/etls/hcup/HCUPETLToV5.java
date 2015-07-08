@@ -48,7 +48,7 @@ import org.ohdsi.utilities.files.Row;
  * 
  */
 public class HCUPETLToV5 {
-
+	
 	private static final double			QC_SAMPLE_PROBABILITY		= 0.000001;
 	public static int					BATCH_SIZE					= 10000;
 	public static String[]				diagnoseFields				= new String[] { "DX1", "DX2", "DX3", "DX4", "DX5", "DX6", "DX7", "DX8", "DX9", "DX10",
@@ -60,11 +60,10 @@ public class HCUPETLToV5 {
 	public static int[]					diagnoseFieldConceptIds		= new int[] { 38000184, 38000185, 38000186, 38000187, 38000188, 38000189, 38000190,
 			38000191, 38000192, 38000193, 38000194, 38000195, 38000196, 38000197, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198,
 			38000198, 38000198, 38000198, 38000198, 38000184, 38000185 };
-
+	
 	public static int[]					procedureFieldConceptIds	= new int[] { 38000251, 38000252, 38000253, 38000254, 38000255, 38000256, 38000257,
 			38000258, 38000259, 38000260, 38000261, 38000262, 38000263, 38000264, 38000265 };
-	public static final long			SEED						= 0;
-
+	
 	private RichConnection				sourceConnection;
 	private RichConnection				targetConnection;
 	private QCSampleConstructor			qcSampleConstructor;
@@ -83,33 +82,33 @@ public class HCUPETLToV5 {
 	private long						observationId;
 	private long						visitStartDate;
 	private long						visitEndDate;
-
+	
 	private Map<String, Integer>		stateCountyToLocationId;
 	private Set<Integer>				careSiteIds;
-
+	
 	private Map<String, String>			codeToCounty;
 	private CodeToDomainConceptMap		icd9ToConcept;
 	private CodeToDomainConceptMap		icd9ProcToConcept;
 	private CodeToDomainConceptMap		drgYearToConcept;
-
+	
 	public void process(String folder, DbSettings sourceDbSettings, DbSettings targetDbSettings, int maxPersons) {
 		loadMappings(targetDbSettings);
-
+		
 		sourceConnection = new RichConnection(sourceDbSettings.server, sourceDbSettings.domain, sourceDbSettings.user, sourceDbSettings.password,
 				sourceDbSettings.dbType);
 		sourceConnection.setContext(this.getClass());
 		sourceConnection.use(sourceDbSettings.database);
-
+		
 		targetConnection = new RichConnection(targetDbSettings.server, targetDbSettings.domain, targetDbSettings.user, targetDbSettings.password,
 				targetDbSettings.dbType);
 		targetConnection.setContext(this.getClass());
 		targetConnection.use(targetDbSettings.database);
-
+		
 		truncateTables(targetConnection);
-
+		
 		qcSampleConstructor = new QCSampleConstructor(folder + "/sample", QC_SAMPLE_PROBABILITY);
 		etlReport = new EtlReport(folder);
-
+		
 		tableToRows = new OneToManyList<String, Row>();
 		stateCountyToLocationId = new HashMap<String, Integer>();
 		careSiteIds = new HashSet<Integer>();
@@ -122,10 +121,10 @@ public class HCUPETLToV5 {
 		observationPeriodId = 0;
 		measurementId = 0;
 		observationId = 0;
-
+		
 		StringUtilities.outputWithTime("Populating CDM_Source table");
 		populateCdmSourceTable();
-
+		
 		StringUtilities.outputWithTime("Processing persons");
 		for (Row row : sourceConnection.query("SELECT * FROM core")) {
 			processPerson(row);
@@ -140,24 +139,24 @@ public class HCUPETLToV5 {
 		}
 		insertBatch();
 		System.out.println("Processed " + personId + " persons");
-
+		
 		qcSampleConstructor.addCdmData(targetConnection, targetDbSettings.database);
-
+		
 		String etlReportName = etlReport.generateETLReport(icd9ToConcept, icd9ProcToConcept, drgYearToConcept);
 		System.out.println("An ETL report was generated and written to :" + etlReportName);
 		if (etlReport.getTotalProblemCount() > 0) {
 			String etlProblemListname = etlReport.generateProblemReport();
 			System.out.println("An ETL problem list was generated and written to :" + etlProblemListname);
 		}
-
+		
 		StringUtilities.outputWithTime("Finished ETL");
 	}
-
+	
 	private void populateCdmSourceTable() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		targetConnection.executeResource("PopulateCdmSourceTable.sql", "@today", df.format(new Date()));
 	}
-
+	
 	private void truncateTables(RichConnection targetConnection) {
 		StringUtilities.outputWithTime("Truncating tables");
 		String[] tables = new String[] { "attribute_definition", "care_site", "cdm_source", "cohort", "cohort_attribute", "cohort_definition", "condition_era",
@@ -167,17 +166,17 @@ public class HCUPETLToV5 {
 		for (String table : tables)
 			targetConnection.execute("TRUNCATE TABLE " + table);
 	}
-
+	
 	private void processPerson(Row row) {
 		etlReport.registerIncomingData("core", row);
-
+		
 		personId++;
 		visitOccurrenceId++;
 		observationPeriodId++;
 		visitStartDate = computeVisitStartDate(row.get("YEAR"), row.get("AMONTH"), row.get("AWEEKEND"), row.get("KEY"));
 		visitEndDate = computeVisitEndDate(visitStartDate, row.get("LOS"));
 		qcSampleConstructor.registerPersonData("core", row, row.getLong("KEY"));
-
+		
 		if (addToPerson(row)) {
 			List<Row> stemTable = createStemTable(row);
 			addToLocation(row);
@@ -193,7 +192,7 @@ public class HCUPETLToV5 {
 			addToObservation(stemTable);
 		}
 	}
-
+	
 	private List<Row> createStemTable(Row row) {
 		List<Row> stemTable = new ArrayList<Row>();
 		for (int i = 0; i < diagnoseFields.length; i++)
@@ -208,7 +207,7 @@ public class HCUPETLToV5 {
 						etlReport.reportProblem("Condition_occurrence", "Male with live birth. Removing condition_occurrence", row.get("KEY"));
 						continue;
 					}
-
+					
 					Row stemRow = new Row();
 					stemRow.add("person_id", personId);
 					stemRow.add("source_value", row.get(diagnoseFields[i]));
@@ -222,7 +221,7 @@ public class HCUPETLToV5 {
 					stemTable.add(stemRow);
 				}
 			}
-
+		
 		for (int i = 0; i < procedureFields.length; i++)
 			if (row.get(procedureFields[i]).trim().length() != 0) {
 				int day = row.getInt(procedureDayFields[i]);
@@ -247,7 +246,7 @@ public class HCUPETLToV5 {
 					stemTable.add(stemRow);
 				}
 			}
-
+		
 		String drgYear = row.get("DRG").trim() + "_" + row.get("YEAR");
 		CodeDomainData data = drgYearToConcept.getCodeData(drgYear);
 		for (TargetConcept targetConcept : data.targetConcepts) {
@@ -265,14 +264,14 @@ public class HCUPETLToV5 {
 		}
 		return stemTable;
 	}
-
+	
 	private void addToLocation(Row row) {
 		String stateCounty = row.get("HOSPST") + "\t" + (row.get("HOSPSTCO").equals("-9999") ? "" : row.get("HOSPSTCO"));
 		locationId = stateCountyToLocationId.get(stateCounty);
 		if (locationId == null) {
 			locationId = stateCountyToLocationId.size() + 1;
 			stateCountyToLocationId.put(stateCounty, locationId);
-
+			
 			Row location = new Row();
 			location.add("location_id", locationId);
 			location.add("state", row.get("HOSPST"));
@@ -286,7 +285,7 @@ public class HCUPETLToV5 {
 			tableToRows.put("location", location);
 		}
 	}
-
+	
 	private void addToCareSite(Row row) {
 		if (careSiteIds.add(row.getInt("HOSPID"))) {
 			Row careSite = new Row();
@@ -297,7 +296,7 @@ public class HCUPETLToV5 {
 			tableToRows.put("care_site", careSite);
 		}
 	}
-
+	
 	private void addToVisitOccurrence(Row row) {
 		Row visitOccurrence = new Row();
 		visitOccurrence.add("person_id", personId);
@@ -309,7 +308,7 @@ public class HCUPETLToV5 {
 		visitOccurrence.add("visit_type_concept_id", 44818517); // Visit derived from encounter on claim
 		tableToRows.put("visit_occurrence", visitOccurrence);
 	}
-
+	
 	private void addToObservationPeriod(Row row) {
 		Row observationPeriod = new Row();
 		observationPeriod.add("observation_period_id", observationPeriodId);
@@ -319,26 +318,26 @@ public class HCUPETLToV5 {
 		observationPeriod.add("period_type_concept_id", 44814724); // Period covering healthcare encounters
 		tableToRows.put("observation_period", observationPeriod);
 	}
-
+	
 	private boolean addToPerson(Row row) {
 		if (row.getInt("AGE") < 0 || (row.getInt("AGE") == 0 && row.getInt("AGEDAY") < 0)) { // No age specified. Cannot create person, since birth year is
-																								// required field
+			// required field
 			etlReport.reportProblem("Person", "No age specified so cannot create row", row.get("KEY"));
 			return false;
 		}
-
+		
 		Row person = new Row();
 		person.add("person_id", personId);
 		person.add("person_source_value", row.get("KEY"));
 		person.add("gender_source_value", row.get("FEMALE"));
 		person.add("gender_concept_id", row.get("FEMALE").equals("1") ? "8532" : row.get("FEMALE").equals("0") ? "8507" : "8551");
-
+		
 		if (row.getInt("AGE") > 0) {
 			int yearOfBirth = Integer.parseInt(StringUtilities.daysToCalendarYear(visitStartDate)) - row.getInt("AGE");
 			person.add("year_of_birth", yearOfBirth);
 			person.add("month_of_birth", "");
 			person.add("day_of_birth", "");
-
+			
 		} else if (row.getInt("AGEDAY") >= 0) {
 			long dateOfBirth = visitStartDate - row.getInt("AGEDAY");
 			person.add("year_of_birth", StringUtilities.daysToCalendarYear(dateOfBirth));
@@ -349,7 +348,7 @@ public class HCUPETLToV5 {
 			person.add("month_of_birth", "");
 			person.add("day_of_birth", "");
 		}
-
+		
 		person.add("race_source_value", row.get("RACE"));
 		if (row.get("RACE").equals("1")) // White
 			person.add("race_concept_id", "8527");
@@ -364,8 +363,8 @@ public class HCUPETLToV5 {
 		else if (row.get("RACE").equals("6")) // Other
 			person.add("race_concept_id", "8522");
 		else
-			person.add("race_concept_id", "");
-
+			person.add("race_concept_id", "0");
+		
 		if (row.get("RACE").equals("3")) {// Hispanic
 			person.add("ethnicity_source_value", "3");
 			person.add("ethnicity_concept_id", "38003563");
@@ -373,11 +372,11 @@ public class HCUPETLToV5 {
 			person.add("ethnicity_source_value", "");
 			person.add("ethnicity_concept_id", "0");
 		}
-
+		
 		tableToRows.put("person", person);
 		return true;
 	}
-
+	
 	private void addToConditionOccurrence(List<Row> stemTable) {
 		for (Row stemRow : stemTable) {
 			if (stemRow.get("domain_id").equals("Condition")) {
@@ -394,7 +393,7 @@ public class HCUPETLToV5 {
 			}
 		}
 	}
-
+	
 	private void addToDeviceExposure(List<Row> stemTable) {
 		for (Row stemRow : stemTable) {
 			if (stemRow.get("domain_id").equals("Device")) {
@@ -411,7 +410,7 @@ public class HCUPETLToV5 {
 			}
 		}
 	}
-
+	
 	private void addToDeath(Row row) {
 		if (row.get("DIED").equals("1")) {
 			Row death = new Row();
@@ -421,7 +420,7 @@ public class HCUPETLToV5 {
 			tableToRows.put("death", death);
 		}
 	}
-
+	
 	private void addToDrugExposure(List<Row> stemTable) {
 		for (Row stemRow : stemTable) {
 			if (stemRow.get("domain_id").equals("Drug")) {
@@ -438,7 +437,7 @@ public class HCUPETLToV5 {
 			}
 		}
 	}
-
+	
 	private void addToProcedureOccurrence(List<Row> stemTable) {
 		for (Row stemRow : stemTable) {
 			if (stemRow.get("domain_id").equals("Procedure")) {
@@ -455,7 +454,7 @@ public class HCUPETLToV5 {
 			}
 		}
 	}
-
+	
 	private void addToMeasurement(List<Row> stemTable) {
 		for (Row stemRow : stemTable) {
 			if (stemRow.get("domain_id").equals("Measurement")) {
@@ -472,7 +471,7 @@ public class HCUPETLToV5 {
 			}
 		}
 	}
-
+	
 	private void addToObservation(List<Row> stemTable) {
 		for (Row stemRow : stemTable) {
 			if (stemRow.get("domain_id").equals("Observation")) {
@@ -489,7 +488,7 @@ public class HCUPETLToV5 {
 			}
 		}
 	}
-
+	
 	private long computeVisitStartDate(String year, String amonth, String aweekend, String key) {
 		if (Integer.parseInt(amonth) < 1)
 			amonth = Integer.toString(Math.abs(hash(key) % 12) + 1);
@@ -504,40 +503,40 @@ public class HCUPETLToV5 {
 		// function
 		return (((StringUtilities.MILLENIUM + time) / StringUtilities.DAY) - (1000 * 365));
 	}
-
+	
 	private long computeVisitEndDate(long visitStartDate, String los) {
 		int lengthOfStay = Integer.parseInt(los);
 		if (lengthOfStay < 0)
 			lengthOfStay = 0;
 		return visitStartDate + lengthOfStay;
 	}
-
+	
 	private int hash(String string) {
 		int hashCode = string.hashCode();
 		hashCode ^= (hashCode >>> 20) ^ (hashCode >>> 12);
 		return hashCode ^ (hashCode >>> 7) ^ (hashCode >>> 4);
 	}
-
+	
 	private boolean isWeekend(Calendar calendar) {
 		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
 		return (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY);
 	}
-
+	
 	private void insertBatch() {
 		removeRowsWithNonNullableNulls();
-
+		
 		etlReport.registerOutgoingData(tableToRows);
 		for (String table : tableToRows.keySet())
 			targetConnection.insertIntoTable(tableToRows.get(table).iterator(), table, false, true);
 		tableToRows.clear();
 	}
-
+	
 	private void loadMappings(DbSettings dbSettings) {
 		StringUtilities.outputWithTime("Loading mappings from server");
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setContext(this.getClass());
 		connection.use(dbSettings.database);
-
+		
 		System.out.println("- Loading ICD-9 to concept_id mapping");
 		icd9ToConcept = new CodeToDomainConceptMap("ICD-9 to concept_id mapping", "Condition");
 		for (Row row : connection.queryResource("icd9ToConditionProcMeasObsDevice.sql")) {
@@ -545,7 +544,7 @@ public class HCUPETLToV5 {
 			icd9ToConcept.add(row.get("SOURCE_CODE"), row.get("SOURCE_NAME"), row.getInt("SOURCE_CONCEPT_ID"), row.getInt("TARGET_CONCEPT_ID"),
 					row.get("TARGET_CODE"), row.get("TARGET_NAME"), row.get("DOMAIN_ID"));
 		}
-
+		
 		System.out.println("- Loading ICD-9 Procedure to concept_id mapping");
 		icd9ProcToConcept = new CodeToDomainConceptMap("ICD-9 Procedure to concept_id mapping", "Procedure");
 		for (Row row : connection.queryResource("icd9ProcToProcMeasObsDrugCondition.sql")) {
@@ -553,7 +552,7 @@ public class HCUPETLToV5 {
 			icd9ProcToConcept.add(row.get("SOURCE_CODE"), row.get("SOURCE_NAME"), row.getInt("SOURCE_CONCEPT_ID"), row.getInt("TARGET_CONCEPT_ID"),
 					row.get("TARGET_CODE"), row.get("TARGET_NAME"), row.get("DOMAIN_ID"));
 		}
-
+		
 		System.out.println("- Loading DRG to concept_id mapping");
 		drgYearToConcept = new CodeToDomainConceptMap("DRG to concept_id mapping", "Observation");
 		// Need to create drg_year combinations for every year for easy retrieval later on:
@@ -569,15 +568,15 @@ public class HCUPETLToV5 {
 				drgYearToConcept.add(row.get("SOURCE_CODE") + "_" + year, row.get("SOURCE_NAME"), row.getInt("SOURCE_CONCEPT_ID"),
 						row.getInt("TARGET_CONCEPT_ID"), row.get("TARGET_CODE"), row.get("TARGET_NAME"), row.get("TARGET_DOMAIN"));
 		}
-
+		
 		System.out.println("- Loading county code to name mapping");
 		codeToCounty = new HashMap<String, String>();
 		for (Row row : new ReadCSVFileWithHeader(this.getClass().getResourceAsStream("national_county.txt")))
 			codeToCounty.put(row.get("State ANSI") + row.get("County ANSI"), row.get("County Name"));
-
+		
 		StringUtilities.outputWithTime("Finished loading mappings");
 	}
-
+	
 	private void removeRowsWithNonNullableNulls() {
 		for (String table : tableToRows.keySet()) {
 			Iterator<Row> iterator = tableToRows.get(table).iterator();
