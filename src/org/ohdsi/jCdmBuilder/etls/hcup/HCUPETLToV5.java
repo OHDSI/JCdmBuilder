@@ -483,6 +483,7 @@ public class HCUPETLToV5 {
 				observation.add("observation_concept_id", stemRow.get("concept_id"));
 				observation.add("observation_type_concept_id", stemRow.get("type_concept_id"));
 				observation.add("observation_date", stemRow.get("start_date"));
+				observation.add("value_as_concept_id", 45877994); // 'Yes'
 				observation.add("visit_occurrence_id", stemRow.get("visit_occurrence_id"));
 				tableToRows.put("observation", observation);
 			}
