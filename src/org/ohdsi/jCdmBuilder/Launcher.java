@@ -3,7 +3,7 @@ package org.ohdsi.jCdmBuilder;
 
 public class Launcher {
 
-	private final static int	MIN_HEAP	= 2048;
+	private final static int	MIN_HEAP	= 1500;
 
 	public static void main(String[] args) throws Exception {
 

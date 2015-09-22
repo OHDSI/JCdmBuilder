@@ -61,8 +61,9 @@ public class CdmEtl {
 			Row row = iterator.next();
 			Row filteredRow = new Row();
 			for (String fieldName : row.getFieldNames()) {
-				if (allowedFields.contains(fieldName.toLowerCase()))
-					filteredRow.add(fieldName, row.get(fieldName));
+				String normFieldName = fieldName.toLowerCase().trim();
+				if (allowedFields.contains(normFieldName))
+					filteredRow.add(normFieldName, row.get(fieldName));
 				else if (ignoredFields.add(fieldName))
 					System.err.println("Ignoring field " + fieldName);
 			}
