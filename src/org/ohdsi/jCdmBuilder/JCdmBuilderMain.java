@@ -49,6 +49,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.ohdsi.databases.DbType;
+import org.ohdsi.databases.RichConnection;
 import org.ohdsi.jCdmBuilder.cdm.Cdm;
 import org.ohdsi.jCdmBuilder.cdm.EraBuilder;
 import org.ohdsi.jCdmBuilder.etls.ars.ARSETL;
@@ -56,10 +58,7 @@ import org.ohdsi.jCdmBuilder.etls.cdm.CdmEtl;
 import org.ohdsi.jCdmBuilder.etls.hcup.HCUPETL;
 import org.ohdsi.jCdmBuilder.etls.hcup.HCUPETLToV5;
 import org.ohdsi.jCdmBuilder.vocabulary.InsertVocabularyInServer;
-import org.ohdsi.utilities.DirectoryUtilities;
 import org.ohdsi.utilities.StringUtilities;
-import org.ohdsi.databases.DbType;
-import org.ohdsi.databases.RichConnection;
 
 public class JCdmBuilderMain {
 
@@ -247,7 +246,7 @@ public class JCdmBuilderMain {
 		targetType.setToolTipText("Select the type of server where the CDM and vocabulary will be stored");
 		targetPanel.add(targetType);
 		targetPanel.add(new JLabel("Server location"));
-		targetServerField = new JTextField("localhost/ars");
+		targetServerField = new JTextField("localhost/ohdsi");
 		targetPanel.add(targetServerField);
 		targetPanel.add(new JLabel("User name"));
 		targetUserField = new JTextField("");
@@ -256,7 +255,7 @@ public class JCdmBuilderMain {
 		targetPasswordField = new JPasswordField("");
 		targetPanel.add(targetPasswordField);
 		targetPanel.add(new JLabel("CDM database name"));
-		targetDatabaseField = new JTextField("cdmv4");
+		targetDatabaseField = new JTextField("cdm");
 		targetPanel.add(targetDatabaseField);
 		targetPanel.add(new JLabel(""));
 		targetPanel.add(new JLabel(""));
@@ -538,7 +537,7 @@ public class JCdmBuilderMain {
 		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int returnVal = fileChooser.showDialog(frame, "Select vocabulary folder");
 		if (returnVal == JFileChooser.APPROVE_OPTION)
-			vocabFileField.setText(DirectoryUtilities.getRelativePath(new File(folderField.getText()), fileChooser.getSelectedFile()));
+			vocabFileField.setText(fileChooser.getSelectedFile().getAbsolutePath());
 	}
 
 	private DbSettings getSourceDbSettings() {
@@ -741,7 +740,7 @@ public class JCdmBuilderMain {
 				InsertVocabularyInServer process = new InsertVocabularyInServer();
 				DbSettings dbSettings = getTargetDbSettings();
 				if (dbSettings != null)
-					process.process(folderField.getText() + "/" + vocabFileField.getText(), dbSettings);
+					process.process(vocabFileField.getText(), dbSettings);
 			} catch (Exception e) {
 				handleError(e);
 			} finally {
