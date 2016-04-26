@@ -37,7 +37,6 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 	private String			linkingColumn;
 	private boolean			sortedNumerically;
 	
-	@SuppressWarnings("unchecked")
 	public MultiRowIterator(String linkingColumn, String[] tableNames, Iterator<Row>... tableIterators) {
 		this(linkingColumn, false, tableNames, tableIterators);
 	}

@@ -52,23 +52,23 @@ public class HCUPETLToV5 {
 	private static final double			QC_SAMPLE_PROBABILITY		= 0.000001;
 	public static int					BATCH_SIZE					= 10000;
 	public static String[]				diagnoseFields				= new String[] { "DX1", "DX2", "DX3", "DX4", "DX5", "DX6", "DX7", "DX8", "DX9", "DX10",
-			"DX11", "DX12", "DX13", "DX14", "DX15", "DX16", "DX17", "DX18", "DX19", "DX20", "DX21", "DX22", "DX23", "DX24", "DX25", "ECODE1", "ECODE2" };
+		"DX11", "DX12", "DX13", "DX14", "DX15", "DX16", "DX17", "DX18", "DX19", "DX20", "DX21", "DX22", "DX23", "DX24", "DX25", "ECODE1", "ECODE2" };
 	public static String[]				procedureFields				= new String[] { "PR1", "PR2", "PR3", "PR4", "PR5", "PR6", "PR7", "PR8", "PR9", "PR10",
-			"PR11", "PR12", "PR13", "PR14", "PR15"					};
+		"PR11", "PR12", "PR13", "PR14", "PR15"					};
 	public static String[]				procedureDayFields			= new String[] { "PRDAY1", "PRDAY2", "PRDAY3", "PRDAY4", "PRDAY5", "PRDAY6", "PRDAY7",
-			"PRDAY8", "PRDAY9", "PRDAY10", "PRDAY11", "PRDAY12", "PRDAY13", "PRDAY14", "PRDAY15" };
+		"PRDAY8", "PRDAY9", "PRDAY10", "PRDAY11", "PRDAY12", "PRDAY13", "PRDAY14", "PRDAY15" };
 	public static int[]					diagnoseFieldConceptIds		= new int[] { 38000184, 38000185, 38000186, 38000187, 38000188, 38000189, 38000190,
-			38000191, 38000192, 38000193, 38000194, 38000195, 38000196, 38000197, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198,
-			38000198, 38000198, 38000198, 38000198, 38000184, 38000185 };
+		38000191, 38000192, 38000193, 38000194, 38000195, 38000196, 38000197, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198,
+		38000198, 38000198, 38000198, 38000198, 38000184, 38000185 };
 	
 	public static int[]					procedureFieldConceptIds	= new int[] { 38000251, 38000252, 38000253, 38000254, 38000255, 38000256, 38000257,
-			38000258, 38000259, 38000260, 38000261, 38000262, 38000263, 38000264, 38000265 };
+		38000258, 38000259, 38000260, 38000261, 38000262, 38000263, 38000264, 38000265 };
 	
 	private RichConnection				sourceConnection;
 	private RichConnection				targetConnection;
 	private QCSampleConstructor			qcSampleConstructor;
 	private EtlReport					etlReport;
-	private CdmV5NullableChecker		cdmv4NullableChecker		= new CdmV5NullableChecker();
+	private CdmV5NullableChecker		cdmv5NullableChecker		= new CdmV5NullableChecker();
 	private OneToManyList<String, Row>	tableToRows;
 	private long						personId;
 	private long						observationPeriodId;
@@ -88,6 +88,7 @@ public class HCUPETLToV5 {
 	
 	private Map<String, String>			codeToCounty;
 	private CodeToDomainConceptMap		icd9ToConcept;
+	private CodeToDomainConceptMap		icd9ToValueConcept;
 	private CodeToDomainConceptMap		icd9ProcToConcept;
 	private CodeToDomainConceptMap		drgYearToConcept;
 	
@@ -361,7 +362,7 @@ public class HCUPETLToV5 {
 		else if (row.get("RACE").equals("3")) // Hispanic, should be coded as 'other'
 			person.add("race_concept_id", "8522");
 		else if (row.get("RACE").equals("6")) // Other
-			person.add("race_concept_id", "8522");
+			person.add("race_concept_id", "0");
 		else
 			person.add("race_concept_id", "0");
 		
@@ -483,7 +484,12 @@ public class HCUPETLToV5 {
 				observation.add("observation_concept_id", stemRow.get("concept_id"));
 				observation.add("observation_type_concept_id", stemRow.get("type_concept_id"));
 				observation.add("observation_date", stemRow.get("start_date"));
-				observation.add("value_as_concept_id", 45877994); // 'Yes'
+				CodeDomainData codeData = icd9ToValueConcept.getCodeData(stemRow.get("source_value"));
+				if (codeData.targetConcepts.get(0).conceptId == 0) {
+					observation.add("value_as_concept_id", 45877994); // 'Yes'
+				} else {
+					observation.add("value_as_concept_id", codeData.targetConcepts.get(0).conceptId); 
+				}
 				observation.add("visit_occurrence_id", stemRow.get("visit_occurrence_id"));
 				tableToRows.put("observation", observation);
 			}
@@ -546,6 +552,14 @@ public class HCUPETLToV5 {
 					row.get("TARGET_CODE"), row.get("TARGET_NAME"), row.get("DOMAIN_ID"));
 		}
 		
+		System.out.println("- Loading ICD-9 to observation value concept_id mapping");
+		icd9ToValueConcept = new CodeToDomainConceptMap("ICD-9 to value concept_id mapping", "Observation");
+		for (Row row : connection.queryResource("icd9ToObservationValue.sql")) {
+			row.upperCaseFieldNames();
+			icd9ToValueConcept.add(row.get("SOURCE_CODE"), row.get("SOURCE_NAME"), row.getInt("SOURCE_CONCEPT_ID"), row.getInt("TARGET_CONCEPT_ID"),
+					row.get("TARGET_CODE"), row.get("TARGET_NAME"), row.get("DOMAIN_ID"));
+		}
+		
 		System.out.println("- Loading ICD-9 Procedure to concept_id mapping");
 		icd9ProcToConcept = new CodeToDomainConceptMap("ICD-9 Procedure to concept_id mapping", "Procedure");
 		for (Row row : connection.queryResource("icd9ProcToProcMeasObsDrugCondition.sql")) {
@@ -583,7 +597,7 @@ public class HCUPETLToV5 {
 			Iterator<Row> iterator = tableToRows.get(table).iterator();
 			while (iterator.hasNext()) {
 				Row row = iterator.next();
-				String nonAllowedNullField = cdmv4NullableChecker.findNonAllowedNull(table, row);
+				String nonAllowedNullField = cdmv5NullableChecker.findNonAllowedNull(table, row);
 				if (nonAllowedNullField != null) {
 					if (row.getFieldNames().contains("person_id"))
 						etlReport.reportProblem(table, "Column " + nonAllowedNullField + " is null, could not create row", row.get("person_id"));
