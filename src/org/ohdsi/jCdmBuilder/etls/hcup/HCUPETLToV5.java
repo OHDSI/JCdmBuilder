@@ -127,7 +127,7 @@ public class HCUPETLToV5 {
 		populateCdmSourceTable();
 		
 		StringUtilities.outputWithTime("Processing persons");
-		for (Row row : sourceConnection.query("SELECT * FROM core")) {
+		for (Row row : sourceConnection.query("SELECT * FROM core ORDER BY [key]")) {
 			processPerson(row);
 			if (personId == maxPersons) {
 				System.out.println("Reached limit of " + maxPersons + " persons, terminating");
@@ -331,7 +331,7 @@ public class HCUPETLToV5 {
 		person.add("person_id", personId);
 		person.add("person_source_value", row.get("KEY"));
 		person.add("gender_source_value", row.get("FEMALE"));
-		person.add("gender_concept_id", row.get("FEMALE").equals("1") ? "8532" : row.get("FEMALE").equals("0") ? "8507" : "8551");
+		person.add("gender_concept_id", row.get("FEMALE").equals("1") ? "8532" : row.get("FEMALE").equals("0") ? "8507" : "0");
 		
 		if (row.getInt("AGE") > 0) {
 			int yearOfBirth = Integer.parseInt(StringUtilities.daysToCalendarYear(visitStartDate)) - row.getInt("AGE");
