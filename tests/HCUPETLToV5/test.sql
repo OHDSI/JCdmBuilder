@@ -93,64 +93,67 @@ INSERT INTO test_results SELECT 605 AS id, 'Condition occurrence start and end d
 -- 606: Condition type concept ID
 INSERT INTO test_results SELECT 606 AS id, 'Condition type concept ID' AS description, 'Expect condition_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_occurrence WHERE person_id = '41' AND condition_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
--- 602: Condition occurrence visit occurrence id
-INSERT INTO test_results SELECT 602 AS id, 'Condition occurrence visit occurrence id' AS description, 'Expect condition_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_occurrence WHERE person_id = '42' AND visit_occurrence_id = '42') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+-- 607: Condition occurrence visit occurrence id
+INSERT INTO test_results SELECT 607 AS id, 'Condition occurrence visit occurrence id' AS description, 'Expect condition_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_occurrence WHERE person_id = '42' AND visit_occurrence_id = '42') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+
+-- 608: Condition row count
+INSERT INTO test_results SELECT 608 AS id, 'Condition row count' AS description, 'Expect condition_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_occurrence WHERE person_id = '43') != 1 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 701: Death
-INSERT INTO test_results SELECT 701 AS id, 'Death' AS description, 'Expect death' AS test, CASE WHEN(SELECT COUNT(*) FROM death WHERE person_id = '43' AND death_type_concept_id = '38003566') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 701 AS id, 'Death' AS description, 'Expect death' AS test, CASE WHEN(SELECT COUNT(*) FROM death WHERE person_id = '44' AND death_type_concept_id = '38003566') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 801: Procedure occurrence person ID
-INSERT INTO test_results SELECT 801 AS id, 'Procedure occurrence person ID' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '44') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 801 AS id, 'Procedure occurrence person ID' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '45') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 802: Procedure occurrence concept mapping
-INSERT INTO test_results SELECT 802 AS id, 'Procedure occurrence concept mapping' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '45' AND procedure_concept_id = '2004765' AND procedure_source_value = '7359' AND procedure_source_concept_id = '2004765') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 802 AS id, 'Procedure occurrence concept mapping' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '46' AND procedure_concept_id = '2004765' AND procedure_source_value = '7359' AND procedure_source_concept_id = '2004765') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 803: Procedure occurrence concept mapping multiple codes
-INSERT INTO test_results SELECT 803 AS id, 'Procedure occurrence concept mapping multiple codes' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '46' AND procedure_concept_id = '2004765' AND procedure_source_value = '7359' AND procedure_source_concept_id = '2004765') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
-INSERT INTO test_results SELECT 803 AS id, 'Procedure occurrence concept mapping multiple codes' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '46' AND procedure_concept_id = '2008238' AND procedure_source_value = '9904' AND procedure_source_concept_id = '2008238') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
-INSERT INTO test_results SELECT 803 AS id, 'Procedure occurrence concept mapping multiple codes' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '46' AND procedure_concept_id = '2001537' AND procedure_source_value = '3722' AND procedure_source_concept_id = '2001537') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 803 AS id, 'Procedure occurrence concept mapping multiple codes' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '47' AND procedure_concept_id = '2004765' AND procedure_source_value = '7359' AND procedure_source_concept_id = '2004765') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 803 AS id, 'Procedure occurrence concept mapping multiple codes' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '47' AND procedure_concept_id = '2008238' AND procedure_source_value = '9904' AND procedure_source_concept_id = '2008238') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 803 AS id, 'Procedure occurrence concept mapping multiple codes' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '47' AND procedure_concept_id = '2001537' AND procedure_source_value = '3722' AND procedure_source_concept_id = '2001537') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 804: Procedure occurrence date
-INSERT INTO test_results SELECT 804 AS id, 'Procedure occurrence date' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '47' AND procedure_date = '2010-02-04') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 804 AS id, 'Procedure occurrence date' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '48' AND procedure_date = '2010-02-04') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 805: Procedure occurrence date greater than los
-INSERT INTO test_results SELECT 805 AS id, 'Procedure occurrence date greater than los' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '48') != 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 805 AS id, 'Procedure occurrence date greater than los' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '49') != 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 806: Procedure type concept ID
-INSERT INTO test_results SELECT 806 AS id, 'Procedure type concept ID' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '49' AND procedure_type_concept_id = '38000251') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 806 AS id, 'Procedure type concept ID' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '50' AND procedure_type_concept_id = '38000251') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 807: Procedure from diagnosis code
-INSERT INTO test_results SELECT 807 AS id, 'Procedure from diagnosis code' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '50' AND procedure_concept_id = '4163273' AND procedure_type_concept_id = '38000184' AND procedure_source_value = 'V252' AND procedure_source_concept_id = '44833073') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 807 AS id, 'Procedure from diagnosis code' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '51' AND procedure_concept_id = '4163273' AND procedure_type_concept_id = '38000184' AND procedure_source_value = 'V252' AND procedure_source_concept_id = '44833073') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 808: Procedure occurrence visit occurrence id
-INSERT INTO test_results SELECT 808 AS id, 'Procedure occurrence visit occurrence id' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '51' AND visit_occurrence_id = '51') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 808 AS id, 'Procedure occurrence visit occurrence id' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE person_id = '52' AND visit_occurrence_id = '52') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 901: Measurement person ID
-INSERT INTO test_results SELECT 901 AS id, 'Measurement person ID' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '52') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 901 AS id, 'Measurement person ID' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '53') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 902: Measurement concept mapping
-INSERT INTO test_results SELECT 902 AS id, 'Measurement concept mapping' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '53' AND measurement_concept_id = '40482801' AND measurement_source_value = '25002' AND measurement_source_concept_id = '44836915') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 902 AS id, 'Measurement concept mapping' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '54' AND measurement_concept_id = '40482801' AND measurement_source_value = '25002' AND measurement_source_concept_id = '44836915') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 903: Measurement date
-INSERT INTO test_results SELECT 903 AS id, 'Measurement date' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '54' AND measurement_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 903 AS id, 'Measurement date' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '55' AND measurement_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 904: Measurement type concept ID
-INSERT INTO test_results SELECT 904 AS id, 'Measurement type concept ID' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '55' AND measurement_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 904 AS id, 'Measurement type concept ID' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '56' AND measurement_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 905: Measurement visit occurrence id
-INSERT INTO test_results SELECT 905 AS id, 'Measurement visit occurrence id' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '56' AND visit_occurrence_id = '56') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 905 AS id, 'Measurement visit occurrence id' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '57' AND visit_occurrence_id = '57') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1001: Observation person ID
-INSERT INTO test_results SELECT 1001 AS id, 'Observation person ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '57') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1001 AS id, 'Observation person ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '58') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1002: Observation concept mapping
-INSERT INTO test_results SELECT 1002 AS id, 'Observation concept mapping' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '58' AND observation_concept_id = '4014295' AND observation_source_value = 'V3000' AND observation_source_concept_id = '44833089') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1002 AS id, 'Observation concept mapping' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '59' AND observation_concept_id = '4014295' AND observation_source_value = 'V3000' AND observation_source_concept_id = '44833089') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1003: Observation date
-INSERT INTO test_results SELECT 1003 AS id, 'Observation date' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '59' AND observation_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1003 AS id, 'Observation date' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '60' AND observation_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1004: Observation type concept ID
-INSERT INTO test_results SELECT 1004 AS id, 'Observation type concept ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '60' AND observation_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1004 AS id, 'Observation type concept ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '61' AND observation_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1005: Observation visit occurrence id
-INSERT INTO test_results SELECT 1005 AS id, 'Observation visit occurrence id' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '61' AND visit_occurrence_id = '61') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1005 AS id, 'Observation visit occurrence id' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '62' AND visit_occurrence_id = '62') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
