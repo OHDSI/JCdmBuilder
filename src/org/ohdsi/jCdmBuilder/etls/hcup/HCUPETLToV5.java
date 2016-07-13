@@ -191,6 +191,7 @@ public class HCUPETLToV5 {
 			addToProcedureOccurrence(stemTable);
 			addToMeasurement(stemTable);
 			addToObservation(stemTable);
+			addToObservation(row);
 		}
 	}
 	
@@ -479,6 +480,7 @@ public class HCUPETLToV5 {
 				Row observation = new Row();
 				observation.add("person_id", stemRow.get("person_id"));
 				observation.add("observation_id", ++observationId);
+				observation.add("value_as_number", "");
 				observation.add("observation_source_value", stemRow.get("source_value"));
 				observation.add("observation_source_concept_id", stemRow.get("source_concept_id"));
 				observation.add("observation_concept_id", stemRow.get("concept_id"));
@@ -494,6 +496,21 @@ public class HCUPETLToV5 {
 				tableToRows.put("observation", observation);
 			}
 		}
+	}
+	
+	private void addToObservation(Row row) {
+		Row observation = new Row();
+		observation.add("person_id", personId);
+		observation.add("observation_id", ++observationId);
+		observation.add("value_as_number", row.get("DISCWT"));
+		observation.add("observation_source_value", "DISCWT");
+		observation.add("value_as_concept_id", "");
+		observation.add("observation_source_concept_id", "");
+		observation.add("observation_concept_id","0");
+		observation.add("observation_type_concept_id", "900000003");
+		observation.add("observation_date", StringUtilities.daysToDatabaseDateString(visitStartDate));
+		observation.add("visit_occurrence_id", visitOccurrenceId);
+		tableToRows.put("observation", observation);
 	}
 	
 	private long computeVisitStartDate(String year, String amonth, String aweekend, String key) {
