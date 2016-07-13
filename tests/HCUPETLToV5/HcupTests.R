@@ -145,7 +145,7 @@ expect_condition_occurrence(person_id = personId, condition_concept_id = 320128,
 expect_condition_occurrence(person_id = personIdPlusPlus(), condition_concept_id = 201826, condition_source_value = "25000", condition_source_concept_id = 44836914)
 
 declareTest(604, "Condition occurrence concept mapping to other domain")
-add_core(key = "4200000000604", dx1 = "V3000", dx2 = NULL, dx3 = NULL, dx4 = NULL, dx5 = NULL, dx6 = NULL, dx7 = NULL, dx8 = NULL, dx9 = NULL, dx10 = NULL, dx11 = NULL, dx12 = NULL, dx13 = NULL, dx14 = NULL, dx15 = NULL, dx16 = NULL, dx17 = NULL, dx18 = NULL, dx19 = NULL, dx20 = NULL, dx21 = NULL, dx22 = NULL, dx23 = NULL, dx24 = NULL, dx25 = NULL)
+add_core(key = "4200000000604", dx1 = "38651", dx2 = NULL, dx3 = NULL, dx4 = NULL, dx5 = NULL, dx6 = NULL, dx7 = NULL, dx8 = NULL, dx9 = NULL, dx10 = NULL, dx11 = NULL, dx12 = NULL, dx13 = NULL, dx14 = NULL, dx15 = NULL, dx16 = NULL, dx17 = NULL, dx18 = NULL, dx19 = NULL, dx20 = NULL, dx21 = NULL, dx22 = NULL, dx23 = NULL, dx24 = NULL, dx25 = NULL)
 expect_no_condition_occurrence(person_id = personIdPlusPlus())
 
 declareTest(605, "Condition occurrence start and end date")
@@ -239,20 +239,24 @@ add_core(key = "4200000001001")
 expect_observation(person_id = personIdPlusPlus())
 
 declareTest(1002, "Observation concept mapping")
-add_core(key = "4200000001002", dx1 = "V3000")
-expect_observation(person_id = personIdPlusPlus(), observation_concept_id = 4014295, observation_source_value = "V3000", observation_source_concept_id = 44833089)
+add_core(key = "4200000001002", dx1 = "38651")
+expect_observation(person_id = personIdPlusPlus(), observation_concept_id = 136997, observation_source_value = "38651", observation_source_concept_id = 44823095)
 
 declareTest(1003, "Observation date")
-add_core(key = "4200000001003", dx1 = "V3000", year = 2010, amonth = 2, aweekend = 0) # 1st of Feb 2010 is a Monday
+add_core(key = "4200000001003", dx1 = "38651", year = 2010, amonth = 2, aweekend = 0) # 1st of Feb 2010 is a Monday
 expect_observation(person_id = personIdPlusPlus(), observation_date = "2010-02-01")
 
 declareTest(1004, "Observation type concept ID")
-add_core(key = "4200000001004", dx1 = "V3000", dx2 = NULL, dx3 = NULL, dx4 = NULL, dx5 = NULL, dx6 = NULL, dx7 = NULL, dx8 = NULL, dx9 = NULL, dx10 = NULL, dx11 = NULL, dx12 = NULL, dx13 = NULL, dx14 = NULL, dx15 = NULL, dx16 = NULL, dx17 = NULL, dx18 = NULL, dx19 = NULL, dx20 = NULL, dx21 = NULL, dx22 = NULL, dx23 = NULL, dx24 = NULL, dx25 = NULL)
+add_core(key = "4200000001004", dx1 = "38651", dx2 = NULL, dx3 = NULL, dx4 = NULL, dx5 = NULL, dx6 = NULL, dx7 = NULL, dx8 = NULL, dx9 = NULL, dx10 = NULL, dx11 = NULL, dx12 = NULL, dx13 = NULL, dx14 = NULL, dx15 = NULL, dx16 = NULL, dx17 = NULL, dx18 = NULL, dx19 = NULL, dx20 = NULL, dx21 = NULL, dx22 = NULL, dx23 = NULL, dx24 = NULL, dx25 = NULL)
 expect_observation(person_id = personIdPlusPlus(), observation_type_concept_id = 38000184)
 
 declareTest(1005, "Observation visit occurrence id")
-add_core(key = "4200000001005", dx1 = "V3000")
+add_core(key = "4200000001005", dx1 = "38651")
 expect_observation(person_id = personId, visit_occurrence_id = personIdPlusPlus())
+
+declareTest(1006, "Observation from sample weight")
+add_core(key = "4200000001006", discwt = 7.5, year = 2010, amonth = 2, aweekend = 0)
+expect_observation(person_id = personId, observation_concept_id = 0, observation_date = "2010-02-01", observation_type_concept_id = 900000003, value_as_number = 7.5, observation_source_value = "DISCWT")
 
 write(insertSql, "insert.sql")
 write(testSql, "test.sql")
@@ -277,6 +281,10 @@ executeSql(connection, paste(testSql, collapse = "\n"))
 
 querySql(connection, "SELECT * FROM test_results")
 
-querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000000608'")
-querySql(connection, "SELECT * FROM measurement WHERE person_id = 55")
+querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000000604'")
+querySql(connection, "SELECT * FROM condition_occurrence WHERE person_id = 39")
 
+
+declareTest(604, "Condition occurrence concept mapping to other domain")
+add_core(key = "4200000000604", dx1 = "38651", dx2 = NULL, dx3 = NULL, dx4 = NULL, dx5 = NULL, dx6 = NULL, dx7 = NULL, dx8 = NULL, dx9 = NULL, dx10 = NULL, dx11 = NULL, dx12 = NULL, dx13 = NULL, dx14 = NULL, dx15 = NULL, dx16 = NULL, dx17 = NULL, dx18 = NULL, dx19 = NULL, dx20 = NULL, dx21 = NULL, dx22 = NULL, dx23 = NULL, dx24 = NULL, dx25 = NULL)
+expect_no_condition_occurrence(person_id = personIdPlusPlus())
