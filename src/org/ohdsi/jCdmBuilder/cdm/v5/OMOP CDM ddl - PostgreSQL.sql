@@ -550,84 +550,30 @@ CREATE TABLE payer_plan_period
 ;
 
 
-
-CREATE TABLE visit_cost 
-    ( 
-     visit_cost_id					INTEGER			NOT NULL , 
-     visit_occurrence_id			INTEGER			NOT NULL , 
-	 currency_concept_id			INTEGER			NULL ,
-     paid_copay						NUMERIC			NULL , 
-     paid_coinsurance				NUMERIC			NULL , 
-     paid_toward_deductible			NUMERIC			NULL , 
-     paid_by_payer					NUMERIC			NULL , 
-     paid_by_coordination_benefits	NUMERIC			NULL , 
-     total_out_of_pocket			NUMERIC			NULL , 
-     total_paid						NUMERIC			NULL ,  
-     payer_plan_period_id			INTEGER			NULL
-    ) 
-;
-
-
-
-CREATE TABLE procedure_cost 
-    ( 
-     procedure_cost_id				INTEGER			NOT NULL , 
-     procedure_occurrence_id		INTEGER			NOT NULL , 
+CREATE TABLE cost 
+    (
+     cost_id					INTEGER	    NOT NULL , 
+     cost_event_id       INTEGER     NOT NULL ,
+     cost_domain_id       VARCHAR(20)    NOT NULL ,
+     cost_type_concept_id       INTEGER     NOT NULL ,
      currency_concept_id			INTEGER			NULL ,
-     paid_copay						NUMERIC			NULL , 
-     paid_coinsurance				NUMERIC			NULL , 
-     paid_toward_deductible			NUMERIC			NULL , 
+     total_charge						NUMERIC			NULL , 
+     total_cost						NUMERIC			NULL , 
+     total_paid						NUMERIC			NULL , 
      paid_by_payer					NUMERIC			NULL , 
-     paid_by_coordination_benefits	NUMERIC			NULL , 
-     total_out_of_pocket			NUMERIC			NULL , 
-     total_paid						NUMERIC			NULL ,
-	 revenue_code_concept_id		INTEGER			NULL ,  
+     paid_by_patient						NUMERIC			NULL , 
+     paid_patient_copay						NUMERIC			NULL , 
+     paid_patient_coinsurance				NUMERIC			NULL , 
+     paid_patient_deductible			NUMERIC			NULL , 
+     paid_by_primary						NUMERIC			NULL , 
+     paid_ingredient_cost				NUMERIC			NULL , 
+     paid_dispensing_fee					NUMERIC			NULL , 
      payer_plan_period_id			INTEGER			NULL ,
-	 revenue_code_source_value		VARCHAR(50)		NULL
-	) 
-;
-
-
-
-CREATE TABLE drug_cost 
-    (
-     drug_cost_id					INTEGER			NOT NULL , 
-     drug_exposure_id				INTEGER			NOT NULL , 
-     currency_concept_id			INTEGER			NULL ,
-     paid_copay						NUMERIC			NULL , 
-     paid_coinsurance				NUMERIC			NULL , 
-     paid_toward_deductible			NUMERIC			NULL , 
-     paid_by_payer					NUMERIC			NULL , 
-     paid_by_coordination_benefits	NUMERIC			NULL , 
-     total_out_of_pocket			NUMERIC			NULL , 
-     total_paid						NUMERIC			NULL , 
-     ingredient_cost				NUMERIC			NULL , 
-     dispensing_fee					NUMERIC			NULL , 
-     average_wholesale_price		NUMERIC			NULL , 
-     payer_plan_period_id			INTEGER			NULL
+     amount_allowed		NUMERIC			NULL , 
+     revenue_code_concept_id		INTEGER			NULL , 
+     reveue_code_source_value    VARCHAR(50)   NULL
     ) 
 ;
-
-
-
-
-
-CREATE TABLE device_cost 
-    (
-     device_cost_id					INTEGER			NOT NULL , 
-     device_exposure_id				INTEGER			NOT NULL , 
-     currency_concept_id			INTEGER			NULL ,
-     paid_copay						NUMERIC			NULL , 
-     paid_coinsurance				NUMERIC			NULL , 
-     paid_toward_deductible			NUMERIC			NULL , 
-     paid_by_payer					NUMERIC			NULL , 
-     paid_by_coordination_benefits	NUMERIC			NULL , 
-     total_out_of_pocket			NUMERIC			NULL , 
-     total_paid						NUMERIC			NULL , 
-     payer_plan_period_id			INTEGER			NULL
-    ) 
-;
-
 
 
 
