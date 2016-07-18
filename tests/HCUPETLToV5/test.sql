@@ -147,7 +147,7 @@ INSERT INTO test_results SELECT 905 AS id, 'Measurement visit occurrence id' AS 
 INSERT INTO test_results SELECT 1001 AS id, 'Observation person ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '58') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1002: Observation concept mapping
-INSERT INTO test_results SELECT 1002 AS id, 'Observation concept mapping' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '59' AND observation_concept_id = '4014295' AND observation_source_value = 'V3000' AND observation_source_concept_id = '44833089') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1002 AS id, 'Observation concept mapping' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '59' AND observation_concept_id = '136997' AND observation_source_value = '38651' AND observation_source_concept_id = '44823095') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1003: Observation date
 INSERT INTO test_results SELECT 1003 AS id, 'Observation date' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '60' AND observation_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
@@ -157,3 +157,6 @@ INSERT INTO test_results SELECT 1004 AS id, 'Observation type concept ID' AS des
 
 -- 1005: Observation visit occurrence id
 INSERT INTO test_results SELECT 1005 AS id, 'Observation visit occurrence id' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '62' AND visit_occurrence_id = '62') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+
+-- 1006: Observation from sample weight
+INSERT INTO test_results SELECT 1006 AS id, 'Observation from sample weight' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '63' AND observation_concept_id = '0' AND observation_date = '2010-02-01' AND observation_type_concept_id = '900000003' AND value_as_number = '7.5' AND observation_source_value = 'DISCWT') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
