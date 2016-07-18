@@ -161,9 +161,9 @@ public class HCUPETLToV5 {
 	private void truncateTables(RichConnection targetConnection) {
 		StringUtilities.outputWithTime("Truncating tables");
 		String[] tables = new String[] { "attribute_definition", "care_site", "cdm_source", "cohort", "cohort_attribute", "cohort_definition", "condition_era",
-				"condition_occurrence", "death", "device_cost", "device_exposure", "dose_era", "drug_cost", "drug_era", "drug_exposure", "fact_relationship",
-				"location", "measurement", "note", "observation", "observation_period", "payer_plan_period", "person", "procedure_cost",
-				"procedure_occurrence", "provider", "specimen", "visit_cost", "visit_occurrence" };
+				"condition_occurrence", "death", "cost", "device_exposure", "dose_era", "drug_era", "drug_exposure", "fact_relationship",
+				"location", "measurement", "note", "observation", "observation_period", "payer_plan_period", "person",
+				"procedure_occurrence", "provider", "specimen", "visit_occurrence" };
 		for (String table : tables)
 			targetConnection.execute("TRUNCATE TABLE " + table);
 	}

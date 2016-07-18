@@ -54,8 +54,8 @@ CREATE TABLE concept (
   valid_start_date		DATE			NOT NULL,
   valid_end_date		DATE			NOT NULL,
   invalid_reason		VARCHAR(1)		NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -66,8 +66,8 @@ CREATE TABLE vocabulary (
   vocabulary_reference	VARCHAR(255)	NULL,
   vocabulary_version	VARCHAR(255)	NULL,
   vocabulary_concept_id	INTEGER			NOT NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -76,8 +76,8 @@ CREATE TABLE domain (
   domain_id			VARCHAR(20)		NOT NULL,
   domain_name		VARCHAR(255)	NOT NULL,
   domain_concept_id	INTEGER			NOT NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -85,8 +85,8 @@ CREATE TABLE concept_class (
   concept_class_id			VARCHAR(20)		NOT NULL,
   concept_class_name		VARCHAR(255)	NOT NULL,
   concept_class_concept_id	INTEGER			NOT NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -97,8 +97,8 @@ CREATE TABLE concept_relationship (
   relationship_id		VARCHAR(20)		NOT NULL,
   valid_start_date		DATE			NOT NULL,
   valid_end_date		DATE			NOT NULL,
-  invalid_reason		VARCHAR(1)		NULL)
-;
+  invalid_reason		VARCHAR(1)		NULL) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -109,16 +109,16 @@ CREATE TABLE relationship (
   defines_ancestry			VARCHAR(1)		NOT NULL,
   reverse_relationship_id	VARCHAR(20)		NOT NULL,
   relationship_concept_id	INTEGER			NOT NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE concept_synonym (
   concept_id			INTEGER			NOT NULL,
   concept_synonym_name	VARCHAR(1000)	NOT NULL,
   language_concept_id	INTEGER			NOT NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE concept_ancestor (
@@ -126,8 +126,8 @@ CREATE TABLE concept_ancestor (
   descendant_concept_id		INTEGER		NOT NULL,
   min_levels_of_separation	INTEGER		NOT NULL,
   max_levels_of_separation	INTEGER		NOT NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -141,8 +141,8 @@ CREATE TABLE source_to_concept_map (
   valid_start_date			DATE			NOT NULL,
   valid_end_date			DATE			NOT NULL,
   invalid_reason			VARCHAR(1)		NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -158,8 +158,8 @@ CREATE TABLE drug_strength (
   valid_start_date				DATE		NOT NULL,
   valid_end_date				DATE		NOT NULL,
   invalid_reason				VARCHAR(1)	NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -171,8 +171,8 @@ CREATE TABLE cohort_definition (
   cohort_definition_syntax			VARCHAR(MAX)	NULL,
   subject_concept_id				INTEGER			NOT NULL,
   cohort_initiation_date			DATE			NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE attribute_definition (
@@ -181,8 +181,8 @@ CREATE TABLE attribute_definition (
   attribute_description			VARCHAR(MAX)	NULL,
   attribute_type_concept_id		INTEGER			NOT NULL,
   attribute_syntax				VARCHAR(MAX)	NULL
-)
-;
+) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 /**************************
@@ -204,8 +204,8 @@ CREATE TABLE cdm_source
 	 cdm_release_date					DATE			NULL,
 	 cdm_version						VARCHAR(10)		NULL,
 	 vocabulary_version					VARCHAR(20)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -240,8 +240,8 @@ CREATE TABLE person
 	 race_source_concept_id			INTEGER		NULL, 
      ethnicity_source_value			VARCHAR(50) NULL,
 	 ethnicity_source_concept_id	INTEGER		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -254,8 +254,8 @@ CREATE TABLE observation_period
      observation_period_start_date		DATE		NOT NULL , 
      observation_period_end_date		DATE		NOT NULL ,
 	 period_type_concept_id				INTEGER		NOT NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -276,8 +276,8 @@ CREATE TABLE specimen
 	 unit_source_value					VARCHAR(50)		NULL ,
 	 anatomic_site_source_value			VARCHAR(50)		NULL ,
 	 disease_status_source_value		VARCHAR(50)		NULL
-	)
-;
+	) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -289,8 +289,8 @@ CREATE TABLE death
      cause_concept_id					INTEGER			NULL , 
      cause_source_value					VARCHAR(50)		NULL,
 	 cause_source_concept_id			INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -308,8 +308,8 @@ CREATE TABLE visit_occurrence
      care_site_id					INTEGER			NULL, 
      visit_source_value				VARCHAR(50)		NULL,
 	 visit_source_concept_id		INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -327,8 +327,8 @@ CREATE TABLE procedure_occurrence
      procedure_source_value			VARCHAR(50)		NULL ,
 	 procedure_source_concept_id	INTEGER			NULL ,
 	 qualifier_source_value			VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -355,8 +355,8 @@ CREATE TABLE drug_exposure
 	 drug_source_concept_id			INTEGER			NULL ,
 	 route_source_value				VARCHAR(50)		NULL ,
 	 dose_unit_source_value			VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE device_exposure 
@@ -373,8 +373,8 @@ CREATE TABLE device_exposure
      visit_occurrence_id			INTEGER			NULL , 
      device_source_value			VARCHAR(100)	NULL ,
 	 device_source_concept_id		INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE condition_occurrence 
@@ -390,8 +390,8 @@ CREATE TABLE condition_occurrence
      visit_occurrence_id			INTEGER			NULL , 
      condition_source_value			VARCHAR(50)		NULL ,
 	 condition_source_concept_id	INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -415,8 +415,8 @@ CREATE TABLE measurement
 	 measurement_source_concept_id	INTEGER			NULL ,
      unit_source_value				VARCHAR(50)		NULL ,
 	 value_source_value				VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -431,8 +431,8 @@ CREATE TABLE note
      provider_id					INTEGER			NULL ,
 	 visit_occurrence_id			INTEGER			NULL ,
 	 note_source_value				VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -455,8 +455,8 @@ CREATE TABLE observation
 	 observation_source_concept_id	INTEGER			NULL , 
      unit_source_value				VARCHAR(50)		NULL ,
 	 qualifier_source_value			VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -467,8 +467,8 @@ CREATE TABLE fact_relationship
 	 domain_concept_id_2			INTEGER			NOT NULL ,
 	 fact_id_2						INTEGER			NOT NULL ,
 	 relationship_concept_id		INTEGER			NOT NULL
-	)
-;
+	) ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -491,8 +491,8 @@ CREATE TABLE location
      zip							VARCHAR(9)		NULL , 
      county							VARCHAR(20)		NULL , 
      location_source_value			VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -504,8 +504,8 @@ CREATE TABLE care_site
      location_id						INTEGER			NULL , 
      care_site_source_value				VARCHAR(50)		NULL , 
      place_of_service_source_value		VARCHAR(50)		NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 	
@@ -524,8 +524,8 @@ CREATE TABLE provider
 	 specialty_source_concept_id	INTEGER			NULL , 
 	 gender_source_value			VARCHAR(50)		NULL ,
 	 gender_source_concept_id		INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -546,8 +546,8 @@ CREATE TABLE payer_plan_period
      payer_source_value				VARCHAR (50)	NULL , 
      plan_source_value				VARCHAR (50)	NULL , 
      family_source_value			VARCHAR (50)	NULL 
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE cost 
@@ -572,8 +572,8 @@ CREATE TABLE cost
      amount_allowed		FLOAT			NULL , 
      revenue_code_concept_id		INTEGER			NULL , 
      reveue_code_source_value    VARCHAR(50)    NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -590,8 +590,8 @@ CREATE TABLE cohort
      subject_id						INTEGER			NOT NULL ,
 	 cohort_start_date				DATE			NOT NULL , 
      cohort_end_date				DATE			NOT NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE cohort_attribute 
@@ -603,8 +603,8 @@ CREATE TABLE cohort_attribute
      attribute_definition_id		INTEGER			NOT NULL ,
 	 value_as_number				FLOAT			NULL ,
 	 value_as_concept_id			INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -618,8 +618,8 @@ CREATE TABLE drug_era
      drug_era_end_date				DATE			NOT NULL , 
      drug_exposure_count			INTEGER			NULL ,
 	 gap_days						INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 CREATE TABLE dose_era 
@@ -631,8 +631,8 @@ CREATE TABLE dose_era
 	 dose_value						FLOAT			NOT NULL ,
      dose_era_start_date			DATE			NOT NULL , 
      dose_era_end_date				DATE			NOT NULL 
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
@@ -645,8 +645,8 @@ CREATE TABLE condition_era
      condition_era_start_date		DATE			NOT NULL , 
      condition_era_end_date			DATE			NOT NULL , 
      condition_occurrence_count		INTEGER			NULL
-    ) 
-;
+    )  ON [PRIMARY]
+WITH(DATA_COMPRESSION = PAGE);
 
 
 
