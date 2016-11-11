@@ -1,3 +1,5 @@
+setwd("C:/home/Research/ETLs/HCUP ETL/EtlToV5")
+
 source("HcupTestFramework.R")
 
 # Mimick C++ for convenience:
@@ -231,6 +233,13 @@ declareTest(905, "Measurement visit occurrence id")
 add_core(key = "4200000000905", dx1 = "25002")
 expect_measurement(person_id = personId, visit_occurrence_id = personIdPlusPlus())
 
+declareTest(906, "Measurement value as concept id")
+add_core(key = "4200000000906", dx1 = "25002")
+expect_measurement(person_id = personIdPlusPlus(), value_as_concept_id = 4181412)
+
+declareTest(907, "Measurement value as concept id from maps to value")
+add_core(key = "4200000000907", dx1 = "79531")
+expect_measurement(person_id = personIdPlusPlus(), value_as_concept_id = 9191)
 
 ### Observation ###
 
@@ -256,7 +265,15 @@ expect_observation(person_id = personId, visit_occurrence_id = personIdPlusPlus(
 
 declareTest(1006, "Observation from sample weight")
 add_core(key = "4200000001006", discwt = 7.5, year = 2010, amonth = 2, aweekend = 0)
-expect_observation(person_id = personId, observation_concept_id = 0, observation_date = "2010-02-01", observation_type_concept_id = 900000003, value_as_number = 7.5, observation_source_value = "DISCWT")
+expect_observation(person_id = personIdPlusPlus(), observation_concept_id = 0, observation_date = "2010-02-01", observation_type_concept_id = 900000003, value_as_number = 7.5, observation_source_value = "DISCWT")
+
+declareTest(1007, "Observation value as concept id")
+add_core(key = "4200000001007", dx1 = "38651")
+expect_observation(person_id = personIdPlusPlus(), value_as_concept_id = 45877994)
+
+declareTest(1008, "Observation value as concept id from maps to value")
+add_core(key = "4200000001008", dx1 = "V194")
+expect_observation(person_id = personIdPlusPlus(), value_as_concept_id = 4223743)
 
 write(insertSql, "insert.sql")
 write(testSql, "test.sql")
@@ -281,7 +298,7 @@ executeSql(connection, paste(testSql, collapse = "\n"))
 
 querySql(connection, "SELECT * FROM test_results")
 
-querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000000604'")
+querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000001007'")
 querySql(connection, "SELECT * FROM condition_occurrence WHERE person_id = 39")
 
 

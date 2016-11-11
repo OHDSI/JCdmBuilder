@@ -143,20 +143,32 @@ INSERT INTO test_results SELECT 904 AS id, 'Measurement type concept ID' AS desc
 -- 905: Measurement visit occurrence id
 INSERT INTO test_results SELECT 905 AS id, 'Measurement visit occurrence id' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '57' AND visit_occurrence_id = '57') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
+-- 906: Measurement value as concept id
+INSERT INTO test_results SELECT 906 AS id, 'Measurement value as concept id' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '58' AND value_as_concept_id = '4181412') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+
+-- 907: Measurement value as concept id from maps to value
+INSERT INTO test_results SELECT 907 AS id, 'Measurement value as concept id from maps to value' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE person_id = '59' AND value_as_concept_id = '9191') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+
 -- 1001: Observation person ID
-INSERT INTO test_results SELECT 1001 AS id, 'Observation person ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '58') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1001 AS id, 'Observation person ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '60') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1002: Observation concept mapping
-INSERT INTO test_results SELECT 1002 AS id, 'Observation concept mapping' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '59' AND observation_concept_id = '136997' AND observation_source_value = '38651' AND observation_source_concept_id = '44823095') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1002 AS id, 'Observation concept mapping' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '61' AND observation_concept_id = '136997' AND observation_source_value = '38651' AND observation_source_concept_id = '44823095') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1003: Observation date
-INSERT INTO test_results SELECT 1003 AS id, 'Observation date' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '60' AND observation_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1003 AS id, 'Observation date' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '62' AND observation_date = '2010-02-01') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1004: Observation type concept ID
-INSERT INTO test_results SELECT 1004 AS id, 'Observation type concept ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '61' AND observation_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1004 AS id, 'Observation type concept ID' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '63' AND observation_type_concept_id = '38000184') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1005: Observation visit occurrence id
-INSERT INTO test_results SELECT 1005 AS id, 'Observation visit occurrence id' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '62' AND visit_occurrence_id = '62') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1005 AS id, 'Observation visit occurrence id' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '64' AND visit_occurrence_id = '64') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
 
 -- 1006: Observation from sample weight
-INSERT INTO test_results SELECT 1006 AS id, 'Observation from sample weight' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '63' AND observation_concept_id = '0' AND observation_date = '2010-02-01' AND observation_type_concept_id = '900000003' AND value_as_number = '7.5' AND observation_source_value = 'DISCWT') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+INSERT INTO test_results SELECT 1006 AS id, 'Observation from sample weight' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '65' AND observation_concept_id = '0' AND observation_date = '2010-02-01' AND observation_type_concept_id = '900000003' AND value_as_number = '7.5' AND observation_source_value = 'DISCWT') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+
+-- 1007: Observation value as concept id
+INSERT INTO test_results SELECT 1007 AS id, 'Observation value as concept id' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '66' AND value_as_concept_id = '45877994') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
+
+-- 1008: Observation value as concept id from maps to value
+INSERT INTO test_results SELECT 1008 AS id, 'Observation value as concept id from maps to value' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE person_id = '67' AND value_as_concept_id = '4223743') = 0 THEN 'FAIL' ELSE 'PASS' END AS status;
