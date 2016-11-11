@@ -192,8 +192,7 @@ Standardized meta-data
 ***************************/
 
 
-CREATE TABLE cdm_source 
-    (  
+CREATE TABLE cdm_source (  
      cdm_source_name					VARCHAR(255)	NOT NULL,
 	 cdm_source_abbreviation			VARCHAR(25)		NULL,
 	 cdm_holder							VARCHAR(255)	NULL,
@@ -220,8 +219,7 @@ Standardized clinical data
 ************************/
 
 
-CREATE TABLE person 
-    (
+CREATE TABLE person (
      person_id						INTEGER		NOT NULL , 
      gender_concept_id				INTEGER		NOT NULL , 
      year_of_birth					INTEGER		NOT NULL , 
@@ -247,8 +245,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE observation_period 
-    ( 
+CREATE TABLE observation_period ( 
      observation_period_id				INTEGER		NOT NULL , 
      person_id							INTEGER		NOT NULL , 
      observation_period_start_date		DATE		NOT NULL , 
@@ -259,8 +256,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE specimen
-    ( 
+CREATE TABLE specimen ( 
      specimen_id						INTEGER			NOT NULL ,
 	 person_id							INTEGER			NOT NULL ,
 	 specimen_concept_id				INTEGER			NOT NULL ,
@@ -281,8 +277,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE death 
-    ( 
+CREATE TABLE death ( 
      person_id							INTEGER			NOT NULL , 
      death_date							DATE			NOT NULL , 
      death_type_concept_id				INTEGER			NOT NULL , 
@@ -294,8 +289,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE visit_occurrence 
-    ( 
+CREATE TABLE visit_occurrence  ( 
      visit_occurrence_id			INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      visit_concept_id				INTEGER			NOT NULL , 
@@ -313,8 +307,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE procedure_occurrence 
-    ( 
+CREATE TABLE procedure_occurrence ( 
      procedure_occurrence_id		INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      procedure_concept_id			INTEGER			NOT NULL , 
@@ -332,8 +325,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE drug_exposure 
-    ( 
+CREATE TABLE drug_exposure ( 
      drug_exposure_id				INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      drug_concept_id				INTEGER			NOT NULL , 
@@ -359,8 +351,7 @@ CREATE TABLE drug_exposure
 WITH(DATA_COMPRESSION = PAGE);
 
 
-CREATE TABLE device_exposure 
-    ( 
+CREATE TABLE device_exposure ( 
      device_exposure_id				INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      device_concept_id				INTEGER			NOT NULL , 
@@ -377,8 +368,7 @@ CREATE TABLE device_exposure
 WITH(DATA_COMPRESSION = PAGE);
 
 
-CREATE TABLE condition_occurrence 
-    ( 
+CREATE TABLE condition_occurrence ( 
      condition_occurrence_id		INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      condition_concept_id			INTEGER			NOT NULL , 
@@ -395,8 +385,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE measurement 
-    ( 
+CREATE TABLE measurement ( 
      measurement_id					INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      measurement_concept_id			INTEGER			NOT NULL , 
@@ -420,8 +409,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE note 
-    ( 
+CREATE TABLE note ( 
      note_id						INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      note_date						DATE			NOT NULL ,
@@ -436,8 +424,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE observation 
-    ( 
+CREATE TABLE observation ( 
      observation_id					INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      observation_concept_id			INTEGER			NOT NULL , 
@@ -460,8 +447,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE fact_relationship 
-    ( 
+CREATE TABLE fact_relationship ( 
      domain_concept_id_1			INTEGER			NOT NULL , 
 	 fact_id_1						INTEGER			NOT NULL ,
 	 domain_concept_id_2			INTEGER			NOT NULL ,
@@ -481,8 +467,7 @@ Standardized health system data
 
 
 
-CREATE TABLE location 
-    ( 
+CREATE TABLE location ( 
      location_id					INTEGER			NOT NULL , 
      address_1						VARCHAR(50)		NULL , 
      address_2						VARCHAR(50)		NULL , 
@@ -496,8 +481,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE care_site 
-    ( 
+CREATE TABLE care_site ( 
      care_site_id						INTEGER			NOT NULL , 
 	 care_site_name						VARCHAR(255)	NULL ,
      place_of_service_concept_id		INTEGER			NULL ,
@@ -509,8 +493,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 	
-CREATE TABLE provider 
-    ( 
+CREATE TABLE provider ( 
      provider_id					INTEGER			NOT NULL ,
 	 provider_name					VARCHAR(255)	NULL , 
      NPI							VARCHAR(20)		NULL , 
@@ -537,8 +520,7 @@ Standardized health economics
 ************************/
 
 
-CREATE TABLE payer_plan_period 
-    ( 
+CREATE TABLE payer_plan_period ( 
      payer_plan_period_id			INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      payer_plan_period_start_date	DATE			NOT NULL , 
@@ -550,8 +532,7 @@ CREATE TABLE payer_plan_period
 WITH(DATA_COMPRESSION = PAGE);
 
 
-CREATE TABLE cost 
-    (
+CREATE TABLE cost (
      cost_id					INTEGER	    NOT NULL , 
      cost_event_id       INTEGER     NOT NULL ,
      cost_domain_id       VARCHAR(20)    NOT NULL ,
@@ -584,8 +565,7 @@ Standardized derived elements
 
 ************************/
 
-CREATE TABLE cohort 
-    ( 
+CREATE TABLE cohort ( 
 	 cohort_definition_id			INTEGER			NOT NULL , 
      subject_id						INTEGER			NOT NULL ,
 	 cohort_start_date				DATE			NOT NULL , 
@@ -594,8 +574,7 @@ CREATE TABLE cohort
 WITH(DATA_COMPRESSION = PAGE);
 
 
-CREATE TABLE cohort_attribute 
-    ( 
+CREATE TABLE cohort_attribute ( 
 	 cohort_definition_id			INTEGER			NOT NULL , 
      cohort_start_date				DATE			NOT NULL , 
      cohort_end_date				DATE			NOT NULL , 
@@ -609,8 +588,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE drug_era 
-    ( 
+CREATE TABLE drug_era ( 
      drug_era_id					INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      drug_concept_id				INTEGER			NOT NULL , 
@@ -622,8 +600,7 @@ CREATE TABLE drug_era
 WITH(DATA_COMPRESSION = PAGE);
 
 
-CREATE TABLE dose_era 
-    (
+CREATE TABLE dose_era (
      dose_era_id					INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      drug_concept_id				INTEGER			NOT NULL , 
@@ -637,8 +614,7 @@ WITH(DATA_COMPRESSION = PAGE);
 
 
 
-CREATE TABLE condition_era 
-    ( 
+CREATE TABLE condition_era ( 
      condition_era_id				INTEGER			NOT NULL , 
      person_id						INTEGER			NOT NULL , 
      condition_concept_id			INTEGER			NOT NULL , 

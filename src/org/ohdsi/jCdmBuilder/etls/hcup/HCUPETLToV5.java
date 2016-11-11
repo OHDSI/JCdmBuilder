@@ -169,6 +169,9 @@ public class HCUPETLToV5 {
 	}
 	
 	private void processPerson(Row row) {
+		// Skip entries in new data format for now:
+		if (!row.get("KEY_NIS").equals(""))
+			return;
 		etlReport.registerIncomingData("core", row);
 		
 		personId++;
@@ -469,6 +472,12 @@ public class HCUPETLToV5 {
 				measurement.add("measurement_type_concept_id", stemRow.get("type_concept_id"));
 				measurement.add("measurement_date", stemRow.get("start_date"));
 				measurement.add("visit_occurrence_id", stemRow.get("visit_occurrence_id"));
+				CodeDomainData codeData = icd9ToValueConcept.getCodeData(stemRow.get("source_value"));
+				if (codeData.targetConcepts.get(0).conceptId == 0) {
+					measurement.add("value_as_concept_id", 4181412 ); // 'Present'
+				} else {
+					measurement.add("value_as_concept_id", codeData.targetConcepts.get(0).conceptId); 
+				}
 				tableToRows.put("measurement", measurement);
 			}
 		}

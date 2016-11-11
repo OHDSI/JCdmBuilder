@@ -19,6 +19,7 @@ AS (
 
 		condition_concept_id AS concept_id
 	FROM condition_occurrence source_table
+	WHERE condition_concept_id != 0
 
 	),
 cte_end_dates (
