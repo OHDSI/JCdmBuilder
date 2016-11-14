@@ -52,17 +52,17 @@ public class HCUPETLToV5 {
 	private static final double			QC_SAMPLE_PROBABILITY		= 0.000001;
 	public static int					BATCH_SIZE					= 10000;
 	public static String[]				diagnoseFields				= new String[] { "DX1", "DX2", "DX3", "DX4", "DX5", "DX6", "DX7", "DX8", "DX9", "DX10",
-		"DX11", "DX12", "DX13", "DX14", "DX15", "DX16", "DX17", "DX18", "DX19", "DX20", "DX21", "DX22", "DX23", "DX24", "DX25", "ECODE1", "ECODE2" };
+			"DX11", "DX12", "DX13", "DX14", "DX15", "DX16", "DX17", "DX18", "DX19", "DX20", "DX21", "DX22", "DX23", "DX24", "DX25", "ECODE1", "ECODE2" };
 	public static String[]				procedureFields				= new String[] { "PR1", "PR2", "PR3", "PR4", "PR5", "PR6", "PR7", "PR8", "PR9", "PR10",
-		"PR11", "PR12", "PR13", "PR14", "PR15"					};
+			"PR11", "PR12", "PR13", "PR14", "PR15" };
 	public static String[]				procedureDayFields			= new String[] { "PRDAY1", "PRDAY2", "PRDAY3", "PRDAY4", "PRDAY5", "PRDAY6", "PRDAY7",
-		"PRDAY8", "PRDAY9", "PRDAY10", "PRDAY11", "PRDAY12", "PRDAY13", "PRDAY14", "PRDAY15" };
+			"PRDAY8", "PRDAY9", "PRDAY10", "PRDAY11", "PRDAY12", "PRDAY13", "PRDAY14", "PRDAY15" };
 	public static int[]					diagnoseFieldConceptIds		= new int[] { 38000184, 38000185, 38000186, 38000187, 38000188, 38000189, 38000190,
-		38000191, 38000192, 38000193, 38000194, 38000195, 38000196, 38000197, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198,
-		38000198, 38000198, 38000198, 38000198, 38000184, 38000185 };
+			38000191, 38000192, 38000193, 38000194, 38000195, 38000196, 38000197, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198, 38000198,
+			38000198, 38000198, 38000198, 38000198, 38000184, 38000185 };
 	
 	public static int[]					procedureFieldConceptIds	= new int[] { 38000251, 38000252, 38000253, 38000254, 38000255, 38000256, 38000257,
-		38000258, 38000259, 38000260, 38000261, 38000262, 38000263, 38000264, 38000265 };
+			38000258, 38000259, 38000260, 38000261, 38000262, 38000263, 38000264, 38000265 };
 	
 	private RichConnection				sourceConnection;
 	private RichConnection				targetConnection;
@@ -161,17 +161,19 @@ public class HCUPETLToV5 {
 	private void truncateTables(RichConnection targetConnection) {
 		StringUtilities.outputWithTime("Truncating tables");
 		String[] tables = new String[] { "attribute_definition", "care_site", "cdm_source", "cohort", "cohort_attribute", "cohort_definition", "condition_era",
-				"condition_occurrence", "death", "cost", "device_exposure", "dose_era", "drug_era", "drug_exposure", "fact_relationship",
-				"location", "measurement", "note", "observation", "observation_period", "payer_plan_period", "person",
-				"procedure_occurrence", "provider", "specimen", "visit_occurrence" };
+				"condition_occurrence", "death", "cost", "device_exposure", "dose_era", "drug_era", "drug_exposure", "fact_relationship", "location",
+				"measurement", "note", "observation", "observation_period", "payer_plan_period", "person", "procedure_occurrence", "provider", "specimen",
+				"visit_occurrence" };
 		for (String table : tables)
 			targetConnection.execute("TRUNCATE TABLE " + table);
 	}
 	
 	private void processPerson(Row row) {
-		// Skip entries in new data format for now:
-		if (!row.get("KEY_NIS").equals(""))
-			return;
+		if (!row.get("KEY_NIS").equals("")) {
+			// New data format: transform names to old format:
+			row.set("KEY", row.get("KEY_NIS"));
+			row.set("HOSPID", row.get("HOSP_NIS"));
+		}
 		etlReport.registerIncomingData("core", row);
 		
 		personId++;
@@ -271,6 +273,11 @@ public class HCUPETLToV5 {
 	}
 	
 	private void addToLocation(Row row) {
+		if (row.get("HOSPST").equals("") && row.get("HOSPSTCO").equals("")) {
+			locationId = null;
+			return;
+		}
+		
 		String stateCounty = row.get("HOSPST") + "\t" + (row.get("HOSPSTCO").equals("-9999") ? "" : row.get("HOSPSTCO"));
 		locationId = stateCountyToLocationId.get(stateCounty);
 		if (locationId == null) {
@@ -296,7 +303,10 @@ public class HCUPETLToV5 {
 			Row careSite = new Row();
 			careSite.add("care_site_id", row.get("HOSPID"));
 			careSite.add("care_site_source_value", row.get("HOSPID"));
-			careSite.add("location_id", locationId);
+			if (locationId == null)
+				careSite.add("location_id", "");
+			else
+				careSite.add("location_id", locationId);
 			careSite.add("place_of_service_concept_id", 9201); // Inpatient visit
 			tableToRows.put("care_site", careSite);
 		}
@@ -474,9 +484,9 @@ public class HCUPETLToV5 {
 				measurement.add("visit_occurrence_id", stemRow.get("visit_occurrence_id"));
 				CodeDomainData codeData = icd9ToValueConcept.getCodeData(stemRow.get("source_value"));
 				if (codeData.targetConcepts.get(0).conceptId == 0) {
-					measurement.add("value_as_concept_id", 4181412 ); // 'Present'
+					measurement.add("value_as_concept_id", 4181412); // 'Present'
 				} else {
-					measurement.add("value_as_concept_id", codeData.targetConcepts.get(0).conceptId); 
+					measurement.add("value_as_concept_id", codeData.targetConcepts.get(0).conceptId);
 				}
 				tableToRows.put("measurement", measurement);
 			}
@@ -499,7 +509,7 @@ public class HCUPETLToV5 {
 				if (codeData.targetConcepts.get(0).conceptId == 0) {
 					observation.add("value_as_concept_id", 45877994); // 'Yes'
 				} else {
-					observation.add("value_as_concept_id", codeData.targetConcepts.get(0).conceptId); 
+					observation.add("value_as_concept_id", codeData.targetConcepts.get(0).conceptId);
 				}
 				observation.add("visit_occurrence_id", stemRow.get("visit_occurrence_id"));
 				tableToRows.put("observation", observation);
@@ -515,7 +525,7 @@ public class HCUPETLToV5 {
 		observation.add("observation_source_value", "DISCWT");
 		observation.add("value_as_concept_id", "");
 		observation.add("observation_source_concept_id", "");
-		observation.add("observation_concept_id","0");
+		observation.add("observation_concept_id", "0");
 		observation.add("observation_type_concept_id", "900000003");
 		observation.add("observation_date", StringUtilities.daysToDatabaseDateString(visitStartDate));
 		observation.add("visit_occurrence_id", visitOccurrenceId);

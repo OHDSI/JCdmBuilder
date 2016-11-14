@@ -19,24 +19,26 @@ initFramework <- function() {
   assign("defaultValues", defaultValues, envir = globalenv())
 
   defaults <- list()
-  defaults$key <- "List truncated..."
-  defaults$female <- "1"
+  defaults$hosp_nis <- "List truncated..."
+  defaults$year <- "2012"
+  defaults$ccr_nis <- "0.240"
+  defaults$wageindex <- "0.818"
+  assign("cc", defaults, envir = defaultValues)
+
+  defaults <- list()
   defaults$age <- "0"
   defaults$ageday <- "-99"
-  defaults$race <- "1"
-  defaults$year <- "2006"
-  defaults$amonth <- "-9"
+  defaults$amonth <- "3"
   defaults$asource <- "5"
   defaults$asource_x <- "   "
   defaults$atype <- "1"
   defaults$aweekend <- "0"
-  defaults$los <- "2"
   defaults$died <- "0"
-  defaults$discwt <- "4.6286"
+  defaults$discwt <- "5.0000"
   defaults$dispuniform <- "1"
   defaults$dqtr <- "1"
   defaults$drg <- "391"
-  defaults$drgver <- "22"
+  defaults$drgver <- "23"
   defaults$dshospid <- "             "
   defaults$dx1 <- "V3000"
   defaults$dx2 <- "     "
@@ -47,12 +49,12 @@ initFramework <- function() {
   defaults$dx7 <- "     "
   defaults$dx8 <- "     "
   defaults$dx9 <- "     "
-  defaults$dx10 <- "4019"
-  defaults$dx11 <- "4019"
+  defaults$dx10 <- "     "
+  defaults$dx11 <- "     "
   defaults$dx12 <- "     "
-  defaults$dx13 <- "     "
-  defaults$dx14 <- "     "
-  defaults$dx15 <- "     "
+  defaults$dx13 <- "4019"
+  defaults$dx14 <- "2724"
+  defaults$dx15 <- "v1582"
   defaults$dxccs1 <- "218"
   defaults$dxccs2 <- "-999"
   defaults$dxccs3 <- "-999"
@@ -68,24 +70,23 @@ initFramework <- function() {
   defaults$dxccs13 <- "-999"
   defaults$dxccs14 <- "-999"
   defaults$dxccs15 <- "-999"
-  defaults$hospid <- "51043"
-  defaults$hospst <- "CA"
+  defaults$female <- "1"
+  defaults$los <- "2"
   defaults$los_x <- "2"
   defaults$mdc <- "5"
-  defaults$ndx <- "9"
+  defaults$ndx <- "2"
   defaults$neomat <- "0"
   defaults$nis_stratum <- "3033"
   defaults$npr <- "0"
   defaults$pay1 <- "1"
-  defaults$pay1_x <- "C         "
   defaults$pay2 <- "-9"
-  defaults$pay2_x <- "          "
+  defaults$pay2_x <- "01"
   defaults$pr1 <- "    "
   defaults$pr2 <- "    "
   defaults$pr3 <- "    "
   defaults$pr4 <- "    "
   defaults$pr5 <- "    "
-  defaults$pr6 <- "8853"
+  defaults$pr6 <- "    "
   defaults$pr7 <- "    "
   defaults$pr8 <- "    "
   defaults$pr9 <- "    "
@@ -125,9 +126,10 @@ initFramework <- function() {
   defaults$prday13 <- "-99"
   defaults$prday14 <- "-99"
   defaults$prday15 <- "-99"
+  defaults$race <- "1"
   defaults$totchg <- "-999999999"
-  defaults$totchg_x <- "-99999999999.99"
-  defaults$asourceub92 <- " "
+  defaults$year <- "2008"
+  defaults$surgid_s <- "kc"
   defaults$ecode1 <- "     "
   defaults$ecode2 <- "     "
   defaults$ecode3 <- "     "
@@ -137,12 +139,12 @@ initFramework <- function() {
   defaults$e_ccs2 <- "-999"
   defaults$e_ccs3 <- "-999"
   defaults$e_ccs4 <- "-999"
+  defaults$hospbrth <- "0"
   defaults$necode <- "0"
+  defaults$zipinc_qrtl <- "1"
   assign("core", defaults, envir = defaultValues)
 
   defaults <- list()
-  defaults$hospid <- "12320"
-  defaults$key <- "List truncated..."
   defaults$chron1 <- "0"
   defaults$chron2 <- "0"
   defaults$chron3 <- "1"
@@ -158,6 +160,16 @@ initFramework <- function() {
   defaults$chron13 <- "-99"
   defaults$chron14 <- "-99"
   defaults$chron15 <- "-99"
+  defaults$chron16 <- "-99"
+  defaults$chron17 <- "-99"
+  defaults$chron18 <- "-99"
+  defaults$chron19 <- "-99"
+  defaults$chron20 <- "-99"
+  defaults$chron21 <- "-99"
+  defaults$chron22 <- "-99"
+  defaults$chron23 <- "-99"
+  defaults$chron24 <- "-99"
+  defaults$chron25 <- "-99"
   defaults$chronb1 <- "7"
   defaults$chronb2 <- "7"
   defaults$chronb3 <- "7"
@@ -173,6 +185,17 @@ initFramework <- function() {
   defaults$chronb13 <- "-99"
   defaults$chronb14 <- "-99"
   defaults$chronb15 <- "-99"
+  defaults$chronb16 <- "-99"
+  defaults$chronb17 <- "-99"
+  defaults$chronb18 <- "-99"
+  defaults$chronb19 <- "-99"
+  defaults$chronb20 <- "-99"
+  defaults$chronb21 <- "-99"
+  defaults$chronb22 <- "-99"
+  defaults$chronb23 <- "-99"
+  defaults$chronb24 <- "-99"
+  defaults$chronb25 <- "-99"
+  defaults$e_mccs1 <- "           "
   defaults$pclass1 <- "-99"
   defaults$pclass2 <- "-99"
   defaults$pclass3 <- "-99"
@@ -191,35 +214,21 @@ initFramework <- function() {
   assign("dx_pr_grps", defaults, envir = defaultValues)
 
   defaults <- list()
-  defaults$ahaid <- "       "
-  defaults$discwt <- "4.4322"
-  defaults$hospaddr <- "                              "
-  defaults$hospcity <- "                    "
-  defaults$hospid <- "List truncated..."
-  defaults$hospname <- "                              "
-  defaults$hospst <- "TX"
-  defaults$hospwt <- "5.0000"
-  defaults$hospzip <- "     "
+  defaults$discwt <- "5.0000"
   defaults$hosp_bedsize <- "1"
-  defaults$hosp_control <- "0"
-  defaults$hosp_location <- "1"
   defaults$hosp_locteach <- "2"
   defaults$hosp_region <- "3"
   defaults$hosp_teach <- "0"
-  defaults$idnumber <- "      "
   defaults$nis_stratum <- "2411"
-  defaults$n_disc_u <- "133443"
-  defaults$n_hosp_u <- "78"
-  defaults$s_disc_u <- "84786"
+  defaults$n_disc_u <- "70734"
+  defaults$n_hosp_u <- "54"
+  defaults$s_disc_u <- "14147"
   defaults$s_hosp_u <- "16"
-  defaults$total_disc <- "List truncated..."
-  defaults$year <- "2008"
-  defaults$hospstco <- "-9999"
+  defaults$total_disc <- "62"
+  defaults$year <- "2012"
   assign("hospital", defaults, envir = defaultValues)
 
   defaults <- list()
-  defaults$hospid <- "51043"
-  defaults$key <- "List truncated..."
   defaults$aprdrg <- "640"
   defaults$aprdrg_risk_mortality <- "1"
   defaults$aprdrg_severity <- "1"
@@ -266,25 +275,34 @@ declareTest <- function(id, description) {
   assign("testSql", c(get("testSql", envir = globalenv()), sql), envir = globalenv())
 }
 
-set_defaults_core <- function(key, female, age, ageday, race, year, amonth, asource, asource_x, atype, aweekend, los, died, discwt, dispub92, dispuniform, dqtr, drg, drg18, drgver, dshospid, dx1, dx2, dx3, dx4, dx5, dx6, dx7, dx8, dx9, dx10, dx11, dx12, dx13, dx14, dx15, dxccs1, dxccs2, dxccs3, dxccs4, dxccs5, dxccs6, dxccs7, dxccs8, dxccs9, dxccs10, dxccs11, dxccs12, dxccs13, dxccs14, dxccs15, hospid, hospst, hospstco, los_x, mdc, mdc18, mdnum1_s, mdnum2_s, ndx, neomat, nis_stratum, npr, pay1, pay1_x, pay2, pay2_x, pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8, pr9, pr10, pr11, pr12, pr13, pr14, pr15, prccs1, prccs2, prccs3, prccs4, prccs5, prccs6, prccs7, prccs8, prccs9, prccs10, prccs11, prccs12, prccs13, prccs14, prccs15, prday1, prday2, prday3, prday4, prday5, prday6, prday7, prday8, prday9, prday10, prday11, prday12, prday13, prday14, prday15, totchg, totchg_x, zipinc, discwtcharge, mdid_s, surgid_s, asourceub92, dispub04, dqtr_x, drg24, drg_nopoa, dx16, dx17, dx18, dx19, dx20, dx21, dx22, dx23, dx24, dx25, dxccs16, dxccs17, dxccs18, dxccs19, dxccs20, dxccs21, dxccs22, dxccs23, dxccs24, dxccs25, ecode1, ecode2, ecode3, ecode4, elective, e_ccs1, e_ccs2, e_ccs3, e_ccs4, hcup_ed, hospbrth, mdc24, mdc_nopoa, nchronic, necode, orproc, pl_nchs2006, pointoforiginub04, pointoforigin_x, tran_in, tran_out, zipinc_qrtl, mdnum1_r, mdnum2_r, pl_ur_cat4) {
+set_defaults_cc <- function(hosp_nis, year, ccr_nis, wageindex) {
+  defaults <- get("cc", envir = defaultValues)
+  if (!missing(hosp_nis)) {
+    defaults$hosp_nis <- hosp_nis
+  }
+  if (!missing(year)) {
+    defaults$year <- year
+  }
+  if (!missing(ccr_nis)) {
+    defaults$ccr_nis <- ccr_nis
+  }
+  if (!missing(wageindex)) {
+    defaults$wageindex <- wageindex
+  }
+  assign("cc", defaults, envir = defaultValues)
+  invisible(defaults)
+}
+
+set_defaults_core <- function(key, age, ageday, amonth, asource, asource_x, atype, aweekend, died, discwt, dispub92, dispuniform, dqtr, drg, drg18, drgver, dshospid, dx1, dx2, dx3, dx4, dx5, dx6, dx7, dx8, dx9, dx10, dx11, dx12, dx13, dx14, dx15, dxccs1, dxccs2, dxccs3, dxccs4, dxccs5, dxccs6, dxccs7, dxccs8, dxccs9, dxccs10, dxccs11, dxccs12, dxccs13, dxccs14, dxccs15, female, hospid, hospst, hospstco, los, los_x, mdc, mdc18, mdnum1_s, mdnum2_s, ndx, neomat, nis_stratum, npr, pay1, pay1_x, pay2, pay2_x, pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8, pr9, pr10, pr11, pr12, pr13, pr14, pr15, prccs1, prccs2, prccs3, prccs4, prccs5, prccs6, prccs7, prccs8, prccs9, prccs10, prccs11, prccs12, prccs13, prccs14, prccs15, prday1, prday2, prday3, prday4, prday5, prday6, prday7, prday8, prday9, prday10, prday11, prday12, prday13, prday14, prday15, race, totchg, totchg_x, year, zipinc, discwtcharge, mdid_s, surgid_s, asourceub92, dispub04, dqtr_x, drg24, drg_nopoa, dx16, dx17, dx18, dx19, dx20, dx21, dx22, dx23, dx24, dx25, dxccs16, dxccs17, dxccs18, dxccs19, dxccs20, dxccs21, dxccs22, dxccs23, dxccs24, dxccs25, ecode1, ecode2, ecode3, ecode4, elective, e_ccs1, e_ccs2, e_ccs3, e_ccs4, hcup_ed, hospbrth, mdc24, mdc_nopoa, nchronic, necode, orproc, pl_nchs2006, pointoforiginub04, pointoforigin_x, tran_in, tran_out, zipinc_qrtl, mdnum1_r, mdnum2_r, pl_ur_cat4, age_neonate, hosp_division, hosp_nis, key_nis, pl_nchs) {
   defaults <- get("core", envir = defaultValues)
   if (!missing(key)) {
     defaults$key <- key
-  }
-  if (!missing(female)) {
-    defaults$female <- female
   }
   if (!missing(age)) {
     defaults$age <- age
   }
   if (!missing(ageday)) {
     defaults$ageday <- ageday
-  }
-  if (!missing(race)) {
-    defaults$race <- race
-  }
-  if (!missing(year)) {
-    defaults$year <- year
   }
   if (!missing(amonth)) {
     defaults$amonth <- amonth
@@ -300,9 +318,6 @@ set_defaults_core <- function(key, female, age, ageday, race, year, amonth, asou
   }
   if (!missing(aweekend)) {
     defaults$aweekend <- aweekend
-  }
-  if (!missing(los)) {
-    defaults$los <- los
   }
   if (!missing(died)) {
     defaults$died <- died
@@ -421,6 +436,9 @@ set_defaults_core <- function(key, female, age, ageday, race, year, amonth, asou
   if (!missing(dxccs15)) {
     defaults$dxccs15 <- dxccs15
   }
+  if (!missing(female)) {
+    defaults$female <- female
+  }
   if (!missing(hospid)) {
     defaults$hospid <- hospid
   }
@@ -429,6 +447,9 @@ set_defaults_core <- function(key, female, age, ageday, race, year, amonth, asou
   }
   if (!missing(hospstco)) {
     defaults$hospstco <- hospstco
+  }
+  if (!missing(los)) {
+    defaults$los <- los
   }
   if (!missing(los_x)) {
     defaults$los_x <- los_x
@@ -604,11 +625,17 @@ set_defaults_core <- function(key, female, age, ageday, race, year, amonth, asou
   if (!missing(prday15)) {
     defaults$prday15 <- prday15
   }
+  if (!missing(race)) {
+    defaults$race <- race
+  }
   if (!missing(totchg)) {
     defaults$totchg <- totchg
   }
   if (!missing(totchg_x)) {
     defaults$totchg_x <- totchg_x
+  }
+  if (!missing(year)) {
+    defaults$year <- year
   }
   if (!missing(zipinc)) {
     defaults$zipinc <- zipinc
@@ -772,11 +799,26 @@ set_defaults_core <- function(key, female, age, ageday, race, year, amonth, asou
   if (!missing(pl_ur_cat4)) {
     defaults$pl_ur_cat4 <- pl_ur_cat4
   }
+  if (!missing(age_neonate)) {
+    defaults$age_neonate <- age_neonate
+  }
+  if (!missing(hosp_division)) {
+    defaults$hosp_division <- hosp_division
+  }
+  if (!missing(hosp_nis)) {
+    defaults$hosp_nis <- hosp_nis
+  }
+  if (!missing(key_nis)) {
+    defaults$key_nis <- key_nis
+  }
+  if (!missing(pl_nchs)) {
+    defaults$pl_nchs <- pl_nchs
+  }
   assign("core", defaults, envir = defaultValues)
   invisible(defaults)
 }
 
-set_defaults_dx_pr_grps <- function(hospid, key, chron1, chron2, chron3, chron4, chron5, chron6, chron7, chron8, chron9, chron10, chron11, chron12, chron13, chron14, chron15, chron16, chron17, chron18, chron19, chron20, chron21, chron22, chron23, chron24, chron25, chronb1, chronb2, chronb3, chronb4, chronb5, chronb6, chronb7, chronb8, chronb9, chronb10, chronb11, chronb12, chronb13, chronb14, chronb15, chronb16, chronb17, chronb18, chronb19, chronb20, chronb21, chronb22, chronb23, chronb24, chronb25, dxmccs1, e_mccs1, pclass1, pclass2, pclass3, pclass4, pclass5, pclass6, pclass7, pclass8, pclass9, pclass10, pclass11, pclass12, pclass13, pclass14, pclass15, prmccs1, ccsmgn1, ccsmgn2, ccsmgn3, ccsmgn4, ccsmgn5, ccsmgn6, ccsmgn7, ccsmgn8, ccsmgn9, ccsmgn10, ccsmgn11, ccsmgn12, ccsmgn13, ccsmgn14, ccsmgn15, ccsmsp1, ccsmsp2, ccsmsp3, ccsmsp4, ccsmsp5, ccsmsp6, ccsmsp7, ccsmsp8, ccsmsp9, ccsmsp10, ccsmsp11, ccsmsp12, ccsmsp13, ccsmsp14, ccsmsp15, eccsmgn1, eccsmgn2, eccsmgn3, eccsmgn4) {
+set_defaults_dx_pr_grps <- function(hospid, key, chron1, chron2, chron3, chron4, chron5, chron6, chron7, chron8, chron9, chron10, chron11, chron12, chron13, chron14, chron15, chron16, chron17, chron18, chron19, chron20, chron21, chron22, chron23, chron24, chron25, chronb1, chronb2, chronb3, chronb4, chronb5, chronb6, chronb7, chronb8, chronb9, chronb10, chronb11, chronb12, chronb13, chronb14, chronb15, chronb16, chronb17, chronb18, chronb19, chronb20, chronb21, chronb22, chronb23, chronb24, chronb25, dxmccs1, e_mccs1, pclass1, pclass2, pclass3, pclass4, pclass5, pclass6, pclass7, pclass8, pclass9, pclass10, pclass11, pclass12, pclass13, pclass14, pclass15, prmccs1, ccsmgn1, ccsmgn2, ccsmgn3, ccsmgn4, ccsmgn5, ccsmgn6, ccsmgn7, ccsmgn8, ccsmgn9, ccsmgn10, ccsmgn11, ccsmgn12, ccsmgn13, ccsmgn14, ccsmgn15, ccsmsp1, ccsmsp2, ccsmsp3, ccsmsp4, ccsmsp5, ccsmsp6, ccsmsp7, ccsmsp8, ccsmsp9, ccsmsp10, ccsmsp11, ccsmsp12, ccsmsp13, ccsmsp14, ccsmsp15, eccsmgn1, eccsmgn2, eccsmgn3, eccsmgn4, hosp_division, hosp_nis, key_nis) {
   defaults <- get("dx_pr_grps", envir = defaultValues)
   if (!missing(hospid)) {
     defaults$hospid <- hospid
@@ -1090,11 +1132,20 @@ set_defaults_dx_pr_grps <- function(hospid, key, chron1, chron2, chron3, chron4,
   if (!missing(eccsmgn4)) {
     defaults$eccsmgn4 <- eccsmgn4
   }
+  if (!missing(hosp_division)) {
+    defaults$hosp_division <- hosp_division
+  }
+  if (!missing(hosp_nis)) {
+    defaults$hosp_nis <- hosp_nis
+  }
+  if (!missing(key_nis)) {
+    defaults$key_nis <- key_nis
+  }
   assign("dx_pr_grps", defaults, envir = defaultValues)
   invisible(defaults)
 }
 
-set_defaults_hospital <- function(ahaid, discwt, hospaddr, hospcity, hospid, hospname, hospst, hospwt, hospzip, hosp_bedsize, hosp_control, hosp_location, hosp_locteach, hosp_region, hosp_teach, idnumber, nis_stratum, n_disc_u, n_hosp_u, s_disc_u, s_hosp_u, total_disc, year, discwtcharge, hfipsstco, h_contrl, hospstco, hosp_rnpct, hosp_rnfteapd, hosp_lpnfteapd, hosp_nafteapd, hosp_opsurgpct, hosp_mhsmember, hosp_mhscluster) {
+set_defaults_hospital <- function(ahaid, discwt, hospaddr, hospcity, hospid, hospname, hospst, hospwt, hospzip, hosp_bedsize, hosp_control, hosp_location, hosp_locteach, hosp_region, hosp_teach, idnumber, nis_stratum, n_disc_u, n_hosp_u, s_disc_u, s_hosp_u, total_disc, year, discwtcharge, hfipsstco, h_contrl, hospstco, hosp_rnpct, hosp_rnfteapd, hosp_lpnfteapd, hosp_nafteapd, hosp_opsurgpct, hosp_mhsmember, hosp_mhscluster, hosp_division, hosp_nis) {
   defaults <- get("hospital", envir = defaultValues)
   if (!missing(ahaid)) {
     defaults$ahaid <- ahaid
@@ -1198,11 +1249,17 @@ set_defaults_hospital <- function(ahaid, discwt, hospaddr, hospcity, hospid, hos
   if (!missing(hosp_mhscluster)) {
     defaults$hosp_mhscluster <- hosp_mhscluster
   }
+  if (!missing(hosp_division)) {
+    defaults$hosp_division <- hosp_division
+  }
+  if (!missing(hosp_nis)) {
+    defaults$hosp_nis <- hosp_nis
+  }
   assign("hospital", defaults, envir = defaultValues)
   invisible(defaults)
 }
 
-set_defaults_severity <- function(hospid, key, aprdrg, aprdrg_risk_mortality, aprdrg_severity, cm_aids, cm_alcohol, cm_anemdef, cm_arth, cm_bldloss, cm_chf, cm_chrnlung, cm_coag, cm_depress, cm_dm, cm_dmcx, cm_drug, cm_htn_c, cm_hypothy, cm_liver, cm_lymph, cm_lytes, cm_mets, cm_neuro, cm_obese, cm_para, cm_perivasc, cm_psych, cm_pulmcirc, cm_renlfail, cm_tumor, cm_ulcer, cm_valve, cm_wghtloss, ds_dx_category1, ds_stage1, apsdrg, apsdrg_charge_weight, apsdrg_los_weight, apsdrg_mortality_weight, ds_los_level, ds_los_scale, ds_mrt_level, ds_mrt_scale, ds_rd_level, ds_rd_scale) {
+set_defaults_severity <- function(hospid, key, aprdrg, aprdrg_risk_mortality, aprdrg_severity, cm_aids, cm_alcohol, cm_anemdef, cm_arth, cm_bldloss, cm_chf, cm_chrnlung, cm_coag, cm_depress, cm_dm, cm_dmcx, cm_drug, cm_htn_c, cm_hypothy, cm_liver, cm_lymph, cm_lytes, cm_mets, cm_neuro, cm_obese, cm_para, cm_perivasc, cm_psych, cm_pulmcirc, cm_renlfail, cm_tumor, cm_ulcer, cm_valve, cm_wghtloss, ds_dx_category1, ds_stage1, apsdrg, apsdrg_charge_weight, apsdrg_los_weight, apsdrg_mortality_weight, ds_los_level, ds_los_scale, ds_mrt_level, ds_mrt_scale, ds_rd_level, ds_rd_scale, hosp_nis, key_nis) {
   defaults <- get("severity", envir = defaultValues)
   if (!missing(hospid)) {
     defaults$hospid <- hospid
@@ -1342,8 +1399,19 @@ set_defaults_severity <- function(hospid, key, aprdrg, aprdrg_risk_mortality, ap
   if (!missing(ds_rd_scale)) {
     defaults$ds_rd_scale <- ds_rd_scale
   }
+  if (!missing(hosp_nis)) {
+    defaults$hosp_nis <- hosp_nis
+  }
+  if (!missing(key_nis)) {
+    defaults$key_nis <- key_nis
+  }
   assign("severity", defaults, envir = defaultValues)
   invisible(defaults)
+}
+
+get_defaults_cc <- function() {
+  defaults <- get("cc", envir = defaultValues)
+  return(defaults)
 }
 
 get_defaults_core <- function() {
@@ -1366,7 +1434,48 @@ get_defaults_severity <- function() {
   return(defaults)
 }
 
-add_core <- function(key, female, age, ageday, race, year, amonth, asource, asource_x, atype, aweekend, los, died, discwt, dispub92, dispuniform, dqtr, drg, drg18, drgver, dshospid, dx1, dx2, dx3, dx4, dx5, dx6, dx7, dx8, dx9, dx10, dx11, dx12, dx13, dx14, dx15, dxccs1, dxccs2, dxccs3, dxccs4, dxccs5, dxccs6, dxccs7, dxccs8, dxccs9, dxccs10, dxccs11, dxccs12, dxccs13, dxccs14, dxccs15, hospid, hospst, hospstco, los_x, mdc, mdc18, mdnum1_s, mdnum2_s, ndx, neomat, nis_stratum, npr, pay1, pay1_x, pay2, pay2_x, pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8, pr9, pr10, pr11, pr12, pr13, pr14, pr15, prccs1, prccs2, prccs3, prccs4, prccs5, prccs6, prccs7, prccs8, prccs9, prccs10, prccs11, prccs12, prccs13, prccs14, prccs15, prday1, prday2, prday3, prday4, prday5, prday6, prday7, prday8, prday9, prday10, prday11, prday12, prday13, prday14, prday15, totchg, totchg_x, zipinc, discwtcharge, mdid_s, surgid_s, asourceub92, dispub04, dqtr_x, drg24, drg_nopoa, dx16, dx17, dx18, dx19, dx20, dx21, dx22, dx23, dx24, dx25, dxccs16, dxccs17, dxccs18, dxccs19, dxccs20, dxccs21, dxccs22, dxccs23, dxccs24, dxccs25, ecode1, ecode2, ecode3, ecode4, elective, e_ccs1, e_ccs2, e_ccs3, e_ccs4, hcup_ed, hospbrth, mdc24, mdc_nopoa, nchronic, necode, orproc, pl_nchs2006, pointoforiginub04, pointoforigin_x, tran_in, tran_out, zipinc_qrtl, mdnum1_r, mdnum2_r, pl_ur_cat4) {
+add_cc <- function(hosp_nis, year, ccr_nis, wageindex) {
+  defaults <- get("cc", envir = defaultValues)
+  insertFields <- c()
+  insertValues <- c()
+  if (missing(hosp_nis)) {
+    hosp_nis <- defaults$hosp_nis
+  }
+  if (!is.null(hosp_nis)) {
+    insertFields <- c(insertFields, "hosp_nis")
+    insertValues <- c(insertValues, hosp_nis)
+  }
+
+  if (missing(year)) {
+    year <- defaults$year
+  }
+  if (!is.null(year)) {
+    insertFields <- c(insertFields, "year")
+    insertValues <- c(insertValues, year)
+  }
+
+  if (missing(ccr_nis)) {
+    ccr_nis <- defaults$ccr_nis
+  }
+  if (!is.null(ccr_nis)) {
+    insertFields <- c(insertFields, "ccr_nis")
+    insertValues <- c(insertValues, ccr_nis)
+  }
+
+  if (missing(wageindex)) {
+    wageindex <- defaults$wageindex
+  }
+  if (!is.null(wageindex)) {
+    insertFields <- c(insertFields, "wageindex")
+    insertValues <- c(insertValues, wageindex)
+  }
+
+  statement <- paste0("INSERT INTO cc (", paste(insertFields, collapse = ", "), ") VALUES ('", paste(insertValues, collapse = "', '"), "');")
+  assign("insertSql", c(get("insertSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+add_core <- function(key, age, ageday, amonth, asource, asource_x, atype, aweekend, died, discwt, dispub92, dispuniform, dqtr, drg, drg18, drgver, dshospid, dx1, dx2, dx3, dx4, dx5, dx6, dx7, dx8, dx9, dx10, dx11, dx12, dx13, dx14, dx15, dxccs1, dxccs2, dxccs3, dxccs4, dxccs5, dxccs6, dxccs7, dxccs8, dxccs9, dxccs10, dxccs11, dxccs12, dxccs13, dxccs14, dxccs15, female, hospid, hospst, hospstco, los, los_x, mdc, mdc18, mdnum1_s, mdnum2_s, ndx, neomat, nis_stratum, npr, pay1, pay1_x, pay2, pay2_x, pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8, pr9, pr10, pr11, pr12, pr13, pr14, pr15, prccs1, prccs2, prccs3, prccs4, prccs5, prccs6, prccs7, prccs8, prccs9, prccs10, prccs11, prccs12, prccs13, prccs14, prccs15, prday1, prday2, prday3, prday4, prday5, prday6, prday7, prday8, prday9, prday10, prday11, prday12, prday13, prday14, prday15, race, totchg, totchg_x, year, zipinc, discwtcharge, mdid_s, surgid_s, asourceub92, dispub04, dqtr_x, drg24, drg_nopoa, dx16, dx17, dx18, dx19, dx20, dx21, dx22, dx23, dx24, dx25, dxccs16, dxccs17, dxccs18, dxccs19, dxccs20, dxccs21, dxccs22, dxccs23, dxccs24, dxccs25, ecode1, ecode2, ecode3, ecode4, elective, e_ccs1, e_ccs2, e_ccs3, e_ccs4, hcup_ed, hospbrth, mdc24, mdc_nopoa, nchronic, necode, orproc, pl_nchs2006, pointoforiginub04, pointoforigin_x, tran_in, tran_out, zipinc_qrtl, mdnum1_r, mdnum2_r, pl_ur_cat4, age_neonate, hosp_division, hosp_nis, key_nis, pl_nchs) {
   defaults <- get("core", envir = defaultValues)
   insertFields <- c()
   insertValues <- c()
@@ -1376,14 +1485,6 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
   if (!is.null(key)) {
     insertFields <- c(insertFields, "[key]")
     insertValues <- c(insertValues, key)
-  }
-
-  if (missing(female)) {
-    female <- defaults$female
-  }
-  if (!is.null(female)) {
-    insertFields <- c(insertFields, "female")
-    insertValues <- c(insertValues, female)
   }
 
   if (missing(age)) {
@@ -1400,22 +1501,6 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
   if (!is.null(ageday)) {
     insertFields <- c(insertFields, "ageday")
     insertValues <- c(insertValues, ageday)
-  }
-
-  if (missing(race)) {
-    race <- defaults$race
-  }
-  if (!is.null(race)) {
-    insertFields <- c(insertFields, "race")
-    insertValues <- c(insertValues, race)
-  }
-
-  if (missing(year)) {
-    year <- defaults$year
-  }
-  if (!is.null(year)) {
-    insertFields <- c(insertFields, "year")
-    insertValues <- c(insertValues, year)
   }
 
   if (missing(amonth)) {
@@ -1456,14 +1541,6 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
   if (!is.null(aweekend)) {
     insertFields <- c(insertFields, "aweekend")
     insertValues <- c(insertValues, aweekend)
-  }
-
-  if (missing(los)) {
-    los <- defaults$los
-  }
-  if (!is.null(los)) {
-    insertFields <- c(insertFields, "los")
-    insertValues <- c(insertValues, los)
   }
 
   if (missing(died)) {
@@ -1778,6 +1855,14 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
     insertValues <- c(insertValues, dxccs15)
   }
 
+  if (missing(female)) {
+    female <- defaults$female
+  }
+  if (!is.null(female)) {
+    insertFields <- c(insertFields, "female")
+    insertValues <- c(insertValues, female)
+  }
+
   if (missing(hospid)) {
     hospid <- defaults$hospid
   }
@@ -1800,6 +1885,14 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
   if (!is.null(hospstco)) {
     insertFields <- c(insertFields, "hospstco")
     insertValues <- c(insertValues, hospstco)
+  }
+
+  if (missing(los)) {
+    los <- defaults$los
+  }
+  if (!is.null(los)) {
+    insertFields <- c(insertFields, "los")
+    insertValues <- c(insertValues, los)
   }
 
   if (missing(los_x)) {
@@ -2266,6 +2359,14 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
     insertValues <- c(insertValues, prday15)
   }
 
+  if (missing(race)) {
+    race <- defaults$race
+  }
+  if (!is.null(race)) {
+    insertFields <- c(insertFields, "race")
+    insertValues <- c(insertValues, race)
+  }
+
   if (missing(totchg)) {
     totchg <- defaults$totchg
   }
@@ -2280,6 +2381,14 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
   if (!is.null(totchg_x)) {
     insertFields <- c(insertFields, "totchg_x")
     insertValues <- c(insertValues, totchg_x)
+  }
+
+  if (missing(year)) {
+    year <- defaults$year
+  }
+  if (!is.null(year)) {
+    insertFields <- c(insertFields, "year")
+    insertValues <- c(insertValues, year)
   }
 
   if (missing(zipinc)) {
@@ -2714,12 +2823,52 @@ add_core <- function(key, female, age, ageday, race, year, amonth, asource, asou
     insertValues <- c(insertValues, pl_ur_cat4)
   }
 
+  if (missing(age_neonate)) {
+    age_neonate <- defaults$age_neonate
+  }
+  if (!is.null(age_neonate)) {
+    insertFields <- c(insertFields, "age_neonate")
+    insertValues <- c(insertValues, age_neonate)
+  }
+
+  if (missing(hosp_division)) {
+    hosp_division <- defaults$hosp_division
+  }
+  if (!is.null(hosp_division)) {
+    insertFields <- c(insertFields, "hosp_division")
+    insertValues <- c(insertValues, hosp_division)
+  }
+
+  if (missing(hosp_nis)) {
+    hosp_nis <- defaults$hosp_nis
+  }
+  if (!is.null(hosp_nis)) {
+    insertFields <- c(insertFields, "hosp_nis")
+    insertValues <- c(insertValues, hosp_nis)
+  }
+
+  if (missing(key_nis)) {
+    key_nis <- defaults$key_nis
+  }
+  if (!is.null(key_nis)) {
+    insertFields <- c(insertFields, "key_nis")
+    insertValues <- c(insertValues, key_nis)
+  }
+
+  if (missing(pl_nchs)) {
+    pl_nchs <- defaults$pl_nchs
+  }
+  if (!is.null(pl_nchs)) {
+    insertFields <- c(insertFields, "pl_nchs")
+    insertValues <- c(insertValues, pl_nchs)
+  }
+
   statement <- paste0("INSERT INTO core (", paste(insertFields, collapse = ", "), ") VALUES ('", paste(insertValues, collapse = "', '"), "');")
   assign("insertSql", c(get("insertSql", envir = globalenv()), statement), envir = globalenv())
   invisible(statement)
 }
 
-add_dx_pr_grps <- function(hospid, key, chron1, chron2, chron3, chron4, chron5, chron6, chron7, chron8, chron9, chron10, chron11, chron12, chron13, chron14, chron15, chron16, chron17, chron18, chron19, chron20, chron21, chron22, chron23, chron24, chron25, chronb1, chronb2, chronb3, chronb4, chronb5, chronb6, chronb7, chronb8, chronb9, chronb10, chronb11, chronb12, chronb13, chronb14, chronb15, chronb16, chronb17, chronb18, chronb19, chronb20, chronb21, chronb22, chronb23, chronb24, chronb25, dxmccs1, e_mccs1, pclass1, pclass2, pclass3, pclass4, pclass5, pclass6, pclass7, pclass8, pclass9, pclass10, pclass11, pclass12, pclass13, pclass14, pclass15, prmccs1, ccsmgn1, ccsmgn2, ccsmgn3, ccsmgn4, ccsmgn5, ccsmgn6, ccsmgn7, ccsmgn8, ccsmgn9, ccsmgn10, ccsmgn11, ccsmgn12, ccsmgn13, ccsmgn14, ccsmgn15, ccsmsp1, ccsmsp2, ccsmsp3, ccsmsp4, ccsmsp5, ccsmsp6, ccsmsp7, ccsmsp8, ccsmsp9, ccsmsp10, ccsmsp11, ccsmsp12, ccsmsp13, ccsmsp14, ccsmsp15, eccsmgn1, eccsmgn2, eccsmgn3, eccsmgn4) {
+add_dx_pr_grps <- function(hospid, key, chron1, chron2, chron3, chron4, chron5, chron6, chron7, chron8, chron9, chron10, chron11, chron12, chron13, chron14, chron15, chron16, chron17, chron18, chron19, chron20, chron21, chron22, chron23, chron24, chron25, chronb1, chronb2, chronb3, chronb4, chronb5, chronb6, chronb7, chronb8, chronb9, chronb10, chronb11, chronb12, chronb13, chronb14, chronb15, chronb16, chronb17, chronb18, chronb19, chronb20, chronb21, chronb22, chronb23, chronb24, chronb25, dxmccs1, e_mccs1, pclass1, pclass2, pclass3, pclass4, pclass5, pclass6, pclass7, pclass8, pclass9, pclass10, pclass11, pclass12, pclass13, pclass14, pclass15, prmccs1, ccsmgn1, ccsmgn2, ccsmgn3, ccsmgn4, ccsmgn5, ccsmgn6, ccsmgn7, ccsmgn8, ccsmgn9, ccsmgn10, ccsmgn11, ccsmgn12, ccsmgn13, ccsmgn14, ccsmgn15, ccsmsp1, ccsmsp2, ccsmsp3, ccsmsp4, ccsmsp5, ccsmsp6, ccsmsp7, ccsmsp8, ccsmsp9, ccsmsp10, ccsmsp11, ccsmsp12, ccsmsp13, ccsmsp14, ccsmsp15, eccsmgn1, eccsmgn2, eccsmgn3, eccsmgn4, hosp_division, hosp_nis, key_nis) {
   defaults <- get("dx_pr_grps", envir = defaultValues)
   insertFields <- c()
   insertValues <- c()
@@ -3555,12 +3704,36 @@ add_dx_pr_grps <- function(hospid, key, chron1, chron2, chron3, chron4, chron5, 
     insertValues <- c(insertValues, eccsmgn4)
   }
 
+  if (missing(hosp_division)) {
+    hosp_division <- defaults$hosp_division
+  }
+  if (!is.null(hosp_division)) {
+    insertFields <- c(insertFields, "hosp_division")
+    insertValues <- c(insertValues, hosp_division)
+  }
+
+  if (missing(hosp_nis)) {
+    hosp_nis <- defaults$hosp_nis
+  }
+  if (!is.null(hosp_nis)) {
+    insertFields <- c(insertFields, "hosp_nis")
+    insertValues <- c(insertValues, hosp_nis)
+  }
+
+  if (missing(key_nis)) {
+    key_nis <- defaults$key_nis
+  }
+  if (!is.null(key_nis)) {
+    insertFields <- c(insertFields, "key_nis")
+    insertValues <- c(insertValues, key_nis)
+  }
+
   statement <- paste0("INSERT INTO dx_pr_grps (", paste(insertFields, collapse = ", "), ") VALUES ('", paste(insertValues, collapse = "', '"), "');")
   assign("insertSql", c(get("insertSql", envir = globalenv()), statement), envir = globalenv())
   invisible(statement)
 }
 
-add_hospital <- function(ahaid, discwt, hospaddr, hospcity, hospid, hospname, hospst, hospwt, hospzip, hosp_bedsize, hosp_control, hosp_location, hosp_locteach, hosp_region, hosp_teach, idnumber, nis_stratum, n_disc_u, n_hosp_u, s_disc_u, s_hosp_u, total_disc, year, discwtcharge, hfipsstco, h_contrl, hospstco, hosp_rnpct, hosp_rnfteapd, hosp_lpnfteapd, hosp_nafteapd, hosp_opsurgpct, hosp_mhsmember, hosp_mhscluster) {
+add_hospital <- function(ahaid, discwt, hospaddr, hospcity, hospid, hospname, hospst, hospwt, hospzip, hosp_bedsize, hosp_control, hosp_location, hosp_locteach, hosp_region, hosp_teach, idnumber, nis_stratum, n_disc_u, n_hosp_u, s_disc_u, s_hosp_u, total_disc, year, discwtcharge, hfipsstco, h_contrl, hospstco, hosp_rnpct, hosp_rnfteapd, hosp_lpnfteapd, hosp_nafteapd, hosp_opsurgpct, hosp_mhsmember, hosp_mhscluster, hosp_division, hosp_nis) {
   defaults <- get("hospital", envir = defaultValues)
   insertFields <- c()
   insertValues <- c()
@@ -3836,12 +4009,28 @@ add_hospital <- function(ahaid, discwt, hospaddr, hospcity, hospid, hospname, ho
     insertValues <- c(insertValues, hosp_mhscluster)
   }
 
+  if (missing(hosp_division)) {
+    hosp_division <- defaults$hosp_division
+  }
+  if (!is.null(hosp_division)) {
+    insertFields <- c(insertFields, "hosp_division")
+    insertValues <- c(insertValues, hosp_division)
+  }
+
+  if (missing(hosp_nis)) {
+    hosp_nis <- defaults$hosp_nis
+  }
+  if (!is.null(hosp_nis)) {
+    insertFields <- c(insertFields, "hosp_nis")
+    insertValues <- c(insertValues, hosp_nis)
+  }
+
   statement <- paste0("INSERT INTO hospital (", paste(insertFields, collapse = ", "), ") VALUES ('", paste(insertValues, collapse = "', '"), "');")
   assign("insertSql", c(get("insertSql", envir = globalenv()), statement), envir = globalenv())
   invisible(statement)
 }
 
-add_severity <- function(hospid, key, aprdrg, aprdrg_risk_mortality, aprdrg_severity, cm_aids, cm_alcohol, cm_anemdef, cm_arth, cm_bldloss, cm_chf, cm_chrnlung, cm_coag, cm_depress, cm_dm, cm_dmcx, cm_drug, cm_htn_c, cm_hypothy, cm_liver, cm_lymph, cm_lytes, cm_mets, cm_neuro, cm_obese, cm_para, cm_perivasc, cm_psych, cm_pulmcirc, cm_renlfail, cm_tumor, cm_ulcer, cm_valve, cm_wghtloss, ds_dx_category1, ds_stage1, apsdrg, apsdrg_charge_weight, apsdrg_los_weight, apsdrg_mortality_weight, ds_los_level, ds_los_scale, ds_mrt_level, ds_mrt_scale, ds_rd_level, ds_rd_scale) {
+add_severity <- function(hospid, key, aprdrg, aprdrg_risk_mortality, aprdrg_severity, cm_aids, cm_alcohol, cm_anemdef, cm_arth, cm_bldloss, cm_chf, cm_chrnlung, cm_coag, cm_depress, cm_dm, cm_dmcx, cm_drug, cm_htn_c, cm_hypothy, cm_liver, cm_lymph, cm_lytes, cm_mets, cm_neuro, cm_obese, cm_para, cm_perivasc, cm_psych, cm_pulmcirc, cm_renlfail, cm_tumor, cm_ulcer, cm_valve, cm_wghtloss, ds_dx_category1, ds_stage1, apsdrg, apsdrg_charge_weight, apsdrg_los_weight, apsdrg_mortality_weight, ds_los_level, ds_los_scale, ds_mrt_level, ds_mrt_scale, ds_rd_level, ds_rd_scale, hosp_nis, key_nis) {
   defaults <- get("severity", envir = defaultValues)
   insertFields <- c()
   insertValues <- c()
@@ -4213,12 +4402,156 @@ add_severity <- function(hospid, key, aprdrg, aprdrg_risk_mortality, aprdrg_seve
     insertValues <- c(insertValues, ds_rd_scale)
   }
 
+  if (missing(hosp_nis)) {
+    hosp_nis <- defaults$hosp_nis
+  }
+  if (!is.null(hosp_nis)) {
+    insertFields <- c(insertFields, "hosp_nis")
+    insertValues <- c(insertValues, hosp_nis)
+  }
+
+  if (missing(key_nis)) {
+    key_nis <- defaults$key_nis
+  }
+  if (!is.null(key_nis)) {
+    insertFields <- c(insertFields, "key_nis")
+    insertValues <- c(insertValues, key_nis)
+  }
+
   statement <- paste0("INSERT INTO severity (", paste(insertFields, collapse = ", "), ") VALUES ('", paste(insertValues, collapse = "', '"), "');")
   assign("insertSql", c(get("insertSql", envir = globalenv()), statement), envir = globalenv())
   invisible(statement)
 }
 
-expect_person <- function(person_id, person_source_value, gender_concept_id, gender_source_value, year_of_birth, month_of_birth, day_of_birth, race_concept_id, race_source_value, ethnicity_concept_id, ethnicity_source_value, time_of_birth, location_id, provider_id, care_site_id, gender_source_concept_id, race_source_concept_id, ethnicity_source_concept_id) {
+expect_location <- function(location_id, address_1, address_2, city, state, zip, county, location_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect location' AS test, CASE WHEN(SELECT COUNT(*) FROM location WHERE")
+  first <- TRUE
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(address_1)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_1)) {
+      statement <- paste0(statement, " address_1 IS NULL")
+    } else if (is(address_1, "subQuery")){
+      statement <- paste0(statement, " address_1 = (", as.character(address_1), ")")
+    } else {
+      statement <- paste0(statement, " address_1 = '", address_1,"'")
+    }
+  }
+
+  if (!missing(address_2)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_2)) {
+      statement <- paste0(statement, " address_2 IS NULL")
+    } else if (is(address_2, "subQuery")){
+      statement <- paste0(statement, " address_2 = (", as.character(address_2), ")")
+    } else {
+      statement <- paste0(statement, " address_2 = '", address_2,"'")
+    }
+  }
+
+  if (!missing(city)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(city)) {
+      statement <- paste0(statement, " city IS NULL")
+    } else if (is(city, "subQuery")){
+      statement <- paste0(statement, " city = (", as.character(city), ")")
+    } else {
+      statement <- paste0(statement, " city = '", city,"'")
+    }
+  }
+
+  if (!missing(state)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(state)) {
+      statement <- paste0(statement, " state IS NULL")
+    } else if (is(state, "subQuery")){
+      statement <- paste0(statement, " state = (", as.character(state), ")")
+    } else {
+      statement <- paste0(statement, " state = '", state,"'")
+    }
+  }
+
+  if (!missing(zip)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(zip)) {
+      statement <- paste0(statement, " zip IS NULL")
+    } else if (is(zip, "subQuery")){
+      statement <- paste0(statement, " zip = (", as.character(zip), ")")
+    } else {
+      statement <- paste0(statement, " zip = '", zip,"'")
+    }
+  }
+
+  if (!missing(county)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(county)) {
+      statement <- paste0(statement, " county IS NULL")
+    } else if (is(county, "subQuery")){
+      statement <- paste0(statement, " county = (", as.character(county), ")")
+    } else {
+      statement <- paste0(statement, " county = '", county,"'")
+    }
+  }
+
+  if (!missing(location_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_source_value)) {
+      statement <- paste0(statement, " location_source_value IS NULL")
+    } else if (is(location_source_value, "subQuery")){
+      statement <- paste0(statement, " location_source_value = (", as.character(location_source_value), ")")
+    } else {
+      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_person <- function(person_id, gender_concept_id, year_of_birth, month_of_birth, day_of_birth, time_of_birth, race_concept_id, ethnicity_concept_id, location_id, provider_id, care_site_id, person_source_value, gender_source_value, gender_source_concept_id, race_source_value, race_source_concept_id, ethnicity_source_value, ethnicity_source_concept_id) {
   statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect person' AS test, CASE WHEN(SELECT COUNT(*) FROM person WHERE")
   first <- TRUE
   if (!missing(person_id)) {
@@ -4229,21 +4562,10 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
-    }
-  }
-
-  if (!missing(person_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(person_source_value)) {
-      statement <- paste0(statement, " person_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
     }
   }
 
@@ -4255,21 +4577,10 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(gender_concept_id)) {
       statement <- paste0(statement, " gender_concept_id IS NULL")
+    } else if (is(gender_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_concept_id = (", as.character(gender_concept_id), ")")
     } else {
       statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
-    }
-  }
-
-  if (!missing(gender_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_value)) {
-      statement <- paste0(statement, " gender_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
     }
   }
 
@@ -4281,6 +4592,8 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(year_of_birth)) {
       statement <- paste0(statement, " year_of_birth IS NULL")
+    } else if (is(year_of_birth, "subQuery")){
+      statement <- paste0(statement, " year_of_birth = (", as.character(year_of_birth), ")")
     } else {
       statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
     }
@@ -4294,6 +4607,8 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(month_of_birth)) {
       statement <- paste0(statement, " month_of_birth IS NULL")
+    } else if (is(month_of_birth, "subQuery")){
+      statement <- paste0(statement, " month_of_birth = (", as.character(month_of_birth), ")")
     } else {
       statement <- paste0(statement, " month_of_birth = '", month_of_birth,"'")
     }
@@ -4307,60 +4622,10 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(day_of_birth)) {
       statement <- paste0(statement, " day_of_birth IS NULL")
+    } else if (is(day_of_birth, "subQuery")){
+      statement <- paste0(statement, " day_of_birth = (", as.character(day_of_birth), ")")
     } else {
       statement <- paste0(statement, " day_of_birth = '", day_of_birth,"'")
-    }
-  }
-
-  if (!missing(race_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(race_concept_id)) {
-      statement <- paste0(statement, " race_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " race_concept_id = '", race_concept_id,"'")
-    }
-  }
-
-  if (!missing(race_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(race_source_value)) {
-      statement <- paste0(statement, " race_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
-    }
-  }
-
-  if (!missing(ethnicity_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ethnicity_concept_id)) {
-      statement <- paste0(statement, " ethnicity_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " ethnicity_concept_id = '", ethnicity_concept_id,"'")
-    }
-  }
-
-  if (!missing(ethnicity_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ethnicity_source_value)) {
-      statement <- paste0(statement, " ethnicity_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
     }
   }
 
@@ -4372,8 +4637,40 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(time_of_birth)) {
       statement <- paste0(statement, " time_of_birth IS NULL")
+    } else if (is(time_of_birth, "subQuery")){
+      statement <- paste0(statement, " time_of_birth = (", as.character(time_of_birth), ")")
     } else {
       statement <- paste0(statement, " time_of_birth = '", time_of_birth,"'")
+    }
+  }
+
+  if (!missing(race_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_concept_id)) {
+      statement <- paste0(statement, " race_concept_id IS NULL")
+    } else if (is(race_concept_id, "subQuery")){
+      statement <- paste0(statement, " race_concept_id = (", as.character(race_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " race_concept_id = '", race_concept_id,"'")
+    }
+  }
+
+  if (!missing(ethnicity_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_concept_id)) {
+      statement <- paste0(statement, " ethnicity_concept_id IS NULL")
+    } else if (is(ethnicity_concept_id, "subQuery")){
+      statement <- paste0(statement, " ethnicity_concept_id = (", as.character(ethnicity_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_concept_id = '", ethnicity_concept_id,"'")
     }
   }
 
@@ -4385,6 +4682,8 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(location_id)) {
       statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
     } else {
       statement <- paste0(statement, " location_id = '", location_id,"'")
     }
@@ -4398,6 +4697,8 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -4411,8 +4712,40 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(care_site_id)) {
       statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
     } else {
       statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(person_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_source_value)) {
+      statement <- paste0(statement, " person_source_value IS NULL")
+    } else if (is(person_source_value, "subQuery")){
+      statement <- paste0(statement, " person_source_value = (", as.character(person_source_value), ")")
+    } else {
+      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else if (is(gender_source_value, "subQuery")){
+      statement <- paste0(statement, " gender_source_value = (", as.character(gender_source_value), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
     }
   }
 
@@ -4424,8 +4757,25 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(gender_source_concept_id)) {
       statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else if (is(gender_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_source_concept_id = (", as.character(gender_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(race_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_source_value)) {
+      statement <- paste0(statement, " race_source_value IS NULL")
+    } else if (is(race_source_value, "subQuery")){
+      statement <- paste0(statement, " race_source_value = (", as.character(race_source_value), ")")
+    } else {
+      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
     }
   }
 
@@ -4437,8 +4787,25 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(race_source_concept_id)) {
       statement <- paste0(statement, " race_source_concept_id IS NULL")
+    } else if (is(race_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " race_source_concept_id = (", as.character(race_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " race_source_concept_id = '", race_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(ethnicity_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_source_value)) {
+      statement <- paste0(statement, " ethnicity_source_value IS NULL")
+    } else if (is(ethnicity_source_value, "subQuery")){
+      statement <- paste0(statement, " ethnicity_source_value = (", as.character(ethnicity_source_value), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
     }
   }
 
@@ -4450,172 +4817,10 @@ expect_person <- function(person_id, person_source_value, gender_concept_id, gen
     }
     if (is.null(ethnicity_source_concept_id)) {
       statement <- paste0(statement, " ethnicity_source_concept_id IS NULL")
+    } else if (is(ethnicity_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " ethnicity_source_concept_id = (", as.character(ethnicity_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " ethnicity_source_concept_id = '", ethnicity_source_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_visit_occurrence <- function(visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_occurrence WHERE")
-  first <- TRUE
-  if (!missing(visit_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_occurrence_id)) {
-      statement <- paste0(statement, " visit_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(person_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(person_id)) {
-      statement <- paste0(statement, " person_id IS NULL")
-    } else {
-      statement <- paste0(statement, " person_id = '", person_id,"'")
-    }
-  }
-
-  if (!missing(visit_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_concept_id)) {
-      statement <- paste0(statement, " visit_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_concept_id = '", visit_concept_id,"'")
-    }
-  }
-
-  if (!missing(visit_start_date)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_start_date)) {
-      statement <- paste0(statement, " visit_start_date IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_start_date = '", visit_start_date,"'")
-    }
-  }
-
-  if (!missing(visit_start_time)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_start_time)) {
-      statement <- paste0(statement, " visit_start_time IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_start_time = '", visit_start_time,"'")
-    }
-  }
-
-  if (!missing(visit_end_date)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_end_date)) {
-      statement <- paste0(statement, " visit_end_date IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_end_date = '", visit_end_date,"'")
-    }
-  }
-
-  if (!missing(visit_end_time)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_end_time)) {
-      statement <- paste0(statement, " visit_end_time IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_end_time = '", visit_end_time,"'")
-    }
-  }
-
-  if (!missing(visit_type_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_type_concept_id)) {
-      statement <- paste0(statement, " visit_type_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_type_concept_id = '", visit_type_concept_id,"'")
-    }
-  }
-
-  if (!missing(provider_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_id)) {
-      statement <- paste0(statement, " provider_id IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_id = '", provider_id,"'")
-    }
-  }
-
-  if (!missing(care_site_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(care_site_id)) {
-      statement <- paste0(statement, " care_site_id IS NULL")
-    } else {
-      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
-    }
-  }
-
-  if (!missing(visit_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_source_value)) {
-      statement <- paste0(statement, " visit_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_source_value = '", visit_source_value,"'")
-    }
-  }
-
-  if (!missing(visit_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_source_concept_id)) {
-      statement <- paste0(statement, " visit_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_source_concept_id = '", visit_source_concept_id,"'")
     }
   }
 
@@ -4635,6 +4840,8 @@ expect_observation_period <- function(observation_period_id, person_id, observat
     }
     if (is.null(observation_period_id)) {
       statement <- paste0(statement, " observation_period_id IS NULL")
+    } else if (is(observation_period_id, "subQuery")){
+      statement <- paste0(statement, " observation_period_id = (", as.character(observation_period_id), ")")
     } else {
       statement <- paste0(statement, " observation_period_id = '", observation_period_id,"'")
     }
@@ -4648,6 +4855,8 @@ expect_observation_period <- function(observation_period_id, person_id, observat
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -4661,6 +4870,8 @@ expect_observation_period <- function(observation_period_id, person_id, observat
     }
     if (is.null(observation_period_start_date)) {
       statement <- paste0(statement, " observation_period_start_date IS NULL")
+    } else if (is(observation_period_start_date, "subQuery")){
+      statement <- paste0(statement, " observation_period_start_date = (", as.character(observation_period_start_date), ")")
     } else {
       statement <- paste0(statement, " observation_period_start_date = '", observation_period_start_date,"'")
     }
@@ -4674,6 +4885,8 @@ expect_observation_period <- function(observation_period_id, person_id, observat
     }
     if (is.null(observation_period_end_date)) {
       statement <- paste0(statement, " observation_period_end_date IS NULL")
+    } else if (is(observation_period_end_date, "subQuery")){
+      statement <- paste0(statement, " observation_period_end_date = (", as.character(observation_period_end_date), ")")
     } else {
       statement <- paste0(statement, " observation_period_end_date = '", observation_period_end_date,"'")
     }
@@ -4687,120 +4900,10 @@ expect_observation_period <- function(observation_period_id, person_id, observat
     }
     if (is.null(period_type_concept_id)) {
       statement <- paste0(statement, " period_type_concept_id IS NULL")
+    } else if (is(period_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " period_type_concept_id = (", as.character(period_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " period_type_concept_id = '", period_type_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_location <- function(location_id, address_1, address_2, city, state, zip, county, location_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect location' AS test, CASE WHEN(SELECT COUNT(*) FROM location WHERE")
-  first <- TRUE
-  if (!missing(location_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(location_id)) {
-      statement <- paste0(statement, " location_id IS NULL")
-    } else {
-      statement <- paste0(statement, " location_id = '", location_id,"'")
-    }
-  }
-
-  if (!missing(address_1)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(address_1)) {
-      statement <- paste0(statement, " address_1 IS NULL")
-    } else {
-      statement <- paste0(statement, " address_1 = '", address_1,"'")
-    }
-  }
-
-  if (!missing(address_2)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(address_2)) {
-      statement <- paste0(statement, " address_2 IS NULL")
-    } else {
-      statement <- paste0(statement, " address_2 = '", address_2,"'")
-    }
-  }
-
-  if (!missing(city)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(city)) {
-      statement <- paste0(statement, " city IS NULL")
-    } else {
-      statement <- paste0(statement, " city = '", city,"'")
-    }
-  }
-
-  if (!missing(state)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(state)) {
-      statement <- paste0(statement, " state IS NULL")
-    } else {
-      statement <- paste0(statement, " state = '", state,"'")
-    }
-  }
-
-  if (!missing(zip)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(zip)) {
-      statement <- paste0(statement, " zip IS NULL")
-    } else {
-      statement <- paste0(statement, " zip = '", zip,"'")
-    }
-  }
-
-  if (!missing(county)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(county)) {
-      statement <- paste0(statement, " county IS NULL")
-    } else {
-      statement <- paste0(statement, " county = '", county,"'")
-    }
-  }
-
-  if (!missing(location_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(location_source_value)) {
-      statement <- paste0(statement, " location_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
     }
   }
 
@@ -4820,6 +4923,8 @@ expect_care_site <- function(care_site_id, care_site_name, place_of_service_conc
     }
     if (is.null(care_site_id)) {
       statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
     } else {
       statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
     }
@@ -4833,6 +4938,8 @@ expect_care_site <- function(care_site_id, care_site_name, place_of_service_conc
     }
     if (is.null(care_site_name)) {
       statement <- paste0(statement, " care_site_name IS NULL")
+    } else if (is(care_site_name, "subQuery")){
+      statement <- paste0(statement, " care_site_name = (", as.character(care_site_name), ")")
     } else {
       statement <- paste0(statement, " care_site_name = '", care_site_name,"'")
     }
@@ -4846,6 +4953,8 @@ expect_care_site <- function(care_site_id, care_site_name, place_of_service_conc
     }
     if (is.null(place_of_service_concept_id)) {
       statement <- paste0(statement, " place_of_service_concept_id IS NULL")
+    } else if (is(place_of_service_concept_id, "subQuery")){
+      statement <- paste0(statement, " place_of_service_concept_id = (", as.character(place_of_service_concept_id), ")")
     } else {
       statement <- paste0(statement, " place_of_service_concept_id = '", place_of_service_concept_id,"'")
     }
@@ -4859,6 +4968,8 @@ expect_care_site <- function(care_site_id, care_site_name, place_of_service_conc
     }
     if (is.null(location_id)) {
       statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
     } else {
       statement <- paste0(statement, " location_id = '", location_id,"'")
     }
@@ -4872,6 +4983,8 @@ expect_care_site <- function(care_site_id, care_site_name, place_of_service_conc
     }
     if (is.null(care_site_source_value)) {
       statement <- paste0(statement, " care_site_source_value IS NULL")
+    } else if (is(care_site_source_value, "subQuery")){
+      statement <- paste0(statement, " care_site_source_value = (", as.character(care_site_source_value), ")")
     } else {
       statement <- paste0(statement, " care_site_source_value = '", care_site_source_value,"'")
     }
@@ -4885,8 +4998,401 @@ expect_care_site <- function(care_site_id, care_site_name, place_of_service_conc
     }
     if (is.null(place_of_service_source_value)) {
       statement <- paste0(statement, " place_of_service_source_value IS NULL")
+    } else if (is(place_of_service_source_value, "subQuery")){
+      statement <- paste0(statement, " place_of_service_source_value = (", as.character(place_of_service_source_value), ")")
     } else {
       statement <- paste0(statement, " place_of_service_source_value = '", place_of_service_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_visit_occurrence <- function(visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_occurrence WHERE")
+  first <- TRUE
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(visit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_concept_id)) {
+      statement <- paste0(statement, " visit_concept_id IS NULL")
+    } else if (is(visit_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_concept_id = (", as.character(visit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_concept_id = '", visit_concept_id,"'")
+    }
+  }
+
+  if (!missing(visit_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_start_date)) {
+      statement <- paste0(statement, " visit_start_date IS NULL")
+    } else if (is(visit_start_date, "subQuery")){
+      statement <- paste0(statement, " visit_start_date = (", as.character(visit_start_date), ")")
+    } else {
+      statement <- paste0(statement, " visit_start_date = '", visit_start_date,"'")
+    }
+  }
+
+  if (!missing(visit_start_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_start_time)) {
+      statement <- paste0(statement, " visit_start_time IS NULL")
+    } else if (is(visit_start_time, "subQuery")){
+      statement <- paste0(statement, " visit_start_time = (", as.character(visit_start_time), ")")
+    } else {
+      statement <- paste0(statement, " visit_start_time = '", visit_start_time,"'")
+    }
+  }
+
+  if (!missing(visit_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_end_date)) {
+      statement <- paste0(statement, " visit_end_date IS NULL")
+    } else if (is(visit_end_date, "subQuery")){
+      statement <- paste0(statement, " visit_end_date = (", as.character(visit_end_date), ")")
+    } else {
+      statement <- paste0(statement, " visit_end_date = '", visit_end_date,"'")
+    }
+  }
+
+  if (!missing(visit_end_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_end_time)) {
+      statement <- paste0(statement, " visit_end_time IS NULL")
+    } else if (is(visit_end_time, "subQuery")){
+      statement <- paste0(statement, " visit_end_time = (", as.character(visit_end_time), ")")
+    } else {
+      statement <- paste0(statement, " visit_end_time = '", visit_end_time,"'")
+    }
+  }
+
+  if (!missing(visit_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_type_concept_id)) {
+      statement <- paste0(statement, " visit_type_concept_id IS NULL")
+    } else if (is(visit_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_type_concept_id = (", as.character(visit_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_type_concept_id = '", visit_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(visit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_source_value)) {
+      statement <- paste0(statement, " visit_source_value IS NULL")
+    } else if (is(visit_source_value, "subQuery")){
+      statement <- paste0(statement, " visit_source_value = (", as.character(visit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " visit_source_value = '", visit_source_value,"'")
+    }
+  }
+
+  if (!missing(visit_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_source_concept_id)) {
+      statement <- paste0(statement, " visit_source_concept_id IS NULL")
+    } else if (is(visit_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_source_concept_id = (", as.character(visit_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_source_concept_id = '", visit_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_provider <- function(provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect provider' AS test, CASE WHEN(SELECT COUNT(*) FROM provider WHERE")
+  first <- TRUE
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(provider_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_name)) {
+      statement <- paste0(statement, " provider_name IS NULL")
+    } else if (is(provider_name, "subQuery")){
+      statement <- paste0(statement, " provider_name = (", as.character(provider_name), ")")
+    } else {
+      statement <- paste0(statement, " provider_name = '", provider_name,"'")
+    }
+  }
+
+  if (!missing(npi)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(npi)) {
+      statement <- paste0(statement, " npi IS NULL")
+    } else if (is(npi, "subQuery")){
+      statement <- paste0(statement, " npi = (", as.character(npi), ")")
+    } else {
+      statement <- paste0(statement, " npi = '", npi,"'")
+    }
+  }
+
+  if (!missing(dea)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dea)) {
+      statement <- paste0(statement, " dea IS NULL")
+    } else if (is(dea, "subQuery")){
+      statement <- paste0(statement, " dea = (", as.character(dea), ")")
+    } else {
+      statement <- paste0(statement, " dea = '", dea,"'")
+    }
+  }
+
+  if (!missing(specialty_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_concept_id)) {
+      statement <- paste0(statement, " specialty_concept_id IS NULL")
+    } else if (is(specialty_concept_id, "subQuery")){
+      statement <- paste0(statement, " specialty_concept_id = (", as.character(specialty_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(year_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(year_of_birth)) {
+      statement <- paste0(statement, " year_of_birth IS NULL")
+    } else if (is(year_of_birth, "subQuery")){
+      statement <- paste0(statement, " year_of_birth = (", as.character(year_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
+    }
+  }
+
+  if (!missing(gender_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_concept_id)) {
+      statement <- paste0(statement, " gender_concept_id IS NULL")
+    } else if (is(gender_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_concept_id = (", as.character(gender_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_source_value)) {
+      statement <- paste0(statement, " provider_source_value IS NULL")
+    } else if (is(provider_source_value, "subQuery")){
+      statement <- paste0(statement, " provider_source_value = (", as.character(provider_source_value), ")")
+    } else {
+      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
+    }
+  }
+
+  if (!missing(specialty_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_source_value)) {
+      statement <- paste0(statement, " specialty_source_value IS NULL")
+    } else if (is(specialty_source_value, "subQuery")){
+      statement <- paste0(statement, " specialty_source_value = (", as.character(specialty_source_value), ")")
+    } else {
+      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
+    }
+  }
+
+  if (!missing(specialty_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_source_concept_id)) {
+      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
+    } else if (is(specialty_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " specialty_source_concept_id = (", as.character(specialty_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else if (is(gender_source_value, "subQuery")){
+      statement <- paste0(statement, " gender_source_value = (", as.character(gender_source_value), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_concept_id)) {
+      statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else if (is(gender_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_source_concept_id = (", as.character(gender_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
     }
   }
 
@@ -4906,6 +5412,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_occurrence_id)) {
       statement <- paste0(statement, " condition_occurrence_id IS NULL")
+    } else if (is(condition_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " condition_occurrence_id = (", as.character(condition_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " condition_occurrence_id = '", condition_occurrence_id,"'")
     }
@@ -4919,6 +5427,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -4932,6 +5442,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_concept_id)) {
       statement <- paste0(statement, " condition_concept_id IS NULL")
+    } else if (is(condition_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_concept_id = (", as.character(condition_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_concept_id = '", condition_concept_id,"'")
     }
@@ -4945,6 +5457,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_start_date)) {
       statement <- paste0(statement, " condition_start_date IS NULL")
+    } else if (is(condition_start_date, "subQuery")){
+      statement <- paste0(statement, " condition_start_date = (", as.character(condition_start_date), ")")
     } else {
       statement <- paste0(statement, " condition_start_date = '", condition_start_date,"'")
     }
@@ -4958,6 +5472,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_end_date)) {
       statement <- paste0(statement, " condition_end_date IS NULL")
+    } else if (is(condition_end_date, "subQuery")){
+      statement <- paste0(statement, " condition_end_date = (", as.character(condition_end_date), ")")
     } else {
       statement <- paste0(statement, " condition_end_date = '", condition_end_date,"'")
     }
@@ -4971,6 +5487,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_type_concept_id)) {
       statement <- paste0(statement, " condition_type_concept_id IS NULL")
+    } else if (is(condition_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_type_concept_id = (", as.character(condition_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_type_concept_id = '", condition_type_concept_id,"'")
     }
@@ -4984,6 +5502,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(stop_reason)) {
       statement <- paste0(statement, " stop_reason IS NULL")
+    } else if (is(stop_reason, "subQuery")){
+      statement <- paste0(statement, " stop_reason = (", as.character(stop_reason), ")")
     } else {
       statement <- paste0(statement, " stop_reason = '", stop_reason,"'")
     }
@@ -4997,6 +5517,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -5010,6 +5532,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -5023,6 +5547,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_source_value)) {
       statement <- paste0(statement, " condition_source_value IS NULL")
+    } else if (is(condition_source_value, "subQuery")){
+      statement <- paste0(statement, " condition_source_value = (", as.character(condition_source_value), ")")
     } else {
       statement <- paste0(statement, " condition_source_value = '", condition_source_value,"'")
     }
@@ -5036,6 +5562,8 @@ expect_condition_occurrence <- function(condition_occurrence_id, person_id, cond
     }
     if (is.null(condition_source_concept_id)) {
       statement <- paste0(statement, " condition_source_concept_id IS NULL")
+    } else if (is(condition_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_source_concept_id = (", as.character(condition_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_source_concept_id = '", condition_source_concept_id,"'")
     }
@@ -5057,6 +5585,8 @@ expect_death <- function(person_id, death_date, death_type_concept_id, cause_con
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -5070,6 +5600,8 @@ expect_death <- function(person_id, death_date, death_type_concept_id, cause_con
     }
     if (is.null(death_date)) {
       statement <- paste0(statement, " death_date IS NULL")
+    } else if (is(death_date, "subQuery")){
+      statement <- paste0(statement, " death_date = (", as.character(death_date), ")")
     } else {
       statement <- paste0(statement, " death_date = '", death_date,"'")
     }
@@ -5083,6 +5615,8 @@ expect_death <- function(person_id, death_date, death_type_concept_id, cause_con
     }
     if (is.null(death_type_concept_id)) {
       statement <- paste0(statement, " death_type_concept_id IS NULL")
+    } else if (is(death_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " death_type_concept_id = (", as.character(death_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " death_type_concept_id = '", death_type_concept_id,"'")
     }
@@ -5096,6 +5630,8 @@ expect_death <- function(person_id, death_date, death_type_concept_id, cause_con
     }
     if (is.null(cause_concept_id)) {
       statement <- paste0(statement, " cause_concept_id IS NULL")
+    } else if (is(cause_concept_id, "subQuery")){
+      statement <- paste0(statement, " cause_concept_id = (", as.character(cause_concept_id), ")")
     } else {
       statement <- paste0(statement, " cause_concept_id = '", cause_concept_id,"'")
     }
@@ -5109,6 +5645,8 @@ expect_death <- function(person_id, death_date, death_type_concept_id, cause_con
     }
     if (is.null(cause_source_value)) {
       statement <- paste0(statement, " cause_source_value IS NULL")
+    } else if (is(cause_source_value, "subQuery")){
+      statement <- paste0(statement, " cause_source_value = (", as.character(cause_source_value), ")")
     } else {
       statement <- paste0(statement, " cause_source_value = '", cause_source_value,"'")
     }
@@ -5122,6 +5660,8 @@ expect_death <- function(person_id, death_date, death_type_concept_id, cause_con
     }
     if (is.null(cause_source_concept_id)) {
       statement <- paste0(statement, " cause_source_concept_id IS NULL")
+    } else if (is(cause_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " cause_source_concept_id = (", as.character(cause_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " cause_source_concept_id = '", cause_source_concept_id,"'")
     }
@@ -5143,6 +5683,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_exposure_id)) {
       statement <- paste0(statement, " drug_exposure_id IS NULL")
+    } else if (is(drug_exposure_id, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_id = (", as.character(drug_exposure_id), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_id = '", drug_exposure_id,"'")
     }
@@ -5156,6 +5698,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -5169,6 +5713,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_concept_id)) {
       statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
     }
@@ -5182,6 +5728,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_exposure_start_date)) {
       statement <- paste0(statement, " drug_exposure_start_date IS NULL")
+    } else if (is(drug_exposure_start_date, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_start_date = (", as.character(drug_exposure_start_date), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_start_date = '", drug_exposure_start_date,"'")
     }
@@ -5195,6 +5743,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_exposure_end_date)) {
       statement <- paste0(statement, " drug_exposure_end_date IS NULL")
+    } else if (is(drug_exposure_end_date, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_end_date = (", as.character(drug_exposure_end_date), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_end_date = '", drug_exposure_end_date,"'")
     }
@@ -5208,6 +5758,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_type_concept_id)) {
       statement <- paste0(statement, " drug_type_concept_id IS NULL")
+    } else if (is(drug_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_type_concept_id = (", as.character(drug_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_type_concept_id = '", drug_type_concept_id,"'")
     }
@@ -5221,6 +5773,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(stop_reason)) {
       statement <- paste0(statement, " stop_reason IS NULL")
+    } else if (is(stop_reason, "subQuery")){
+      statement <- paste0(statement, " stop_reason = (", as.character(stop_reason), ")")
     } else {
       statement <- paste0(statement, " stop_reason = '", stop_reason,"'")
     }
@@ -5234,6 +5788,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(refills)) {
       statement <- paste0(statement, " refills IS NULL")
+    } else if (is(refills, "subQuery")){
+      statement <- paste0(statement, " refills = (", as.character(refills), ")")
     } else {
       statement <- paste0(statement, " refills = '", refills,"'")
     }
@@ -5247,6 +5803,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -5260,6 +5818,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(days_supply)) {
       statement <- paste0(statement, " days_supply IS NULL")
+    } else if (is(days_supply, "subQuery")){
+      statement <- paste0(statement, " days_supply = (", as.character(days_supply), ")")
     } else {
       statement <- paste0(statement, " days_supply = '", days_supply,"'")
     }
@@ -5273,6 +5833,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(sig)) {
       statement <- paste0(statement, " sig IS NULL")
+    } else if (is(sig, "subQuery")){
+      statement <- paste0(statement, " sig = (", as.character(sig), ")")
     } else {
       statement <- paste0(statement, " sig = '", sig,"'")
     }
@@ -5286,6 +5848,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(route_concept_id)) {
       statement <- paste0(statement, " route_concept_id IS NULL")
+    } else if (is(route_concept_id, "subQuery")){
+      statement <- paste0(statement, " route_concept_id = (", as.character(route_concept_id), ")")
     } else {
       statement <- paste0(statement, " route_concept_id = '", route_concept_id,"'")
     }
@@ -5299,6 +5863,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(effective_drug_dose)) {
       statement <- paste0(statement, " effective_drug_dose IS NULL")
+    } else if (is(effective_drug_dose, "subQuery")){
+      statement <- paste0(statement, " effective_drug_dose = (", as.character(effective_drug_dose), ")")
     } else {
       statement <- paste0(statement, " effective_drug_dose = '", effective_drug_dose,"'")
     }
@@ -5312,6 +5878,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(dose_unit_concept_id)) {
       statement <- paste0(statement, " dose_unit_concept_id IS NULL")
+    } else if (is(dose_unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " dose_unit_concept_id = (", as.character(dose_unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " dose_unit_concept_id = '", dose_unit_concept_id,"'")
     }
@@ -5325,6 +5893,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(lot_number)) {
       statement <- paste0(statement, " lot_number IS NULL")
+    } else if (is(lot_number, "subQuery")){
+      statement <- paste0(statement, " lot_number = (", as.character(lot_number), ")")
     } else {
       statement <- paste0(statement, " lot_number = '", lot_number,"'")
     }
@@ -5338,6 +5908,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -5351,6 +5923,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -5364,6 +5938,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_source_value)) {
       statement <- paste0(statement, " drug_source_value IS NULL")
+    } else if (is(drug_source_value, "subQuery")){
+      statement <- paste0(statement, " drug_source_value = (", as.character(drug_source_value), ")")
     } else {
       statement <- paste0(statement, " drug_source_value = '", drug_source_value,"'")
     }
@@ -5377,6 +5953,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(drug_source_concept_id)) {
       statement <- paste0(statement, " drug_source_concept_id IS NULL")
+    } else if (is(drug_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_source_concept_id = (", as.character(drug_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_source_concept_id = '", drug_source_concept_id,"'")
     }
@@ -5390,6 +5968,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(route_source_value)) {
       statement <- paste0(statement, " route_source_value IS NULL")
+    } else if (is(route_source_value, "subQuery")){
+      statement <- paste0(statement, " route_source_value = (", as.character(route_source_value), ")")
     } else {
       statement <- paste0(statement, " route_source_value = '", route_source_value,"'")
     }
@@ -5403,6 +5983,8 @@ expect_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id, d
     }
     if (is.null(dose_unit_source_value)) {
       statement <- paste0(statement, " dose_unit_source_value IS NULL")
+    } else if (is(dose_unit_source_value, "subQuery")){
+      statement <- paste0(statement, " dose_unit_source_value = (", as.character(dose_unit_source_value), ")")
     } else {
       statement <- paste0(statement, " dose_unit_source_value = '", dose_unit_source_value,"'")
     }
@@ -5424,6 +6006,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_exposure_id)) {
       statement <- paste0(statement, " device_exposure_id IS NULL")
+    } else if (is(device_exposure_id, "subQuery")){
+      statement <- paste0(statement, " device_exposure_id = (", as.character(device_exposure_id), ")")
     } else {
       statement <- paste0(statement, " device_exposure_id = '", device_exposure_id,"'")
     }
@@ -5437,6 +6021,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -5450,6 +6036,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_concept_id)) {
       statement <- paste0(statement, " device_concept_id IS NULL")
+    } else if (is(device_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_concept_id = (", as.character(device_concept_id), ")")
     } else {
       statement <- paste0(statement, " device_concept_id = '", device_concept_id,"'")
     }
@@ -5463,6 +6051,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_exposure_start_date)) {
       statement <- paste0(statement, " device_exposure_start_date IS NULL")
+    } else if (is(device_exposure_start_date, "subQuery")){
+      statement <- paste0(statement, " device_exposure_start_date = (", as.character(device_exposure_start_date), ")")
     } else {
       statement <- paste0(statement, " device_exposure_start_date = '", device_exposure_start_date,"'")
     }
@@ -5476,6 +6066,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_exposure_end_date)) {
       statement <- paste0(statement, " device_exposure_end_date IS NULL")
+    } else if (is(device_exposure_end_date, "subQuery")){
+      statement <- paste0(statement, " device_exposure_end_date = (", as.character(device_exposure_end_date), ")")
     } else {
       statement <- paste0(statement, " device_exposure_end_date = '", device_exposure_end_date,"'")
     }
@@ -5489,6 +6081,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_type_concept_id)) {
       statement <- paste0(statement, " device_type_concept_id IS NULL")
+    } else if (is(device_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_type_concept_id = (", as.character(device_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " device_type_concept_id = '", device_type_concept_id,"'")
     }
@@ -5502,6 +6096,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(unique_device_id)) {
       statement <- paste0(statement, " unique_device_id IS NULL")
+    } else if (is(unique_device_id, "subQuery")){
+      statement <- paste0(statement, " unique_device_id = (", as.character(unique_device_id), ")")
     } else {
       statement <- paste0(statement, " unique_device_id = '", unique_device_id,"'")
     }
@@ -5515,6 +6111,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -5528,6 +6126,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -5541,6 +6141,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -5554,6 +6156,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_source_value)) {
       statement <- paste0(statement, " device_source_value IS NULL")
+    } else if (is(device_source_value, "subQuery")){
+      statement <- paste0(statement, " device_source_value = (", as.character(device_source_value), ")")
     } else {
       statement <- paste0(statement, " device_source_value = '", device_source_value,"'")
     }
@@ -5567,6 +6171,8 @@ expect_device_exposure <- function(device_exposure_id, person_id, device_concept
     }
     if (is.null(device_source_concept_id)) {
       statement <- paste0(statement, " device_source_concept_id IS NULL")
+    } else if (is(device_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_source_concept_id = (", as.character(device_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " device_source_concept_id = '", device_source_concept_id,"'")
     }
@@ -5588,6 +6194,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(procedure_occurrence_id)) {
       statement <- paste0(statement, " procedure_occurrence_id IS NULL")
+    } else if (is(procedure_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " procedure_occurrence_id = (", as.character(procedure_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " procedure_occurrence_id = '", procedure_occurrence_id,"'")
     }
@@ -5601,6 +6209,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -5614,6 +6224,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(procedure_concept_id)) {
       statement <- paste0(statement, " procedure_concept_id IS NULL")
+    } else if (is(procedure_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_concept_id = (", as.character(procedure_concept_id), ")")
     } else {
       statement <- paste0(statement, " procedure_concept_id = '", procedure_concept_id,"'")
     }
@@ -5627,6 +6239,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(procedure_date)) {
       statement <- paste0(statement, " procedure_date IS NULL")
+    } else if (is(procedure_date, "subQuery")){
+      statement <- paste0(statement, " procedure_date = (", as.character(procedure_date), ")")
     } else {
       statement <- paste0(statement, " procedure_date = '", procedure_date,"'")
     }
@@ -5640,6 +6254,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(procedure_type_concept_id)) {
       statement <- paste0(statement, " procedure_type_concept_id IS NULL")
+    } else if (is(procedure_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_type_concept_id = (", as.character(procedure_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " procedure_type_concept_id = '", procedure_type_concept_id,"'")
     }
@@ -5653,6 +6269,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(modifier_concept_id)) {
       statement <- paste0(statement, " modifier_concept_id IS NULL")
+    } else if (is(modifier_concept_id, "subQuery")){
+      statement <- paste0(statement, " modifier_concept_id = (", as.character(modifier_concept_id), ")")
     } else {
       statement <- paste0(statement, " modifier_concept_id = '", modifier_concept_id,"'")
     }
@@ -5666,6 +6284,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -5679,6 +6299,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -5692,6 +6314,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -5705,6 +6329,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(procedure_source_value)) {
       statement <- paste0(statement, " procedure_source_value IS NULL")
+    } else if (is(procedure_source_value, "subQuery")){
+      statement <- paste0(statement, " procedure_source_value = (", as.character(procedure_source_value), ")")
     } else {
       statement <- paste0(statement, " procedure_source_value = '", procedure_source_value,"'")
     }
@@ -5718,6 +6344,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(procedure_source_concept_id)) {
       statement <- paste0(statement, " procedure_source_concept_id IS NULL")
+    } else if (is(procedure_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_source_concept_id = (", as.character(procedure_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " procedure_source_concept_id = '", procedure_source_concept_id,"'")
     }
@@ -5731,6 +6359,8 @@ expect_procedure_occurrence <- function(procedure_occurrence_id, person_id, proc
     }
     if (is.null(qualifier_source_value)) {
       statement <- paste0(statement, " qualifier_source_value IS NULL")
+    } else if (is(qualifier_source_value, "subQuery")){
+      statement <- paste0(statement, " qualifier_source_value = (", as.character(qualifier_source_value), ")")
     } else {
       statement <- paste0(statement, " qualifier_source_value = '", qualifier_source_value,"'")
     }
@@ -5752,6 +6382,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_id)) {
       statement <- paste0(statement, " measurement_id IS NULL")
+    } else if (is(measurement_id, "subQuery")){
+      statement <- paste0(statement, " measurement_id = (", as.character(measurement_id), ")")
     } else {
       statement <- paste0(statement, " measurement_id = '", measurement_id,"'")
     }
@@ -5765,6 +6397,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -5778,6 +6412,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_concept_id)) {
       statement <- paste0(statement, " measurement_concept_id IS NULL")
+    } else if (is(measurement_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_concept_id = (", as.character(measurement_concept_id), ")")
     } else {
       statement <- paste0(statement, " measurement_concept_id = '", measurement_concept_id,"'")
     }
@@ -5791,6 +6427,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_date)) {
       statement <- paste0(statement, " measurement_date IS NULL")
+    } else if (is(measurement_date, "subQuery")){
+      statement <- paste0(statement, " measurement_date = (", as.character(measurement_date), ")")
     } else {
       statement <- paste0(statement, " measurement_date = '", measurement_date,"'")
     }
@@ -5804,6 +6442,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_time)) {
       statement <- paste0(statement, " measurement_time IS NULL")
+    } else if (is(measurement_time, "subQuery")){
+      statement <- paste0(statement, " measurement_time = (", as.character(measurement_time), ")")
     } else {
       statement <- paste0(statement, " measurement_time = '", measurement_time,"'")
     }
@@ -5817,6 +6457,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_type_concept_id)) {
       statement <- paste0(statement, " measurement_type_concept_id IS NULL")
+    } else if (is(measurement_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_type_concept_id = (", as.character(measurement_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " measurement_type_concept_id = '", measurement_type_concept_id,"'")
     }
@@ -5830,6 +6472,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(operator_concept_id)) {
       statement <- paste0(statement, " operator_concept_id IS NULL")
+    } else if (is(operator_concept_id, "subQuery")){
+      statement <- paste0(statement, " operator_concept_id = (", as.character(operator_concept_id), ")")
     } else {
       statement <- paste0(statement, " operator_concept_id = '", operator_concept_id,"'")
     }
@@ -5843,6 +6487,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(value_as_number)) {
       statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
     } else {
       statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
     }
@@ -5856,6 +6502,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(value_as_concept_id)) {
       statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
     } else {
       statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
     }
@@ -5869,6 +6517,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -5882,6 +6532,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(range_low)) {
       statement <- paste0(statement, " range_low IS NULL")
+    } else if (is(range_low, "subQuery")){
+      statement <- paste0(statement, " range_low = (", as.character(range_low), ")")
     } else {
       statement <- paste0(statement, " range_low = '", range_low,"'")
     }
@@ -5895,6 +6547,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(range_high)) {
       statement <- paste0(statement, " range_high IS NULL")
+    } else if (is(range_high, "subQuery")){
+      statement <- paste0(statement, " range_high = (", as.character(range_high), ")")
     } else {
       statement <- paste0(statement, " range_high = '", range_high,"'")
     }
@@ -5908,6 +6562,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -5921,6 +6577,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -5934,6 +6592,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_source_value)) {
       statement <- paste0(statement, " measurement_source_value IS NULL")
+    } else if (is(measurement_source_value, "subQuery")){
+      statement <- paste0(statement, " measurement_source_value = (", as.character(measurement_source_value), ")")
     } else {
       statement <- paste0(statement, " measurement_source_value = '", measurement_source_value,"'")
     }
@@ -5947,6 +6607,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(measurement_source_concept_id)) {
       statement <- paste0(statement, " measurement_source_concept_id IS NULL")
+    } else if (is(measurement_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_source_concept_id = (", as.character(measurement_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " measurement_source_concept_id = '", measurement_source_concept_id,"'")
     }
@@ -5960,6 +6622,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(unit_source_value)) {
       statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
     } else {
       statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
     }
@@ -5973,6 +6637,8 @@ expect_measurement <- function(measurement_id, person_id, measurement_concept_id
     }
     if (is.null(value_source_value)) {
       statement <- paste0(statement, " value_source_value IS NULL")
+    } else if (is(value_source_value, "subQuery")){
+      statement <- paste0(statement, " value_source_value = (", as.character(value_source_value), ")")
     } else {
       statement <- paste0(statement, " value_source_value = '", value_source_value,"'")
     }
@@ -5994,6 +6660,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_id)) {
       statement <- paste0(statement, " observation_id IS NULL")
+    } else if (is(observation_id, "subQuery")){
+      statement <- paste0(statement, " observation_id = (", as.character(observation_id), ")")
     } else {
       statement <- paste0(statement, " observation_id = '", observation_id,"'")
     }
@@ -6007,6 +6675,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -6020,6 +6690,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_concept_id)) {
       statement <- paste0(statement, " observation_concept_id IS NULL")
+    } else if (is(observation_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_concept_id = (", as.character(observation_concept_id), ")")
     } else {
       statement <- paste0(statement, " observation_concept_id = '", observation_concept_id,"'")
     }
@@ -6033,6 +6705,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_date)) {
       statement <- paste0(statement, " observation_date IS NULL")
+    } else if (is(observation_date, "subQuery")){
+      statement <- paste0(statement, " observation_date = (", as.character(observation_date), ")")
     } else {
       statement <- paste0(statement, " observation_date = '", observation_date,"'")
     }
@@ -6046,6 +6720,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_time)) {
       statement <- paste0(statement, " observation_time IS NULL")
+    } else if (is(observation_time, "subQuery")){
+      statement <- paste0(statement, " observation_time = (", as.character(observation_time), ")")
     } else {
       statement <- paste0(statement, " observation_time = '", observation_time,"'")
     }
@@ -6059,6 +6735,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_type_concept_id)) {
       statement <- paste0(statement, " observation_type_concept_id IS NULL")
+    } else if (is(observation_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_type_concept_id = (", as.character(observation_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " observation_type_concept_id = '", observation_type_concept_id,"'")
     }
@@ -6072,6 +6750,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(value_as_number)) {
       statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
     } else {
       statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
     }
@@ -6085,6 +6765,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(value_as_string)) {
       statement <- paste0(statement, " value_as_string IS NULL")
+    } else if (is(value_as_string, "subQuery")){
+      statement <- paste0(statement, " value_as_string = (", as.character(value_as_string), ")")
     } else {
       statement <- paste0(statement, " value_as_string = '", value_as_string,"'")
     }
@@ -6098,6 +6780,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(value_as_concept_id)) {
       statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
     } else {
       statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
     }
@@ -6111,6 +6795,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(qualifier_concept_id)) {
       statement <- paste0(statement, " qualifier_concept_id IS NULL")
+    } else if (is(qualifier_concept_id, "subQuery")){
+      statement <- paste0(statement, " qualifier_concept_id = (", as.character(qualifier_concept_id), ")")
     } else {
       statement <- paste0(statement, " qualifier_concept_id = '", qualifier_concept_id,"'")
     }
@@ -6124,6 +6810,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -6137,6 +6825,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -6150,6 +6840,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -6163,6 +6855,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_source_value)) {
       statement <- paste0(statement, " observation_source_value IS NULL")
+    } else if (is(observation_source_value, "subQuery")){
+      statement <- paste0(statement, " observation_source_value = (", as.character(observation_source_value), ")")
     } else {
       statement <- paste0(statement, " observation_source_value = '", observation_source_value,"'")
     }
@@ -6176,6 +6870,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(observation_source_concept_id)) {
       statement <- paste0(statement, " observation_source_concept_id IS NULL")
+    } else if (is(observation_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_source_concept_id = (", as.character(observation_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " observation_source_concept_id = '", observation_source_concept_id,"'")
     }
@@ -6189,6 +6885,8 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(unit_source_value)) {
       statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
     } else {
       statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
     }
@@ -6202,185 +6900,10 @@ expect_observation <- function(observation_id, person_id, observation_concept_id
     }
     if (is.null(qualifier_source_value)) {
       statement <- paste0(statement, " qualifier_source_value IS NULL")
+    } else if (is(qualifier_source_value, "subQuery")){
+      statement <- paste0(statement, " qualifier_source_value = (", as.character(qualifier_source_value), ")")
     } else {
       statement <- paste0(statement, " qualifier_source_value = '", qualifier_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_provider <- function(provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect provider' AS test, CASE WHEN(SELECT COUNT(*) FROM provider WHERE")
-  first <- TRUE
-  if (!missing(provider_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_id)) {
-      statement <- paste0(statement, " provider_id IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_id = '", provider_id,"'")
-    }
-  }
-
-  if (!missing(provider_name)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_name)) {
-      statement <- paste0(statement, " provider_name IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_name = '", provider_name,"'")
-    }
-  }
-
-  if (!missing(npi)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(npi)) {
-      statement <- paste0(statement, " npi IS NULL")
-    } else {
-      statement <- paste0(statement, " npi = '", npi,"'")
-    }
-  }
-
-  if (!missing(dea)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(dea)) {
-      statement <- paste0(statement, " dea IS NULL")
-    } else {
-      statement <- paste0(statement, " dea = '", dea,"'")
-    }
-  }
-
-  if (!missing(specialty_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_concept_id)) {
-      statement <- paste0(statement, " specialty_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
-    }
-  }
-
-  if (!missing(care_site_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(care_site_id)) {
-      statement <- paste0(statement, " care_site_id IS NULL")
-    } else {
-      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
-    }
-  }
-
-  if (!missing(year_of_birth)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(year_of_birth)) {
-      statement <- paste0(statement, " year_of_birth IS NULL")
-    } else {
-      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
-    }
-  }
-
-  if (!missing(gender_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_concept_id)) {
-      statement <- paste0(statement, " gender_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
-    }
-  }
-
-  if (!missing(provider_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_source_value)) {
-      statement <- paste0(statement, " provider_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
-    }
-  }
-
-  if (!missing(specialty_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_source_value)) {
-      statement <- paste0(statement, " specialty_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
-    }
-  }
-
-  if (!missing(specialty_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_source_concept_id)) {
-      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
-    }
-  }
-
-  if (!missing(gender_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_value)) {
-      statement <- paste0(statement, " gender_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
-    }
-  }
-
-  if (!missing(gender_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_concept_id)) {
-      statement <- paste0(statement, " gender_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
     }
   }
 
@@ -6400,6 +6923,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(note_id)) {
       statement <- paste0(statement, " note_id IS NULL")
+    } else if (is(note_id, "subQuery")){
+      statement <- paste0(statement, " note_id = (", as.character(note_id), ")")
     } else {
       statement <- paste0(statement, " note_id = '", note_id,"'")
     }
@@ -6413,6 +6938,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -6426,6 +6953,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(note_date)) {
       statement <- paste0(statement, " note_date IS NULL")
+    } else if (is(note_date, "subQuery")){
+      statement <- paste0(statement, " note_date = (", as.character(note_date), ")")
     } else {
       statement <- paste0(statement, " note_date = '", note_date,"'")
     }
@@ -6439,6 +6968,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(note_time)) {
       statement <- paste0(statement, " note_time IS NULL")
+    } else if (is(note_time, "subQuery")){
+      statement <- paste0(statement, " note_time = (", as.character(note_time), ")")
     } else {
       statement <- paste0(statement, " note_time = '", note_time,"'")
     }
@@ -6452,6 +6983,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(note_type_concept_id)) {
       statement <- paste0(statement, " note_type_concept_id IS NULL")
+    } else if (is(note_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " note_type_concept_id = (", as.character(note_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " note_type_concept_id = '", note_type_concept_id,"'")
     }
@@ -6465,6 +6998,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(note_text)) {
       statement <- paste0(statement, " note_text IS NULL")
+    } else if (is(note_text, "subQuery")){
+      statement <- paste0(statement, " note_text = (", as.character(note_text), ")")
     } else {
       statement <- paste0(statement, " note_text = '", note_text,"'")
     }
@@ -6478,6 +7013,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -6491,6 +7028,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -6504,6 +7043,8 @@ expect_note <- function(note_id, person_id, note_date, note_time, note_type_conc
     }
     if (is.null(note_source_value)) {
       statement <- paste0(statement, " note_source_value IS NULL")
+    } else if (is(note_source_value, "subQuery")){
+      statement <- paste0(statement, " note_source_value = (", as.character(note_source_value), ")")
     } else {
       statement <- paste0(statement, " note_source_value = '", note_source_value,"'")
     }
@@ -6525,6 +7066,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_id)) {
       statement <- paste0(statement, " specimen_id IS NULL")
+    } else if (is(specimen_id, "subQuery")){
+      statement <- paste0(statement, " specimen_id = (", as.character(specimen_id), ")")
     } else {
       statement <- paste0(statement, " specimen_id = '", specimen_id,"'")
     }
@@ -6538,6 +7081,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -6551,6 +7096,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_concept_id)) {
       statement <- paste0(statement, " specimen_concept_id IS NULL")
+    } else if (is(specimen_concept_id, "subQuery")){
+      statement <- paste0(statement, " specimen_concept_id = (", as.character(specimen_concept_id), ")")
     } else {
       statement <- paste0(statement, " specimen_concept_id = '", specimen_concept_id,"'")
     }
@@ -6564,6 +7111,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_type_concept_id)) {
       statement <- paste0(statement, " specimen_type_concept_id IS NULL")
+    } else if (is(specimen_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " specimen_type_concept_id = (", as.character(specimen_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " specimen_type_concept_id = '", specimen_type_concept_id,"'")
     }
@@ -6577,6 +7126,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_date)) {
       statement <- paste0(statement, " specimen_date IS NULL")
+    } else if (is(specimen_date, "subQuery")){
+      statement <- paste0(statement, " specimen_date = (", as.character(specimen_date), ")")
     } else {
       statement <- paste0(statement, " specimen_date = '", specimen_date,"'")
     }
@@ -6590,6 +7141,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_time)) {
       statement <- paste0(statement, " specimen_time IS NULL")
+    } else if (is(specimen_time, "subQuery")){
+      statement <- paste0(statement, " specimen_time = (", as.character(specimen_time), ")")
     } else {
       statement <- paste0(statement, " specimen_time = '", specimen_time,"'")
     }
@@ -6603,6 +7156,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -6616,6 +7171,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -6629,6 +7186,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(anatomic_site_concept_id)) {
       statement <- paste0(statement, " anatomic_site_concept_id IS NULL")
+    } else if (is(anatomic_site_concept_id, "subQuery")){
+      statement <- paste0(statement, " anatomic_site_concept_id = (", as.character(anatomic_site_concept_id), ")")
     } else {
       statement <- paste0(statement, " anatomic_site_concept_id = '", anatomic_site_concept_id,"'")
     }
@@ -6642,6 +7201,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(disease_status_concept_id)) {
       statement <- paste0(statement, " disease_status_concept_id IS NULL")
+    } else if (is(disease_status_concept_id, "subQuery")){
+      statement <- paste0(statement, " disease_status_concept_id = (", as.character(disease_status_concept_id), ")")
     } else {
       statement <- paste0(statement, " disease_status_concept_id = '", disease_status_concept_id,"'")
     }
@@ -6655,6 +7216,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_source_id)) {
       statement <- paste0(statement, " specimen_source_id IS NULL")
+    } else if (is(specimen_source_id, "subQuery")){
+      statement <- paste0(statement, " specimen_source_id = (", as.character(specimen_source_id), ")")
     } else {
       statement <- paste0(statement, " specimen_source_id = '", specimen_source_id,"'")
     }
@@ -6668,6 +7231,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(specimen_source_value)) {
       statement <- paste0(statement, " specimen_source_value IS NULL")
+    } else if (is(specimen_source_value, "subQuery")){
+      statement <- paste0(statement, " specimen_source_value = (", as.character(specimen_source_value), ")")
     } else {
       statement <- paste0(statement, " specimen_source_value = '", specimen_source_value,"'")
     }
@@ -6681,6 +7246,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(unit_source_value)) {
       statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
     } else {
       statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
     }
@@ -6694,6 +7261,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(anatomic_site_source_value)) {
       statement <- paste0(statement, " anatomic_site_source_value IS NULL")
+    } else if (is(anatomic_site_source_value, "subQuery")){
+      statement <- paste0(statement, " anatomic_site_source_value = (", as.character(anatomic_site_source_value), ")")
     } else {
       statement <- paste0(statement, " anatomic_site_source_value = '", anatomic_site_source_value,"'")
     }
@@ -6707,6 +7276,8 @@ expect_specimen <- function(specimen_id, person_id, specimen_concept_id, specime
     }
     if (is.null(disease_status_source_value)) {
       statement <- paste0(statement, " disease_status_source_value IS NULL")
+    } else if (is(disease_status_source_value, "subQuery")){
+      statement <- paste0(statement, " disease_status_source_value = (", as.character(disease_status_source_value), ")")
     } else {
       statement <- paste0(statement, " disease_status_source_value = '", disease_status_source_value,"'")
     }
@@ -6728,6 +7299,8 @@ expect_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_conc
     }
     if (is.null(domain_concept_id_1)) {
       statement <- paste0(statement, " domain_concept_id_1 IS NULL")
+    } else if (is(domain_concept_id_1, "subQuery")){
+      statement <- paste0(statement, " domain_concept_id_1 = (", as.character(domain_concept_id_1), ")")
     } else {
       statement <- paste0(statement, " domain_concept_id_1 = '", domain_concept_id_1,"'")
     }
@@ -6741,6 +7314,8 @@ expect_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_conc
     }
     if (is.null(fact_id_1)) {
       statement <- paste0(statement, " fact_id_1 IS NULL")
+    } else if (is(fact_id_1, "subQuery")){
+      statement <- paste0(statement, " fact_id_1 = (", as.character(fact_id_1), ")")
     } else {
       statement <- paste0(statement, " fact_id_1 = '", fact_id_1,"'")
     }
@@ -6754,6 +7329,8 @@ expect_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_conc
     }
     if (is.null(domain_concept_id_2)) {
       statement <- paste0(statement, " domain_concept_id_2 IS NULL")
+    } else if (is(domain_concept_id_2, "subQuery")){
+      statement <- paste0(statement, " domain_concept_id_2 = (", as.character(domain_concept_id_2), ")")
     } else {
       statement <- paste0(statement, " domain_concept_id_2 = '", domain_concept_id_2,"'")
     }
@@ -6767,6 +7344,8 @@ expect_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_conc
     }
     if (is.null(fact_id_2)) {
       statement <- paste0(statement, " fact_id_2 IS NULL")
+    } else if (is(fact_id_2, "subQuery")){
+      statement <- paste0(statement, " fact_id_2 = (", as.character(fact_id_2), ")")
     } else {
       statement <- paste0(statement, " fact_id_2 = '", fact_id_2,"'")
     }
@@ -6780,526 +7359,10 @@ expect_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_conc
     }
     if (is.null(relationship_concept_id)) {
       statement <- paste0(statement, " relationship_concept_id IS NULL")
+    } else if (is(relationship_concept_id, "subQuery")){
+      statement <- paste0(statement, " relationship_concept_id = (", as.character(relationship_concept_id), ")")
     } else {
       statement <- paste0(statement, " relationship_concept_id = '", relationship_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_procedure_cost <- function(procedure_cost_id, procedure_occurrence_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, revenue_code_concept_id, payer_plan_period_id, revenue_code_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect procedure_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_cost WHERE")
-  first <- TRUE
-  if (!missing(procedure_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(procedure_cost_id)) {
-      statement <- paste0(statement, " procedure_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " procedure_cost_id = '", procedure_cost_id,"'")
-    }
-  }
-
-  if (!missing(procedure_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(procedure_occurrence_id)) {
-      statement <- paste0(statement, " procedure_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " procedure_occurrence_id = '", procedure_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(revenue_code_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(revenue_code_concept_id)) {
-      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  if (!missing(revenue_code_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(revenue_code_source_value)) {
-      statement <- paste0(statement, " revenue_code_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_visit_cost <- function(visit_cost_id, visit_occurrence_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_cost WHERE")
-  first <- TRUE
-  if (!missing(visit_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_cost_id)) {
-      statement <- paste0(statement, " visit_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_cost_id = '", visit_cost_id,"'")
-    }
-  }
-
-  if (!missing(visit_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_occurrence_id)) {
-      statement <- paste0(statement, " visit_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_drug_cost <- function(drug_cost_id, drug_exposure_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, ingredient_cost, dispensing_fee, average_wholesale_price, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_cost WHERE")
-  first <- TRUE
-  if (!missing(drug_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(drug_cost_id)) {
-      statement <- paste0(statement, " drug_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " drug_cost_id = '", drug_cost_id,"'")
-    }
-  }
-
-  if (!missing(drug_exposure_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(drug_exposure_id)) {
-      statement <- paste0(statement, " drug_exposure_id IS NULL")
-    } else {
-      statement <- paste0(statement, " drug_exposure_id = '", drug_exposure_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(ingredient_cost)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ingredient_cost)) {
-      statement <- paste0(statement, " ingredient_cost IS NULL")
-    } else {
-      statement <- paste0(statement, " ingredient_cost = '", ingredient_cost,"'")
-    }
-  }
-
-  if (!missing(dispensing_fee)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(dispensing_fee)) {
-      statement <- paste0(statement, " dispensing_fee IS NULL")
-    } else {
-      statement <- paste0(statement, " dispensing_fee = '", dispensing_fee,"'")
-    }
-  }
-
-  if (!missing(average_wholesale_price)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(average_wholesale_price)) {
-      statement <- paste0(statement, " average_wholesale_price IS NULL")
-    } else {
-      statement <- paste0(statement, " average_wholesale_price = '", average_wholesale_price,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
     }
   }
 
@@ -7319,6 +7382,8 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(payer_plan_period_id)) {
       statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else if (is(payer_plan_period_id, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_id = (", as.character(payer_plan_period_id), ")")
     } else {
       statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
     }
@@ -7332,6 +7397,8 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -7345,6 +7412,8 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(payer_plan_period_start_date)) {
       statement <- paste0(statement, " payer_plan_period_start_date IS NULL")
+    } else if (is(payer_plan_period_start_date, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_start_date = (", as.character(payer_plan_period_start_date), ")")
     } else {
       statement <- paste0(statement, " payer_plan_period_start_date = '", payer_plan_period_start_date,"'")
     }
@@ -7358,6 +7427,8 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(payer_plan_period_end_date)) {
       statement <- paste0(statement, " payer_plan_period_end_date IS NULL")
+    } else if (is(payer_plan_period_end_date, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_end_date = (", as.character(payer_plan_period_end_date), ")")
     } else {
       statement <- paste0(statement, " payer_plan_period_end_date = '", payer_plan_period_end_date,"'")
     }
@@ -7371,6 +7442,8 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(payer_source_value)) {
       statement <- paste0(statement, " payer_source_value IS NULL")
+    } else if (is(payer_source_value, "subQuery")){
+      statement <- paste0(statement, " payer_source_value = (", as.character(payer_source_value), ")")
     } else {
       statement <- paste0(statement, " payer_source_value = '", payer_source_value,"'")
     }
@@ -7384,6 +7457,8 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(plan_source_value)) {
       statement <- paste0(statement, " plan_source_value IS NULL")
+    } else if (is(plan_source_value, "subQuery")){
+      statement <- paste0(statement, " plan_source_value = (", as.character(plan_source_value), ")")
     } else {
       statement <- paste0(statement, " plan_source_value = '", plan_source_value,"'")
     }
@@ -7397,159 +7472,10 @@ expect_payer_plan_period <- function(payer_plan_period_id, person_id, payer_plan
     }
     if (is.null(family_source_value)) {
       statement <- paste0(statement, " family_source_value IS NULL")
+    } else if (is(family_source_value, "subQuery")){
+      statement <- paste0(statement, " family_source_value = (", as.character(family_source_value), ")")
     } else {
       statement <- paste0(statement, " family_source_value = '", family_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_device_cost <- function(device_cost_id, device_exposure_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect device_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM device_cost WHERE")
-  first <- TRUE
-  if (!missing(device_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(device_cost_id)) {
-      statement <- paste0(statement, " device_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " device_cost_id = '", device_cost_id,"'")
-    }
-  }
-
-  if (!missing(device_exposure_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(device_exposure_id)) {
-      statement <- paste0(statement, " device_exposure_id IS NULL")
-    } else {
-      statement <- paste0(statement, " device_exposure_id = '", device_exposure_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
     }
   }
 
@@ -7569,6 +7495,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(drug_era_id)) {
       statement <- paste0(statement, " drug_era_id IS NULL")
+    } else if (is(drug_era_id, "subQuery")){
+      statement <- paste0(statement, " drug_era_id = (", as.character(drug_era_id), ")")
     } else {
       statement <- paste0(statement, " drug_era_id = '", drug_era_id,"'")
     }
@@ -7582,6 +7510,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -7595,6 +7525,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(drug_concept_id)) {
       statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
     }
@@ -7608,6 +7540,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(drug_era_start_date)) {
       statement <- paste0(statement, " drug_era_start_date IS NULL")
+    } else if (is(drug_era_start_date, "subQuery")){
+      statement <- paste0(statement, " drug_era_start_date = (", as.character(drug_era_start_date), ")")
     } else {
       statement <- paste0(statement, " drug_era_start_date = '", drug_era_start_date,"'")
     }
@@ -7621,6 +7555,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(drug_era_end_date)) {
       statement <- paste0(statement, " drug_era_end_date IS NULL")
+    } else if (is(drug_era_end_date, "subQuery")){
+      statement <- paste0(statement, " drug_era_end_date = (", as.character(drug_era_end_date), ")")
     } else {
       statement <- paste0(statement, " drug_era_end_date = '", drug_era_end_date,"'")
     }
@@ -7634,6 +7570,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(drug_exposure_count)) {
       statement <- paste0(statement, " drug_exposure_count IS NULL")
+    } else if (is(drug_exposure_count, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_count = (", as.character(drug_exposure_count), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_count = '", drug_exposure_count,"'")
     }
@@ -7647,6 +7585,8 @@ expect_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era_st
     }
     if (is.null(gap_days)) {
       statement <- paste0(statement, " gap_days IS NULL")
+    } else if (is(gap_days, "subQuery")){
+      statement <- paste0(statement, " gap_days = (", as.character(gap_days), ")")
     } else {
       statement <- paste0(statement, " gap_days = '", gap_days,"'")
     }
@@ -7668,6 +7608,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(dose_era_id)) {
       statement <- paste0(statement, " dose_era_id IS NULL")
+    } else if (is(dose_era_id, "subQuery")){
+      statement <- paste0(statement, " dose_era_id = (", as.character(dose_era_id), ")")
     } else {
       statement <- paste0(statement, " dose_era_id = '", dose_era_id,"'")
     }
@@ -7681,6 +7623,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -7694,6 +7638,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(drug_concept_id)) {
       statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
     }
@@ -7707,6 +7653,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -7720,6 +7668,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(dose_value)) {
       statement <- paste0(statement, " dose_value IS NULL")
+    } else if (is(dose_value, "subQuery")){
+      statement <- paste0(statement, " dose_value = (", as.character(dose_value), ")")
     } else {
       statement <- paste0(statement, " dose_value = '", dose_value,"'")
     }
@@ -7733,6 +7683,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(dose_era_start_date)) {
       statement <- paste0(statement, " dose_era_start_date IS NULL")
+    } else if (is(dose_era_start_date, "subQuery")){
+      statement <- paste0(statement, " dose_era_start_date = (", as.character(dose_era_start_date), ")")
     } else {
       statement <- paste0(statement, " dose_era_start_date = '", dose_era_start_date,"'")
     }
@@ -7746,6 +7698,8 @@ expect_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_concep
     }
     if (is.null(dose_era_end_date)) {
       statement <- paste0(statement, " dose_era_end_date IS NULL")
+    } else if (is(dose_era_end_date, "subQuery")){
+      statement <- paste0(statement, " dose_era_end_date = (", as.character(dose_era_end_date), ")")
     } else {
       statement <- paste0(statement, " dose_era_end_date = '", dose_era_end_date,"'")
     }
@@ -7767,6 +7721,8 @@ expect_condition_era <- function(condition_era_id, person_id, condition_concept_
     }
     if (is.null(condition_era_id)) {
       statement <- paste0(statement, " condition_era_id IS NULL")
+    } else if (is(condition_era_id, "subQuery")){
+      statement <- paste0(statement, " condition_era_id = (", as.character(condition_era_id), ")")
     } else {
       statement <- paste0(statement, " condition_era_id = '", condition_era_id,"'")
     }
@@ -7780,6 +7736,8 @@ expect_condition_era <- function(condition_era_id, person_id, condition_concept_
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -7793,6 +7751,8 @@ expect_condition_era <- function(condition_era_id, person_id, condition_concept_
     }
     if (is.null(condition_concept_id)) {
       statement <- paste0(statement, " condition_concept_id IS NULL")
+    } else if (is(condition_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_concept_id = (", as.character(condition_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_concept_id = '", condition_concept_id,"'")
     }
@@ -7806,6 +7766,8 @@ expect_condition_era <- function(condition_era_id, person_id, condition_concept_
     }
     if (is.null(condition_era_start_date)) {
       statement <- paste0(statement, " condition_era_start_date IS NULL")
+    } else if (is(condition_era_start_date, "subQuery")){
+      statement <- paste0(statement, " condition_era_start_date = (", as.character(condition_era_start_date), ")")
     } else {
       statement <- paste0(statement, " condition_era_start_date = '", condition_era_start_date,"'")
     }
@@ -7819,6 +7781,8 @@ expect_condition_era <- function(condition_era_id, person_id, condition_concept_
     }
     if (is.null(condition_era_end_date)) {
       statement <- paste0(statement, " condition_era_end_date IS NULL")
+    } else if (is(condition_era_end_date, "subQuery")){
+      statement <- paste0(statement, " condition_era_end_date = (", as.character(condition_era_end_date), ")")
     } else {
       statement <- paste0(statement, " condition_era_end_date = '", condition_era_end_date,"'")
     }
@@ -7832,6 +7796,8 @@ expect_condition_era <- function(condition_era_id, person_id, condition_concept_
     }
     if (is.null(condition_occurrence_count)) {
       statement <- paste0(statement, " condition_occurrence_count IS NULL")
+    } else if (is(condition_occurrence_count, "subQuery")){
+      statement <- paste0(statement, " condition_occurrence_count = (", as.character(condition_occurrence_count), ")")
     } else {
       statement <- paste0(statement, " condition_occurrence_count = '", condition_occurrence_count,"'")
     }
@@ -7853,6 +7819,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(cdm_source_name)) {
       statement <- paste0(statement, " cdm_source_name IS NULL")
+    } else if (is(cdm_source_name, "subQuery")){
+      statement <- paste0(statement, " cdm_source_name = (", as.character(cdm_source_name), ")")
     } else {
       statement <- paste0(statement, " cdm_source_name = '", cdm_source_name,"'")
     }
@@ -7866,6 +7834,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(cdm_source_abbreviation)) {
       statement <- paste0(statement, " cdm_source_abbreviation IS NULL")
+    } else if (is(cdm_source_abbreviation, "subQuery")){
+      statement <- paste0(statement, " cdm_source_abbreviation = (", as.character(cdm_source_abbreviation), ")")
     } else {
       statement <- paste0(statement, " cdm_source_abbreviation = '", cdm_source_abbreviation,"'")
     }
@@ -7879,6 +7849,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(cdm_holder)) {
       statement <- paste0(statement, " cdm_holder IS NULL")
+    } else if (is(cdm_holder, "subQuery")){
+      statement <- paste0(statement, " cdm_holder = (", as.character(cdm_holder), ")")
     } else {
       statement <- paste0(statement, " cdm_holder = '", cdm_holder,"'")
     }
@@ -7892,6 +7864,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(source_description)) {
       statement <- paste0(statement, " source_description IS NULL")
+    } else if (is(source_description, "subQuery")){
+      statement <- paste0(statement, " source_description = (", as.character(source_description), ")")
     } else {
       statement <- paste0(statement, " source_description = '", source_description,"'")
     }
@@ -7905,6 +7879,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(source_documentation_reference)) {
       statement <- paste0(statement, " source_documentation_reference IS NULL")
+    } else if (is(source_documentation_reference, "subQuery")){
+      statement <- paste0(statement, " source_documentation_reference = (", as.character(source_documentation_reference), ")")
     } else {
       statement <- paste0(statement, " source_documentation_reference = '", source_documentation_reference,"'")
     }
@@ -7918,6 +7894,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(cdm_etl_reference)) {
       statement <- paste0(statement, " cdm_etl_reference IS NULL")
+    } else if (is(cdm_etl_reference, "subQuery")){
+      statement <- paste0(statement, " cdm_etl_reference = (", as.character(cdm_etl_reference), ")")
     } else {
       statement <- paste0(statement, " cdm_etl_reference = '", cdm_etl_reference,"'")
     }
@@ -7931,6 +7909,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(source_release_date)) {
       statement <- paste0(statement, " source_release_date IS NULL")
+    } else if (is(source_release_date, "subQuery")){
+      statement <- paste0(statement, " source_release_date = (", as.character(source_release_date), ")")
     } else {
       statement <- paste0(statement, " source_release_date = '", source_release_date,"'")
     }
@@ -7944,6 +7924,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(cdm_release_date)) {
       statement <- paste0(statement, " cdm_release_date IS NULL")
+    } else if (is(cdm_release_date, "subQuery")){
+      statement <- paste0(statement, " cdm_release_date = (", as.character(cdm_release_date), ")")
     } else {
       statement <- paste0(statement, " cdm_release_date = '", cdm_release_date,"'")
     }
@@ -7957,6 +7939,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(cdm_version)) {
       statement <- paste0(statement, " cdm_version IS NULL")
+    } else if (is(cdm_version, "subQuery")){
+      statement <- paste0(statement, " cdm_version = (", as.character(cdm_version), ")")
     } else {
       statement <- paste0(statement, " cdm_version = '", cdm_version,"'")
     }
@@ -7970,6 +7954,8 @@ expect_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_hold
     }
     if (is.null(vocabulary_version)) {
       statement <- paste0(statement, " vocabulary_version IS NULL")
+    } else if (is(vocabulary_version, "subQuery")){
+      statement <- paste0(statement, " vocabulary_version = (", as.character(vocabulary_version), ")")
     } else {
       statement <- paste0(statement, " vocabulary_version = '", vocabulary_version,"'")
     }
@@ -7991,6 +7977,8 @@ expect_cohort <- function(cohort_definition_id, subject_id, cohort_start_date, c
     }
     if (is.null(cohort_definition_id)) {
       statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
     }
@@ -8004,6 +7992,8 @@ expect_cohort <- function(cohort_definition_id, subject_id, cohort_start_date, c
     }
     if (is.null(subject_id)) {
       statement <- paste0(statement, " subject_id IS NULL")
+    } else if (is(subject_id, "subQuery")){
+      statement <- paste0(statement, " subject_id = (", as.character(subject_id), ")")
     } else {
       statement <- paste0(statement, " subject_id = '", subject_id,"'")
     }
@@ -8017,6 +8007,8 @@ expect_cohort <- function(cohort_definition_id, subject_id, cohort_start_date, c
     }
     if (is.null(cohort_start_date)) {
       statement <- paste0(statement, " cohort_start_date IS NULL")
+    } else if (is(cohort_start_date, "subQuery")){
+      statement <- paste0(statement, " cohort_start_date = (", as.character(cohort_start_date), ")")
     } else {
       statement <- paste0(statement, " cohort_start_date = '", cohort_start_date,"'")
     }
@@ -8030,6 +8022,8 @@ expect_cohort <- function(cohort_definition_id, subject_id, cohort_start_date, c
     }
     if (is.null(cohort_end_date)) {
       statement <- paste0(statement, " cohort_end_date IS NULL")
+    } else if (is(cohort_end_date, "subQuery")){
+      statement <- paste0(statement, " cohort_end_date = (", as.character(cohort_end_date), ")")
     } else {
       statement <- paste0(statement, " cohort_end_date = '", cohort_end_date,"'")
     }
@@ -8051,6 +8045,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(cohort_definition_id)) {
       statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
     }
@@ -8064,6 +8060,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(cohort_definition_name)) {
       statement <- paste0(statement, " cohort_definition_name IS NULL")
+    } else if (is(cohort_definition_name, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_name = (", as.character(cohort_definition_name), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_name = '", cohort_definition_name,"'")
     }
@@ -8077,6 +8075,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(cohort_definition_description)) {
       statement <- paste0(statement, " cohort_definition_description IS NULL")
+    } else if (is(cohort_definition_description, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_description = (", as.character(cohort_definition_description), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_description = '", cohort_definition_description,"'")
     }
@@ -8090,6 +8090,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(definition_type_concept_id)) {
       statement <- paste0(statement, " definition_type_concept_id IS NULL")
+    } else if (is(definition_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " definition_type_concept_id = (", as.character(definition_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " definition_type_concept_id = '", definition_type_concept_id,"'")
     }
@@ -8103,6 +8105,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(cohort_definition_syntax)) {
       statement <- paste0(statement, " cohort_definition_syntax IS NULL")
+    } else if (is(cohort_definition_syntax, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_syntax = (", as.character(cohort_definition_syntax), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_syntax = '", cohort_definition_syntax,"'")
     }
@@ -8116,6 +8120,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(subject_concept_id)) {
       statement <- paste0(statement, " subject_concept_id IS NULL")
+    } else if (is(subject_concept_id, "subQuery")){
+      statement <- paste0(statement, " subject_concept_id = (", as.character(subject_concept_id), ")")
     } else {
       statement <- paste0(statement, " subject_concept_id = '", subject_concept_id,"'")
     }
@@ -8129,6 +8135,8 @@ expect_cohort_definition <- function(cohort_definition_id, cohort_definition_nam
     }
     if (is.null(cohort_instantiation_date)) {
       statement <- paste0(statement, " cohort_instantiation_date IS NULL")
+    } else if (is(cohort_instantiation_date, "subQuery")){
+      statement <- paste0(statement, " cohort_instantiation_date = (", as.character(cohort_instantiation_date), ")")
     } else {
       statement <- paste0(statement, " cohort_instantiation_date = '", cohort_instantiation_date,"'")
     }
@@ -8150,6 +8158,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(cohort_definition_id)) {
       statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
     }
@@ -8163,6 +8173,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(cohort_start_date)) {
       statement <- paste0(statement, " cohort_start_date IS NULL")
+    } else if (is(cohort_start_date, "subQuery")){
+      statement <- paste0(statement, " cohort_start_date = (", as.character(cohort_start_date), ")")
     } else {
       statement <- paste0(statement, " cohort_start_date = '", cohort_start_date,"'")
     }
@@ -8176,6 +8188,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(cohort_end_date)) {
       statement <- paste0(statement, " cohort_end_date IS NULL")
+    } else if (is(cohort_end_date, "subQuery")){
+      statement <- paste0(statement, " cohort_end_date = (", as.character(cohort_end_date), ")")
     } else {
       statement <- paste0(statement, " cohort_end_date = '", cohort_end_date,"'")
     }
@@ -8189,6 +8203,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(subject_id)) {
       statement <- paste0(statement, " subject_id IS NULL")
+    } else if (is(subject_id, "subQuery")){
+      statement <- paste0(statement, " subject_id = (", as.character(subject_id), ")")
     } else {
       statement <- paste0(statement, " subject_id = '", subject_id,"'")
     }
@@ -8202,6 +8218,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(attribute_definition_id)) {
       statement <- paste0(statement, " attribute_definition_id IS NULL")
+    } else if (is(attribute_definition_id, "subQuery")){
+      statement <- paste0(statement, " attribute_definition_id = (", as.character(attribute_definition_id), ")")
     } else {
       statement <- paste0(statement, " attribute_definition_id = '", attribute_definition_id,"'")
     }
@@ -8215,6 +8233,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(value_as_number)) {
       statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
     } else {
       statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
     }
@@ -8228,6 +8248,8 @@ expect_cohort_attribute <- function(cohort_definition_id, cohort_start_date, coh
     }
     if (is.null(value_as_concept_id)) {
       statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
     } else {
       statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
     }
@@ -8249,6 +8271,8 @@ expect_attribute_definition <- function(attribute_definition_id, attribute_name,
     }
     if (is.null(attribute_definition_id)) {
       statement <- paste0(statement, " attribute_definition_id IS NULL")
+    } else if (is(attribute_definition_id, "subQuery")){
+      statement <- paste0(statement, " attribute_definition_id = (", as.character(attribute_definition_id), ")")
     } else {
       statement <- paste0(statement, " attribute_definition_id = '", attribute_definition_id,"'")
     }
@@ -8262,6 +8286,8 @@ expect_attribute_definition <- function(attribute_definition_id, attribute_name,
     }
     if (is.null(attribute_name)) {
       statement <- paste0(statement, " attribute_name IS NULL")
+    } else if (is(attribute_name, "subQuery")){
+      statement <- paste0(statement, " attribute_name = (", as.character(attribute_name), ")")
     } else {
       statement <- paste0(statement, " attribute_name = '", attribute_name,"'")
     }
@@ -8275,6 +8301,8 @@ expect_attribute_definition <- function(attribute_definition_id, attribute_name,
     }
     if (is.null(attribute_description)) {
       statement <- paste0(statement, " attribute_description IS NULL")
+    } else if (is(attribute_description, "subQuery")){
+      statement <- paste0(statement, " attribute_description = (", as.character(attribute_description), ")")
     } else {
       statement <- paste0(statement, " attribute_description = '", attribute_description,"'")
     }
@@ -8288,6 +8316,8 @@ expect_attribute_definition <- function(attribute_definition_id, attribute_name,
     }
     if (is.null(attribute_type_concept_id)) {
       statement <- paste0(statement, " attribute_type_concept_id IS NULL")
+    } else if (is(attribute_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " attribute_type_concept_id = (", as.character(attribute_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " attribute_type_concept_id = '", attribute_type_concept_id,"'")
     }
@@ -8301,6 +8331,8 @@ expect_attribute_definition <- function(attribute_definition_id, attribute_name,
     }
     if (is.null(attribute_syntax)) {
       statement <- paste0(statement, " attribute_syntax IS NULL")
+    } else if (is(attribute_syntax, "subQuery")){
+      statement <- paste0(statement, " attribute_syntax = (", as.character(attribute_syntax), ")")
     } else {
       statement <- paste0(statement, " attribute_syntax = '", attribute_syntax,"'")
     }
@@ -8311,7 +8343,443 @@ expect_attribute_definition <- function(attribute_definition_id, attribute_name,
   invisible(statement)
 }
 
-expect_no_person <- function(person_id, person_source_value, gender_concept_id, gender_source_value, year_of_birth, month_of_birth, day_of_birth, race_concept_id, race_source_value, ethnicity_concept_id, ethnicity_source_value, time_of_birth, location_id, provider_id, care_site_id, gender_source_concept_id, race_source_concept_id, ethnicity_source_concept_id) {
+expect_cost <- function(cost_id, cost_event_id, cost_domain_id, cost_type_concept_id, currency_concept_id, total_charge, total_cost, total_paid, paid_by_payer, paid_by_patient, paid_patient_copay, paid_patient_coinsurance, paid_patient_deductible, paid_by_primary, paid_ingredient_cost, paid_dispensing_fee, payer_plan_period_id, amount_allowed, revenue_code_concept_id, revenue_code_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cost' AS test, CASE WHEN(SELECT COUNT(*) FROM cost WHERE")
+  first <- TRUE
+  if (!missing(cost_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_id)) {
+      statement <- paste0(statement, " cost_id IS NULL")
+    } else if (is(cost_id, "subQuery")){
+      statement <- paste0(statement, " cost_id = (", as.character(cost_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_id = '", cost_id,"'")
+    }
+  }
+
+  if (!missing(cost_event_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_event_id)) {
+      statement <- paste0(statement, " cost_event_id IS NULL")
+    } else if (is(cost_event_id, "subQuery")){
+      statement <- paste0(statement, " cost_event_id = (", as.character(cost_event_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_event_id = '", cost_event_id,"'")
+    }
+  }
+
+  if (!missing(cost_domain_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_domain_id)) {
+      statement <- paste0(statement, " cost_domain_id IS NULL")
+    } else if (is(cost_domain_id, "subQuery")){
+      statement <- paste0(statement, " cost_domain_id = (", as.character(cost_domain_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_domain_id = '", cost_domain_id,"'")
+    }
+  }
+
+  if (!missing(cost_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_type_concept_id)) {
+      statement <- paste0(statement, " cost_type_concept_id IS NULL")
+    } else if (is(cost_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " cost_type_concept_id = (", as.character(cost_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_type_concept_id = '", cost_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(currency_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(currency_concept_id)) {
+      statement <- paste0(statement, " currency_concept_id IS NULL")
+    } else if (is(currency_concept_id, "subQuery")){
+      statement <- paste0(statement, " currency_concept_id = (", as.character(currency_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
+    }
+  }
+
+  if (!missing(total_charge)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_charge)) {
+      statement <- paste0(statement, " total_charge IS NULL")
+    } else if (is(total_charge, "subQuery")){
+      statement <- paste0(statement, " total_charge = (", as.character(total_charge), ")")
+    } else {
+      statement <- paste0(statement, " total_charge = '", total_charge,"'")
+    }
+  }
+
+  if (!missing(total_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_cost)) {
+      statement <- paste0(statement, " total_cost IS NULL")
+    } else if (is(total_cost, "subQuery")){
+      statement <- paste0(statement, " total_cost = (", as.character(total_cost), ")")
+    } else {
+      statement <- paste0(statement, " total_cost = '", total_cost,"'")
+    }
+  }
+
+  if (!missing(total_paid)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_paid)) {
+      statement <- paste0(statement, " total_paid IS NULL")
+    } else if (is(total_paid, "subQuery")){
+      statement <- paste0(statement, " total_paid = (", as.character(total_paid), ")")
+    } else {
+      statement <- paste0(statement, " total_paid = '", total_paid,"'")
+    }
+  }
+
+  if (!missing(paid_by_payer)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_payer)) {
+      statement <- paste0(statement, " paid_by_payer IS NULL")
+    } else if (is(paid_by_payer, "subQuery")){
+      statement <- paste0(statement, " paid_by_payer = (", as.character(paid_by_payer), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
+    }
+  }
+
+  if (!missing(paid_by_patient)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_patient)) {
+      statement <- paste0(statement, " paid_by_patient IS NULL")
+    } else if (is(paid_by_patient, "subQuery")){
+      statement <- paste0(statement, " paid_by_patient = (", as.character(paid_by_patient), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_patient = '", paid_by_patient,"'")
+    }
+  }
+
+  if (!missing(paid_patient_copay)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_copay)) {
+      statement <- paste0(statement, " paid_patient_copay IS NULL")
+    } else if (is(paid_patient_copay, "subQuery")){
+      statement <- paste0(statement, " paid_patient_copay = (", as.character(paid_patient_copay), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_copay = '", paid_patient_copay,"'")
+    }
+  }
+
+  if (!missing(paid_patient_coinsurance)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_coinsurance)) {
+      statement <- paste0(statement, " paid_patient_coinsurance IS NULL")
+    } else if (is(paid_patient_coinsurance, "subQuery")){
+      statement <- paste0(statement, " paid_patient_coinsurance = (", as.character(paid_patient_coinsurance), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_coinsurance = '", paid_patient_coinsurance,"'")
+    }
+  }
+
+  if (!missing(paid_patient_deductible)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_deductible)) {
+      statement <- paste0(statement, " paid_patient_deductible IS NULL")
+    } else if (is(paid_patient_deductible, "subQuery")){
+      statement <- paste0(statement, " paid_patient_deductible = (", as.character(paid_patient_deductible), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_deductible = '", paid_patient_deductible,"'")
+    }
+  }
+
+  if (!missing(paid_by_primary)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_primary)) {
+      statement <- paste0(statement, " paid_by_primary IS NULL")
+    } else if (is(paid_by_primary, "subQuery")){
+      statement <- paste0(statement, " paid_by_primary = (", as.character(paid_by_primary), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_primary = '", paid_by_primary,"'")
+    }
+  }
+
+  if (!missing(paid_ingredient_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_ingredient_cost)) {
+      statement <- paste0(statement, " paid_ingredient_cost IS NULL")
+    } else if (is(paid_ingredient_cost, "subQuery")){
+      statement <- paste0(statement, " paid_ingredient_cost = (", as.character(paid_ingredient_cost), ")")
+    } else {
+      statement <- paste0(statement, " paid_ingredient_cost = '", paid_ingredient_cost,"'")
+    }
+  }
+
+  if (!missing(paid_dispensing_fee)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_dispensing_fee)) {
+      statement <- paste0(statement, " paid_dispensing_fee IS NULL")
+    } else if (is(paid_dispensing_fee, "subQuery")){
+      statement <- paste0(statement, " paid_dispensing_fee = (", as.character(paid_dispensing_fee), ")")
+    } else {
+      statement <- paste0(statement, " paid_dispensing_fee = '", paid_dispensing_fee,"'")
+    }
+  }
+
+  if (!missing(payer_plan_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_id)) {
+      statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else if (is(payer_plan_period_id, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_id = (", as.character(payer_plan_period_id), ")")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
+    }
+  }
+
+  if (!missing(amount_allowed)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(amount_allowed)) {
+      statement <- paste0(statement, " amount_allowed IS NULL")
+    } else if (is(amount_allowed, "subQuery")){
+      statement <- paste0(statement, " amount_allowed = (", as.character(amount_allowed), ")")
+    } else {
+      statement <- paste0(statement, " amount_allowed = '", amount_allowed,"'")
+    }
+  }
+
+  if (!missing(revenue_code_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_concept_id)) {
+      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
+    } else if (is(revenue_code_concept_id, "subQuery")){
+      statement <- paste0(statement, " revenue_code_concept_id = (", as.character(revenue_code_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
+    }
+  }
+
+  if (!missing(revenue_code_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_source_value)) {
+      statement <- paste0(statement, " revenue_code_source_value IS NULL")
+    } else if (is(revenue_code_source_value, "subQuery")){
+      statement <- paste0(statement, " revenue_code_source_value = (", as.character(revenue_code_source_value), ")")
+    } else {
+      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") = 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_no_location <- function(location_id, address_1, address_2, city, state, zip, county, location_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect location' AS test, CASE WHEN(SELECT COUNT(*) FROM location WHERE")
+  first <- TRUE
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(address_1)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_1)) {
+      statement <- paste0(statement, " address_1 IS NULL")
+    } else if (is(address_1, "subQuery")){
+      statement <- paste0(statement, " address_1 = (", as.character(address_1), ")")
+    } else {
+      statement <- paste0(statement, " address_1 = '", address_1,"'")
+    }
+  }
+
+  if (!missing(address_2)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_2)) {
+      statement <- paste0(statement, " address_2 IS NULL")
+    } else if (is(address_2, "subQuery")){
+      statement <- paste0(statement, " address_2 = (", as.character(address_2), ")")
+    } else {
+      statement <- paste0(statement, " address_2 = '", address_2,"'")
+    }
+  }
+
+  if (!missing(city)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(city)) {
+      statement <- paste0(statement, " city IS NULL")
+    } else if (is(city, "subQuery")){
+      statement <- paste0(statement, " city = (", as.character(city), ")")
+    } else {
+      statement <- paste0(statement, " city = '", city,"'")
+    }
+  }
+
+  if (!missing(state)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(state)) {
+      statement <- paste0(statement, " state IS NULL")
+    } else if (is(state, "subQuery")){
+      statement <- paste0(statement, " state = (", as.character(state), ")")
+    } else {
+      statement <- paste0(statement, " state = '", state,"'")
+    }
+  }
+
+  if (!missing(zip)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(zip)) {
+      statement <- paste0(statement, " zip IS NULL")
+    } else if (is(zip, "subQuery")){
+      statement <- paste0(statement, " zip = (", as.character(zip), ")")
+    } else {
+      statement <- paste0(statement, " zip = '", zip,"'")
+    }
+  }
+
+  if (!missing(county)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(county)) {
+      statement <- paste0(statement, " county IS NULL")
+    } else if (is(county, "subQuery")){
+      statement <- paste0(statement, " county = (", as.character(county), ")")
+    } else {
+      statement <- paste0(statement, " county = '", county,"'")
+    }
+  }
+
+  if (!missing(location_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_source_value)) {
+      statement <- paste0(statement, " location_source_value IS NULL")
+    } else if (is(location_source_value, "subQuery")){
+      statement <- paste0(statement, " location_source_value = (", as.character(location_source_value), ")")
+    } else {
+      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_no_person <- function(person_id, gender_concept_id, year_of_birth, month_of_birth, day_of_birth, time_of_birth, race_concept_id, ethnicity_concept_id, location_id, provider_id, care_site_id, person_source_value, gender_source_value, gender_source_concept_id, race_source_value, race_source_concept_id, ethnicity_source_value, ethnicity_source_concept_id) {
   statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect person' AS test, CASE WHEN(SELECT COUNT(*) FROM person WHERE")
   first <- TRUE
   if (!missing(person_id)) {
@@ -8322,21 +8790,10 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
-    }
-  }
-
-  if (!missing(person_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(person_source_value)) {
-      statement <- paste0(statement, " person_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
     }
   }
 
@@ -8348,21 +8805,10 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(gender_concept_id)) {
       statement <- paste0(statement, " gender_concept_id IS NULL")
+    } else if (is(gender_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_concept_id = (", as.character(gender_concept_id), ")")
     } else {
       statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
-    }
-  }
-
-  if (!missing(gender_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_value)) {
-      statement <- paste0(statement, " gender_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
     }
   }
 
@@ -8374,6 +8820,8 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(year_of_birth)) {
       statement <- paste0(statement, " year_of_birth IS NULL")
+    } else if (is(year_of_birth, "subQuery")){
+      statement <- paste0(statement, " year_of_birth = (", as.character(year_of_birth), ")")
     } else {
       statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
     }
@@ -8387,6 +8835,8 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(month_of_birth)) {
       statement <- paste0(statement, " month_of_birth IS NULL")
+    } else if (is(month_of_birth, "subQuery")){
+      statement <- paste0(statement, " month_of_birth = (", as.character(month_of_birth), ")")
     } else {
       statement <- paste0(statement, " month_of_birth = '", month_of_birth,"'")
     }
@@ -8400,60 +8850,10 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(day_of_birth)) {
       statement <- paste0(statement, " day_of_birth IS NULL")
+    } else if (is(day_of_birth, "subQuery")){
+      statement <- paste0(statement, " day_of_birth = (", as.character(day_of_birth), ")")
     } else {
       statement <- paste0(statement, " day_of_birth = '", day_of_birth,"'")
-    }
-  }
-
-  if (!missing(race_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(race_concept_id)) {
-      statement <- paste0(statement, " race_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " race_concept_id = '", race_concept_id,"'")
-    }
-  }
-
-  if (!missing(race_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(race_source_value)) {
-      statement <- paste0(statement, " race_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
-    }
-  }
-
-  if (!missing(ethnicity_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ethnicity_concept_id)) {
-      statement <- paste0(statement, " ethnicity_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " ethnicity_concept_id = '", ethnicity_concept_id,"'")
-    }
-  }
-
-  if (!missing(ethnicity_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ethnicity_source_value)) {
-      statement <- paste0(statement, " ethnicity_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
     }
   }
 
@@ -8465,8 +8865,40 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(time_of_birth)) {
       statement <- paste0(statement, " time_of_birth IS NULL")
+    } else if (is(time_of_birth, "subQuery")){
+      statement <- paste0(statement, " time_of_birth = (", as.character(time_of_birth), ")")
     } else {
       statement <- paste0(statement, " time_of_birth = '", time_of_birth,"'")
+    }
+  }
+
+  if (!missing(race_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_concept_id)) {
+      statement <- paste0(statement, " race_concept_id IS NULL")
+    } else if (is(race_concept_id, "subQuery")){
+      statement <- paste0(statement, " race_concept_id = (", as.character(race_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " race_concept_id = '", race_concept_id,"'")
+    }
+  }
+
+  if (!missing(ethnicity_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_concept_id)) {
+      statement <- paste0(statement, " ethnicity_concept_id IS NULL")
+    } else if (is(ethnicity_concept_id, "subQuery")){
+      statement <- paste0(statement, " ethnicity_concept_id = (", as.character(ethnicity_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_concept_id = '", ethnicity_concept_id,"'")
     }
   }
 
@@ -8478,6 +8910,8 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(location_id)) {
       statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
     } else {
       statement <- paste0(statement, " location_id = '", location_id,"'")
     }
@@ -8491,6 +8925,8 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -8504,8 +8940,40 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(care_site_id)) {
       statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
     } else {
       statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(person_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_source_value)) {
+      statement <- paste0(statement, " person_source_value IS NULL")
+    } else if (is(person_source_value, "subQuery")){
+      statement <- paste0(statement, " person_source_value = (", as.character(person_source_value), ")")
+    } else {
+      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else if (is(gender_source_value, "subQuery")){
+      statement <- paste0(statement, " gender_source_value = (", as.character(gender_source_value), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
     }
   }
 
@@ -8517,8 +8985,25 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(gender_source_concept_id)) {
       statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else if (is(gender_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_source_concept_id = (", as.character(gender_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(race_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_source_value)) {
+      statement <- paste0(statement, " race_source_value IS NULL")
+    } else if (is(race_source_value, "subQuery")){
+      statement <- paste0(statement, " race_source_value = (", as.character(race_source_value), ")")
+    } else {
+      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
     }
   }
 
@@ -8530,8 +9015,25 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(race_source_concept_id)) {
       statement <- paste0(statement, " race_source_concept_id IS NULL")
+    } else if (is(race_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " race_source_concept_id = (", as.character(race_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " race_source_concept_id = '", race_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(ethnicity_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_source_value)) {
+      statement <- paste0(statement, " ethnicity_source_value IS NULL")
+    } else if (is(ethnicity_source_value, "subQuery")){
+      statement <- paste0(statement, " ethnicity_source_value = (", as.character(ethnicity_source_value), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
     }
   }
 
@@ -8543,172 +9045,10 @@ expect_no_person <- function(person_id, person_source_value, gender_concept_id, 
     }
     if (is.null(ethnicity_source_concept_id)) {
       statement <- paste0(statement, " ethnicity_source_concept_id IS NULL")
+    } else if (is(ethnicity_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " ethnicity_source_concept_id = (", as.character(ethnicity_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " ethnicity_source_concept_id = '", ethnicity_source_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_visit_occurrence <- function(visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_occurrence WHERE")
-  first <- TRUE
-  if (!missing(visit_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_occurrence_id)) {
-      statement <- paste0(statement, " visit_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(person_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(person_id)) {
-      statement <- paste0(statement, " person_id IS NULL")
-    } else {
-      statement <- paste0(statement, " person_id = '", person_id,"'")
-    }
-  }
-
-  if (!missing(visit_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_concept_id)) {
-      statement <- paste0(statement, " visit_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_concept_id = '", visit_concept_id,"'")
-    }
-  }
-
-  if (!missing(visit_start_date)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_start_date)) {
-      statement <- paste0(statement, " visit_start_date IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_start_date = '", visit_start_date,"'")
-    }
-  }
-
-  if (!missing(visit_start_time)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_start_time)) {
-      statement <- paste0(statement, " visit_start_time IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_start_time = '", visit_start_time,"'")
-    }
-  }
-
-  if (!missing(visit_end_date)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_end_date)) {
-      statement <- paste0(statement, " visit_end_date IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_end_date = '", visit_end_date,"'")
-    }
-  }
-
-  if (!missing(visit_end_time)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_end_time)) {
-      statement <- paste0(statement, " visit_end_time IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_end_time = '", visit_end_time,"'")
-    }
-  }
-
-  if (!missing(visit_type_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_type_concept_id)) {
-      statement <- paste0(statement, " visit_type_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_type_concept_id = '", visit_type_concept_id,"'")
-    }
-  }
-
-  if (!missing(provider_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_id)) {
-      statement <- paste0(statement, " provider_id IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_id = '", provider_id,"'")
-    }
-  }
-
-  if (!missing(care_site_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(care_site_id)) {
-      statement <- paste0(statement, " care_site_id IS NULL")
-    } else {
-      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
-    }
-  }
-
-  if (!missing(visit_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_source_value)) {
-      statement <- paste0(statement, " visit_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_source_value = '", visit_source_value,"'")
-    }
-  }
-
-  if (!missing(visit_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_source_concept_id)) {
-      statement <- paste0(statement, " visit_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_source_concept_id = '", visit_source_concept_id,"'")
     }
   }
 
@@ -8728,6 +9068,8 @@ expect_no_observation_period <- function(observation_period_id, person_id, obser
     }
     if (is.null(observation_period_id)) {
       statement <- paste0(statement, " observation_period_id IS NULL")
+    } else if (is(observation_period_id, "subQuery")){
+      statement <- paste0(statement, " observation_period_id = (", as.character(observation_period_id), ")")
     } else {
       statement <- paste0(statement, " observation_period_id = '", observation_period_id,"'")
     }
@@ -8741,6 +9083,8 @@ expect_no_observation_period <- function(observation_period_id, person_id, obser
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -8754,6 +9098,8 @@ expect_no_observation_period <- function(observation_period_id, person_id, obser
     }
     if (is.null(observation_period_start_date)) {
       statement <- paste0(statement, " observation_period_start_date IS NULL")
+    } else if (is(observation_period_start_date, "subQuery")){
+      statement <- paste0(statement, " observation_period_start_date = (", as.character(observation_period_start_date), ")")
     } else {
       statement <- paste0(statement, " observation_period_start_date = '", observation_period_start_date,"'")
     }
@@ -8767,6 +9113,8 @@ expect_no_observation_period <- function(observation_period_id, person_id, obser
     }
     if (is.null(observation_period_end_date)) {
       statement <- paste0(statement, " observation_period_end_date IS NULL")
+    } else if (is(observation_period_end_date, "subQuery")){
+      statement <- paste0(statement, " observation_period_end_date = (", as.character(observation_period_end_date), ")")
     } else {
       statement <- paste0(statement, " observation_period_end_date = '", observation_period_end_date,"'")
     }
@@ -8780,120 +9128,10 @@ expect_no_observation_period <- function(observation_period_id, person_id, obser
     }
     if (is.null(period_type_concept_id)) {
       statement <- paste0(statement, " period_type_concept_id IS NULL")
+    } else if (is(period_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " period_type_concept_id = (", as.character(period_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " period_type_concept_id = '", period_type_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_location <- function(location_id, address_1, address_2, city, state, zip, county, location_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect location' AS test, CASE WHEN(SELECT COUNT(*) FROM location WHERE")
-  first <- TRUE
-  if (!missing(location_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(location_id)) {
-      statement <- paste0(statement, " location_id IS NULL")
-    } else {
-      statement <- paste0(statement, " location_id = '", location_id,"'")
-    }
-  }
-
-  if (!missing(address_1)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(address_1)) {
-      statement <- paste0(statement, " address_1 IS NULL")
-    } else {
-      statement <- paste0(statement, " address_1 = '", address_1,"'")
-    }
-  }
-
-  if (!missing(address_2)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(address_2)) {
-      statement <- paste0(statement, " address_2 IS NULL")
-    } else {
-      statement <- paste0(statement, " address_2 = '", address_2,"'")
-    }
-  }
-
-  if (!missing(city)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(city)) {
-      statement <- paste0(statement, " city IS NULL")
-    } else {
-      statement <- paste0(statement, " city = '", city,"'")
-    }
-  }
-
-  if (!missing(state)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(state)) {
-      statement <- paste0(statement, " state IS NULL")
-    } else {
-      statement <- paste0(statement, " state = '", state,"'")
-    }
-  }
-
-  if (!missing(zip)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(zip)) {
-      statement <- paste0(statement, " zip IS NULL")
-    } else {
-      statement <- paste0(statement, " zip = '", zip,"'")
-    }
-  }
-
-  if (!missing(county)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(county)) {
-      statement <- paste0(statement, " county IS NULL")
-    } else {
-      statement <- paste0(statement, " county = '", county,"'")
-    }
-  }
-
-  if (!missing(location_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(location_source_value)) {
-      statement <- paste0(statement, " location_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
     }
   }
 
@@ -8913,6 +9151,8 @@ expect_no_care_site <- function(care_site_id, care_site_name, place_of_service_c
     }
     if (is.null(care_site_id)) {
       statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
     } else {
       statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
     }
@@ -8926,6 +9166,8 @@ expect_no_care_site <- function(care_site_id, care_site_name, place_of_service_c
     }
     if (is.null(care_site_name)) {
       statement <- paste0(statement, " care_site_name IS NULL")
+    } else if (is(care_site_name, "subQuery")){
+      statement <- paste0(statement, " care_site_name = (", as.character(care_site_name), ")")
     } else {
       statement <- paste0(statement, " care_site_name = '", care_site_name,"'")
     }
@@ -8939,6 +9181,8 @@ expect_no_care_site <- function(care_site_id, care_site_name, place_of_service_c
     }
     if (is.null(place_of_service_concept_id)) {
       statement <- paste0(statement, " place_of_service_concept_id IS NULL")
+    } else if (is(place_of_service_concept_id, "subQuery")){
+      statement <- paste0(statement, " place_of_service_concept_id = (", as.character(place_of_service_concept_id), ")")
     } else {
       statement <- paste0(statement, " place_of_service_concept_id = '", place_of_service_concept_id,"'")
     }
@@ -8952,6 +9196,8 @@ expect_no_care_site <- function(care_site_id, care_site_name, place_of_service_c
     }
     if (is.null(location_id)) {
       statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
     } else {
       statement <- paste0(statement, " location_id = '", location_id,"'")
     }
@@ -8965,6 +9211,8 @@ expect_no_care_site <- function(care_site_id, care_site_name, place_of_service_c
     }
     if (is.null(care_site_source_value)) {
       statement <- paste0(statement, " care_site_source_value IS NULL")
+    } else if (is(care_site_source_value, "subQuery")){
+      statement <- paste0(statement, " care_site_source_value = (", as.character(care_site_source_value), ")")
     } else {
       statement <- paste0(statement, " care_site_source_value = '", care_site_source_value,"'")
     }
@@ -8978,8 +9226,401 @@ expect_no_care_site <- function(care_site_id, care_site_name, place_of_service_c
     }
     if (is.null(place_of_service_source_value)) {
       statement <- paste0(statement, " place_of_service_source_value IS NULL")
+    } else if (is(place_of_service_source_value, "subQuery")){
+      statement <- paste0(statement, " place_of_service_source_value = (", as.character(place_of_service_source_value), ")")
     } else {
       statement <- paste0(statement, " place_of_service_source_value = '", place_of_service_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_no_visit_occurrence <- function(visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_occurrence WHERE")
+  first <- TRUE
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(visit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_concept_id)) {
+      statement <- paste0(statement, " visit_concept_id IS NULL")
+    } else if (is(visit_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_concept_id = (", as.character(visit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_concept_id = '", visit_concept_id,"'")
+    }
+  }
+
+  if (!missing(visit_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_start_date)) {
+      statement <- paste0(statement, " visit_start_date IS NULL")
+    } else if (is(visit_start_date, "subQuery")){
+      statement <- paste0(statement, " visit_start_date = (", as.character(visit_start_date), ")")
+    } else {
+      statement <- paste0(statement, " visit_start_date = '", visit_start_date,"'")
+    }
+  }
+
+  if (!missing(visit_start_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_start_time)) {
+      statement <- paste0(statement, " visit_start_time IS NULL")
+    } else if (is(visit_start_time, "subQuery")){
+      statement <- paste0(statement, " visit_start_time = (", as.character(visit_start_time), ")")
+    } else {
+      statement <- paste0(statement, " visit_start_time = '", visit_start_time,"'")
+    }
+  }
+
+  if (!missing(visit_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_end_date)) {
+      statement <- paste0(statement, " visit_end_date IS NULL")
+    } else if (is(visit_end_date, "subQuery")){
+      statement <- paste0(statement, " visit_end_date = (", as.character(visit_end_date), ")")
+    } else {
+      statement <- paste0(statement, " visit_end_date = '", visit_end_date,"'")
+    }
+  }
+
+  if (!missing(visit_end_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_end_time)) {
+      statement <- paste0(statement, " visit_end_time IS NULL")
+    } else if (is(visit_end_time, "subQuery")){
+      statement <- paste0(statement, " visit_end_time = (", as.character(visit_end_time), ")")
+    } else {
+      statement <- paste0(statement, " visit_end_time = '", visit_end_time,"'")
+    }
+  }
+
+  if (!missing(visit_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_type_concept_id)) {
+      statement <- paste0(statement, " visit_type_concept_id IS NULL")
+    } else if (is(visit_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_type_concept_id = (", as.character(visit_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_type_concept_id = '", visit_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(visit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_source_value)) {
+      statement <- paste0(statement, " visit_source_value IS NULL")
+    } else if (is(visit_source_value, "subQuery")){
+      statement <- paste0(statement, " visit_source_value = (", as.character(visit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " visit_source_value = '", visit_source_value,"'")
+    }
+  }
+
+  if (!missing(visit_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_source_concept_id)) {
+      statement <- paste0(statement, " visit_source_concept_id IS NULL")
+    } else if (is(visit_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_source_concept_id = (", as.character(visit_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_source_concept_id = '", visit_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_no_provider <- function(provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect provider' AS test, CASE WHEN(SELECT COUNT(*) FROM provider WHERE")
+  first <- TRUE
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(provider_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_name)) {
+      statement <- paste0(statement, " provider_name IS NULL")
+    } else if (is(provider_name, "subQuery")){
+      statement <- paste0(statement, " provider_name = (", as.character(provider_name), ")")
+    } else {
+      statement <- paste0(statement, " provider_name = '", provider_name,"'")
+    }
+  }
+
+  if (!missing(npi)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(npi)) {
+      statement <- paste0(statement, " npi IS NULL")
+    } else if (is(npi, "subQuery")){
+      statement <- paste0(statement, " npi = (", as.character(npi), ")")
+    } else {
+      statement <- paste0(statement, " npi = '", npi,"'")
+    }
+  }
+
+  if (!missing(dea)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dea)) {
+      statement <- paste0(statement, " dea IS NULL")
+    } else if (is(dea, "subQuery")){
+      statement <- paste0(statement, " dea = (", as.character(dea), ")")
+    } else {
+      statement <- paste0(statement, " dea = '", dea,"'")
+    }
+  }
+
+  if (!missing(specialty_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_concept_id)) {
+      statement <- paste0(statement, " specialty_concept_id IS NULL")
+    } else if (is(specialty_concept_id, "subQuery")){
+      statement <- paste0(statement, " specialty_concept_id = (", as.character(specialty_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(year_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(year_of_birth)) {
+      statement <- paste0(statement, " year_of_birth IS NULL")
+    } else if (is(year_of_birth, "subQuery")){
+      statement <- paste0(statement, " year_of_birth = (", as.character(year_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
+    }
+  }
+
+  if (!missing(gender_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_concept_id)) {
+      statement <- paste0(statement, " gender_concept_id IS NULL")
+    } else if (is(gender_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_concept_id = (", as.character(gender_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_source_value)) {
+      statement <- paste0(statement, " provider_source_value IS NULL")
+    } else if (is(provider_source_value, "subQuery")){
+      statement <- paste0(statement, " provider_source_value = (", as.character(provider_source_value), ")")
+    } else {
+      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
+    }
+  }
+
+  if (!missing(specialty_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_source_value)) {
+      statement <- paste0(statement, " specialty_source_value IS NULL")
+    } else if (is(specialty_source_value, "subQuery")){
+      statement <- paste0(statement, " specialty_source_value = (", as.character(specialty_source_value), ")")
+    } else {
+      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
+    }
+  }
+
+  if (!missing(specialty_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_source_concept_id)) {
+      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
+    } else if (is(specialty_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " specialty_source_concept_id = (", as.character(specialty_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else if (is(gender_source_value, "subQuery")){
+      statement <- paste0(statement, " gender_source_value = (", as.character(gender_source_value), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_concept_id)) {
+      statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else if (is(gender_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_source_concept_id = (", as.character(gender_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
     }
   }
 
@@ -8999,6 +9640,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_occurrence_id)) {
       statement <- paste0(statement, " condition_occurrence_id IS NULL")
+    } else if (is(condition_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " condition_occurrence_id = (", as.character(condition_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " condition_occurrence_id = '", condition_occurrence_id,"'")
     }
@@ -9012,6 +9655,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -9025,6 +9670,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_concept_id)) {
       statement <- paste0(statement, " condition_concept_id IS NULL")
+    } else if (is(condition_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_concept_id = (", as.character(condition_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_concept_id = '", condition_concept_id,"'")
     }
@@ -9038,6 +9685,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_start_date)) {
       statement <- paste0(statement, " condition_start_date IS NULL")
+    } else if (is(condition_start_date, "subQuery")){
+      statement <- paste0(statement, " condition_start_date = (", as.character(condition_start_date), ")")
     } else {
       statement <- paste0(statement, " condition_start_date = '", condition_start_date,"'")
     }
@@ -9051,6 +9700,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_end_date)) {
       statement <- paste0(statement, " condition_end_date IS NULL")
+    } else if (is(condition_end_date, "subQuery")){
+      statement <- paste0(statement, " condition_end_date = (", as.character(condition_end_date), ")")
     } else {
       statement <- paste0(statement, " condition_end_date = '", condition_end_date,"'")
     }
@@ -9064,6 +9715,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_type_concept_id)) {
       statement <- paste0(statement, " condition_type_concept_id IS NULL")
+    } else if (is(condition_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_type_concept_id = (", as.character(condition_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_type_concept_id = '", condition_type_concept_id,"'")
     }
@@ -9077,6 +9730,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(stop_reason)) {
       statement <- paste0(statement, " stop_reason IS NULL")
+    } else if (is(stop_reason, "subQuery")){
+      statement <- paste0(statement, " stop_reason = (", as.character(stop_reason), ")")
     } else {
       statement <- paste0(statement, " stop_reason = '", stop_reason,"'")
     }
@@ -9090,6 +9745,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -9103,6 +9760,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -9116,6 +9775,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_source_value)) {
       statement <- paste0(statement, " condition_source_value IS NULL")
+    } else if (is(condition_source_value, "subQuery")){
+      statement <- paste0(statement, " condition_source_value = (", as.character(condition_source_value), ")")
     } else {
       statement <- paste0(statement, " condition_source_value = '", condition_source_value,"'")
     }
@@ -9129,6 +9790,8 @@ expect_no_condition_occurrence <- function(condition_occurrence_id, person_id, c
     }
     if (is.null(condition_source_concept_id)) {
       statement <- paste0(statement, " condition_source_concept_id IS NULL")
+    } else if (is(condition_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_source_concept_id = (", as.character(condition_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_source_concept_id = '", condition_source_concept_id,"'")
     }
@@ -9150,6 +9813,8 @@ expect_no_death <- function(person_id, death_date, death_type_concept_id, cause_
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -9163,6 +9828,8 @@ expect_no_death <- function(person_id, death_date, death_type_concept_id, cause_
     }
     if (is.null(death_date)) {
       statement <- paste0(statement, " death_date IS NULL")
+    } else if (is(death_date, "subQuery")){
+      statement <- paste0(statement, " death_date = (", as.character(death_date), ")")
     } else {
       statement <- paste0(statement, " death_date = '", death_date,"'")
     }
@@ -9176,6 +9843,8 @@ expect_no_death <- function(person_id, death_date, death_type_concept_id, cause_
     }
     if (is.null(death_type_concept_id)) {
       statement <- paste0(statement, " death_type_concept_id IS NULL")
+    } else if (is(death_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " death_type_concept_id = (", as.character(death_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " death_type_concept_id = '", death_type_concept_id,"'")
     }
@@ -9189,6 +9858,8 @@ expect_no_death <- function(person_id, death_date, death_type_concept_id, cause_
     }
     if (is.null(cause_concept_id)) {
       statement <- paste0(statement, " cause_concept_id IS NULL")
+    } else if (is(cause_concept_id, "subQuery")){
+      statement <- paste0(statement, " cause_concept_id = (", as.character(cause_concept_id), ")")
     } else {
       statement <- paste0(statement, " cause_concept_id = '", cause_concept_id,"'")
     }
@@ -9202,6 +9873,8 @@ expect_no_death <- function(person_id, death_date, death_type_concept_id, cause_
     }
     if (is.null(cause_source_value)) {
       statement <- paste0(statement, " cause_source_value IS NULL")
+    } else if (is(cause_source_value, "subQuery")){
+      statement <- paste0(statement, " cause_source_value = (", as.character(cause_source_value), ")")
     } else {
       statement <- paste0(statement, " cause_source_value = '", cause_source_value,"'")
     }
@@ -9215,6 +9888,8 @@ expect_no_death <- function(person_id, death_date, death_type_concept_id, cause_
     }
     if (is.null(cause_source_concept_id)) {
       statement <- paste0(statement, " cause_source_concept_id IS NULL")
+    } else if (is(cause_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " cause_source_concept_id = (", as.character(cause_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " cause_source_concept_id = '", cause_source_concept_id,"'")
     }
@@ -9236,6 +9911,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_exposure_id)) {
       statement <- paste0(statement, " drug_exposure_id IS NULL")
+    } else if (is(drug_exposure_id, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_id = (", as.character(drug_exposure_id), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_id = '", drug_exposure_id,"'")
     }
@@ -9249,6 +9926,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -9262,6 +9941,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_concept_id)) {
       statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
     }
@@ -9275,6 +9956,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_exposure_start_date)) {
       statement <- paste0(statement, " drug_exposure_start_date IS NULL")
+    } else if (is(drug_exposure_start_date, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_start_date = (", as.character(drug_exposure_start_date), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_start_date = '", drug_exposure_start_date,"'")
     }
@@ -9288,6 +9971,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_exposure_end_date)) {
       statement <- paste0(statement, " drug_exposure_end_date IS NULL")
+    } else if (is(drug_exposure_end_date, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_end_date = (", as.character(drug_exposure_end_date), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_end_date = '", drug_exposure_end_date,"'")
     }
@@ -9301,6 +9986,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_type_concept_id)) {
       statement <- paste0(statement, " drug_type_concept_id IS NULL")
+    } else if (is(drug_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_type_concept_id = (", as.character(drug_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_type_concept_id = '", drug_type_concept_id,"'")
     }
@@ -9314,6 +10001,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(stop_reason)) {
       statement <- paste0(statement, " stop_reason IS NULL")
+    } else if (is(stop_reason, "subQuery")){
+      statement <- paste0(statement, " stop_reason = (", as.character(stop_reason), ")")
     } else {
       statement <- paste0(statement, " stop_reason = '", stop_reason,"'")
     }
@@ -9327,6 +10016,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(refills)) {
       statement <- paste0(statement, " refills IS NULL")
+    } else if (is(refills, "subQuery")){
+      statement <- paste0(statement, " refills = (", as.character(refills), ")")
     } else {
       statement <- paste0(statement, " refills = '", refills,"'")
     }
@@ -9340,6 +10031,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -9353,6 +10046,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(days_supply)) {
       statement <- paste0(statement, " days_supply IS NULL")
+    } else if (is(days_supply, "subQuery")){
+      statement <- paste0(statement, " days_supply = (", as.character(days_supply), ")")
     } else {
       statement <- paste0(statement, " days_supply = '", days_supply,"'")
     }
@@ -9366,6 +10061,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(sig)) {
       statement <- paste0(statement, " sig IS NULL")
+    } else if (is(sig, "subQuery")){
+      statement <- paste0(statement, " sig = (", as.character(sig), ")")
     } else {
       statement <- paste0(statement, " sig = '", sig,"'")
     }
@@ -9379,6 +10076,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(route_concept_id)) {
       statement <- paste0(statement, " route_concept_id IS NULL")
+    } else if (is(route_concept_id, "subQuery")){
+      statement <- paste0(statement, " route_concept_id = (", as.character(route_concept_id), ")")
     } else {
       statement <- paste0(statement, " route_concept_id = '", route_concept_id,"'")
     }
@@ -9392,6 +10091,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(effective_drug_dose)) {
       statement <- paste0(statement, " effective_drug_dose IS NULL")
+    } else if (is(effective_drug_dose, "subQuery")){
+      statement <- paste0(statement, " effective_drug_dose = (", as.character(effective_drug_dose), ")")
     } else {
       statement <- paste0(statement, " effective_drug_dose = '", effective_drug_dose,"'")
     }
@@ -9405,6 +10106,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(dose_unit_concept_id)) {
       statement <- paste0(statement, " dose_unit_concept_id IS NULL")
+    } else if (is(dose_unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " dose_unit_concept_id = (", as.character(dose_unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " dose_unit_concept_id = '", dose_unit_concept_id,"'")
     }
@@ -9418,6 +10121,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(lot_number)) {
       statement <- paste0(statement, " lot_number IS NULL")
+    } else if (is(lot_number, "subQuery")){
+      statement <- paste0(statement, " lot_number = (", as.character(lot_number), ")")
     } else {
       statement <- paste0(statement, " lot_number = '", lot_number,"'")
     }
@@ -9431,6 +10136,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -9444,6 +10151,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -9457,6 +10166,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_source_value)) {
       statement <- paste0(statement, " drug_source_value IS NULL")
+    } else if (is(drug_source_value, "subQuery")){
+      statement <- paste0(statement, " drug_source_value = (", as.character(drug_source_value), ")")
     } else {
       statement <- paste0(statement, " drug_source_value = '", drug_source_value,"'")
     }
@@ -9470,6 +10181,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(drug_source_concept_id)) {
       statement <- paste0(statement, " drug_source_concept_id IS NULL")
+    } else if (is(drug_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_source_concept_id = (", as.character(drug_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_source_concept_id = '", drug_source_concept_id,"'")
     }
@@ -9483,6 +10196,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(route_source_value)) {
       statement <- paste0(statement, " route_source_value IS NULL")
+    } else if (is(route_source_value, "subQuery")){
+      statement <- paste0(statement, " route_source_value = (", as.character(route_source_value), ")")
     } else {
       statement <- paste0(statement, " route_source_value = '", route_source_value,"'")
     }
@@ -9496,6 +10211,8 @@ expect_no_drug_exposure <- function(drug_exposure_id, person_id, drug_concept_id
     }
     if (is.null(dose_unit_source_value)) {
       statement <- paste0(statement, " dose_unit_source_value IS NULL")
+    } else if (is(dose_unit_source_value, "subQuery")){
+      statement <- paste0(statement, " dose_unit_source_value = (", as.character(dose_unit_source_value), ")")
     } else {
       statement <- paste0(statement, " dose_unit_source_value = '", dose_unit_source_value,"'")
     }
@@ -9517,6 +10234,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_exposure_id)) {
       statement <- paste0(statement, " device_exposure_id IS NULL")
+    } else if (is(device_exposure_id, "subQuery")){
+      statement <- paste0(statement, " device_exposure_id = (", as.character(device_exposure_id), ")")
     } else {
       statement <- paste0(statement, " device_exposure_id = '", device_exposure_id,"'")
     }
@@ -9530,6 +10249,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -9543,6 +10264,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_concept_id)) {
       statement <- paste0(statement, " device_concept_id IS NULL")
+    } else if (is(device_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_concept_id = (", as.character(device_concept_id), ")")
     } else {
       statement <- paste0(statement, " device_concept_id = '", device_concept_id,"'")
     }
@@ -9556,6 +10279,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_exposure_start_date)) {
       statement <- paste0(statement, " device_exposure_start_date IS NULL")
+    } else if (is(device_exposure_start_date, "subQuery")){
+      statement <- paste0(statement, " device_exposure_start_date = (", as.character(device_exposure_start_date), ")")
     } else {
       statement <- paste0(statement, " device_exposure_start_date = '", device_exposure_start_date,"'")
     }
@@ -9569,6 +10294,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_exposure_end_date)) {
       statement <- paste0(statement, " device_exposure_end_date IS NULL")
+    } else if (is(device_exposure_end_date, "subQuery")){
+      statement <- paste0(statement, " device_exposure_end_date = (", as.character(device_exposure_end_date), ")")
     } else {
       statement <- paste0(statement, " device_exposure_end_date = '", device_exposure_end_date,"'")
     }
@@ -9582,6 +10309,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_type_concept_id)) {
       statement <- paste0(statement, " device_type_concept_id IS NULL")
+    } else if (is(device_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_type_concept_id = (", as.character(device_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " device_type_concept_id = '", device_type_concept_id,"'")
     }
@@ -9595,6 +10324,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(unique_device_id)) {
       statement <- paste0(statement, " unique_device_id IS NULL")
+    } else if (is(unique_device_id, "subQuery")){
+      statement <- paste0(statement, " unique_device_id = (", as.character(unique_device_id), ")")
     } else {
       statement <- paste0(statement, " unique_device_id = '", unique_device_id,"'")
     }
@@ -9608,6 +10339,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -9621,6 +10354,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -9634,6 +10369,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -9647,6 +10384,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_source_value)) {
       statement <- paste0(statement, " device_source_value IS NULL")
+    } else if (is(device_source_value, "subQuery")){
+      statement <- paste0(statement, " device_source_value = (", as.character(device_source_value), ")")
     } else {
       statement <- paste0(statement, " device_source_value = '", device_source_value,"'")
     }
@@ -9660,6 +10399,8 @@ expect_no_device_exposure <- function(device_exposure_id, person_id, device_conc
     }
     if (is.null(device_source_concept_id)) {
       statement <- paste0(statement, " device_source_concept_id IS NULL")
+    } else if (is(device_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_source_concept_id = (", as.character(device_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " device_source_concept_id = '", device_source_concept_id,"'")
     }
@@ -9681,6 +10422,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(procedure_occurrence_id)) {
       statement <- paste0(statement, " procedure_occurrence_id IS NULL")
+    } else if (is(procedure_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " procedure_occurrence_id = (", as.character(procedure_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " procedure_occurrence_id = '", procedure_occurrence_id,"'")
     }
@@ -9694,6 +10437,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -9707,6 +10452,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(procedure_concept_id)) {
       statement <- paste0(statement, " procedure_concept_id IS NULL")
+    } else if (is(procedure_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_concept_id = (", as.character(procedure_concept_id), ")")
     } else {
       statement <- paste0(statement, " procedure_concept_id = '", procedure_concept_id,"'")
     }
@@ -9720,6 +10467,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(procedure_date)) {
       statement <- paste0(statement, " procedure_date IS NULL")
+    } else if (is(procedure_date, "subQuery")){
+      statement <- paste0(statement, " procedure_date = (", as.character(procedure_date), ")")
     } else {
       statement <- paste0(statement, " procedure_date = '", procedure_date,"'")
     }
@@ -9733,6 +10482,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(procedure_type_concept_id)) {
       statement <- paste0(statement, " procedure_type_concept_id IS NULL")
+    } else if (is(procedure_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_type_concept_id = (", as.character(procedure_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " procedure_type_concept_id = '", procedure_type_concept_id,"'")
     }
@@ -9746,6 +10497,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(modifier_concept_id)) {
       statement <- paste0(statement, " modifier_concept_id IS NULL")
+    } else if (is(modifier_concept_id, "subQuery")){
+      statement <- paste0(statement, " modifier_concept_id = (", as.character(modifier_concept_id), ")")
     } else {
       statement <- paste0(statement, " modifier_concept_id = '", modifier_concept_id,"'")
     }
@@ -9759,6 +10512,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -9772,6 +10527,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -9785,6 +10542,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -9798,6 +10557,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(procedure_source_value)) {
       statement <- paste0(statement, " procedure_source_value IS NULL")
+    } else if (is(procedure_source_value, "subQuery")){
+      statement <- paste0(statement, " procedure_source_value = (", as.character(procedure_source_value), ")")
     } else {
       statement <- paste0(statement, " procedure_source_value = '", procedure_source_value,"'")
     }
@@ -9811,6 +10572,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(procedure_source_concept_id)) {
       statement <- paste0(statement, " procedure_source_concept_id IS NULL")
+    } else if (is(procedure_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_source_concept_id = (", as.character(procedure_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " procedure_source_concept_id = '", procedure_source_concept_id,"'")
     }
@@ -9824,6 +10587,8 @@ expect_no_procedure_occurrence <- function(procedure_occurrence_id, person_id, p
     }
     if (is.null(qualifier_source_value)) {
       statement <- paste0(statement, " qualifier_source_value IS NULL")
+    } else if (is(qualifier_source_value, "subQuery")){
+      statement <- paste0(statement, " qualifier_source_value = (", as.character(qualifier_source_value), ")")
     } else {
       statement <- paste0(statement, " qualifier_source_value = '", qualifier_source_value,"'")
     }
@@ -9845,6 +10610,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_id)) {
       statement <- paste0(statement, " measurement_id IS NULL")
+    } else if (is(measurement_id, "subQuery")){
+      statement <- paste0(statement, " measurement_id = (", as.character(measurement_id), ")")
     } else {
       statement <- paste0(statement, " measurement_id = '", measurement_id,"'")
     }
@@ -9858,6 +10625,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -9871,6 +10640,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_concept_id)) {
       statement <- paste0(statement, " measurement_concept_id IS NULL")
+    } else if (is(measurement_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_concept_id = (", as.character(measurement_concept_id), ")")
     } else {
       statement <- paste0(statement, " measurement_concept_id = '", measurement_concept_id,"'")
     }
@@ -9884,6 +10655,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_date)) {
       statement <- paste0(statement, " measurement_date IS NULL")
+    } else if (is(measurement_date, "subQuery")){
+      statement <- paste0(statement, " measurement_date = (", as.character(measurement_date), ")")
     } else {
       statement <- paste0(statement, " measurement_date = '", measurement_date,"'")
     }
@@ -9897,6 +10670,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_time)) {
       statement <- paste0(statement, " measurement_time IS NULL")
+    } else if (is(measurement_time, "subQuery")){
+      statement <- paste0(statement, " measurement_time = (", as.character(measurement_time), ")")
     } else {
       statement <- paste0(statement, " measurement_time = '", measurement_time,"'")
     }
@@ -9910,6 +10685,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_type_concept_id)) {
       statement <- paste0(statement, " measurement_type_concept_id IS NULL")
+    } else if (is(measurement_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_type_concept_id = (", as.character(measurement_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " measurement_type_concept_id = '", measurement_type_concept_id,"'")
     }
@@ -9923,6 +10700,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(operator_concept_id)) {
       statement <- paste0(statement, " operator_concept_id IS NULL")
+    } else if (is(operator_concept_id, "subQuery")){
+      statement <- paste0(statement, " operator_concept_id = (", as.character(operator_concept_id), ")")
     } else {
       statement <- paste0(statement, " operator_concept_id = '", operator_concept_id,"'")
     }
@@ -9936,6 +10715,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(value_as_number)) {
       statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
     } else {
       statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
     }
@@ -9949,6 +10730,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(value_as_concept_id)) {
       statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
     } else {
       statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
     }
@@ -9962,6 +10745,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -9975,6 +10760,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(range_low)) {
       statement <- paste0(statement, " range_low IS NULL")
+    } else if (is(range_low, "subQuery")){
+      statement <- paste0(statement, " range_low = (", as.character(range_low), ")")
     } else {
       statement <- paste0(statement, " range_low = '", range_low,"'")
     }
@@ -9988,6 +10775,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(range_high)) {
       statement <- paste0(statement, " range_high IS NULL")
+    } else if (is(range_high, "subQuery")){
+      statement <- paste0(statement, " range_high = (", as.character(range_high), ")")
     } else {
       statement <- paste0(statement, " range_high = '", range_high,"'")
     }
@@ -10001,6 +10790,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -10014,6 +10805,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -10027,6 +10820,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_source_value)) {
       statement <- paste0(statement, " measurement_source_value IS NULL")
+    } else if (is(measurement_source_value, "subQuery")){
+      statement <- paste0(statement, " measurement_source_value = (", as.character(measurement_source_value), ")")
     } else {
       statement <- paste0(statement, " measurement_source_value = '", measurement_source_value,"'")
     }
@@ -10040,6 +10835,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(measurement_source_concept_id)) {
       statement <- paste0(statement, " measurement_source_concept_id IS NULL")
+    } else if (is(measurement_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_source_concept_id = (", as.character(measurement_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " measurement_source_concept_id = '", measurement_source_concept_id,"'")
     }
@@ -10053,6 +10850,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(unit_source_value)) {
       statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
     } else {
       statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
     }
@@ -10066,6 +10865,8 @@ expect_no_measurement <- function(measurement_id, person_id, measurement_concept
     }
     if (is.null(value_source_value)) {
       statement <- paste0(statement, " value_source_value IS NULL")
+    } else if (is(value_source_value, "subQuery")){
+      statement <- paste0(statement, " value_source_value = (", as.character(value_source_value), ")")
     } else {
       statement <- paste0(statement, " value_source_value = '", value_source_value,"'")
     }
@@ -10087,6 +10888,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_id)) {
       statement <- paste0(statement, " observation_id IS NULL")
+    } else if (is(observation_id, "subQuery")){
+      statement <- paste0(statement, " observation_id = (", as.character(observation_id), ")")
     } else {
       statement <- paste0(statement, " observation_id = '", observation_id,"'")
     }
@@ -10100,6 +10903,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -10113,6 +10918,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_concept_id)) {
       statement <- paste0(statement, " observation_concept_id IS NULL")
+    } else if (is(observation_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_concept_id = (", as.character(observation_concept_id), ")")
     } else {
       statement <- paste0(statement, " observation_concept_id = '", observation_concept_id,"'")
     }
@@ -10126,6 +10933,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_date)) {
       statement <- paste0(statement, " observation_date IS NULL")
+    } else if (is(observation_date, "subQuery")){
+      statement <- paste0(statement, " observation_date = (", as.character(observation_date), ")")
     } else {
       statement <- paste0(statement, " observation_date = '", observation_date,"'")
     }
@@ -10139,6 +10948,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_time)) {
       statement <- paste0(statement, " observation_time IS NULL")
+    } else if (is(observation_time, "subQuery")){
+      statement <- paste0(statement, " observation_time = (", as.character(observation_time), ")")
     } else {
       statement <- paste0(statement, " observation_time = '", observation_time,"'")
     }
@@ -10152,6 +10963,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_type_concept_id)) {
       statement <- paste0(statement, " observation_type_concept_id IS NULL")
+    } else if (is(observation_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_type_concept_id = (", as.character(observation_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " observation_type_concept_id = '", observation_type_concept_id,"'")
     }
@@ -10165,6 +10978,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(value_as_number)) {
       statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
     } else {
       statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
     }
@@ -10178,6 +10993,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(value_as_string)) {
       statement <- paste0(statement, " value_as_string IS NULL")
+    } else if (is(value_as_string, "subQuery")){
+      statement <- paste0(statement, " value_as_string = (", as.character(value_as_string), ")")
     } else {
       statement <- paste0(statement, " value_as_string = '", value_as_string,"'")
     }
@@ -10191,6 +11008,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(value_as_concept_id)) {
       statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
     } else {
       statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
     }
@@ -10204,6 +11023,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(qualifier_concept_id)) {
       statement <- paste0(statement, " qualifier_concept_id IS NULL")
+    } else if (is(qualifier_concept_id, "subQuery")){
+      statement <- paste0(statement, " qualifier_concept_id = (", as.character(qualifier_concept_id), ")")
     } else {
       statement <- paste0(statement, " qualifier_concept_id = '", qualifier_concept_id,"'")
     }
@@ -10217,6 +11038,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -10230,6 +11053,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -10243,6 +11068,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -10256,6 +11083,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_source_value)) {
       statement <- paste0(statement, " observation_source_value IS NULL")
+    } else if (is(observation_source_value, "subQuery")){
+      statement <- paste0(statement, " observation_source_value = (", as.character(observation_source_value), ")")
     } else {
       statement <- paste0(statement, " observation_source_value = '", observation_source_value,"'")
     }
@@ -10269,6 +11098,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(observation_source_concept_id)) {
       statement <- paste0(statement, " observation_source_concept_id IS NULL")
+    } else if (is(observation_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_source_concept_id = (", as.character(observation_source_concept_id), ")")
     } else {
       statement <- paste0(statement, " observation_source_concept_id = '", observation_source_concept_id,"'")
     }
@@ -10282,6 +11113,8 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(unit_source_value)) {
       statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
     } else {
       statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
     }
@@ -10295,185 +11128,10 @@ expect_no_observation <- function(observation_id, person_id, observation_concept
     }
     if (is.null(qualifier_source_value)) {
       statement <- paste0(statement, " qualifier_source_value IS NULL")
+    } else if (is(qualifier_source_value, "subQuery")){
+      statement <- paste0(statement, " qualifier_source_value = (", as.character(qualifier_source_value), ")")
     } else {
       statement <- paste0(statement, " qualifier_source_value = '", qualifier_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_provider <- function(provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect provider' AS test, CASE WHEN(SELECT COUNT(*) FROM provider WHERE")
-  first <- TRUE
-  if (!missing(provider_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_id)) {
-      statement <- paste0(statement, " provider_id IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_id = '", provider_id,"'")
-    }
-  }
-
-  if (!missing(provider_name)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_name)) {
-      statement <- paste0(statement, " provider_name IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_name = '", provider_name,"'")
-    }
-  }
-
-  if (!missing(npi)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(npi)) {
-      statement <- paste0(statement, " npi IS NULL")
-    } else {
-      statement <- paste0(statement, " npi = '", npi,"'")
-    }
-  }
-
-  if (!missing(dea)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(dea)) {
-      statement <- paste0(statement, " dea IS NULL")
-    } else {
-      statement <- paste0(statement, " dea = '", dea,"'")
-    }
-  }
-
-  if (!missing(specialty_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_concept_id)) {
-      statement <- paste0(statement, " specialty_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
-    }
-  }
-
-  if (!missing(care_site_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(care_site_id)) {
-      statement <- paste0(statement, " care_site_id IS NULL")
-    } else {
-      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
-    }
-  }
-
-  if (!missing(year_of_birth)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(year_of_birth)) {
-      statement <- paste0(statement, " year_of_birth IS NULL")
-    } else {
-      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
-    }
-  }
-
-  if (!missing(gender_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_concept_id)) {
-      statement <- paste0(statement, " gender_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
-    }
-  }
-
-  if (!missing(provider_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_source_value)) {
-      statement <- paste0(statement, " provider_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
-    }
-  }
-
-  if (!missing(specialty_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_source_value)) {
-      statement <- paste0(statement, " specialty_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
-    }
-  }
-
-  if (!missing(specialty_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_source_concept_id)) {
-      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
-    }
-  }
-
-  if (!missing(gender_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_value)) {
-      statement <- paste0(statement, " gender_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
-    }
-  }
-
-  if (!missing(gender_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_concept_id)) {
-      statement <- paste0(statement, " gender_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
     }
   }
 
@@ -10493,6 +11151,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(note_id)) {
       statement <- paste0(statement, " note_id IS NULL")
+    } else if (is(note_id, "subQuery")){
+      statement <- paste0(statement, " note_id = (", as.character(note_id), ")")
     } else {
       statement <- paste0(statement, " note_id = '", note_id,"'")
     }
@@ -10506,6 +11166,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -10519,6 +11181,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(note_date)) {
       statement <- paste0(statement, " note_date IS NULL")
+    } else if (is(note_date, "subQuery")){
+      statement <- paste0(statement, " note_date = (", as.character(note_date), ")")
     } else {
       statement <- paste0(statement, " note_date = '", note_date,"'")
     }
@@ -10532,6 +11196,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(note_time)) {
       statement <- paste0(statement, " note_time IS NULL")
+    } else if (is(note_time, "subQuery")){
+      statement <- paste0(statement, " note_time = (", as.character(note_time), ")")
     } else {
       statement <- paste0(statement, " note_time = '", note_time,"'")
     }
@@ -10545,6 +11211,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(note_type_concept_id)) {
       statement <- paste0(statement, " note_type_concept_id IS NULL")
+    } else if (is(note_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " note_type_concept_id = (", as.character(note_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " note_type_concept_id = '", note_type_concept_id,"'")
     }
@@ -10558,6 +11226,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(note_text)) {
       statement <- paste0(statement, " note_text IS NULL")
+    } else if (is(note_text, "subQuery")){
+      statement <- paste0(statement, " note_text = (", as.character(note_text), ")")
     } else {
       statement <- paste0(statement, " note_text = '", note_text,"'")
     }
@@ -10571,6 +11241,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(provider_id)) {
       statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
     } else {
       statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
@@ -10584,6 +11256,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(visit_occurrence_id)) {
       statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
     } else {
       statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
     }
@@ -10597,6 +11271,8 @@ expect_no_note <- function(note_id, person_id, note_date, note_time, note_type_c
     }
     if (is.null(note_source_value)) {
       statement <- paste0(statement, " note_source_value IS NULL")
+    } else if (is(note_source_value, "subQuery")){
+      statement <- paste0(statement, " note_source_value = (", as.character(note_source_value), ")")
     } else {
       statement <- paste0(statement, " note_source_value = '", note_source_value,"'")
     }
@@ -10618,6 +11294,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_id)) {
       statement <- paste0(statement, " specimen_id IS NULL")
+    } else if (is(specimen_id, "subQuery")){
+      statement <- paste0(statement, " specimen_id = (", as.character(specimen_id), ")")
     } else {
       statement <- paste0(statement, " specimen_id = '", specimen_id,"'")
     }
@@ -10631,6 +11309,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -10644,6 +11324,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_concept_id)) {
       statement <- paste0(statement, " specimen_concept_id IS NULL")
+    } else if (is(specimen_concept_id, "subQuery")){
+      statement <- paste0(statement, " specimen_concept_id = (", as.character(specimen_concept_id), ")")
     } else {
       statement <- paste0(statement, " specimen_concept_id = '", specimen_concept_id,"'")
     }
@@ -10657,6 +11339,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_type_concept_id)) {
       statement <- paste0(statement, " specimen_type_concept_id IS NULL")
+    } else if (is(specimen_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " specimen_type_concept_id = (", as.character(specimen_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " specimen_type_concept_id = '", specimen_type_concept_id,"'")
     }
@@ -10670,6 +11354,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_date)) {
       statement <- paste0(statement, " specimen_date IS NULL")
+    } else if (is(specimen_date, "subQuery")){
+      statement <- paste0(statement, " specimen_date = (", as.character(specimen_date), ")")
     } else {
       statement <- paste0(statement, " specimen_date = '", specimen_date,"'")
     }
@@ -10683,6 +11369,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_time)) {
       statement <- paste0(statement, " specimen_time IS NULL")
+    } else if (is(specimen_time, "subQuery")){
+      statement <- paste0(statement, " specimen_time = (", as.character(specimen_time), ")")
     } else {
       statement <- paste0(statement, " specimen_time = '", specimen_time,"'")
     }
@@ -10696,6 +11384,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(quantity)) {
       statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
     } else {
       statement <- paste0(statement, " quantity = '", quantity,"'")
     }
@@ -10709,6 +11399,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -10722,6 +11414,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(anatomic_site_concept_id)) {
       statement <- paste0(statement, " anatomic_site_concept_id IS NULL")
+    } else if (is(anatomic_site_concept_id, "subQuery")){
+      statement <- paste0(statement, " anatomic_site_concept_id = (", as.character(anatomic_site_concept_id), ")")
     } else {
       statement <- paste0(statement, " anatomic_site_concept_id = '", anatomic_site_concept_id,"'")
     }
@@ -10735,6 +11429,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(disease_status_concept_id)) {
       statement <- paste0(statement, " disease_status_concept_id IS NULL")
+    } else if (is(disease_status_concept_id, "subQuery")){
+      statement <- paste0(statement, " disease_status_concept_id = (", as.character(disease_status_concept_id), ")")
     } else {
       statement <- paste0(statement, " disease_status_concept_id = '", disease_status_concept_id,"'")
     }
@@ -10748,6 +11444,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_source_id)) {
       statement <- paste0(statement, " specimen_source_id IS NULL")
+    } else if (is(specimen_source_id, "subQuery")){
+      statement <- paste0(statement, " specimen_source_id = (", as.character(specimen_source_id), ")")
     } else {
       statement <- paste0(statement, " specimen_source_id = '", specimen_source_id,"'")
     }
@@ -10761,6 +11459,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(specimen_source_value)) {
       statement <- paste0(statement, " specimen_source_value IS NULL")
+    } else if (is(specimen_source_value, "subQuery")){
+      statement <- paste0(statement, " specimen_source_value = (", as.character(specimen_source_value), ")")
     } else {
       statement <- paste0(statement, " specimen_source_value = '", specimen_source_value,"'")
     }
@@ -10774,6 +11474,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(unit_source_value)) {
       statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
     } else {
       statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
     }
@@ -10787,6 +11489,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(anatomic_site_source_value)) {
       statement <- paste0(statement, " anatomic_site_source_value IS NULL")
+    } else if (is(anatomic_site_source_value, "subQuery")){
+      statement <- paste0(statement, " anatomic_site_source_value = (", as.character(anatomic_site_source_value), ")")
     } else {
       statement <- paste0(statement, " anatomic_site_source_value = '", anatomic_site_source_value,"'")
     }
@@ -10800,6 +11504,8 @@ expect_no_specimen <- function(specimen_id, person_id, specimen_concept_id, spec
     }
     if (is.null(disease_status_source_value)) {
       statement <- paste0(statement, " disease_status_source_value IS NULL")
+    } else if (is(disease_status_source_value, "subQuery")){
+      statement <- paste0(statement, " disease_status_source_value = (", as.character(disease_status_source_value), ")")
     } else {
       statement <- paste0(statement, " disease_status_source_value = '", disease_status_source_value,"'")
     }
@@ -10821,6 +11527,8 @@ expect_no_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_c
     }
     if (is.null(domain_concept_id_1)) {
       statement <- paste0(statement, " domain_concept_id_1 IS NULL")
+    } else if (is(domain_concept_id_1, "subQuery")){
+      statement <- paste0(statement, " domain_concept_id_1 = (", as.character(domain_concept_id_1), ")")
     } else {
       statement <- paste0(statement, " domain_concept_id_1 = '", domain_concept_id_1,"'")
     }
@@ -10834,6 +11542,8 @@ expect_no_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_c
     }
     if (is.null(fact_id_1)) {
       statement <- paste0(statement, " fact_id_1 IS NULL")
+    } else if (is(fact_id_1, "subQuery")){
+      statement <- paste0(statement, " fact_id_1 = (", as.character(fact_id_1), ")")
     } else {
       statement <- paste0(statement, " fact_id_1 = '", fact_id_1,"'")
     }
@@ -10847,6 +11557,8 @@ expect_no_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_c
     }
     if (is.null(domain_concept_id_2)) {
       statement <- paste0(statement, " domain_concept_id_2 IS NULL")
+    } else if (is(domain_concept_id_2, "subQuery")){
+      statement <- paste0(statement, " domain_concept_id_2 = (", as.character(domain_concept_id_2), ")")
     } else {
       statement <- paste0(statement, " domain_concept_id_2 = '", domain_concept_id_2,"'")
     }
@@ -10860,6 +11572,8 @@ expect_no_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_c
     }
     if (is.null(fact_id_2)) {
       statement <- paste0(statement, " fact_id_2 IS NULL")
+    } else if (is(fact_id_2, "subQuery")){
+      statement <- paste0(statement, " fact_id_2 = (", as.character(fact_id_2), ")")
     } else {
       statement <- paste0(statement, " fact_id_2 = '", fact_id_2,"'")
     }
@@ -10873,526 +11587,10 @@ expect_no_fact_relationship <- function(domain_concept_id_1, fact_id_1, domain_c
     }
     if (is.null(relationship_concept_id)) {
       statement <- paste0(statement, " relationship_concept_id IS NULL")
+    } else if (is(relationship_concept_id, "subQuery")){
+      statement <- paste0(statement, " relationship_concept_id = (", as.character(relationship_concept_id), ")")
     } else {
       statement <- paste0(statement, " relationship_concept_id = '", relationship_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_procedure_cost <- function(procedure_cost_id, procedure_occurrence_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, revenue_code_concept_id, payer_plan_period_id, revenue_code_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect procedure_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_cost WHERE")
-  first <- TRUE
-  if (!missing(procedure_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(procedure_cost_id)) {
-      statement <- paste0(statement, " procedure_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " procedure_cost_id = '", procedure_cost_id,"'")
-    }
-  }
-
-  if (!missing(procedure_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(procedure_occurrence_id)) {
-      statement <- paste0(statement, " procedure_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " procedure_occurrence_id = '", procedure_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(revenue_code_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(revenue_code_concept_id)) {
-      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  if (!missing(revenue_code_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(revenue_code_source_value)) {
-      statement <- paste0(statement, " revenue_code_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_visit_cost <- function(visit_cost_id, visit_occurrence_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_cost WHERE")
-  first <- TRUE
-  if (!missing(visit_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_cost_id)) {
-      statement <- paste0(statement, " visit_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_cost_id = '", visit_cost_id,"'")
-    }
-  }
-
-  if (!missing(visit_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_occurrence_id)) {
-      statement <- paste0(statement, " visit_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_drug_cost <- function(drug_cost_id, drug_exposure_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, ingredient_cost, dispensing_fee, average_wholesale_price, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_cost WHERE")
-  first <- TRUE
-  if (!missing(drug_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(drug_cost_id)) {
-      statement <- paste0(statement, " drug_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " drug_cost_id = '", drug_cost_id,"'")
-    }
-  }
-
-  if (!missing(drug_exposure_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(drug_exposure_id)) {
-      statement <- paste0(statement, " drug_exposure_id IS NULL")
-    } else {
-      statement <- paste0(statement, " drug_exposure_id = '", drug_exposure_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(ingredient_cost)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ingredient_cost)) {
-      statement <- paste0(statement, " ingredient_cost IS NULL")
-    } else {
-      statement <- paste0(statement, " ingredient_cost = '", ingredient_cost,"'")
-    }
-  }
-
-  if (!missing(dispensing_fee)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(dispensing_fee)) {
-      statement <- paste0(statement, " dispensing_fee IS NULL")
-    } else {
-      statement <- paste0(statement, " dispensing_fee = '", dispensing_fee,"'")
-    }
-  }
-
-  if (!missing(average_wholesale_price)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(average_wholesale_price)) {
-      statement <- paste0(statement, " average_wholesale_price IS NULL")
-    } else {
-      statement <- paste0(statement, " average_wholesale_price = '", average_wholesale_price,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
     }
   }
 
@@ -11412,6 +11610,8 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(payer_plan_period_id)) {
       statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else if (is(payer_plan_period_id, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_id = (", as.character(payer_plan_period_id), ")")
     } else {
       statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
     }
@@ -11425,6 +11625,8 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -11438,6 +11640,8 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(payer_plan_period_start_date)) {
       statement <- paste0(statement, " payer_plan_period_start_date IS NULL")
+    } else if (is(payer_plan_period_start_date, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_start_date = (", as.character(payer_plan_period_start_date), ")")
     } else {
       statement <- paste0(statement, " payer_plan_period_start_date = '", payer_plan_period_start_date,"'")
     }
@@ -11451,6 +11655,8 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(payer_plan_period_end_date)) {
       statement <- paste0(statement, " payer_plan_period_end_date IS NULL")
+    } else if (is(payer_plan_period_end_date, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_end_date = (", as.character(payer_plan_period_end_date), ")")
     } else {
       statement <- paste0(statement, " payer_plan_period_end_date = '", payer_plan_period_end_date,"'")
     }
@@ -11464,6 +11670,8 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(payer_source_value)) {
       statement <- paste0(statement, " payer_source_value IS NULL")
+    } else if (is(payer_source_value, "subQuery")){
+      statement <- paste0(statement, " payer_source_value = (", as.character(payer_source_value), ")")
     } else {
       statement <- paste0(statement, " payer_source_value = '", payer_source_value,"'")
     }
@@ -11477,6 +11685,8 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(plan_source_value)) {
       statement <- paste0(statement, " plan_source_value IS NULL")
+    } else if (is(plan_source_value, "subQuery")){
+      statement <- paste0(statement, " plan_source_value = (", as.character(plan_source_value), ")")
     } else {
       statement <- paste0(statement, " plan_source_value = '", plan_source_value,"'")
     }
@@ -11490,159 +11700,10 @@ expect_no_payer_plan_period <- function(payer_plan_period_id, person_id, payer_p
     }
     if (is.null(family_source_value)) {
       statement <- paste0(statement, " family_source_value IS NULL")
+    } else if (is(family_source_value, "subQuery")){
+      statement <- paste0(statement, " family_source_value = (", as.character(family_source_value), ")")
     } else {
       statement <- paste0(statement, " family_source_value = '", family_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_no_device_cost <- function(device_cost_id, device_exposure_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect device_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM device_cost WHERE")
-  first <- TRUE
-  if (!missing(device_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(device_cost_id)) {
-      statement <- paste0(statement, " device_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " device_cost_id = '", device_cost_id,"'")
-    }
-  }
-
-  if (!missing(device_exposure_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(device_exposure_id)) {
-      statement <- paste0(statement, " device_exposure_id IS NULL")
-    } else {
-      statement <- paste0(statement, " device_exposure_id = '", device_exposure_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
     }
   }
 
@@ -11662,6 +11723,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(drug_era_id)) {
       statement <- paste0(statement, " drug_era_id IS NULL")
+    } else if (is(drug_era_id, "subQuery")){
+      statement <- paste0(statement, " drug_era_id = (", as.character(drug_era_id), ")")
     } else {
       statement <- paste0(statement, " drug_era_id = '", drug_era_id,"'")
     }
@@ -11675,6 +11738,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -11688,6 +11753,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(drug_concept_id)) {
       statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
     }
@@ -11701,6 +11768,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(drug_era_start_date)) {
       statement <- paste0(statement, " drug_era_start_date IS NULL")
+    } else if (is(drug_era_start_date, "subQuery")){
+      statement <- paste0(statement, " drug_era_start_date = (", as.character(drug_era_start_date), ")")
     } else {
       statement <- paste0(statement, " drug_era_start_date = '", drug_era_start_date,"'")
     }
@@ -11714,6 +11783,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(drug_era_end_date)) {
       statement <- paste0(statement, " drug_era_end_date IS NULL")
+    } else if (is(drug_era_end_date, "subQuery")){
+      statement <- paste0(statement, " drug_era_end_date = (", as.character(drug_era_end_date), ")")
     } else {
       statement <- paste0(statement, " drug_era_end_date = '", drug_era_end_date,"'")
     }
@@ -11727,6 +11798,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(drug_exposure_count)) {
       statement <- paste0(statement, " drug_exposure_count IS NULL")
+    } else if (is(drug_exposure_count, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_count = (", as.character(drug_exposure_count), ")")
     } else {
       statement <- paste0(statement, " drug_exposure_count = '", drug_exposure_count,"'")
     }
@@ -11740,6 +11813,8 @@ expect_no_drug_era <- function(drug_era_id, person_id, drug_concept_id, drug_era
     }
     if (is.null(gap_days)) {
       statement <- paste0(statement, " gap_days IS NULL")
+    } else if (is(gap_days, "subQuery")){
+      statement <- paste0(statement, " gap_days = (", as.character(gap_days), ")")
     } else {
       statement <- paste0(statement, " gap_days = '", gap_days,"'")
     }
@@ -11761,6 +11836,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(dose_era_id)) {
       statement <- paste0(statement, " dose_era_id IS NULL")
+    } else if (is(dose_era_id, "subQuery")){
+      statement <- paste0(statement, " dose_era_id = (", as.character(dose_era_id), ")")
     } else {
       statement <- paste0(statement, " dose_era_id = '", dose_era_id,"'")
     }
@@ -11774,6 +11851,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -11787,6 +11866,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(drug_concept_id)) {
       statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
     } else {
       statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
     }
@@ -11800,6 +11881,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(unit_concept_id)) {
       statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
     } else {
       statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
     }
@@ -11813,6 +11896,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(dose_value)) {
       statement <- paste0(statement, " dose_value IS NULL")
+    } else if (is(dose_value, "subQuery")){
+      statement <- paste0(statement, " dose_value = (", as.character(dose_value), ")")
     } else {
       statement <- paste0(statement, " dose_value = '", dose_value,"'")
     }
@@ -11826,6 +11911,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(dose_era_start_date)) {
       statement <- paste0(statement, " dose_era_start_date IS NULL")
+    } else if (is(dose_era_start_date, "subQuery")){
+      statement <- paste0(statement, " dose_era_start_date = (", as.character(dose_era_start_date), ")")
     } else {
       statement <- paste0(statement, " dose_era_start_date = '", dose_era_start_date,"'")
     }
@@ -11839,6 +11926,8 @@ expect_no_dose_era <- function(dose_era_id, person_id, drug_concept_id, unit_con
     }
     if (is.null(dose_era_end_date)) {
       statement <- paste0(statement, " dose_era_end_date IS NULL")
+    } else if (is(dose_era_end_date, "subQuery")){
+      statement <- paste0(statement, " dose_era_end_date = (", as.character(dose_era_end_date), ")")
     } else {
       statement <- paste0(statement, " dose_era_end_date = '", dose_era_end_date,"'")
     }
@@ -11860,6 +11949,8 @@ expect_no_condition_era <- function(condition_era_id, person_id, condition_conce
     }
     if (is.null(condition_era_id)) {
       statement <- paste0(statement, " condition_era_id IS NULL")
+    } else if (is(condition_era_id, "subQuery")){
+      statement <- paste0(statement, " condition_era_id = (", as.character(condition_era_id), ")")
     } else {
       statement <- paste0(statement, " condition_era_id = '", condition_era_id,"'")
     }
@@ -11873,6 +11964,8 @@ expect_no_condition_era <- function(condition_era_id, person_id, condition_conce
     }
     if (is.null(person_id)) {
       statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
     } else {
       statement <- paste0(statement, " person_id = '", person_id,"'")
     }
@@ -11886,6 +11979,8 @@ expect_no_condition_era <- function(condition_era_id, person_id, condition_conce
     }
     if (is.null(condition_concept_id)) {
       statement <- paste0(statement, " condition_concept_id IS NULL")
+    } else if (is(condition_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_concept_id = (", as.character(condition_concept_id), ")")
     } else {
       statement <- paste0(statement, " condition_concept_id = '", condition_concept_id,"'")
     }
@@ -11899,6 +11994,8 @@ expect_no_condition_era <- function(condition_era_id, person_id, condition_conce
     }
     if (is.null(condition_era_start_date)) {
       statement <- paste0(statement, " condition_era_start_date IS NULL")
+    } else if (is(condition_era_start_date, "subQuery")){
+      statement <- paste0(statement, " condition_era_start_date = (", as.character(condition_era_start_date), ")")
     } else {
       statement <- paste0(statement, " condition_era_start_date = '", condition_era_start_date,"'")
     }
@@ -11912,6 +12009,8 @@ expect_no_condition_era <- function(condition_era_id, person_id, condition_conce
     }
     if (is.null(condition_era_end_date)) {
       statement <- paste0(statement, " condition_era_end_date IS NULL")
+    } else if (is(condition_era_end_date, "subQuery")){
+      statement <- paste0(statement, " condition_era_end_date = (", as.character(condition_era_end_date), ")")
     } else {
       statement <- paste0(statement, " condition_era_end_date = '", condition_era_end_date,"'")
     }
@@ -11925,6 +12024,8 @@ expect_no_condition_era <- function(condition_era_id, person_id, condition_conce
     }
     if (is.null(condition_occurrence_count)) {
       statement <- paste0(statement, " condition_occurrence_count IS NULL")
+    } else if (is(condition_occurrence_count, "subQuery")){
+      statement <- paste0(statement, " condition_occurrence_count = (", as.character(condition_occurrence_count), ")")
     } else {
       statement <- paste0(statement, " condition_occurrence_count = '", condition_occurrence_count,"'")
     }
@@ -11946,6 +12047,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(cdm_source_name)) {
       statement <- paste0(statement, " cdm_source_name IS NULL")
+    } else if (is(cdm_source_name, "subQuery")){
+      statement <- paste0(statement, " cdm_source_name = (", as.character(cdm_source_name), ")")
     } else {
       statement <- paste0(statement, " cdm_source_name = '", cdm_source_name,"'")
     }
@@ -11959,6 +12062,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(cdm_source_abbreviation)) {
       statement <- paste0(statement, " cdm_source_abbreviation IS NULL")
+    } else if (is(cdm_source_abbreviation, "subQuery")){
+      statement <- paste0(statement, " cdm_source_abbreviation = (", as.character(cdm_source_abbreviation), ")")
     } else {
       statement <- paste0(statement, " cdm_source_abbreviation = '", cdm_source_abbreviation,"'")
     }
@@ -11972,6 +12077,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(cdm_holder)) {
       statement <- paste0(statement, " cdm_holder IS NULL")
+    } else if (is(cdm_holder, "subQuery")){
+      statement <- paste0(statement, " cdm_holder = (", as.character(cdm_holder), ")")
     } else {
       statement <- paste0(statement, " cdm_holder = '", cdm_holder,"'")
     }
@@ -11985,6 +12092,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(source_description)) {
       statement <- paste0(statement, " source_description IS NULL")
+    } else if (is(source_description, "subQuery")){
+      statement <- paste0(statement, " source_description = (", as.character(source_description), ")")
     } else {
       statement <- paste0(statement, " source_description = '", source_description,"'")
     }
@@ -11998,6 +12107,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(source_documentation_reference)) {
       statement <- paste0(statement, " source_documentation_reference IS NULL")
+    } else if (is(source_documentation_reference, "subQuery")){
+      statement <- paste0(statement, " source_documentation_reference = (", as.character(source_documentation_reference), ")")
     } else {
       statement <- paste0(statement, " source_documentation_reference = '", source_documentation_reference,"'")
     }
@@ -12011,6 +12122,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(cdm_etl_reference)) {
       statement <- paste0(statement, " cdm_etl_reference IS NULL")
+    } else if (is(cdm_etl_reference, "subQuery")){
+      statement <- paste0(statement, " cdm_etl_reference = (", as.character(cdm_etl_reference), ")")
     } else {
       statement <- paste0(statement, " cdm_etl_reference = '", cdm_etl_reference,"'")
     }
@@ -12024,6 +12137,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(source_release_date)) {
       statement <- paste0(statement, " source_release_date IS NULL")
+    } else if (is(source_release_date, "subQuery")){
+      statement <- paste0(statement, " source_release_date = (", as.character(source_release_date), ")")
     } else {
       statement <- paste0(statement, " source_release_date = '", source_release_date,"'")
     }
@@ -12037,6 +12152,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(cdm_release_date)) {
       statement <- paste0(statement, " cdm_release_date IS NULL")
+    } else if (is(cdm_release_date, "subQuery")){
+      statement <- paste0(statement, " cdm_release_date = (", as.character(cdm_release_date), ")")
     } else {
       statement <- paste0(statement, " cdm_release_date = '", cdm_release_date,"'")
     }
@@ -12050,6 +12167,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(cdm_version)) {
       statement <- paste0(statement, " cdm_version IS NULL")
+    } else if (is(cdm_version, "subQuery")){
+      statement <- paste0(statement, " cdm_version = (", as.character(cdm_version), ")")
     } else {
       statement <- paste0(statement, " cdm_version = '", cdm_version,"'")
     }
@@ -12063,6 +12182,8 @@ expect_no_cdm_source <- function(cdm_source_name, cdm_source_abbreviation, cdm_h
     }
     if (is.null(vocabulary_version)) {
       statement <- paste0(statement, " vocabulary_version IS NULL")
+    } else if (is(vocabulary_version, "subQuery")){
+      statement <- paste0(statement, " vocabulary_version = (", as.character(vocabulary_version), ")")
     } else {
       statement <- paste0(statement, " vocabulary_version = '", vocabulary_version,"'")
     }
@@ -12084,6 +12205,8 @@ expect_no_cohort <- function(cohort_definition_id, subject_id, cohort_start_date
     }
     if (is.null(cohort_definition_id)) {
       statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
     }
@@ -12097,6 +12220,8 @@ expect_no_cohort <- function(cohort_definition_id, subject_id, cohort_start_date
     }
     if (is.null(subject_id)) {
       statement <- paste0(statement, " subject_id IS NULL")
+    } else if (is(subject_id, "subQuery")){
+      statement <- paste0(statement, " subject_id = (", as.character(subject_id), ")")
     } else {
       statement <- paste0(statement, " subject_id = '", subject_id,"'")
     }
@@ -12110,6 +12235,8 @@ expect_no_cohort <- function(cohort_definition_id, subject_id, cohort_start_date
     }
     if (is.null(cohort_start_date)) {
       statement <- paste0(statement, " cohort_start_date IS NULL")
+    } else if (is(cohort_start_date, "subQuery")){
+      statement <- paste0(statement, " cohort_start_date = (", as.character(cohort_start_date), ")")
     } else {
       statement <- paste0(statement, " cohort_start_date = '", cohort_start_date,"'")
     }
@@ -12123,6 +12250,8 @@ expect_no_cohort <- function(cohort_definition_id, subject_id, cohort_start_date
     }
     if (is.null(cohort_end_date)) {
       statement <- paste0(statement, " cohort_end_date IS NULL")
+    } else if (is(cohort_end_date, "subQuery")){
+      statement <- paste0(statement, " cohort_end_date = (", as.character(cohort_end_date), ")")
     } else {
       statement <- paste0(statement, " cohort_end_date = '", cohort_end_date,"'")
     }
@@ -12144,6 +12273,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(cohort_definition_id)) {
       statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
     }
@@ -12157,6 +12288,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(cohort_definition_name)) {
       statement <- paste0(statement, " cohort_definition_name IS NULL")
+    } else if (is(cohort_definition_name, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_name = (", as.character(cohort_definition_name), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_name = '", cohort_definition_name,"'")
     }
@@ -12170,6 +12303,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(cohort_definition_description)) {
       statement <- paste0(statement, " cohort_definition_description IS NULL")
+    } else if (is(cohort_definition_description, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_description = (", as.character(cohort_definition_description), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_description = '", cohort_definition_description,"'")
     }
@@ -12183,6 +12318,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(definition_type_concept_id)) {
       statement <- paste0(statement, " definition_type_concept_id IS NULL")
+    } else if (is(definition_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " definition_type_concept_id = (", as.character(definition_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " definition_type_concept_id = '", definition_type_concept_id,"'")
     }
@@ -12196,6 +12333,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(cohort_definition_syntax)) {
       statement <- paste0(statement, " cohort_definition_syntax IS NULL")
+    } else if (is(cohort_definition_syntax, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_syntax = (", as.character(cohort_definition_syntax), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_syntax = '", cohort_definition_syntax,"'")
     }
@@ -12209,6 +12348,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(subject_concept_id)) {
       statement <- paste0(statement, " subject_concept_id IS NULL")
+    } else if (is(subject_concept_id, "subQuery")){
+      statement <- paste0(statement, " subject_concept_id = (", as.character(subject_concept_id), ")")
     } else {
       statement <- paste0(statement, " subject_concept_id = '", subject_concept_id,"'")
     }
@@ -12222,6 +12363,8 @@ expect_no_cohort_definition <- function(cohort_definition_id, cohort_definition_
     }
     if (is.null(cohort_instantiation_date)) {
       statement <- paste0(statement, " cohort_instantiation_date IS NULL")
+    } else if (is(cohort_instantiation_date, "subQuery")){
+      statement <- paste0(statement, " cohort_instantiation_date = (", as.character(cohort_instantiation_date), ")")
     } else {
       statement <- paste0(statement, " cohort_instantiation_date = '", cohort_instantiation_date,"'")
     }
@@ -12243,6 +12386,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(cohort_definition_id)) {
       statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
     } else {
       statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
     }
@@ -12256,6 +12401,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(cohort_start_date)) {
       statement <- paste0(statement, " cohort_start_date IS NULL")
+    } else if (is(cohort_start_date, "subQuery")){
+      statement <- paste0(statement, " cohort_start_date = (", as.character(cohort_start_date), ")")
     } else {
       statement <- paste0(statement, " cohort_start_date = '", cohort_start_date,"'")
     }
@@ -12269,6 +12416,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(cohort_end_date)) {
       statement <- paste0(statement, " cohort_end_date IS NULL")
+    } else if (is(cohort_end_date, "subQuery")){
+      statement <- paste0(statement, " cohort_end_date = (", as.character(cohort_end_date), ")")
     } else {
       statement <- paste0(statement, " cohort_end_date = '", cohort_end_date,"'")
     }
@@ -12282,6 +12431,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(subject_id)) {
       statement <- paste0(statement, " subject_id IS NULL")
+    } else if (is(subject_id, "subQuery")){
+      statement <- paste0(statement, " subject_id = (", as.character(subject_id), ")")
     } else {
       statement <- paste0(statement, " subject_id = '", subject_id,"'")
     }
@@ -12295,6 +12446,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(attribute_definition_id)) {
       statement <- paste0(statement, " attribute_definition_id IS NULL")
+    } else if (is(attribute_definition_id, "subQuery")){
+      statement <- paste0(statement, " attribute_definition_id = (", as.character(attribute_definition_id), ")")
     } else {
       statement <- paste0(statement, " attribute_definition_id = '", attribute_definition_id,"'")
     }
@@ -12308,6 +12461,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(value_as_number)) {
       statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
     } else {
       statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
     }
@@ -12321,6 +12476,8 @@ expect_no_cohort_attribute <- function(cohort_definition_id, cohort_start_date, 
     }
     if (is.null(value_as_concept_id)) {
       statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
     } else {
       statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
     }
@@ -12342,6 +12499,8 @@ expect_no_attribute_definition <- function(attribute_definition_id, attribute_na
     }
     if (is.null(attribute_definition_id)) {
       statement <- paste0(statement, " attribute_definition_id IS NULL")
+    } else if (is(attribute_definition_id, "subQuery")){
+      statement <- paste0(statement, " attribute_definition_id = (", as.character(attribute_definition_id), ")")
     } else {
       statement <- paste0(statement, " attribute_definition_id = '", attribute_definition_id,"'")
     }
@@ -12355,6 +12514,8 @@ expect_no_attribute_definition <- function(attribute_definition_id, attribute_na
     }
     if (is.null(attribute_name)) {
       statement <- paste0(statement, " attribute_name IS NULL")
+    } else if (is(attribute_name, "subQuery")){
+      statement <- paste0(statement, " attribute_name = (", as.character(attribute_name), ")")
     } else {
       statement <- paste0(statement, " attribute_name = '", attribute_name,"'")
     }
@@ -12368,6 +12529,8 @@ expect_no_attribute_definition <- function(attribute_definition_id, attribute_na
     }
     if (is.null(attribute_description)) {
       statement <- paste0(statement, " attribute_description IS NULL")
+    } else if (is(attribute_description, "subQuery")){
+      statement <- paste0(statement, " attribute_description = (", as.character(attribute_description), ")")
     } else {
       statement <- paste0(statement, " attribute_description = '", attribute_description,"'")
     }
@@ -12381,6 +12544,8 @@ expect_no_attribute_definition <- function(attribute_definition_id, attribute_na
     }
     if (is.null(attribute_type_concept_id)) {
       statement <- paste0(statement, " attribute_type_concept_id IS NULL")
+    } else if (is(attribute_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " attribute_type_concept_id = (", as.character(attribute_type_concept_id), ")")
     } else {
       statement <- paste0(statement, " attribute_type_concept_id = '", attribute_type_concept_id,"'")
     }
@@ -12394,6 +12559,8 @@ expect_no_attribute_definition <- function(attribute_definition_id, attribute_na
     }
     if (is.null(attribute_syntax)) {
       statement <- paste0(statement, " attribute_syntax IS NULL")
+    } else if (is(attribute_syntax, "subQuery")){
+      statement <- paste0(statement, " attribute_syntax = (", as.character(attribute_syntax), ")")
     } else {
       statement <- paste0(statement, " attribute_syntax = '", attribute_syntax,"'")
     }
@@ -12404,8 +12571,4655 @@ expect_no_attribute_definition <- function(attribute_definition_id, attribute_na
   invisible(statement)
 }
 
-expect_count_person <- function(rowCount, person_id, person_source_value, gender_concept_id, gender_source_value, year_of_birth, month_of_birth, day_of_birth, race_concept_id, race_source_value, ethnicity_concept_id, ethnicity_source_value, time_of_birth, location_id, provider_id, care_site_id, gender_source_concept_id, race_source_concept_id, ethnicity_source_concept_id) {
+expect_no_cost <- function(cost_id, cost_event_id, cost_domain_id, cost_type_concept_id, currency_concept_id, total_charge, total_cost, total_paid, paid_by_payer, paid_by_patient, paid_patient_copay, paid_patient_coinsurance, paid_patient_deductible, paid_by_primary, paid_ingredient_cost, paid_dispensing_fee, payer_plan_period_id, amount_allowed, revenue_code_concept_id, revenue_code_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cost' AS test, CASE WHEN(SELECT COUNT(*) FROM cost WHERE")
+  first <- TRUE
+  if (!missing(cost_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_id)) {
+      statement <- paste0(statement, " cost_id IS NULL")
+    } else if (is(cost_id, "subQuery")){
+      statement <- paste0(statement, " cost_id = (", as.character(cost_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_id = '", cost_id,"'")
+    }
+  }
+
+  if (!missing(cost_event_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_event_id)) {
+      statement <- paste0(statement, " cost_event_id IS NULL")
+    } else if (is(cost_event_id, "subQuery")){
+      statement <- paste0(statement, " cost_event_id = (", as.character(cost_event_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_event_id = '", cost_event_id,"'")
+    }
+  }
+
+  if (!missing(cost_domain_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_domain_id)) {
+      statement <- paste0(statement, " cost_domain_id IS NULL")
+    } else if (is(cost_domain_id, "subQuery")){
+      statement <- paste0(statement, " cost_domain_id = (", as.character(cost_domain_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_domain_id = '", cost_domain_id,"'")
+    }
+  }
+
+  if (!missing(cost_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_type_concept_id)) {
+      statement <- paste0(statement, " cost_type_concept_id IS NULL")
+    } else if (is(cost_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " cost_type_concept_id = (", as.character(cost_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_type_concept_id = '", cost_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(currency_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(currency_concept_id)) {
+      statement <- paste0(statement, " currency_concept_id IS NULL")
+    } else if (is(currency_concept_id, "subQuery")){
+      statement <- paste0(statement, " currency_concept_id = (", as.character(currency_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
+    }
+  }
+
+  if (!missing(total_charge)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_charge)) {
+      statement <- paste0(statement, " total_charge IS NULL")
+    } else if (is(total_charge, "subQuery")){
+      statement <- paste0(statement, " total_charge = (", as.character(total_charge), ")")
+    } else {
+      statement <- paste0(statement, " total_charge = '", total_charge,"'")
+    }
+  }
+
+  if (!missing(total_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_cost)) {
+      statement <- paste0(statement, " total_cost IS NULL")
+    } else if (is(total_cost, "subQuery")){
+      statement <- paste0(statement, " total_cost = (", as.character(total_cost), ")")
+    } else {
+      statement <- paste0(statement, " total_cost = '", total_cost,"'")
+    }
+  }
+
+  if (!missing(total_paid)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_paid)) {
+      statement <- paste0(statement, " total_paid IS NULL")
+    } else if (is(total_paid, "subQuery")){
+      statement <- paste0(statement, " total_paid = (", as.character(total_paid), ")")
+    } else {
+      statement <- paste0(statement, " total_paid = '", total_paid,"'")
+    }
+  }
+
+  if (!missing(paid_by_payer)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_payer)) {
+      statement <- paste0(statement, " paid_by_payer IS NULL")
+    } else if (is(paid_by_payer, "subQuery")){
+      statement <- paste0(statement, " paid_by_payer = (", as.character(paid_by_payer), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
+    }
+  }
+
+  if (!missing(paid_by_patient)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_patient)) {
+      statement <- paste0(statement, " paid_by_patient IS NULL")
+    } else if (is(paid_by_patient, "subQuery")){
+      statement <- paste0(statement, " paid_by_patient = (", as.character(paid_by_patient), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_patient = '", paid_by_patient,"'")
+    }
+  }
+
+  if (!missing(paid_patient_copay)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_copay)) {
+      statement <- paste0(statement, " paid_patient_copay IS NULL")
+    } else if (is(paid_patient_copay, "subQuery")){
+      statement <- paste0(statement, " paid_patient_copay = (", as.character(paid_patient_copay), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_copay = '", paid_patient_copay,"'")
+    }
+  }
+
+  if (!missing(paid_patient_coinsurance)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_coinsurance)) {
+      statement <- paste0(statement, " paid_patient_coinsurance IS NULL")
+    } else if (is(paid_patient_coinsurance, "subQuery")){
+      statement <- paste0(statement, " paid_patient_coinsurance = (", as.character(paid_patient_coinsurance), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_coinsurance = '", paid_patient_coinsurance,"'")
+    }
+  }
+
+  if (!missing(paid_patient_deductible)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_deductible)) {
+      statement <- paste0(statement, " paid_patient_deductible IS NULL")
+    } else if (is(paid_patient_deductible, "subQuery")){
+      statement <- paste0(statement, " paid_patient_deductible = (", as.character(paid_patient_deductible), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_deductible = '", paid_patient_deductible,"'")
+    }
+  }
+
+  if (!missing(paid_by_primary)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_primary)) {
+      statement <- paste0(statement, " paid_by_primary IS NULL")
+    } else if (is(paid_by_primary, "subQuery")){
+      statement <- paste0(statement, " paid_by_primary = (", as.character(paid_by_primary), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_primary = '", paid_by_primary,"'")
+    }
+  }
+
+  if (!missing(paid_ingredient_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_ingredient_cost)) {
+      statement <- paste0(statement, " paid_ingredient_cost IS NULL")
+    } else if (is(paid_ingredient_cost, "subQuery")){
+      statement <- paste0(statement, " paid_ingredient_cost = (", as.character(paid_ingredient_cost), ")")
+    } else {
+      statement <- paste0(statement, " paid_ingredient_cost = '", paid_ingredient_cost,"'")
+    }
+  }
+
+  if (!missing(paid_dispensing_fee)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_dispensing_fee)) {
+      statement <- paste0(statement, " paid_dispensing_fee IS NULL")
+    } else if (is(paid_dispensing_fee, "subQuery")){
+      statement <- paste0(statement, " paid_dispensing_fee = (", as.character(paid_dispensing_fee), ")")
+    } else {
+      statement <- paste0(statement, " paid_dispensing_fee = '", paid_dispensing_fee,"'")
+    }
+  }
+
+  if (!missing(payer_plan_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_id)) {
+      statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else if (is(payer_plan_period_id, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_id = (", as.character(payer_plan_period_id), ")")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
+    }
+  }
+
+  if (!missing(amount_allowed)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(amount_allowed)) {
+      statement <- paste0(statement, " amount_allowed IS NULL")
+    } else if (is(amount_allowed, "subQuery")){
+      statement <- paste0(statement, " amount_allowed = (", as.character(amount_allowed), ")")
+    } else {
+      statement <- paste0(statement, " amount_allowed = '", amount_allowed,"'")
+    }
+  }
+
+  if (!missing(revenue_code_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_concept_id)) {
+      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
+    } else if (is(revenue_code_concept_id, "subQuery")){
+      statement <- paste0(statement, " revenue_code_concept_id = (", as.character(revenue_code_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
+    }
+  }
+
+  if (!missing(revenue_code_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_source_value)) {
+      statement <- paste0(statement, " revenue_code_source_value IS NULL")
+    } else if (is(revenue_code_source_value, "subQuery")){
+      statement <- paste0(statement, " revenue_code_source_value = (", as.character(revenue_code_source_value), ")")
+    } else {
+      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != 0 THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_location <- function(rowCount, location_id, address_1, address_2, city, state, zip, county, location_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect location' AS test, CASE WHEN(SELECT COUNT(*) FROM location WHERE")
+  first <- TRUE
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(address_1)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_1)) {
+      statement <- paste0(statement, " address_1 IS NULL")
+    } else if (is(address_1, "subQuery")){
+      statement <- paste0(statement, " address_1 = (", as.character(address_1), ")")
+    } else {
+      statement <- paste0(statement, " address_1 = '", address_1,"'")
+    }
+  }
+
+  if (!missing(address_2)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_2)) {
+      statement <- paste0(statement, " address_2 IS NULL")
+    } else if (is(address_2, "subQuery")){
+      statement <- paste0(statement, " address_2 = (", as.character(address_2), ")")
+    } else {
+      statement <- paste0(statement, " address_2 = '", address_2,"'")
+    }
+  }
+
+  if (!missing(city)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(city)) {
+      statement <- paste0(statement, " city IS NULL")
+    } else if (is(city, "subQuery")){
+      statement <- paste0(statement, " city = (", as.character(city), ")")
+    } else {
+      statement <- paste0(statement, " city = '", city,"'")
+    }
+  }
+
+  if (!missing(state)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(state)) {
+      statement <- paste0(statement, " state IS NULL")
+    } else if (is(state, "subQuery")){
+      statement <- paste0(statement, " state = (", as.character(state), ")")
+    } else {
+      statement <- paste0(statement, " state = '", state,"'")
+    }
+  }
+
+  if (!missing(zip)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(zip)) {
+      statement <- paste0(statement, " zip IS NULL")
+    } else if (is(zip, "subQuery")){
+      statement <- paste0(statement, " zip = (", as.character(zip), ")")
+    } else {
+      statement <- paste0(statement, " zip = '", zip,"'")
+    }
+  }
+
+  if (!missing(county)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(county)) {
+      statement <- paste0(statement, " county IS NULL")
+    } else if (is(county, "subQuery")){
+      statement <- paste0(statement, " county = (", as.character(county), ")")
+    } else {
+      statement <- paste0(statement, " county = '", county,"'")
+    }
+  }
+
+  if (!missing(location_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_source_value)) {
+      statement <- paste0(statement, " location_source_value IS NULL")
+    } else if (is(location_source_value, "subQuery")){
+      statement <- paste0(statement, " location_source_value = (", as.character(location_source_value), ")")
+    } else {
+      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_person <- function(rowCount, person_id, gender_concept_id, year_of_birth, month_of_birth, day_of_birth, time_of_birth, race_concept_id, ethnicity_concept_id, location_id, provider_id, care_site_id, person_source_value, gender_source_value, gender_source_concept_id, race_source_value, race_source_concept_id, ethnicity_source_value, ethnicity_source_concept_id) {
   statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect person' AS test, CASE WHEN(SELECT COUNT(*) FROM person WHERE")
+  first <- TRUE
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(gender_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_concept_id)) {
+      statement <- paste0(statement, " gender_concept_id IS NULL")
+    } else if (is(gender_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_concept_id = (", as.character(gender_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
+    }
+  }
+
+  if (!missing(year_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(year_of_birth)) {
+      statement <- paste0(statement, " year_of_birth IS NULL")
+    } else if (is(year_of_birth, "subQuery")){
+      statement <- paste0(statement, " year_of_birth = (", as.character(year_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
+    }
+  }
+
+  if (!missing(month_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(month_of_birth)) {
+      statement <- paste0(statement, " month_of_birth IS NULL")
+    } else if (is(month_of_birth, "subQuery")){
+      statement <- paste0(statement, " month_of_birth = (", as.character(month_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " month_of_birth = '", month_of_birth,"'")
+    }
+  }
+
+  if (!missing(day_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(day_of_birth)) {
+      statement <- paste0(statement, " day_of_birth IS NULL")
+    } else if (is(day_of_birth, "subQuery")){
+      statement <- paste0(statement, " day_of_birth = (", as.character(day_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " day_of_birth = '", day_of_birth,"'")
+    }
+  }
+
+  if (!missing(time_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(time_of_birth)) {
+      statement <- paste0(statement, " time_of_birth IS NULL")
+    } else if (is(time_of_birth, "subQuery")){
+      statement <- paste0(statement, " time_of_birth = (", as.character(time_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " time_of_birth = '", time_of_birth,"'")
+    }
+  }
+
+  if (!missing(race_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_concept_id)) {
+      statement <- paste0(statement, " race_concept_id IS NULL")
+    } else if (is(race_concept_id, "subQuery")){
+      statement <- paste0(statement, " race_concept_id = (", as.character(race_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " race_concept_id = '", race_concept_id,"'")
+    }
+  }
+
+  if (!missing(ethnicity_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_concept_id)) {
+      statement <- paste0(statement, " ethnicity_concept_id IS NULL")
+    } else if (is(ethnicity_concept_id, "subQuery")){
+      statement <- paste0(statement, " ethnicity_concept_id = (", as.character(ethnicity_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_concept_id = '", ethnicity_concept_id,"'")
+    }
+  }
+
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(person_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_source_value)) {
+      statement <- paste0(statement, " person_source_value IS NULL")
+    } else if (is(person_source_value, "subQuery")){
+      statement <- paste0(statement, " person_source_value = (", as.character(person_source_value), ")")
+    } else {
+      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else if (is(gender_source_value, "subQuery")){
+      statement <- paste0(statement, " gender_source_value = (", as.character(gender_source_value), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_concept_id)) {
+      statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else if (is(gender_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_source_concept_id = (", as.character(gender_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(race_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_source_value)) {
+      statement <- paste0(statement, " race_source_value IS NULL")
+    } else if (is(race_source_value, "subQuery")){
+      statement <- paste0(statement, " race_source_value = (", as.character(race_source_value), ")")
+    } else {
+      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
+    }
+  }
+
+  if (!missing(race_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_source_concept_id)) {
+      statement <- paste0(statement, " race_source_concept_id IS NULL")
+    } else if (is(race_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " race_source_concept_id = (", as.character(race_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " race_source_concept_id = '", race_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(ethnicity_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_source_value)) {
+      statement <- paste0(statement, " ethnicity_source_value IS NULL")
+    } else if (is(ethnicity_source_value, "subQuery")){
+      statement <- paste0(statement, " ethnicity_source_value = (", as.character(ethnicity_source_value), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
+    }
+  }
+
+  if (!missing(ethnicity_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_source_concept_id)) {
+      statement <- paste0(statement, " ethnicity_source_concept_id IS NULL")
+    } else if (is(ethnicity_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " ethnicity_source_concept_id = (", as.character(ethnicity_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " ethnicity_source_concept_id = '", ethnicity_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_observation_period <- function(rowCount, observation_period_id, person_id, observation_period_start_date, observation_period_end_date, period_type_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect observation_period' AS test, CASE WHEN(SELECT COUNT(*) FROM observation_period WHERE")
+  first <- TRUE
+  if (!missing(observation_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_period_id)) {
+      statement <- paste0(statement, " observation_period_id IS NULL")
+    } else if (is(observation_period_id, "subQuery")){
+      statement <- paste0(statement, " observation_period_id = (", as.character(observation_period_id), ")")
+    } else {
+      statement <- paste0(statement, " observation_period_id = '", observation_period_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(observation_period_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_period_start_date)) {
+      statement <- paste0(statement, " observation_period_start_date IS NULL")
+    } else if (is(observation_period_start_date, "subQuery")){
+      statement <- paste0(statement, " observation_period_start_date = (", as.character(observation_period_start_date), ")")
+    } else {
+      statement <- paste0(statement, " observation_period_start_date = '", observation_period_start_date,"'")
+    }
+  }
+
+  if (!missing(observation_period_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_period_end_date)) {
+      statement <- paste0(statement, " observation_period_end_date IS NULL")
+    } else if (is(observation_period_end_date, "subQuery")){
+      statement <- paste0(statement, " observation_period_end_date = (", as.character(observation_period_end_date), ")")
+    } else {
+      statement <- paste0(statement, " observation_period_end_date = '", observation_period_end_date,"'")
+    }
+  }
+
+  if (!missing(period_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(period_type_concept_id)) {
+      statement <- paste0(statement, " period_type_concept_id IS NULL")
+    } else if (is(period_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " period_type_concept_id = (", as.character(period_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " period_type_concept_id = '", period_type_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_care_site <- function(rowCount, care_site_id, care_site_name, place_of_service_concept_id, location_id, care_site_source_value, place_of_service_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect care_site' AS test, CASE WHEN(SELECT COUNT(*) FROM care_site WHERE")
+  first <- TRUE
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(care_site_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_name)) {
+      statement <- paste0(statement, " care_site_name IS NULL")
+    } else if (is(care_site_name, "subQuery")){
+      statement <- paste0(statement, " care_site_name = (", as.character(care_site_name), ")")
+    } else {
+      statement <- paste0(statement, " care_site_name = '", care_site_name,"'")
+    }
+  }
+
+  if (!missing(place_of_service_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(place_of_service_concept_id)) {
+      statement <- paste0(statement, " place_of_service_concept_id IS NULL")
+    } else if (is(place_of_service_concept_id, "subQuery")){
+      statement <- paste0(statement, " place_of_service_concept_id = (", as.character(place_of_service_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " place_of_service_concept_id = '", place_of_service_concept_id,"'")
+    }
+  }
+
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else if (is(location_id, "subQuery")){
+      statement <- paste0(statement, " location_id = (", as.character(location_id), ")")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(care_site_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_source_value)) {
+      statement <- paste0(statement, " care_site_source_value IS NULL")
+    } else if (is(care_site_source_value, "subQuery")){
+      statement <- paste0(statement, " care_site_source_value = (", as.character(care_site_source_value), ")")
+    } else {
+      statement <- paste0(statement, " care_site_source_value = '", care_site_source_value,"'")
+    }
+  }
+
+  if (!missing(place_of_service_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(place_of_service_source_value)) {
+      statement <- paste0(statement, " place_of_service_source_value IS NULL")
+    } else if (is(place_of_service_source_value, "subQuery")){
+      statement <- paste0(statement, " place_of_service_source_value = (", as.character(place_of_service_source_value), ")")
+    } else {
+      statement <- paste0(statement, " place_of_service_source_value = '", place_of_service_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_visit_occurrence <- function(rowCount, visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_occurrence WHERE")
+  first <- TRUE
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(visit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_concept_id)) {
+      statement <- paste0(statement, " visit_concept_id IS NULL")
+    } else if (is(visit_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_concept_id = (", as.character(visit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_concept_id = '", visit_concept_id,"'")
+    }
+  }
+
+  if (!missing(visit_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_start_date)) {
+      statement <- paste0(statement, " visit_start_date IS NULL")
+    } else if (is(visit_start_date, "subQuery")){
+      statement <- paste0(statement, " visit_start_date = (", as.character(visit_start_date), ")")
+    } else {
+      statement <- paste0(statement, " visit_start_date = '", visit_start_date,"'")
+    }
+  }
+
+  if (!missing(visit_start_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_start_time)) {
+      statement <- paste0(statement, " visit_start_time IS NULL")
+    } else if (is(visit_start_time, "subQuery")){
+      statement <- paste0(statement, " visit_start_time = (", as.character(visit_start_time), ")")
+    } else {
+      statement <- paste0(statement, " visit_start_time = '", visit_start_time,"'")
+    }
+  }
+
+  if (!missing(visit_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_end_date)) {
+      statement <- paste0(statement, " visit_end_date IS NULL")
+    } else if (is(visit_end_date, "subQuery")){
+      statement <- paste0(statement, " visit_end_date = (", as.character(visit_end_date), ")")
+    } else {
+      statement <- paste0(statement, " visit_end_date = '", visit_end_date,"'")
+    }
+  }
+
+  if (!missing(visit_end_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_end_time)) {
+      statement <- paste0(statement, " visit_end_time IS NULL")
+    } else if (is(visit_end_time, "subQuery")){
+      statement <- paste0(statement, " visit_end_time = (", as.character(visit_end_time), ")")
+    } else {
+      statement <- paste0(statement, " visit_end_time = '", visit_end_time,"'")
+    }
+  }
+
+  if (!missing(visit_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_type_concept_id)) {
+      statement <- paste0(statement, " visit_type_concept_id IS NULL")
+    } else if (is(visit_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_type_concept_id = (", as.character(visit_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_type_concept_id = '", visit_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(visit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_source_value)) {
+      statement <- paste0(statement, " visit_source_value IS NULL")
+    } else if (is(visit_source_value, "subQuery")){
+      statement <- paste0(statement, " visit_source_value = (", as.character(visit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " visit_source_value = '", visit_source_value,"'")
+    }
+  }
+
+  if (!missing(visit_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_source_concept_id)) {
+      statement <- paste0(statement, " visit_source_concept_id IS NULL")
+    } else if (is(visit_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " visit_source_concept_id = (", as.character(visit_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_source_concept_id = '", visit_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_provider <- function(rowCount, provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect provider' AS test, CASE WHEN(SELECT COUNT(*) FROM provider WHERE")
+  first <- TRUE
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(provider_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_name)) {
+      statement <- paste0(statement, " provider_name IS NULL")
+    } else if (is(provider_name, "subQuery")){
+      statement <- paste0(statement, " provider_name = (", as.character(provider_name), ")")
+    } else {
+      statement <- paste0(statement, " provider_name = '", provider_name,"'")
+    }
+  }
+
+  if (!missing(npi)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(npi)) {
+      statement <- paste0(statement, " npi IS NULL")
+    } else if (is(npi, "subQuery")){
+      statement <- paste0(statement, " npi = (", as.character(npi), ")")
+    } else {
+      statement <- paste0(statement, " npi = '", npi,"'")
+    }
+  }
+
+  if (!missing(dea)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dea)) {
+      statement <- paste0(statement, " dea IS NULL")
+    } else if (is(dea, "subQuery")){
+      statement <- paste0(statement, " dea = (", as.character(dea), ")")
+    } else {
+      statement <- paste0(statement, " dea = '", dea,"'")
+    }
+  }
+
+  if (!missing(specialty_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_concept_id)) {
+      statement <- paste0(statement, " specialty_concept_id IS NULL")
+    } else if (is(specialty_concept_id, "subQuery")){
+      statement <- paste0(statement, " specialty_concept_id = (", as.character(specialty_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
+    }
+  }
+
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else if (is(care_site_id, "subQuery")){
+      statement <- paste0(statement, " care_site_id = (", as.character(care_site_id), ")")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(year_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(year_of_birth)) {
+      statement <- paste0(statement, " year_of_birth IS NULL")
+    } else if (is(year_of_birth, "subQuery")){
+      statement <- paste0(statement, " year_of_birth = (", as.character(year_of_birth), ")")
+    } else {
+      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
+    }
+  }
+
+  if (!missing(gender_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_concept_id)) {
+      statement <- paste0(statement, " gender_concept_id IS NULL")
+    } else if (is(gender_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_concept_id = (", as.character(gender_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_source_value)) {
+      statement <- paste0(statement, " provider_source_value IS NULL")
+    } else if (is(provider_source_value, "subQuery")){
+      statement <- paste0(statement, " provider_source_value = (", as.character(provider_source_value), ")")
+    } else {
+      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
+    }
+  }
+
+  if (!missing(specialty_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_source_value)) {
+      statement <- paste0(statement, " specialty_source_value IS NULL")
+    } else if (is(specialty_source_value, "subQuery")){
+      statement <- paste0(statement, " specialty_source_value = (", as.character(specialty_source_value), ")")
+    } else {
+      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
+    }
+  }
+
+  if (!missing(specialty_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specialty_source_concept_id)) {
+      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
+    } else if (is(specialty_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " specialty_source_concept_id = (", as.character(specialty_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else if (is(gender_source_value, "subQuery")){
+      statement <- paste0(statement, " gender_source_value = (", as.character(gender_source_value), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_concept_id)) {
+      statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else if (is(gender_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " gender_source_concept_id = (", as.character(gender_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_condition_occurrence <- function(rowCount, condition_occurrence_id, person_id, condition_concept_id, condition_start_date, condition_end_date, condition_type_concept_id, stop_reason, provider_id, visit_occurrence_id, condition_source_value, condition_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect condition_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_occurrence WHERE")
+  first <- TRUE
+  if (!missing(condition_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_occurrence_id)) {
+      statement <- paste0(statement, " condition_occurrence_id IS NULL")
+    } else if (is(condition_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " condition_occurrence_id = (", as.character(condition_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " condition_occurrence_id = '", condition_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(condition_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_concept_id)) {
+      statement <- paste0(statement, " condition_concept_id IS NULL")
+    } else if (is(condition_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_concept_id = (", as.character(condition_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " condition_concept_id = '", condition_concept_id,"'")
+    }
+  }
+
+  if (!missing(condition_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_start_date)) {
+      statement <- paste0(statement, " condition_start_date IS NULL")
+    } else if (is(condition_start_date, "subQuery")){
+      statement <- paste0(statement, " condition_start_date = (", as.character(condition_start_date), ")")
+    } else {
+      statement <- paste0(statement, " condition_start_date = '", condition_start_date,"'")
+    }
+  }
+
+  if (!missing(condition_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_end_date)) {
+      statement <- paste0(statement, " condition_end_date IS NULL")
+    } else if (is(condition_end_date, "subQuery")){
+      statement <- paste0(statement, " condition_end_date = (", as.character(condition_end_date), ")")
+    } else {
+      statement <- paste0(statement, " condition_end_date = '", condition_end_date,"'")
+    }
+  }
+
+  if (!missing(condition_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_type_concept_id)) {
+      statement <- paste0(statement, " condition_type_concept_id IS NULL")
+    } else if (is(condition_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_type_concept_id = (", as.character(condition_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " condition_type_concept_id = '", condition_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(stop_reason)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(stop_reason)) {
+      statement <- paste0(statement, " stop_reason IS NULL")
+    } else if (is(stop_reason, "subQuery")){
+      statement <- paste0(statement, " stop_reason = (", as.character(stop_reason), ")")
+    } else {
+      statement <- paste0(statement, " stop_reason = '", stop_reason,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(condition_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_source_value)) {
+      statement <- paste0(statement, " condition_source_value IS NULL")
+    } else if (is(condition_source_value, "subQuery")){
+      statement <- paste0(statement, " condition_source_value = (", as.character(condition_source_value), ")")
+    } else {
+      statement <- paste0(statement, " condition_source_value = '", condition_source_value,"'")
+    }
+  }
+
+  if (!missing(condition_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_source_concept_id)) {
+      statement <- paste0(statement, " condition_source_concept_id IS NULL")
+    } else if (is(condition_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_source_concept_id = (", as.character(condition_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " condition_source_concept_id = '", condition_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_death <- function(rowCount, person_id, death_date, death_type_concept_id, cause_concept_id, cause_source_value, cause_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect death' AS test, CASE WHEN(SELECT COUNT(*) FROM death WHERE")
+  first <- TRUE
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(death_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(death_date)) {
+      statement <- paste0(statement, " death_date IS NULL")
+    } else if (is(death_date, "subQuery")){
+      statement <- paste0(statement, " death_date = (", as.character(death_date), ")")
+    } else {
+      statement <- paste0(statement, " death_date = '", death_date,"'")
+    }
+  }
+
+  if (!missing(death_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(death_type_concept_id)) {
+      statement <- paste0(statement, " death_type_concept_id IS NULL")
+    } else if (is(death_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " death_type_concept_id = (", as.character(death_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " death_type_concept_id = '", death_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(cause_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cause_concept_id)) {
+      statement <- paste0(statement, " cause_concept_id IS NULL")
+    } else if (is(cause_concept_id, "subQuery")){
+      statement <- paste0(statement, " cause_concept_id = (", as.character(cause_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " cause_concept_id = '", cause_concept_id,"'")
+    }
+  }
+
+  if (!missing(cause_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cause_source_value)) {
+      statement <- paste0(statement, " cause_source_value IS NULL")
+    } else if (is(cause_source_value, "subQuery")){
+      statement <- paste0(statement, " cause_source_value = (", as.character(cause_source_value), ")")
+    } else {
+      statement <- paste0(statement, " cause_source_value = '", cause_source_value,"'")
+    }
+  }
+
+  if (!missing(cause_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cause_source_concept_id)) {
+      statement <- paste0(statement, " cause_source_concept_id IS NULL")
+    } else if (is(cause_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " cause_source_concept_id = (", as.character(cause_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " cause_source_concept_id = '", cause_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_drug_exposure <- function(rowCount, drug_exposure_id, person_id, drug_concept_id, drug_exposure_start_date, drug_exposure_end_date, drug_type_concept_id, stop_reason, refills, quantity, days_supply, sig, route_concept_id, effective_drug_dose, dose_unit_concept_id, lot_number, provider_id, visit_occurrence_id, drug_source_value, drug_source_concept_id, route_source_value, dose_unit_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_exposure' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_exposure WHERE")
+  first <- TRUE
+  if (!missing(drug_exposure_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_exposure_id)) {
+      statement <- paste0(statement, " drug_exposure_id IS NULL")
+    } else if (is(drug_exposure_id, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_id = (", as.character(drug_exposure_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_exposure_id = '", drug_exposure_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(drug_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_concept_id)) {
+      statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
+    }
+  }
+
+  if (!missing(drug_exposure_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_exposure_start_date)) {
+      statement <- paste0(statement, " drug_exposure_start_date IS NULL")
+    } else if (is(drug_exposure_start_date, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_start_date = (", as.character(drug_exposure_start_date), ")")
+    } else {
+      statement <- paste0(statement, " drug_exposure_start_date = '", drug_exposure_start_date,"'")
+    }
+  }
+
+  if (!missing(drug_exposure_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_exposure_end_date)) {
+      statement <- paste0(statement, " drug_exposure_end_date IS NULL")
+    } else if (is(drug_exposure_end_date, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_end_date = (", as.character(drug_exposure_end_date), ")")
+    } else {
+      statement <- paste0(statement, " drug_exposure_end_date = '", drug_exposure_end_date,"'")
+    }
+  }
+
+  if (!missing(drug_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_type_concept_id)) {
+      statement <- paste0(statement, " drug_type_concept_id IS NULL")
+    } else if (is(drug_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_type_concept_id = (", as.character(drug_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_type_concept_id = '", drug_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(stop_reason)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(stop_reason)) {
+      statement <- paste0(statement, " stop_reason IS NULL")
+    } else if (is(stop_reason, "subQuery")){
+      statement <- paste0(statement, " stop_reason = (", as.character(stop_reason), ")")
+    } else {
+      statement <- paste0(statement, " stop_reason = '", stop_reason,"'")
+    }
+  }
+
+  if (!missing(refills)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(refills)) {
+      statement <- paste0(statement, " refills IS NULL")
+    } else if (is(refills, "subQuery")){
+      statement <- paste0(statement, " refills = (", as.character(refills), ")")
+    } else {
+      statement <- paste0(statement, " refills = '", refills,"'")
+    }
+  }
+
+  if (!missing(quantity)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(quantity)) {
+      statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
+    } else {
+      statement <- paste0(statement, " quantity = '", quantity,"'")
+    }
+  }
+
+  if (!missing(days_supply)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(days_supply)) {
+      statement <- paste0(statement, " days_supply IS NULL")
+    } else if (is(days_supply, "subQuery")){
+      statement <- paste0(statement, " days_supply = (", as.character(days_supply), ")")
+    } else {
+      statement <- paste0(statement, " days_supply = '", days_supply,"'")
+    }
+  }
+
+  if (!missing(sig)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(sig)) {
+      statement <- paste0(statement, " sig IS NULL")
+    } else if (is(sig, "subQuery")){
+      statement <- paste0(statement, " sig = (", as.character(sig), ")")
+    } else {
+      statement <- paste0(statement, " sig = '", sig,"'")
+    }
+  }
+
+  if (!missing(route_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(route_concept_id)) {
+      statement <- paste0(statement, " route_concept_id IS NULL")
+    } else if (is(route_concept_id, "subQuery")){
+      statement <- paste0(statement, " route_concept_id = (", as.character(route_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " route_concept_id = '", route_concept_id,"'")
+    }
+  }
+
+  if (!missing(effective_drug_dose)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(effective_drug_dose)) {
+      statement <- paste0(statement, " effective_drug_dose IS NULL")
+    } else if (is(effective_drug_dose, "subQuery")){
+      statement <- paste0(statement, " effective_drug_dose = (", as.character(effective_drug_dose), ")")
+    } else {
+      statement <- paste0(statement, " effective_drug_dose = '", effective_drug_dose,"'")
+    }
+  }
+
+  if (!missing(dose_unit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dose_unit_concept_id)) {
+      statement <- paste0(statement, " dose_unit_concept_id IS NULL")
+    } else if (is(dose_unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " dose_unit_concept_id = (", as.character(dose_unit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " dose_unit_concept_id = '", dose_unit_concept_id,"'")
+    }
+  }
+
+  if (!missing(lot_number)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(lot_number)) {
+      statement <- paste0(statement, " lot_number IS NULL")
+    } else if (is(lot_number, "subQuery")){
+      statement <- paste0(statement, " lot_number = (", as.character(lot_number), ")")
+    } else {
+      statement <- paste0(statement, " lot_number = '", lot_number,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(drug_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_source_value)) {
+      statement <- paste0(statement, " drug_source_value IS NULL")
+    } else if (is(drug_source_value, "subQuery")){
+      statement <- paste0(statement, " drug_source_value = (", as.character(drug_source_value), ")")
+    } else {
+      statement <- paste0(statement, " drug_source_value = '", drug_source_value,"'")
+    }
+  }
+
+  if (!missing(drug_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_source_concept_id)) {
+      statement <- paste0(statement, " drug_source_concept_id IS NULL")
+    } else if (is(drug_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_source_concept_id = (", as.character(drug_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_source_concept_id = '", drug_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(route_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(route_source_value)) {
+      statement <- paste0(statement, " route_source_value IS NULL")
+    } else if (is(route_source_value, "subQuery")){
+      statement <- paste0(statement, " route_source_value = (", as.character(route_source_value), ")")
+    } else {
+      statement <- paste0(statement, " route_source_value = '", route_source_value,"'")
+    }
+  }
+
+  if (!missing(dose_unit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dose_unit_source_value)) {
+      statement <- paste0(statement, " dose_unit_source_value IS NULL")
+    } else if (is(dose_unit_source_value, "subQuery")){
+      statement <- paste0(statement, " dose_unit_source_value = (", as.character(dose_unit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " dose_unit_source_value = '", dose_unit_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_device_exposure <- function(rowCount, device_exposure_id, person_id, device_concept_id, device_exposure_start_date, device_exposure_end_date, device_type_concept_id, unique_device_id, quantity, provider_id, visit_occurrence_id, device_source_value, device_source_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect device_exposure' AS test, CASE WHEN(SELECT COUNT(*) FROM device_exposure WHERE")
+  first <- TRUE
+  if (!missing(device_exposure_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_exposure_id)) {
+      statement <- paste0(statement, " device_exposure_id IS NULL")
+    } else if (is(device_exposure_id, "subQuery")){
+      statement <- paste0(statement, " device_exposure_id = (", as.character(device_exposure_id), ")")
+    } else {
+      statement <- paste0(statement, " device_exposure_id = '", device_exposure_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(device_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_concept_id)) {
+      statement <- paste0(statement, " device_concept_id IS NULL")
+    } else if (is(device_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_concept_id = (", as.character(device_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " device_concept_id = '", device_concept_id,"'")
+    }
+  }
+
+  if (!missing(device_exposure_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_exposure_start_date)) {
+      statement <- paste0(statement, " device_exposure_start_date IS NULL")
+    } else if (is(device_exposure_start_date, "subQuery")){
+      statement <- paste0(statement, " device_exposure_start_date = (", as.character(device_exposure_start_date), ")")
+    } else {
+      statement <- paste0(statement, " device_exposure_start_date = '", device_exposure_start_date,"'")
+    }
+  }
+
+  if (!missing(device_exposure_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_exposure_end_date)) {
+      statement <- paste0(statement, " device_exposure_end_date IS NULL")
+    } else if (is(device_exposure_end_date, "subQuery")){
+      statement <- paste0(statement, " device_exposure_end_date = (", as.character(device_exposure_end_date), ")")
+    } else {
+      statement <- paste0(statement, " device_exposure_end_date = '", device_exposure_end_date,"'")
+    }
+  }
+
+  if (!missing(device_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_type_concept_id)) {
+      statement <- paste0(statement, " device_type_concept_id IS NULL")
+    } else if (is(device_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_type_concept_id = (", as.character(device_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " device_type_concept_id = '", device_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(unique_device_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unique_device_id)) {
+      statement <- paste0(statement, " unique_device_id IS NULL")
+    } else if (is(unique_device_id, "subQuery")){
+      statement <- paste0(statement, " unique_device_id = (", as.character(unique_device_id), ")")
+    } else {
+      statement <- paste0(statement, " unique_device_id = '", unique_device_id,"'")
+    }
+  }
+
+  if (!missing(quantity)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(quantity)) {
+      statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
+    } else {
+      statement <- paste0(statement, " quantity = '", quantity,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(device_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_source_value)) {
+      statement <- paste0(statement, " device_source_value IS NULL")
+    } else if (is(device_source_value, "subQuery")){
+      statement <- paste0(statement, " device_source_value = (", as.character(device_source_value), ")")
+    } else {
+      statement <- paste0(statement, " device_source_value = '", device_source_value,"'")
+    }
+  }
+
+  if (!missing(device_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(device_source_concept_id)) {
+      statement <- paste0(statement, " device_source_concept_id IS NULL")
+    } else if (is(device_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " device_source_concept_id = (", as.character(device_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " device_source_concept_id = '", device_source_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_procedure_occurrence <- function(rowCount, procedure_occurrence_id, person_id, procedure_concept_id, procedure_date, procedure_type_concept_id, modifier_concept_id, quantity, provider_id, visit_occurrence_id, procedure_source_value, procedure_source_concept_id, qualifier_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE")
+  first <- TRUE
+  if (!missing(procedure_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(procedure_occurrence_id)) {
+      statement <- paste0(statement, " procedure_occurrence_id IS NULL")
+    } else if (is(procedure_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " procedure_occurrence_id = (", as.character(procedure_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " procedure_occurrence_id = '", procedure_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(procedure_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(procedure_concept_id)) {
+      statement <- paste0(statement, " procedure_concept_id IS NULL")
+    } else if (is(procedure_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_concept_id = (", as.character(procedure_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " procedure_concept_id = '", procedure_concept_id,"'")
+    }
+  }
+
+  if (!missing(procedure_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(procedure_date)) {
+      statement <- paste0(statement, " procedure_date IS NULL")
+    } else if (is(procedure_date, "subQuery")){
+      statement <- paste0(statement, " procedure_date = (", as.character(procedure_date), ")")
+    } else {
+      statement <- paste0(statement, " procedure_date = '", procedure_date,"'")
+    }
+  }
+
+  if (!missing(procedure_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(procedure_type_concept_id)) {
+      statement <- paste0(statement, " procedure_type_concept_id IS NULL")
+    } else if (is(procedure_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_type_concept_id = (", as.character(procedure_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " procedure_type_concept_id = '", procedure_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(modifier_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(modifier_concept_id)) {
+      statement <- paste0(statement, " modifier_concept_id IS NULL")
+    } else if (is(modifier_concept_id, "subQuery")){
+      statement <- paste0(statement, " modifier_concept_id = (", as.character(modifier_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " modifier_concept_id = '", modifier_concept_id,"'")
+    }
+  }
+
+  if (!missing(quantity)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(quantity)) {
+      statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
+    } else {
+      statement <- paste0(statement, " quantity = '", quantity,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(procedure_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(procedure_source_value)) {
+      statement <- paste0(statement, " procedure_source_value IS NULL")
+    } else if (is(procedure_source_value, "subQuery")){
+      statement <- paste0(statement, " procedure_source_value = (", as.character(procedure_source_value), ")")
+    } else {
+      statement <- paste0(statement, " procedure_source_value = '", procedure_source_value,"'")
+    }
+  }
+
+  if (!missing(procedure_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(procedure_source_concept_id)) {
+      statement <- paste0(statement, " procedure_source_concept_id IS NULL")
+    } else if (is(procedure_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " procedure_source_concept_id = (", as.character(procedure_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " procedure_source_concept_id = '", procedure_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(qualifier_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(qualifier_source_value)) {
+      statement <- paste0(statement, " qualifier_source_value IS NULL")
+    } else if (is(qualifier_source_value, "subQuery")){
+      statement <- paste0(statement, " qualifier_source_value = (", as.character(qualifier_source_value), ")")
+    } else {
+      statement <- paste0(statement, " qualifier_source_value = '", qualifier_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_measurement <- function(rowCount, measurement_id, person_id, measurement_concept_id, measurement_date, measurement_time, measurement_type_concept_id, operator_concept_id, value_as_number, value_as_concept_id, unit_concept_id, range_low, range_high, provider_id, visit_occurrence_id, measurement_source_value, measurement_source_concept_id, unit_source_value, value_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE")
+  first <- TRUE
+  if (!missing(measurement_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_id)) {
+      statement <- paste0(statement, " measurement_id IS NULL")
+    } else if (is(measurement_id, "subQuery")){
+      statement <- paste0(statement, " measurement_id = (", as.character(measurement_id), ")")
+    } else {
+      statement <- paste0(statement, " measurement_id = '", measurement_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(measurement_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_concept_id)) {
+      statement <- paste0(statement, " measurement_concept_id IS NULL")
+    } else if (is(measurement_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_concept_id = (", as.character(measurement_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " measurement_concept_id = '", measurement_concept_id,"'")
+    }
+  }
+
+  if (!missing(measurement_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_date)) {
+      statement <- paste0(statement, " measurement_date IS NULL")
+    } else if (is(measurement_date, "subQuery")){
+      statement <- paste0(statement, " measurement_date = (", as.character(measurement_date), ")")
+    } else {
+      statement <- paste0(statement, " measurement_date = '", measurement_date,"'")
+    }
+  }
+
+  if (!missing(measurement_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_time)) {
+      statement <- paste0(statement, " measurement_time IS NULL")
+    } else if (is(measurement_time, "subQuery")){
+      statement <- paste0(statement, " measurement_time = (", as.character(measurement_time), ")")
+    } else {
+      statement <- paste0(statement, " measurement_time = '", measurement_time,"'")
+    }
+  }
+
+  if (!missing(measurement_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_type_concept_id)) {
+      statement <- paste0(statement, " measurement_type_concept_id IS NULL")
+    } else if (is(measurement_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_type_concept_id = (", as.character(measurement_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " measurement_type_concept_id = '", measurement_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(operator_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(operator_concept_id)) {
+      statement <- paste0(statement, " operator_concept_id IS NULL")
+    } else if (is(operator_concept_id, "subQuery")){
+      statement <- paste0(statement, " operator_concept_id = (", as.character(operator_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " operator_concept_id = '", operator_concept_id,"'")
+    }
+  }
+
+  if (!missing(value_as_number)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_number)) {
+      statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
+    } else {
+      statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
+    }
+  }
+
+  if (!missing(value_as_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_concept_id)) {
+      statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
+    }
+  }
+
+  if (!missing(unit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_concept_id)) {
+      statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
+    }
+  }
+
+  if (!missing(range_low)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(range_low)) {
+      statement <- paste0(statement, " range_low IS NULL")
+    } else if (is(range_low, "subQuery")){
+      statement <- paste0(statement, " range_low = (", as.character(range_low), ")")
+    } else {
+      statement <- paste0(statement, " range_low = '", range_low,"'")
+    }
+  }
+
+  if (!missing(range_high)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(range_high)) {
+      statement <- paste0(statement, " range_high IS NULL")
+    } else if (is(range_high, "subQuery")){
+      statement <- paste0(statement, " range_high = (", as.character(range_high), ")")
+    } else {
+      statement <- paste0(statement, " range_high = '", range_high,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(measurement_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_source_value)) {
+      statement <- paste0(statement, " measurement_source_value IS NULL")
+    } else if (is(measurement_source_value, "subQuery")){
+      statement <- paste0(statement, " measurement_source_value = (", as.character(measurement_source_value), ")")
+    } else {
+      statement <- paste0(statement, " measurement_source_value = '", measurement_source_value,"'")
+    }
+  }
+
+  if (!missing(measurement_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(measurement_source_concept_id)) {
+      statement <- paste0(statement, " measurement_source_concept_id IS NULL")
+    } else if (is(measurement_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " measurement_source_concept_id = (", as.character(measurement_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " measurement_source_concept_id = '", measurement_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(unit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_source_value)) {
+      statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
+    }
+  }
+
+  if (!missing(value_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_source_value)) {
+      statement <- paste0(statement, " value_source_value IS NULL")
+    } else if (is(value_source_value, "subQuery")){
+      statement <- paste0(statement, " value_source_value = (", as.character(value_source_value), ")")
+    } else {
+      statement <- paste0(statement, " value_source_value = '", value_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_observation <- function(rowCount, observation_id, person_id, observation_concept_id, observation_date, observation_time, observation_type_concept_id, value_as_number, value_as_string, value_as_concept_id, qualifier_concept_id, unit_concept_id, provider_id, visit_occurrence_id, observation_source_value, observation_source_concept_id, unit_source_value, qualifier_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE")
+  first <- TRUE
+  if (!missing(observation_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_id)) {
+      statement <- paste0(statement, " observation_id IS NULL")
+    } else if (is(observation_id, "subQuery")){
+      statement <- paste0(statement, " observation_id = (", as.character(observation_id), ")")
+    } else {
+      statement <- paste0(statement, " observation_id = '", observation_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(observation_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_concept_id)) {
+      statement <- paste0(statement, " observation_concept_id IS NULL")
+    } else if (is(observation_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_concept_id = (", as.character(observation_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " observation_concept_id = '", observation_concept_id,"'")
+    }
+  }
+
+  if (!missing(observation_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_date)) {
+      statement <- paste0(statement, " observation_date IS NULL")
+    } else if (is(observation_date, "subQuery")){
+      statement <- paste0(statement, " observation_date = (", as.character(observation_date), ")")
+    } else {
+      statement <- paste0(statement, " observation_date = '", observation_date,"'")
+    }
+  }
+
+  if (!missing(observation_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_time)) {
+      statement <- paste0(statement, " observation_time IS NULL")
+    } else if (is(observation_time, "subQuery")){
+      statement <- paste0(statement, " observation_time = (", as.character(observation_time), ")")
+    } else {
+      statement <- paste0(statement, " observation_time = '", observation_time,"'")
+    }
+  }
+
+  if (!missing(observation_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_type_concept_id)) {
+      statement <- paste0(statement, " observation_type_concept_id IS NULL")
+    } else if (is(observation_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_type_concept_id = (", as.character(observation_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " observation_type_concept_id = '", observation_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(value_as_number)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_number)) {
+      statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
+    } else {
+      statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
+    }
+  }
+
+  if (!missing(value_as_string)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_string)) {
+      statement <- paste0(statement, " value_as_string IS NULL")
+    } else if (is(value_as_string, "subQuery")){
+      statement <- paste0(statement, " value_as_string = (", as.character(value_as_string), ")")
+    } else {
+      statement <- paste0(statement, " value_as_string = '", value_as_string,"'")
+    }
+  }
+
+  if (!missing(value_as_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_concept_id)) {
+      statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
+    }
+  }
+
+  if (!missing(qualifier_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(qualifier_concept_id)) {
+      statement <- paste0(statement, " qualifier_concept_id IS NULL")
+    } else if (is(qualifier_concept_id, "subQuery")){
+      statement <- paste0(statement, " qualifier_concept_id = (", as.character(qualifier_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " qualifier_concept_id = '", qualifier_concept_id,"'")
+    }
+  }
+
+  if (!missing(unit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_concept_id)) {
+      statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(observation_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_source_value)) {
+      statement <- paste0(statement, " observation_source_value IS NULL")
+    } else if (is(observation_source_value, "subQuery")){
+      statement <- paste0(statement, " observation_source_value = (", as.character(observation_source_value), ")")
+    } else {
+      statement <- paste0(statement, " observation_source_value = '", observation_source_value,"'")
+    }
+  }
+
+  if (!missing(observation_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_source_concept_id)) {
+      statement <- paste0(statement, " observation_source_concept_id IS NULL")
+    } else if (is(observation_source_concept_id, "subQuery")){
+      statement <- paste0(statement, " observation_source_concept_id = (", as.character(observation_source_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " observation_source_concept_id = '", observation_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(unit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_source_value)) {
+      statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
+    }
+  }
+
+  if (!missing(qualifier_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(qualifier_source_value)) {
+      statement <- paste0(statement, " qualifier_source_value IS NULL")
+    } else if (is(qualifier_source_value, "subQuery")){
+      statement <- paste0(statement, " qualifier_source_value = (", as.character(qualifier_source_value), ")")
+    } else {
+      statement <- paste0(statement, " qualifier_source_value = '", qualifier_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_note <- function(rowCount, note_id, person_id, note_date, note_time, note_type_concept_id, note_text, provider_id, visit_occurrence_id, note_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect note' AS test, CASE WHEN(SELECT COUNT(*) FROM note WHERE")
+  first <- TRUE
+  if (!missing(note_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(note_id)) {
+      statement <- paste0(statement, " note_id IS NULL")
+    } else if (is(note_id, "subQuery")){
+      statement <- paste0(statement, " note_id = (", as.character(note_id), ")")
+    } else {
+      statement <- paste0(statement, " note_id = '", note_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(note_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(note_date)) {
+      statement <- paste0(statement, " note_date IS NULL")
+    } else if (is(note_date, "subQuery")){
+      statement <- paste0(statement, " note_date = (", as.character(note_date), ")")
+    } else {
+      statement <- paste0(statement, " note_date = '", note_date,"'")
+    }
+  }
+
+  if (!missing(note_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(note_time)) {
+      statement <- paste0(statement, " note_time IS NULL")
+    } else if (is(note_time, "subQuery")){
+      statement <- paste0(statement, " note_time = (", as.character(note_time), ")")
+    } else {
+      statement <- paste0(statement, " note_time = '", note_time,"'")
+    }
+  }
+
+  if (!missing(note_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(note_type_concept_id)) {
+      statement <- paste0(statement, " note_type_concept_id IS NULL")
+    } else if (is(note_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " note_type_concept_id = (", as.character(note_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " note_type_concept_id = '", note_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(note_text)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(note_text)) {
+      statement <- paste0(statement, " note_text IS NULL")
+    } else if (is(note_text, "subQuery")){
+      statement <- paste0(statement, " note_text = (", as.character(note_text), ")")
+    } else {
+      statement <- paste0(statement, " note_text = '", note_text,"'")
+    }
+  }
+
+  if (!missing(provider_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
+    } else if (is(provider_id, "subQuery")){
+      statement <- paste0(statement, " provider_id = (", as.character(provider_id), ")")
+    } else {
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
+    }
+  }
+
+  if (!missing(visit_occurrence_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(visit_occurrence_id)) {
+      statement <- paste0(statement, " visit_occurrence_id IS NULL")
+    } else if (is(visit_occurrence_id, "subQuery")){
+      statement <- paste0(statement, " visit_occurrence_id = (", as.character(visit_occurrence_id), ")")
+    } else {
+      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
+    }
+  }
+
+  if (!missing(note_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(note_source_value)) {
+      statement <- paste0(statement, " note_source_value IS NULL")
+    } else if (is(note_source_value, "subQuery")){
+      statement <- paste0(statement, " note_source_value = (", as.character(note_source_value), ")")
+    } else {
+      statement <- paste0(statement, " note_source_value = '", note_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_specimen <- function(rowCount, specimen_id, person_id, specimen_concept_id, specimen_type_concept_id, specimen_date, specimen_time, quantity, unit_concept_id, anatomic_site_concept_id, disease_status_concept_id, specimen_source_id, specimen_source_value, unit_source_value, anatomic_site_source_value, disease_status_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect specimen' AS test, CASE WHEN(SELECT COUNT(*) FROM specimen WHERE")
+  first <- TRUE
+  if (!missing(specimen_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_id)) {
+      statement <- paste0(statement, " specimen_id IS NULL")
+    } else if (is(specimen_id, "subQuery")){
+      statement <- paste0(statement, " specimen_id = (", as.character(specimen_id), ")")
+    } else {
+      statement <- paste0(statement, " specimen_id = '", specimen_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(specimen_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_concept_id)) {
+      statement <- paste0(statement, " specimen_concept_id IS NULL")
+    } else if (is(specimen_concept_id, "subQuery")){
+      statement <- paste0(statement, " specimen_concept_id = (", as.character(specimen_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specimen_concept_id = '", specimen_concept_id,"'")
+    }
+  }
+
+  if (!missing(specimen_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_type_concept_id)) {
+      statement <- paste0(statement, " specimen_type_concept_id IS NULL")
+    } else if (is(specimen_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " specimen_type_concept_id = (", as.character(specimen_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " specimen_type_concept_id = '", specimen_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(specimen_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_date)) {
+      statement <- paste0(statement, " specimen_date IS NULL")
+    } else if (is(specimen_date, "subQuery")){
+      statement <- paste0(statement, " specimen_date = (", as.character(specimen_date), ")")
+    } else {
+      statement <- paste0(statement, " specimen_date = '", specimen_date,"'")
+    }
+  }
+
+  if (!missing(specimen_time)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_time)) {
+      statement <- paste0(statement, " specimen_time IS NULL")
+    } else if (is(specimen_time, "subQuery")){
+      statement <- paste0(statement, " specimen_time = (", as.character(specimen_time), ")")
+    } else {
+      statement <- paste0(statement, " specimen_time = '", specimen_time,"'")
+    }
+  }
+
+  if (!missing(quantity)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(quantity)) {
+      statement <- paste0(statement, " quantity IS NULL")
+    } else if (is(quantity, "subQuery")){
+      statement <- paste0(statement, " quantity = (", as.character(quantity), ")")
+    } else {
+      statement <- paste0(statement, " quantity = '", quantity,"'")
+    }
+  }
+
+  if (!missing(unit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_concept_id)) {
+      statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
+    }
+  }
+
+  if (!missing(anatomic_site_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(anatomic_site_concept_id)) {
+      statement <- paste0(statement, " anatomic_site_concept_id IS NULL")
+    } else if (is(anatomic_site_concept_id, "subQuery")){
+      statement <- paste0(statement, " anatomic_site_concept_id = (", as.character(anatomic_site_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " anatomic_site_concept_id = '", anatomic_site_concept_id,"'")
+    }
+  }
+
+  if (!missing(disease_status_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(disease_status_concept_id)) {
+      statement <- paste0(statement, " disease_status_concept_id IS NULL")
+    } else if (is(disease_status_concept_id, "subQuery")){
+      statement <- paste0(statement, " disease_status_concept_id = (", as.character(disease_status_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " disease_status_concept_id = '", disease_status_concept_id,"'")
+    }
+  }
+
+  if (!missing(specimen_source_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_source_id)) {
+      statement <- paste0(statement, " specimen_source_id IS NULL")
+    } else if (is(specimen_source_id, "subQuery")){
+      statement <- paste0(statement, " specimen_source_id = (", as.character(specimen_source_id), ")")
+    } else {
+      statement <- paste0(statement, " specimen_source_id = '", specimen_source_id,"'")
+    }
+  }
+
+  if (!missing(specimen_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(specimen_source_value)) {
+      statement <- paste0(statement, " specimen_source_value IS NULL")
+    } else if (is(specimen_source_value, "subQuery")){
+      statement <- paste0(statement, " specimen_source_value = (", as.character(specimen_source_value), ")")
+    } else {
+      statement <- paste0(statement, " specimen_source_value = '", specimen_source_value,"'")
+    }
+  }
+
+  if (!missing(unit_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_source_value)) {
+      statement <- paste0(statement, " unit_source_value IS NULL")
+    } else if (is(unit_source_value, "subQuery")){
+      statement <- paste0(statement, " unit_source_value = (", as.character(unit_source_value), ")")
+    } else {
+      statement <- paste0(statement, " unit_source_value = '", unit_source_value,"'")
+    }
+  }
+
+  if (!missing(anatomic_site_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(anatomic_site_source_value)) {
+      statement <- paste0(statement, " anatomic_site_source_value IS NULL")
+    } else if (is(anatomic_site_source_value, "subQuery")){
+      statement <- paste0(statement, " anatomic_site_source_value = (", as.character(anatomic_site_source_value), ")")
+    } else {
+      statement <- paste0(statement, " anatomic_site_source_value = '", anatomic_site_source_value,"'")
+    }
+  }
+
+  if (!missing(disease_status_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(disease_status_source_value)) {
+      statement <- paste0(statement, " disease_status_source_value IS NULL")
+    } else if (is(disease_status_source_value, "subQuery")){
+      statement <- paste0(statement, " disease_status_source_value = (", as.character(disease_status_source_value), ")")
+    } else {
+      statement <- paste0(statement, " disease_status_source_value = '", disease_status_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_fact_relationship <- function(rowCount, domain_concept_id_1, fact_id_1, domain_concept_id_2, fact_id_2, relationship_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect fact_relationship' AS test, CASE WHEN(SELECT COUNT(*) FROM fact_relationship WHERE")
+  first <- TRUE
+  if (!missing(domain_concept_id_1)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(domain_concept_id_1)) {
+      statement <- paste0(statement, " domain_concept_id_1 IS NULL")
+    } else if (is(domain_concept_id_1, "subQuery")){
+      statement <- paste0(statement, " domain_concept_id_1 = (", as.character(domain_concept_id_1), ")")
+    } else {
+      statement <- paste0(statement, " domain_concept_id_1 = '", domain_concept_id_1,"'")
+    }
+  }
+
+  if (!missing(fact_id_1)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(fact_id_1)) {
+      statement <- paste0(statement, " fact_id_1 IS NULL")
+    } else if (is(fact_id_1, "subQuery")){
+      statement <- paste0(statement, " fact_id_1 = (", as.character(fact_id_1), ")")
+    } else {
+      statement <- paste0(statement, " fact_id_1 = '", fact_id_1,"'")
+    }
+  }
+
+  if (!missing(domain_concept_id_2)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(domain_concept_id_2)) {
+      statement <- paste0(statement, " domain_concept_id_2 IS NULL")
+    } else if (is(domain_concept_id_2, "subQuery")){
+      statement <- paste0(statement, " domain_concept_id_2 = (", as.character(domain_concept_id_2), ")")
+    } else {
+      statement <- paste0(statement, " domain_concept_id_2 = '", domain_concept_id_2,"'")
+    }
+  }
+
+  if (!missing(fact_id_2)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(fact_id_2)) {
+      statement <- paste0(statement, " fact_id_2 IS NULL")
+    } else if (is(fact_id_2, "subQuery")){
+      statement <- paste0(statement, " fact_id_2 = (", as.character(fact_id_2), ")")
+    } else {
+      statement <- paste0(statement, " fact_id_2 = '", fact_id_2,"'")
+    }
+  }
+
+  if (!missing(relationship_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(relationship_concept_id)) {
+      statement <- paste0(statement, " relationship_concept_id IS NULL")
+    } else if (is(relationship_concept_id, "subQuery")){
+      statement <- paste0(statement, " relationship_concept_id = (", as.character(relationship_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " relationship_concept_id = '", relationship_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_payer_plan_period <- function(rowCount, payer_plan_period_id, person_id, payer_plan_period_start_date, payer_plan_period_end_date, payer_source_value, plan_source_value, family_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect payer_plan_period' AS test, CASE WHEN(SELECT COUNT(*) FROM payer_plan_period WHERE")
+  first <- TRUE
+  if (!missing(payer_plan_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_id)) {
+      statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else if (is(payer_plan_period_id, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_id = (", as.character(payer_plan_period_id), ")")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(payer_plan_period_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_start_date)) {
+      statement <- paste0(statement, " payer_plan_period_start_date IS NULL")
+    } else if (is(payer_plan_period_start_date, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_start_date = (", as.character(payer_plan_period_start_date), ")")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_start_date = '", payer_plan_period_start_date,"'")
+    }
+  }
+
+  if (!missing(payer_plan_period_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_end_date)) {
+      statement <- paste0(statement, " payer_plan_period_end_date IS NULL")
+    } else if (is(payer_plan_period_end_date, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_end_date = (", as.character(payer_plan_period_end_date), ")")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_end_date = '", payer_plan_period_end_date,"'")
+    }
+  }
+
+  if (!missing(payer_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_source_value)) {
+      statement <- paste0(statement, " payer_source_value IS NULL")
+    } else if (is(payer_source_value, "subQuery")){
+      statement <- paste0(statement, " payer_source_value = (", as.character(payer_source_value), ")")
+    } else {
+      statement <- paste0(statement, " payer_source_value = '", payer_source_value,"'")
+    }
+  }
+
+  if (!missing(plan_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(plan_source_value)) {
+      statement <- paste0(statement, " plan_source_value IS NULL")
+    } else if (is(plan_source_value, "subQuery")){
+      statement <- paste0(statement, " plan_source_value = (", as.character(plan_source_value), ")")
+    } else {
+      statement <- paste0(statement, " plan_source_value = '", plan_source_value,"'")
+    }
+  }
+
+  if (!missing(family_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(family_source_value)) {
+      statement <- paste0(statement, " family_source_value IS NULL")
+    } else if (is(family_source_value, "subQuery")){
+      statement <- paste0(statement, " family_source_value = (", as.character(family_source_value), ")")
+    } else {
+      statement <- paste0(statement, " family_source_value = '", family_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_drug_era <- function(rowCount, drug_era_id, person_id, drug_concept_id, drug_era_start_date, drug_era_end_date, drug_exposure_count, gap_days) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_era' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_era WHERE")
+  first <- TRUE
+  if (!missing(drug_era_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_era_id)) {
+      statement <- paste0(statement, " drug_era_id IS NULL")
+    } else if (is(drug_era_id, "subQuery")){
+      statement <- paste0(statement, " drug_era_id = (", as.character(drug_era_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_era_id = '", drug_era_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(drug_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_concept_id)) {
+      statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
+    }
+  }
+
+  if (!missing(drug_era_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_era_start_date)) {
+      statement <- paste0(statement, " drug_era_start_date IS NULL")
+    } else if (is(drug_era_start_date, "subQuery")){
+      statement <- paste0(statement, " drug_era_start_date = (", as.character(drug_era_start_date), ")")
+    } else {
+      statement <- paste0(statement, " drug_era_start_date = '", drug_era_start_date,"'")
+    }
+  }
+
+  if (!missing(drug_era_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_era_end_date)) {
+      statement <- paste0(statement, " drug_era_end_date IS NULL")
+    } else if (is(drug_era_end_date, "subQuery")){
+      statement <- paste0(statement, " drug_era_end_date = (", as.character(drug_era_end_date), ")")
+    } else {
+      statement <- paste0(statement, " drug_era_end_date = '", drug_era_end_date,"'")
+    }
+  }
+
+  if (!missing(drug_exposure_count)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_exposure_count)) {
+      statement <- paste0(statement, " drug_exposure_count IS NULL")
+    } else if (is(drug_exposure_count, "subQuery")){
+      statement <- paste0(statement, " drug_exposure_count = (", as.character(drug_exposure_count), ")")
+    } else {
+      statement <- paste0(statement, " drug_exposure_count = '", drug_exposure_count,"'")
+    }
+  }
+
+  if (!missing(gap_days)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gap_days)) {
+      statement <- paste0(statement, " gap_days IS NULL")
+    } else if (is(gap_days, "subQuery")){
+      statement <- paste0(statement, " gap_days = (", as.character(gap_days), ")")
+    } else {
+      statement <- paste0(statement, " gap_days = '", gap_days,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_dose_era <- function(rowCount, dose_era_id, person_id, drug_concept_id, unit_concept_id, dose_value, dose_era_start_date, dose_era_end_date) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect dose_era' AS test, CASE WHEN(SELECT COUNT(*) FROM dose_era WHERE")
+  first <- TRUE
+  if (!missing(dose_era_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dose_era_id)) {
+      statement <- paste0(statement, " dose_era_id IS NULL")
+    } else if (is(dose_era_id, "subQuery")){
+      statement <- paste0(statement, " dose_era_id = (", as.character(dose_era_id), ")")
+    } else {
+      statement <- paste0(statement, " dose_era_id = '", dose_era_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(drug_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(drug_concept_id)) {
+      statement <- paste0(statement, " drug_concept_id IS NULL")
+    } else if (is(drug_concept_id, "subQuery")){
+      statement <- paste0(statement, " drug_concept_id = (", as.character(drug_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " drug_concept_id = '", drug_concept_id,"'")
+    }
+  }
+
+  if (!missing(unit_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(unit_concept_id)) {
+      statement <- paste0(statement, " unit_concept_id IS NULL")
+    } else if (is(unit_concept_id, "subQuery")){
+      statement <- paste0(statement, " unit_concept_id = (", as.character(unit_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " unit_concept_id = '", unit_concept_id,"'")
+    }
+  }
+
+  if (!missing(dose_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dose_value)) {
+      statement <- paste0(statement, " dose_value IS NULL")
+    } else if (is(dose_value, "subQuery")){
+      statement <- paste0(statement, " dose_value = (", as.character(dose_value), ")")
+    } else {
+      statement <- paste0(statement, " dose_value = '", dose_value,"'")
+    }
+  }
+
+  if (!missing(dose_era_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dose_era_start_date)) {
+      statement <- paste0(statement, " dose_era_start_date IS NULL")
+    } else if (is(dose_era_start_date, "subQuery")){
+      statement <- paste0(statement, " dose_era_start_date = (", as.character(dose_era_start_date), ")")
+    } else {
+      statement <- paste0(statement, " dose_era_start_date = '", dose_era_start_date,"'")
+    }
+  }
+
+  if (!missing(dose_era_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(dose_era_end_date)) {
+      statement <- paste0(statement, " dose_era_end_date IS NULL")
+    } else if (is(dose_era_end_date, "subQuery")){
+      statement <- paste0(statement, " dose_era_end_date = (", as.character(dose_era_end_date), ")")
+    } else {
+      statement <- paste0(statement, " dose_era_end_date = '", dose_era_end_date,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_condition_era <- function(rowCount, condition_era_id, person_id, condition_concept_id, condition_era_start_date, condition_era_end_date, condition_occurrence_count) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect condition_era' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_era WHERE")
+  first <- TRUE
+  if (!missing(condition_era_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_era_id)) {
+      statement <- paste0(statement, " condition_era_id IS NULL")
+    } else if (is(condition_era_id, "subQuery")){
+      statement <- paste0(statement, " condition_era_id = (", as.character(condition_era_id), ")")
+    } else {
+      statement <- paste0(statement, " condition_era_id = '", condition_era_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else if (is(person_id, "subQuery")){
+      statement <- paste0(statement, " person_id = (", as.character(person_id), ")")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(condition_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_concept_id)) {
+      statement <- paste0(statement, " condition_concept_id IS NULL")
+    } else if (is(condition_concept_id, "subQuery")){
+      statement <- paste0(statement, " condition_concept_id = (", as.character(condition_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " condition_concept_id = '", condition_concept_id,"'")
+    }
+  }
+
+  if (!missing(condition_era_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_era_start_date)) {
+      statement <- paste0(statement, " condition_era_start_date IS NULL")
+    } else if (is(condition_era_start_date, "subQuery")){
+      statement <- paste0(statement, " condition_era_start_date = (", as.character(condition_era_start_date), ")")
+    } else {
+      statement <- paste0(statement, " condition_era_start_date = '", condition_era_start_date,"'")
+    }
+  }
+
+  if (!missing(condition_era_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_era_end_date)) {
+      statement <- paste0(statement, " condition_era_end_date IS NULL")
+    } else if (is(condition_era_end_date, "subQuery")){
+      statement <- paste0(statement, " condition_era_end_date = (", as.character(condition_era_end_date), ")")
+    } else {
+      statement <- paste0(statement, " condition_era_end_date = '", condition_era_end_date,"'")
+    }
+  }
+
+  if (!missing(condition_occurrence_count)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(condition_occurrence_count)) {
+      statement <- paste0(statement, " condition_occurrence_count IS NULL")
+    } else if (is(condition_occurrence_count, "subQuery")){
+      statement <- paste0(statement, " condition_occurrence_count = (", as.character(condition_occurrence_count), ")")
+    } else {
+      statement <- paste0(statement, " condition_occurrence_count = '", condition_occurrence_count,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_cdm_source <- function(rowCount, cdm_source_name, cdm_source_abbreviation, cdm_holder, source_description, source_documentation_reference, cdm_etl_reference, source_release_date, cdm_release_date, cdm_version, vocabulary_version) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cdm_source' AS test, CASE WHEN(SELECT COUNT(*) FROM cdm_source WHERE")
+  first <- TRUE
+  if (!missing(cdm_source_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cdm_source_name)) {
+      statement <- paste0(statement, " cdm_source_name IS NULL")
+    } else if (is(cdm_source_name, "subQuery")){
+      statement <- paste0(statement, " cdm_source_name = (", as.character(cdm_source_name), ")")
+    } else {
+      statement <- paste0(statement, " cdm_source_name = '", cdm_source_name,"'")
+    }
+  }
+
+  if (!missing(cdm_source_abbreviation)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cdm_source_abbreviation)) {
+      statement <- paste0(statement, " cdm_source_abbreviation IS NULL")
+    } else if (is(cdm_source_abbreviation, "subQuery")){
+      statement <- paste0(statement, " cdm_source_abbreviation = (", as.character(cdm_source_abbreviation), ")")
+    } else {
+      statement <- paste0(statement, " cdm_source_abbreviation = '", cdm_source_abbreviation,"'")
+    }
+  }
+
+  if (!missing(cdm_holder)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cdm_holder)) {
+      statement <- paste0(statement, " cdm_holder IS NULL")
+    } else if (is(cdm_holder, "subQuery")){
+      statement <- paste0(statement, " cdm_holder = (", as.character(cdm_holder), ")")
+    } else {
+      statement <- paste0(statement, " cdm_holder = '", cdm_holder,"'")
+    }
+  }
+
+  if (!missing(source_description)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(source_description)) {
+      statement <- paste0(statement, " source_description IS NULL")
+    } else if (is(source_description, "subQuery")){
+      statement <- paste0(statement, " source_description = (", as.character(source_description), ")")
+    } else {
+      statement <- paste0(statement, " source_description = '", source_description,"'")
+    }
+  }
+
+  if (!missing(source_documentation_reference)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(source_documentation_reference)) {
+      statement <- paste0(statement, " source_documentation_reference IS NULL")
+    } else if (is(source_documentation_reference, "subQuery")){
+      statement <- paste0(statement, " source_documentation_reference = (", as.character(source_documentation_reference), ")")
+    } else {
+      statement <- paste0(statement, " source_documentation_reference = '", source_documentation_reference,"'")
+    }
+  }
+
+  if (!missing(cdm_etl_reference)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cdm_etl_reference)) {
+      statement <- paste0(statement, " cdm_etl_reference IS NULL")
+    } else if (is(cdm_etl_reference, "subQuery")){
+      statement <- paste0(statement, " cdm_etl_reference = (", as.character(cdm_etl_reference), ")")
+    } else {
+      statement <- paste0(statement, " cdm_etl_reference = '", cdm_etl_reference,"'")
+    }
+  }
+
+  if (!missing(source_release_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(source_release_date)) {
+      statement <- paste0(statement, " source_release_date IS NULL")
+    } else if (is(source_release_date, "subQuery")){
+      statement <- paste0(statement, " source_release_date = (", as.character(source_release_date), ")")
+    } else {
+      statement <- paste0(statement, " source_release_date = '", source_release_date,"'")
+    }
+  }
+
+  if (!missing(cdm_release_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cdm_release_date)) {
+      statement <- paste0(statement, " cdm_release_date IS NULL")
+    } else if (is(cdm_release_date, "subQuery")){
+      statement <- paste0(statement, " cdm_release_date = (", as.character(cdm_release_date), ")")
+    } else {
+      statement <- paste0(statement, " cdm_release_date = '", cdm_release_date,"'")
+    }
+  }
+
+  if (!missing(cdm_version)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cdm_version)) {
+      statement <- paste0(statement, " cdm_version IS NULL")
+    } else if (is(cdm_version, "subQuery")){
+      statement <- paste0(statement, " cdm_version = (", as.character(cdm_version), ")")
+    } else {
+      statement <- paste0(statement, " cdm_version = '", cdm_version,"'")
+    }
+  }
+
+  if (!missing(vocabulary_version)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(vocabulary_version)) {
+      statement <- paste0(statement, " vocabulary_version IS NULL")
+    } else if (is(vocabulary_version, "subQuery")){
+      statement <- paste0(statement, " vocabulary_version = (", as.character(vocabulary_version), ")")
+    } else {
+      statement <- paste0(statement, " vocabulary_version = '", vocabulary_version,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_cohort <- function(rowCount, cohort_definition_id, subject_id, cohort_start_date, cohort_end_date) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cohort' AS test, CASE WHEN(SELECT COUNT(*) FROM cohort WHERE")
+  first <- TRUE
+  if (!missing(cohort_definition_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_definition_id)) {
+      statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
+    } else {
+      statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
+    }
+  }
+
+  if (!missing(subject_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(subject_id)) {
+      statement <- paste0(statement, " subject_id IS NULL")
+    } else if (is(subject_id, "subQuery")){
+      statement <- paste0(statement, " subject_id = (", as.character(subject_id), ")")
+    } else {
+      statement <- paste0(statement, " subject_id = '", subject_id,"'")
+    }
+  }
+
+  if (!missing(cohort_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_start_date)) {
+      statement <- paste0(statement, " cohort_start_date IS NULL")
+    } else if (is(cohort_start_date, "subQuery")){
+      statement <- paste0(statement, " cohort_start_date = (", as.character(cohort_start_date), ")")
+    } else {
+      statement <- paste0(statement, " cohort_start_date = '", cohort_start_date,"'")
+    }
+  }
+
+  if (!missing(cohort_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_end_date)) {
+      statement <- paste0(statement, " cohort_end_date IS NULL")
+    } else if (is(cohort_end_date, "subQuery")){
+      statement <- paste0(statement, " cohort_end_date = (", as.character(cohort_end_date), ")")
+    } else {
+      statement <- paste0(statement, " cohort_end_date = '", cohort_end_date,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_cohort_definition <- function(rowCount, cohort_definition_id, cohort_definition_name, cohort_definition_description, definition_type_concept_id, cohort_definition_syntax, subject_concept_id, cohort_instantiation_date) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cohort_definition' AS test, CASE WHEN(SELECT COUNT(*) FROM cohort_definition WHERE")
+  first <- TRUE
+  if (!missing(cohort_definition_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_definition_id)) {
+      statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
+    } else {
+      statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
+    }
+  }
+
+  if (!missing(cohort_definition_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_definition_name)) {
+      statement <- paste0(statement, " cohort_definition_name IS NULL")
+    } else if (is(cohort_definition_name, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_name = (", as.character(cohort_definition_name), ")")
+    } else {
+      statement <- paste0(statement, " cohort_definition_name = '", cohort_definition_name,"'")
+    }
+  }
+
+  if (!missing(cohort_definition_description)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_definition_description)) {
+      statement <- paste0(statement, " cohort_definition_description IS NULL")
+    } else if (is(cohort_definition_description, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_description = (", as.character(cohort_definition_description), ")")
+    } else {
+      statement <- paste0(statement, " cohort_definition_description = '", cohort_definition_description,"'")
+    }
+  }
+
+  if (!missing(definition_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(definition_type_concept_id)) {
+      statement <- paste0(statement, " definition_type_concept_id IS NULL")
+    } else if (is(definition_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " definition_type_concept_id = (", as.character(definition_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " definition_type_concept_id = '", definition_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(cohort_definition_syntax)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_definition_syntax)) {
+      statement <- paste0(statement, " cohort_definition_syntax IS NULL")
+    } else if (is(cohort_definition_syntax, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_syntax = (", as.character(cohort_definition_syntax), ")")
+    } else {
+      statement <- paste0(statement, " cohort_definition_syntax = '", cohort_definition_syntax,"'")
+    }
+  }
+
+  if (!missing(subject_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(subject_concept_id)) {
+      statement <- paste0(statement, " subject_concept_id IS NULL")
+    } else if (is(subject_concept_id, "subQuery")){
+      statement <- paste0(statement, " subject_concept_id = (", as.character(subject_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " subject_concept_id = '", subject_concept_id,"'")
+    }
+  }
+
+  if (!missing(cohort_instantiation_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_instantiation_date)) {
+      statement <- paste0(statement, " cohort_instantiation_date IS NULL")
+    } else if (is(cohort_instantiation_date, "subQuery")){
+      statement <- paste0(statement, " cohort_instantiation_date = (", as.character(cohort_instantiation_date), ")")
+    } else {
+      statement <- paste0(statement, " cohort_instantiation_date = '", cohort_instantiation_date,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_cohort_attribute <- function(rowCount, cohort_definition_id, cohort_start_date, cohort_end_date, subject_id, attribute_definition_id, value_as_number, value_as_concept_id) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cohort_attribute' AS test, CASE WHEN(SELECT COUNT(*) FROM cohort_attribute WHERE")
+  first <- TRUE
+  if (!missing(cohort_definition_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_definition_id)) {
+      statement <- paste0(statement, " cohort_definition_id IS NULL")
+    } else if (is(cohort_definition_id, "subQuery")){
+      statement <- paste0(statement, " cohort_definition_id = (", as.character(cohort_definition_id), ")")
+    } else {
+      statement <- paste0(statement, " cohort_definition_id = '", cohort_definition_id,"'")
+    }
+  }
+
+  if (!missing(cohort_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_start_date)) {
+      statement <- paste0(statement, " cohort_start_date IS NULL")
+    } else if (is(cohort_start_date, "subQuery")){
+      statement <- paste0(statement, " cohort_start_date = (", as.character(cohort_start_date), ")")
+    } else {
+      statement <- paste0(statement, " cohort_start_date = '", cohort_start_date,"'")
+    }
+  }
+
+  if (!missing(cohort_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cohort_end_date)) {
+      statement <- paste0(statement, " cohort_end_date IS NULL")
+    } else if (is(cohort_end_date, "subQuery")){
+      statement <- paste0(statement, " cohort_end_date = (", as.character(cohort_end_date), ")")
+    } else {
+      statement <- paste0(statement, " cohort_end_date = '", cohort_end_date,"'")
+    }
+  }
+
+  if (!missing(subject_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(subject_id)) {
+      statement <- paste0(statement, " subject_id IS NULL")
+    } else if (is(subject_id, "subQuery")){
+      statement <- paste0(statement, " subject_id = (", as.character(subject_id), ")")
+    } else {
+      statement <- paste0(statement, " subject_id = '", subject_id,"'")
+    }
+  }
+
+  if (!missing(attribute_definition_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(attribute_definition_id)) {
+      statement <- paste0(statement, " attribute_definition_id IS NULL")
+    } else if (is(attribute_definition_id, "subQuery")){
+      statement <- paste0(statement, " attribute_definition_id = (", as.character(attribute_definition_id), ")")
+    } else {
+      statement <- paste0(statement, " attribute_definition_id = '", attribute_definition_id,"'")
+    }
+  }
+
+  if (!missing(value_as_number)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_number)) {
+      statement <- paste0(statement, " value_as_number IS NULL")
+    } else if (is(value_as_number, "subQuery")){
+      statement <- paste0(statement, " value_as_number = (", as.character(value_as_number), ")")
+    } else {
+      statement <- paste0(statement, " value_as_number = '", value_as_number,"'")
+    }
+  }
+
+  if (!missing(value_as_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(value_as_concept_id)) {
+      statement <- paste0(statement, " value_as_concept_id IS NULL")
+    } else if (is(value_as_concept_id, "subQuery")){
+      statement <- paste0(statement, " value_as_concept_id = (", as.character(value_as_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " value_as_concept_id = '", value_as_concept_id,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_attribute_definition <- function(rowCount, attribute_definition_id, attribute_name, attribute_description, attribute_type_concept_id, attribute_syntax) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect attribute_definition' AS test, CASE WHEN(SELECT COUNT(*) FROM attribute_definition WHERE")
+  first <- TRUE
+  if (!missing(attribute_definition_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(attribute_definition_id)) {
+      statement <- paste0(statement, " attribute_definition_id IS NULL")
+    } else if (is(attribute_definition_id, "subQuery")){
+      statement <- paste0(statement, " attribute_definition_id = (", as.character(attribute_definition_id), ")")
+    } else {
+      statement <- paste0(statement, " attribute_definition_id = '", attribute_definition_id,"'")
+    }
+  }
+
+  if (!missing(attribute_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(attribute_name)) {
+      statement <- paste0(statement, " attribute_name IS NULL")
+    } else if (is(attribute_name, "subQuery")){
+      statement <- paste0(statement, " attribute_name = (", as.character(attribute_name), ")")
+    } else {
+      statement <- paste0(statement, " attribute_name = '", attribute_name,"'")
+    }
+  }
+
+  if (!missing(attribute_description)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(attribute_description)) {
+      statement <- paste0(statement, " attribute_description IS NULL")
+    } else if (is(attribute_description, "subQuery")){
+      statement <- paste0(statement, " attribute_description = (", as.character(attribute_description), ")")
+    } else {
+      statement <- paste0(statement, " attribute_description = '", attribute_description,"'")
+    }
+  }
+
+  if (!missing(attribute_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(attribute_type_concept_id)) {
+      statement <- paste0(statement, " attribute_type_concept_id IS NULL")
+    } else if (is(attribute_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " attribute_type_concept_id = (", as.character(attribute_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " attribute_type_concept_id = '", attribute_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(attribute_syntax)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(attribute_syntax)) {
+      statement <- paste0(statement, " attribute_syntax IS NULL")
+    } else if (is(attribute_syntax, "subQuery")){
+      statement <- paste0(statement, " attribute_syntax = (", as.character(attribute_syntax), ")")
+    } else {
+      statement <- paste0(statement, " attribute_syntax = '", attribute_syntax,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+expect_count_cost <- function(rowCount, cost_id, cost_event_id, cost_domain_id, cost_type_concept_id, currency_concept_id, total_charge, total_cost, total_paid, paid_by_payer, paid_by_patient, paid_patient_copay, paid_patient_coinsurance, paid_patient_deductible, paid_by_primary, paid_ingredient_cost, paid_dispensing_fee, payer_plan_period_id, amount_allowed, revenue_code_concept_id, revenue_code_source_value) {
+  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cost' AS test, CASE WHEN(SELECT COUNT(*) FROM cost WHERE")
+  first <- TRUE
+  if (!missing(cost_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_id)) {
+      statement <- paste0(statement, " cost_id IS NULL")
+    } else if (is(cost_id, "subQuery")){
+      statement <- paste0(statement, " cost_id = (", as.character(cost_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_id = '", cost_id,"'")
+    }
+  }
+
+  if (!missing(cost_event_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_event_id)) {
+      statement <- paste0(statement, " cost_event_id IS NULL")
+    } else if (is(cost_event_id, "subQuery")){
+      statement <- paste0(statement, " cost_event_id = (", as.character(cost_event_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_event_id = '", cost_event_id,"'")
+    }
+  }
+
+  if (!missing(cost_domain_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_domain_id)) {
+      statement <- paste0(statement, " cost_domain_id IS NULL")
+    } else if (is(cost_domain_id, "subQuery")){
+      statement <- paste0(statement, " cost_domain_id = (", as.character(cost_domain_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_domain_id = '", cost_domain_id,"'")
+    }
+  }
+
+  if (!missing(cost_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_type_concept_id)) {
+      statement <- paste0(statement, " cost_type_concept_id IS NULL")
+    } else if (is(cost_type_concept_id, "subQuery")){
+      statement <- paste0(statement, " cost_type_concept_id = (", as.character(cost_type_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " cost_type_concept_id = '", cost_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(currency_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(currency_concept_id)) {
+      statement <- paste0(statement, " currency_concept_id IS NULL")
+    } else if (is(currency_concept_id, "subQuery")){
+      statement <- paste0(statement, " currency_concept_id = (", as.character(currency_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
+    }
+  }
+
+  if (!missing(total_charge)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_charge)) {
+      statement <- paste0(statement, " total_charge IS NULL")
+    } else if (is(total_charge, "subQuery")){
+      statement <- paste0(statement, " total_charge = (", as.character(total_charge), ")")
+    } else {
+      statement <- paste0(statement, " total_charge = '", total_charge,"'")
+    }
+  }
+
+  if (!missing(total_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_cost)) {
+      statement <- paste0(statement, " total_cost IS NULL")
+    } else if (is(total_cost, "subQuery")){
+      statement <- paste0(statement, " total_cost = (", as.character(total_cost), ")")
+    } else {
+      statement <- paste0(statement, " total_cost = '", total_cost,"'")
+    }
+  }
+
+  if (!missing(total_paid)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_paid)) {
+      statement <- paste0(statement, " total_paid IS NULL")
+    } else if (is(total_paid, "subQuery")){
+      statement <- paste0(statement, " total_paid = (", as.character(total_paid), ")")
+    } else {
+      statement <- paste0(statement, " total_paid = '", total_paid,"'")
+    }
+  }
+
+  if (!missing(paid_by_payer)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_payer)) {
+      statement <- paste0(statement, " paid_by_payer IS NULL")
+    } else if (is(paid_by_payer, "subQuery")){
+      statement <- paste0(statement, " paid_by_payer = (", as.character(paid_by_payer), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
+    }
+  }
+
+  if (!missing(paid_by_patient)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_patient)) {
+      statement <- paste0(statement, " paid_by_patient IS NULL")
+    } else if (is(paid_by_patient, "subQuery")){
+      statement <- paste0(statement, " paid_by_patient = (", as.character(paid_by_patient), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_patient = '", paid_by_patient,"'")
+    }
+  }
+
+  if (!missing(paid_patient_copay)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_copay)) {
+      statement <- paste0(statement, " paid_patient_copay IS NULL")
+    } else if (is(paid_patient_copay, "subQuery")){
+      statement <- paste0(statement, " paid_patient_copay = (", as.character(paid_patient_copay), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_copay = '", paid_patient_copay,"'")
+    }
+  }
+
+  if (!missing(paid_patient_coinsurance)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_coinsurance)) {
+      statement <- paste0(statement, " paid_patient_coinsurance IS NULL")
+    } else if (is(paid_patient_coinsurance, "subQuery")){
+      statement <- paste0(statement, " paid_patient_coinsurance = (", as.character(paid_patient_coinsurance), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_coinsurance = '", paid_patient_coinsurance,"'")
+    }
+  }
+
+  if (!missing(paid_patient_deductible)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_deductible)) {
+      statement <- paste0(statement, " paid_patient_deductible IS NULL")
+    } else if (is(paid_patient_deductible, "subQuery")){
+      statement <- paste0(statement, " paid_patient_deductible = (", as.character(paid_patient_deductible), ")")
+    } else {
+      statement <- paste0(statement, " paid_patient_deductible = '", paid_patient_deductible,"'")
+    }
+  }
+
+  if (!missing(paid_by_primary)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_primary)) {
+      statement <- paste0(statement, " paid_by_primary IS NULL")
+    } else if (is(paid_by_primary, "subQuery")){
+      statement <- paste0(statement, " paid_by_primary = (", as.character(paid_by_primary), ")")
+    } else {
+      statement <- paste0(statement, " paid_by_primary = '", paid_by_primary,"'")
+    }
+  }
+
+  if (!missing(paid_ingredient_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_ingredient_cost)) {
+      statement <- paste0(statement, " paid_ingredient_cost IS NULL")
+    } else if (is(paid_ingredient_cost, "subQuery")){
+      statement <- paste0(statement, " paid_ingredient_cost = (", as.character(paid_ingredient_cost), ")")
+    } else {
+      statement <- paste0(statement, " paid_ingredient_cost = '", paid_ingredient_cost,"'")
+    }
+  }
+
+  if (!missing(paid_dispensing_fee)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_dispensing_fee)) {
+      statement <- paste0(statement, " paid_dispensing_fee IS NULL")
+    } else if (is(paid_dispensing_fee, "subQuery")){
+      statement <- paste0(statement, " paid_dispensing_fee = (", as.character(paid_dispensing_fee), ")")
+    } else {
+      statement <- paste0(statement, " paid_dispensing_fee = '", paid_dispensing_fee,"'")
+    }
+  }
+
+  if (!missing(payer_plan_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_id)) {
+      statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else if (is(payer_plan_period_id, "subQuery")){
+      statement <- paste0(statement, " payer_plan_period_id = (", as.character(payer_plan_period_id), ")")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
+    }
+  }
+
+  if (!missing(amount_allowed)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(amount_allowed)) {
+      statement <- paste0(statement, " amount_allowed IS NULL")
+    } else if (is(amount_allowed, "subQuery")){
+      statement <- paste0(statement, " amount_allowed = (", as.character(amount_allowed), ")")
+    } else {
+      statement <- paste0(statement, " amount_allowed = '", amount_allowed,"'")
+    }
+  }
+
+  if (!missing(revenue_code_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_concept_id)) {
+      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
+    } else if (is(revenue_code_concept_id, "subQuery")){
+      statement <- paste0(statement, " revenue_code_concept_id = (", as.character(revenue_code_concept_id), ")")
+    } else {
+      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
+    }
+  }
+
+  if (!missing(revenue_code_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_source_value)) {
+      statement <- paste0(statement, " revenue_code_source_value IS NULL")
+    } else if (is(revenue_code_source_value, "subQuery")){
+      statement <- paste0(statement, " revenue_code_source_value = (", as.character(revenue_code_source_value), ")")
+    } else {
+      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
+    }
+  }
+
+  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
+  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
+  invisible(statement)
+}
+
+lookup_location <- function(fetchField, location_id, address_1, address_2, city, state, zip, county, location_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM location WHERE")
+  first <- TRUE
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(address_1)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_1)) {
+      statement <- paste0(statement, " address_1 IS NULL")
+    } else {
+      statement <- paste0(statement, " address_1 = '", address_1,"'")
+    }
+  }
+
+  if (!missing(address_2)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(address_2)) {
+      statement <- paste0(statement, " address_2 IS NULL")
+    } else {
+      statement <- paste0(statement, " address_2 = '", address_2,"'")
+    }
+  }
+
+  if (!missing(city)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(city)) {
+      statement <- paste0(statement, " city IS NULL")
+    } else {
+      statement <- paste0(statement, " city = '", city,"'")
+    }
+  }
+
+  if (!missing(state)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(state)) {
+      statement <- paste0(statement, " state IS NULL")
+    } else {
+      statement <- paste0(statement, " state = '", state,"'")
+    }
+  }
+
+  if (!missing(zip)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(zip)) {
+      statement <- paste0(statement, " zip IS NULL")
+    } else {
+      statement <- paste0(statement, " zip = '", zip,"'")
+    }
+  }
+
+  if (!missing(county)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(county)) {
+      statement <- paste0(statement, " county IS NULL")
+    } else {
+      statement <- paste0(statement, " county = '", county,"'")
+    }
+  }
+
+  if (!missing(location_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_source_value)) {
+      statement <- paste0(statement, " location_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
+    }
+  }
+
+  class(statement) <- "subQuery"
+  return(statement)
+}
+
+lookup_person <- function(fetchField, person_id, gender_concept_id, year_of_birth, month_of_birth, day_of_birth, time_of_birth, race_concept_id, ethnicity_concept_id, location_id, provider_id, care_site_id, person_source_value, gender_source_value, gender_source_concept_id, race_source_value, race_source_concept_id, ethnicity_source_value, ethnicity_source_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM person WHERE")
   first <- TRUE
   if (!missing(person_id)) {
     if (first) {
@@ -12420,19 +17234,6 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
     }
   }
 
-  if (!missing(person_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(person_source_value)) {
-      statement <- paste0(statement, " person_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
-    }
-  }
-
   if (!missing(gender_concept_id)) {
     if (first) {
       first <- FALSE
@@ -12443,19 +17244,6 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
       statement <- paste0(statement, " gender_concept_id IS NULL")
     } else {
       statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
-    }
-  }
-
-  if (!missing(gender_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_value)) {
-      statement <- paste0(statement, " gender_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
     }
   }
 
@@ -12498,6 +17286,19 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
     }
   }
 
+  if (!missing(time_of_birth)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(time_of_birth)) {
+      statement <- paste0(statement, " time_of_birth IS NULL")
+    } else {
+      statement <- paste0(statement, " time_of_birth = '", time_of_birth,"'")
+    }
+  }
+
   if (!missing(race_concept_id)) {
     if (first) {
       first <- FALSE
@@ -12511,19 +17312,6 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
     }
   }
 
-  if (!missing(race_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(race_source_value)) {
-      statement <- paste0(statement, " race_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
-    }
-  }
-
   if (!missing(ethnicity_concept_id)) {
     if (first) {
       first <- FALSE
@@ -12534,32 +17322,6 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
       statement <- paste0(statement, " ethnicity_concept_id IS NULL")
     } else {
       statement <- paste0(statement, " ethnicity_concept_id = '", ethnicity_concept_id,"'")
-    }
-  }
-
-  if (!missing(ethnicity_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ethnicity_source_value)) {
-      statement <- paste0(statement, " ethnicity_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
-    }
-  }
-
-  if (!missing(time_of_birth)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(time_of_birth)) {
-      statement <- paste0(statement, " time_of_birth IS NULL")
-    } else {
-      statement <- paste0(statement, " time_of_birth = '", time_of_birth,"'")
     }
   }
 
@@ -12602,6 +17364,32 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
     }
   }
 
+  if (!missing(person_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_source_value)) {
+      statement <- paste0(statement, " person_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " person_source_value = '", person_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
+    }
+  }
+
   if (!missing(gender_source_concept_id)) {
     if (first) {
       first <- FALSE
@@ -12612,6 +17400,19 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
       statement <- paste0(statement, " gender_source_concept_id IS NULL")
     } else {
       statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
+    }
+  }
+
+  if (!missing(race_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(race_source_value)) {
+      statement <- paste0(statement, " race_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " race_source_value = '", race_source_value,"'")
     }
   }
 
@@ -12628,6 +17429,19 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
     }
   }
 
+  if (!missing(ethnicity_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(ethnicity_source_value)) {
+      statement <- paste0(statement, " ethnicity_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " ethnicity_source_value = '", ethnicity_source_value,"'")
+    }
+  }
+
   if (!missing(ethnicity_source_concept_id)) {
     if (first) {
       first <- FALSE
@@ -12641,13 +17455,169 @@ expect_count_person <- function(rowCount, person_id, person_source_value, gender
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_visit_occurrence <- function(rowCount, visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_occurrence WHERE")
+lookup_observation_period <- function(fetchField, observation_period_id, person_id, observation_period_start_date, observation_period_end_date, period_type_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM observation_period WHERE")
+  first <- TRUE
+  if (!missing(observation_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_period_id)) {
+      statement <- paste0(statement, " observation_period_id IS NULL")
+    } else {
+      statement <- paste0(statement, " observation_period_id = '", observation_period_id,"'")
+    }
+  }
+
+  if (!missing(person_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(person_id)) {
+      statement <- paste0(statement, " person_id IS NULL")
+    } else {
+      statement <- paste0(statement, " person_id = '", person_id,"'")
+    }
+  }
+
+  if (!missing(observation_period_start_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_period_start_date)) {
+      statement <- paste0(statement, " observation_period_start_date IS NULL")
+    } else {
+      statement <- paste0(statement, " observation_period_start_date = '", observation_period_start_date,"'")
+    }
+  }
+
+  if (!missing(observation_period_end_date)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(observation_period_end_date)) {
+      statement <- paste0(statement, " observation_period_end_date IS NULL")
+    } else {
+      statement <- paste0(statement, " observation_period_end_date = '", observation_period_end_date,"'")
+    }
+  }
+
+  if (!missing(period_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(period_type_concept_id)) {
+      statement <- paste0(statement, " period_type_concept_id IS NULL")
+    } else {
+      statement <- paste0(statement, " period_type_concept_id = '", period_type_concept_id,"'")
+    }
+  }
+
+  class(statement) <- "subQuery"
+  return(statement)
+}
+
+lookup_care_site <- function(fetchField, care_site_id, care_site_name, place_of_service_concept_id, location_id, care_site_source_value, place_of_service_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM care_site WHERE")
+  first <- TRUE
+  if (!missing(care_site_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_id)) {
+      statement <- paste0(statement, " care_site_id IS NULL")
+    } else {
+      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
+    }
+  }
+
+  if (!missing(care_site_name)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_name)) {
+      statement <- paste0(statement, " care_site_name IS NULL")
+    } else {
+      statement <- paste0(statement, " care_site_name = '", care_site_name,"'")
+    }
+  }
+
+  if (!missing(place_of_service_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(place_of_service_concept_id)) {
+      statement <- paste0(statement, " place_of_service_concept_id IS NULL")
+    } else {
+      statement <- paste0(statement, " place_of_service_concept_id = '", place_of_service_concept_id,"'")
+    }
+  }
+
+  if (!missing(location_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(location_id)) {
+      statement <- paste0(statement, " location_id IS NULL")
+    } else {
+      statement <- paste0(statement, " location_id = '", location_id,"'")
+    }
+  }
+
+  if (!missing(care_site_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(care_site_source_value)) {
+      statement <- paste0(statement, " care_site_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " care_site_source_value = '", care_site_source_value,"'")
+    }
+  }
+
+  if (!missing(place_of_service_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(place_of_service_source_value)) {
+      statement <- paste0(statement, " place_of_service_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " place_of_service_source_value = '", place_of_service_source_value,"'")
+    }
+  }
+
+  class(statement) <- "subQuery"
+  return(statement)
+}
+
+lookup_visit_occurrence <- function(fetchField, visit_occurrence_id, person_id, visit_concept_id, visit_start_date, visit_start_time, visit_end_date, visit_end_time, visit_type_concept_id, provider_id, care_site_id, visit_source_value, visit_source_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM visit_occurrence WHERE")
   first <- TRUE
   if (!missing(visit_occurrence_id)) {
     if (first) {
@@ -12805,199 +17775,78 @@ expect_count_visit_occurrence <- function(rowCount, visit_occurrence_id, person_
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_observation_period <- function(rowCount, observation_period_id, person_id, observation_period_start_date, observation_period_end_date, period_type_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect observation_period' AS test, CASE WHEN(SELECT COUNT(*) FROM observation_period WHERE")
+lookup_provider <- function(fetchField, provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM provider WHERE")
   first <- TRUE
-  if (!missing(observation_period_id)) {
+  if (!missing(provider_id)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(observation_period_id)) {
-      statement <- paste0(statement, " observation_period_id IS NULL")
+    if (is.null(provider_id)) {
+      statement <- paste0(statement, " provider_id IS NULL")
     } else {
-      statement <- paste0(statement, " observation_period_id = '", observation_period_id,"'")
+      statement <- paste0(statement, " provider_id = '", provider_id,"'")
     }
   }
 
-  if (!missing(person_id)) {
+  if (!missing(provider_name)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(person_id)) {
-      statement <- paste0(statement, " person_id IS NULL")
+    if (is.null(provider_name)) {
+      statement <- paste0(statement, " provider_name IS NULL")
     } else {
-      statement <- paste0(statement, " person_id = '", person_id,"'")
+      statement <- paste0(statement, " provider_name = '", provider_name,"'")
     }
   }
 
-  if (!missing(observation_period_start_date)) {
+  if (!missing(npi)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(observation_period_start_date)) {
-      statement <- paste0(statement, " observation_period_start_date IS NULL")
+    if (is.null(npi)) {
+      statement <- paste0(statement, " npi IS NULL")
     } else {
-      statement <- paste0(statement, " observation_period_start_date = '", observation_period_start_date,"'")
+      statement <- paste0(statement, " npi = '", npi,"'")
     }
   }
 
-  if (!missing(observation_period_end_date)) {
+  if (!missing(dea)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(observation_period_end_date)) {
-      statement <- paste0(statement, " observation_period_end_date IS NULL")
+    if (is.null(dea)) {
+      statement <- paste0(statement, " dea IS NULL")
     } else {
-      statement <- paste0(statement, " observation_period_end_date = '", observation_period_end_date,"'")
+      statement <- paste0(statement, " dea = '", dea,"'")
     }
   }
 
-  if (!missing(period_type_concept_id)) {
+  if (!missing(specialty_concept_id)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(period_type_concept_id)) {
-      statement <- paste0(statement, " period_type_concept_id IS NULL")
+    if (is.null(specialty_concept_id)) {
+      statement <- paste0(statement, " specialty_concept_id IS NULL")
     } else {
-      statement <- paste0(statement, " period_type_concept_id = '", period_type_concept_id,"'")
+      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_location <- function(rowCount, location_id, address_1, address_2, city, state, zip, county, location_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect location' AS test, CASE WHEN(SELECT COUNT(*) FROM location WHERE")
-  first <- TRUE
-  if (!missing(location_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(location_id)) {
-      statement <- paste0(statement, " location_id IS NULL")
-    } else {
-      statement <- paste0(statement, " location_id = '", location_id,"'")
-    }
-  }
-
-  if (!missing(address_1)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(address_1)) {
-      statement <- paste0(statement, " address_1 IS NULL")
-    } else {
-      statement <- paste0(statement, " address_1 = '", address_1,"'")
-    }
-  }
-
-  if (!missing(address_2)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(address_2)) {
-      statement <- paste0(statement, " address_2 IS NULL")
-    } else {
-      statement <- paste0(statement, " address_2 = '", address_2,"'")
-    }
-  }
-
-  if (!missing(city)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(city)) {
-      statement <- paste0(statement, " city IS NULL")
-    } else {
-      statement <- paste0(statement, " city = '", city,"'")
-    }
-  }
-
-  if (!missing(state)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(state)) {
-      statement <- paste0(statement, " state IS NULL")
-    } else {
-      statement <- paste0(statement, " state = '", state,"'")
-    }
-  }
-
-  if (!missing(zip)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(zip)) {
-      statement <- paste0(statement, " zip IS NULL")
-    } else {
-      statement <- paste0(statement, " zip = '", zip,"'")
-    }
-  }
-
-  if (!missing(county)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(county)) {
-      statement <- paste0(statement, " county IS NULL")
-    } else {
-      statement <- paste0(statement, " county = '", county,"'")
-    }
-  }
-
-  if (!missing(location_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(location_source_value)) {
-      statement <- paste0(statement, " location_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " location_source_value = '", location_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_care_site <- function(rowCount, care_site_id, care_site_name, place_of_service_concept_id, location_id, care_site_source_value, place_of_service_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect care_site' AS test, CASE WHEN(SELECT COUNT(*) FROM care_site WHERE")
-  first <- TRUE
   if (!missing(care_site_id)) {
     if (first) {
       first <- FALSE
@@ -13011,78 +17860,103 @@ expect_count_care_site <- function(rowCount, care_site_id, care_site_name, place
     }
   }
 
-  if (!missing(care_site_name)) {
+  if (!missing(year_of_birth)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(care_site_name)) {
-      statement <- paste0(statement, " care_site_name IS NULL")
+    if (is.null(year_of_birth)) {
+      statement <- paste0(statement, " year_of_birth IS NULL")
     } else {
-      statement <- paste0(statement, " care_site_name = '", care_site_name,"'")
+      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
     }
   }
 
-  if (!missing(place_of_service_concept_id)) {
+  if (!missing(gender_concept_id)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(place_of_service_concept_id)) {
-      statement <- paste0(statement, " place_of_service_concept_id IS NULL")
+    if (is.null(gender_concept_id)) {
+      statement <- paste0(statement, " gender_concept_id IS NULL")
     } else {
-      statement <- paste0(statement, " place_of_service_concept_id = '", place_of_service_concept_id,"'")
+      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
     }
   }
 
-  if (!missing(location_id)) {
+  if (!missing(provider_source_value)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(location_id)) {
-      statement <- paste0(statement, " location_id IS NULL")
+    if (is.null(provider_source_value)) {
+      statement <- paste0(statement, " provider_source_value IS NULL")
     } else {
-      statement <- paste0(statement, " location_id = '", location_id,"'")
+      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
     }
   }
 
-  if (!missing(care_site_source_value)) {
+  if (!missing(specialty_source_value)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(care_site_source_value)) {
-      statement <- paste0(statement, " care_site_source_value IS NULL")
+    if (is.null(specialty_source_value)) {
+      statement <- paste0(statement, " specialty_source_value IS NULL")
     } else {
-      statement <- paste0(statement, " care_site_source_value = '", care_site_source_value,"'")
+      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
     }
   }
 
-  if (!missing(place_of_service_source_value)) {
+  if (!missing(specialty_source_concept_id)) {
     if (first) {
       first <- FALSE
     } else {
       statement <- paste0(statement, " AND")
     }
-    if (is.null(place_of_service_source_value)) {
-      statement <- paste0(statement, " place_of_service_source_value IS NULL")
+    if (is.null(specialty_source_concept_id)) {
+      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
     } else {
-      statement <- paste0(statement, " place_of_service_source_value = '", place_of_service_source_value,"'")
+      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  if (!missing(gender_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_value)) {
+      statement <- paste0(statement, " gender_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
+    }
+  }
+
+  if (!missing(gender_source_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(gender_source_concept_id)) {
+      statement <- paste0(statement, " gender_source_concept_id IS NULL")
+    } else {
+      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
+    }
+  }
+
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_condition_occurrence <- function(rowCount, condition_occurrence_id, person_id, condition_concept_id, condition_start_date, condition_end_date, condition_type_concept_id, stop_reason, provider_id, visit_occurrence_id, condition_source_value, condition_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect condition_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_occurrence WHERE")
+lookup_condition_occurrence <- function(fetchField, condition_occurrence_id, person_id, condition_concept_id, condition_start_date, condition_end_date, condition_type_concept_id, stop_reason, provider_id, visit_occurrence_id, condition_source_value, condition_source_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM condition_occurrence WHERE")
   first <- TRUE
   if (!missing(condition_occurrence_id)) {
     if (first) {
@@ -13227,13 +18101,12 @@ expect_count_condition_occurrence <- function(rowCount, condition_occurrence_id,
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_death <- function(rowCount, person_id, death_date, death_type_concept_id, cause_concept_id, cause_source_value, cause_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect death' AS test, CASE WHEN(SELECT COUNT(*) FROM death WHERE")
+lookup_death <- function(fetchField, person_id, death_date, death_type_concept_id, cause_concept_id, cause_source_value, cause_source_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM death WHERE")
   first <- TRUE
   if (!missing(person_id)) {
     if (first) {
@@ -13313,13 +18186,12 @@ expect_count_death <- function(rowCount, person_id, death_date, death_type_conce
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_drug_exposure <- function(rowCount, drug_exposure_id, person_id, drug_concept_id, drug_exposure_start_date, drug_exposure_end_date, drug_type_concept_id, stop_reason, refills, quantity, days_supply, sig, route_concept_id, effective_drug_dose, dose_unit_concept_id, lot_number, provider_id, visit_occurrence_id, drug_source_value, drug_source_concept_id, route_source_value, dose_unit_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_exposure' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_exposure WHERE")
+lookup_drug_exposure <- function(fetchField, drug_exposure_id, person_id, drug_concept_id, drug_exposure_start_date, drug_exposure_end_date, drug_type_concept_id, stop_reason, refills, quantity, days_supply, sig, route_concept_id, effective_drug_dose, dose_unit_concept_id, lot_number, provider_id, visit_occurrence_id, drug_source_value, drug_source_concept_id, route_source_value, dose_unit_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM drug_exposure WHERE")
   first <- TRUE
   if (!missing(drug_exposure_id)) {
     if (first) {
@@ -13594,13 +18466,12 @@ expect_count_drug_exposure <- function(rowCount, drug_exposure_id, person_id, dr
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_device_exposure <- function(rowCount, device_exposure_id, person_id, device_concept_id, device_exposure_start_date, device_exposure_end_date, device_type_concept_id, unique_device_id, quantity, provider_id, visit_occurrence_id, device_source_value, device_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect device_exposure' AS test, CASE WHEN(SELECT COUNT(*) FROM device_exposure WHERE")
+lookup_device_exposure <- function(fetchField, device_exposure_id, person_id, device_concept_id, device_exposure_start_date, device_exposure_end_date, device_type_concept_id, unique_device_id, quantity, provider_id, visit_occurrence_id, device_source_value, device_source_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM device_exposure WHERE")
   first <- TRUE
   if (!missing(device_exposure_id)) {
     if (first) {
@@ -13758,13 +18629,12 @@ expect_count_device_exposure <- function(rowCount, device_exposure_id, person_id
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_procedure_occurrence <- function(rowCount, procedure_occurrence_id, person_id, procedure_concept_id, procedure_date, procedure_type_concept_id, modifier_concept_id, quantity, provider_id, visit_occurrence_id, procedure_source_value, procedure_source_concept_id, qualifier_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect procedure_occurrence' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_occurrence WHERE")
+lookup_procedure_occurrence <- function(fetchField, procedure_occurrence_id, person_id, procedure_concept_id, procedure_date, procedure_type_concept_id, modifier_concept_id, quantity, provider_id, visit_occurrence_id, procedure_source_value, procedure_source_concept_id, qualifier_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM procedure_occurrence WHERE")
   first <- TRUE
   if (!missing(procedure_occurrence_id)) {
     if (first) {
@@ -13922,13 +18792,12 @@ expect_count_procedure_occurrence <- function(rowCount, procedure_occurrence_id,
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_measurement <- function(rowCount, measurement_id, person_id, measurement_concept_id, measurement_date, measurement_time, measurement_type_concept_id, operator_concept_id, value_as_number, value_as_concept_id, unit_concept_id, range_low, range_high, provider_id, visit_occurrence_id, measurement_source_value, measurement_source_concept_id, unit_source_value, value_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect measurement' AS test, CASE WHEN(SELECT COUNT(*) FROM measurement WHERE")
+lookup_measurement <- function(fetchField, measurement_id, person_id, measurement_concept_id, measurement_date, measurement_time, measurement_type_concept_id, operator_concept_id, value_as_number, value_as_concept_id, unit_concept_id, range_low, range_high, provider_id, visit_occurrence_id, measurement_source_value, measurement_source_concept_id, unit_source_value, value_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM measurement WHERE")
   first <- TRUE
   if (!missing(measurement_id)) {
     if (first) {
@@ -14164,13 +19033,12 @@ expect_count_measurement <- function(rowCount, measurement_id, person_id, measur
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_observation <- function(rowCount, observation_id, person_id, observation_concept_id, observation_date, observation_time, observation_type_concept_id, value_as_number, value_as_string, value_as_concept_id, qualifier_concept_id, unit_concept_id, provider_id, visit_occurrence_id, observation_source_value, observation_source_concept_id, unit_source_value, qualifier_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect observation' AS test, CASE WHEN(SELECT COUNT(*) FROM observation WHERE")
+lookup_observation <- function(fetchField, observation_id, person_id, observation_concept_id, observation_date, observation_time, observation_type_concept_id, value_as_number, value_as_string, value_as_concept_id, qualifier_concept_id, unit_concept_id, provider_id, visit_occurrence_id, observation_source_value, observation_source_concept_id, unit_source_value, qualifier_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM observation WHERE")
   first <- TRUE
   if (!missing(observation_id)) {
     if (first) {
@@ -14393,190 +19261,12 @@ expect_count_observation <- function(rowCount, observation_id, person_id, observ
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_provider <- function(rowCount, provider_id, provider_name, npi, dea, specialty_concept_id, care_site_id, year_of_birth, gender_concept_id, provider_source_value, specialty_source_value, specialty_source_concept_id, gender_source_value, gender_source_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect provider' AS test, CASE WHEN(SELECT COUNT(*) FROM provider WHERE")
-  first <- TRUE
-  if (!missing(provider_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_id)) {
-      statement <- paste0(statement, " provider_id IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_id = '", provider_id,"'")
-    }
-  }
-
-  if (!missing(provider_name)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_name)) {
-      statement <- paste0(statement, " provider_name IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_name = '", provider_name,"'")
-    }
-  }
-
-  if (!missing(npi)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(npi)) {
-      statement <- paste0(statement, " npi IS NULL")
-    } else {
-      statement <- paste0(statement, " npi = '", npi,"'")
-    }
-  }
-
-  if (!missing(dea)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(dea)) {
-      statement <- paste0(statement, " dea IS NULL")
-    } else {
-      statement <- paste0(statement, " dea = '", dea,"'")
-    }
-  }
-
-  if (!missing(specialty_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_concept_id)) {
-      statement <- paste0(statement, " specialty_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_concept_id = '", specialty_concept_id,"'")
-    }
-  }
-
-  if (!missing(care_site_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(care_site_id)) {
-      statement <- paste0(statement, " care_site_id IS NULL")
-    } else {
-      statement <- paste0(statement, " care_site_id = '", care_site_id,"'")
-    }
-  }
-
-  if (!missing(year_of_birth)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(year_of_birth)) {
-      statement <- paste0(statement, " year_of_birth IS NULL")
-    } else {
-      statement <- paste0(statement, " year_of_birth = '", year_of_birth,"'")
-    }
-  }
-
-  if (!missing(gender_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_concept_id)) {
-      statement <- paste0(statement, " gender_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_concept_id = '", gender_concept_id,"'")
-    }
-  }
-
-  if (!missing(provider_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(provider_source_value)) {
-      statement <- paste0(statement, " provider_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " provider_source_value = '", provider_source_value,"'")
-    }
-  }
-
-  if (!missing(specialty_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_source_value)) {
-      statement <- paste0(statement, " specialty_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_source_value = '", specialty_source_value,"'")
-    }
-  }
-
-  if (!missing(specialty_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(specialty_source_concept_id)) {
-      statement <- paste0(statement, " specialty_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " specialty_source_concept_id = '", specialty_source_concept_id,"'")
-    }
-  }
-
-  if (!missing(gender_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_value)) {
-      statement <- paste0(statement, " gender_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_value = '", gender_source_value,"'")
-    }
-  }
-
-  if (!missing(gender_source_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(gender_source_concept_id)) {
-      statement <- paste0(statement, " gender_source_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " gender_source_concept_id = '", gender_source_concept_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_note <- function(rowCount, note_id, person_id, note_date, note_time, note_type_concept_id, note_text, provider_id, visit_occurrence_id, note_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect note' AS test, CASE WHEN(SELECT COUNT(*) FROM note WHERE")
+lookup_note <- function(fetchField, note_id, person_id, note_date, note_time, note_type_concept_id, note_text, provider_id, visit_occurrence_id, note_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM note WHERE")
   first <- TRUE
   if (!missing(note_id)) {
     if (first) {
@@ -14695,13 +19385,12 @@ expect_count_note <- function(rowCount, note_id, person_id, note_date, note_time
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_specimen <- function(rowCount, specimen_id, person_id, specimen_concept_id, specimen_type_concept_id, specimen_date, specimen_time, quantity, unit_concept_id, anatomic_site_concept_id, disease_status_concept_id, specimen_source_id, specimen_source_value, unit_source_value, anatomic_site_source_value, disease_status_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect specimen' AS test, CASE WHEN(SELECT COUNT(*) FROM specimen WHERE")
+lookup_specimen <- function(fetchField, specimen_id, person_id, specimen_concept_id, specimen_type_concept_id, specimen_date, specimen_time, quantity, unit_concept_id, anatomic_site_concept_id, disease_status_concept_id, specimen_source_id, specimen_source_value, unit_source_value, anatomic_site_source_value, disease_status_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM specimen WHERE")
   first <- TRUE
   if (!missing(specimen_id)) {
     if (first) {
@@ -14898,13 +19587,12 @@ expect_count_specimen <- function(rowCount, specimen_id, person_id, specimen_con
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_fact_relationship <- function(rowCount, domain_concept_id_1, fact_id_1, domain_concept_id_2, fact_id_2, relationship_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect fact_relationship' AS test, CASE WHEN(SELECT COUNT(*) FROM fact_relationship WHERE")
+lookup_fact_relationship <- function(fetchField, domain_concept_id_1, fact_id_1, domain_concept_id_2, fact_id_2, relationship_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM fact_relationship WHERE")
   first <- TRUE
   if (!missing(domain_concept_id_1)) {
     if (first) {
@@ -14971,531 +19659,12 @@ expect_count_fact_relationship <- function(rowCount, domain_concept_id_1, fact_i
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_procedure_cost <- function(rowCount, procedure_cost_id, procedure_occurrence_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, revenue_code_concept_id, payer_plan_period_id, revenue_code_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect procedure_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM procedure_cost WHERE")
-  first <- TRUE
-  if (!missing(procedure_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(procedure_cost_id)) {
-      statement <- paste0(statement, " procedure_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " procedure_cost_id = '", procedure_cost_id,"'")
-    }
-  }
-
-  if (!missing(procedure_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(procedure_occurrence_id)) {
-      statement <- paste0(statement, " procedure_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " procedure_occurrence_id = '", procedure_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(revenue_code_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(revenue_code_concept_id)) {
-      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  if (!missing(revenue_code_source_value)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(revenue_code_source_value)) {
-      statement <- paste0(statement, " revenue_code_source_value IS NULL")
-    } else {
-      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_visit_cost <- function(rowCount, visit_cost_id, visit_occurrence_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect visit_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM visit_cost WHERE")
-  first <- TRUE
-  if (!missing(visit_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_cost_id)) {
-      statement <- paste0(statement, " visit_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_cost_id = '", visit_cost_id,"'")
-    }
-  }
-
-  if (!missing(visit_occurrence_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(visit_occurrence_id)) {
-      statement <- paste0(statement, " visit_occurrence_id IS NULL")
-    } else {
-      statement <- paste0(statement, " visit_occurrence_id = '", visit_occurrence_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_drug_cost <- function(rowCount, drug_cost_id, drug_exposure_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, ingredient_cost, dispensing_fee, average_wholesale_price, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_cost WHERE")
-  first <- TRUE
-  if (!missing(drug_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(drug_cost_id)) {
-      statement <- paste0(statement, " drug_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " drug_cost_id = '", drug_cost_id,"'")
-    }
-  }
-
-  if (!missing(drug_exposure_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(drug_exposure_id)) {
-      statement <- paste0(statement, " drug_exposure_id IS NULL")
-    } else {
-      statement <- paste0(statement, " drug_exposure_id = '", drug_exposure_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(ingredient_cost)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(ingredient_cost)) {
-      statement <- paste0(statement, " ingredient_cost IS NULL")
-    } else {
-      statement <- paste0(statement, " ingredient_cost = '", ingredient_cost,"'")
-    }
-  }
-
-  if (!missing(dispensing_fee)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(dispensing_fee)) {
-      statement <- paste0(statement, " dispensing_fee IS NULL")
-    } else {
-      statement <- paste0(statement, " dispensing_fee = '", dispensing_fee,"'")
-    }
-  }
-
-  if (!missing(average_wholesale_price)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(average_wholesale_price)) {
-      statement <- paste0(statement, " average_wholesale_price IS NULL")
-    } else {
-      statement <- paste0(statement, " average_wholesale_price = '", average_wholesale_price,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_payer_plan_period <- function(rowCount, payer_plan_period_id, person_id, payer_plan_period_start_date, payer_plan_period_end_date, payer_source_value, plan_source_value, family_source_value) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect payer_plan_period' AS test, CASE WHEN(SELECT COUNT(*) FROM payer_plan_period WHERE")
+lookup_payer_plan_period <- function(fetchField, payer_plan_period_id, person_id, payer_plan_period_start_date, payer_plan_period_end_date, payer_source_value, plan_source_value, family_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM payer_plan_period WHERE")
   first <- TRUE
   if (!missing(payer_plan_period_id)) {
     if (first) {
@@ -15588,164 +19757,12 @@ expect_count_payer_plan_period <- function(rowCount, payer_plan_period_id, perso
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_device_cost <- function(rowCount, device_cost_id, device_exposure_id, currency_concept_id, paid_copay, paid_coinsurance, paid_toward_deductible, paid_by_payer, paid_by_coordination_benefits, total_out_of_pocket, total_paid, payer_plan_period_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect device_cost' AS test, CASE WHEN(SELECT COUNT(*) FROM device_cost WHERE")
-  first <- TRUE
-  if (!missing(device_cost_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(device_cost_id)) {
-      statement <- paste0(statement, " device_cost_id IS NULL")
-    } else {
-      statement <- paste0(statement, " device_cost_id = '", device_cost_id,"'")
-    }
-  }
-
-  if (!missing(device_exposure_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(device_exposure_id)) {
-      statement <- paste0(statement, " device_exposure_id IS NULL")
-    } else {
-      statement <- paste0(statement, " device_exposure_id = '", device_exposure_id,"'")
-    }
-  }
-
-  if (!missing(currency_concept_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(currency_concept_id)) {
-      statement <- paste0(statement, " currency_concept_id IS NULL")
-    } else {
-      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
-    }
-  }
-
-  if (!missing(paid_copay)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_copay)) {
-      statement <- paste0(statement, " paid_copay IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_copay = '", paid_copay,"'")
-    }
-  }
-
-  if (!missing(paid_coinsurance)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_coinsurance)) {
-      statement <- paste0(statement, " paid_coinsurance IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_coinsurance = '", paid_coinsurance,"'")
-    }
-  }
-
-  if (!missing(paid_toward_deductible)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_toward_deductible)) {
-      statement <- paste0(statement, " paid_toward_deductible IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_toward_deductible = '", paid_toward_deductible,"'")
-    }
-  }
-
-  if (!missing(paid_by_payer)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_payer)) {
-      statement <- paste0(statement, " paid_by_payer IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
-    }
-  }
-
-  if (!missing(paid_by_coordination_benefits)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(paid_by_coordination_benefits)) {
-      statement <- paste0(statement, " paid_by_coordination_benefits IS NULL")
-    } else {
-      statement <- paste0(statement, " paid_by_coordination_benefits = '", paid_by_coordination_benefits,"'")
-    }
-  }
-
-  if (!missing(total_out_of_pocket)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_out_of_pocket)) {
-      statement <- paste0(statement, " total_out_of_pocket IS NULL")
-    } else {
-      statement <- paste0(statement, " total_out_of_pocket = '", total_out_of_pocket,"'")
-    }
-  }
-
-  if (!missing(total_paid)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(total_paid)) {
-      statement <- paste0(statement, " total_paid IS NULL")
-    } else {
-      statement <- paste0(statement, " total_paid = '", total_paid,"'")
-    }
-  }
-
-  if (!missing(payer_plan_period_id)) {
-    if (first) {
-      first <- FALSE
-    } else {
-      statement <- paste0(statement, " AND")
-    }
-    if (is.null(payer_plan_period_id)) {
-      statement <- paste0(statement, " payer_plan_period_id IS NULL")
-    } else {
-      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
-    }
-  }
-
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
-}
-
-expect_count_drug_era <- function(rowCount, drug_era_id, person_id, drug_concept_id, drug_era_start_date, drug_era_end_date, drug_exposure_count, gap_days) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect drug_era' AS test, CASE WHEN(SELECT COUNT(*) FROM drug_era WHERE")
+lookup_drug_era <- function(fetchField, drug_era_id, person_id, drug_concept_id, drug_era_start_date, drug_era_end_date, drug_exposure_count, gap_days) {
+  statement <- paste0("SELECT ", fetchField , " FROM drug_era WHERE")
   first <- TRUE
   if (!missing(drug_era_id)) {
     if (first) {
@@ -15838,13 +19855,12 @@ expect_count_drug_era <- function(rowCount, drug_era_id, person_id, drug_concept
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_dose_era <- function(rowCount, dose_era_id, person_id, drug_concept_id, unit_concept_id, dose_value, dose_era_start_date, dose_era_end_date) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect dose_era' AS test, CASE WHEN(SELECT COUNT(*) FROM dose_era WHERE")
+lookup_dose_era <- function(fetchField, dose_era_id, person_id, drug_concept_id, unit_concept_id, dose_value, dose_era_start_date, dose_era_end_date) {
+  statement <- paste0("SELECT ", fetchField , " FROM dose_era WHERE")
   first <- TRUE
   if (!missing(dose_era_id)) {
     if (first) {
@@ -15937,13 +19953,12 @@ expect_count_dose_era <- function(rowCount, dose_era_id, person_id, drug_concept
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_condition_era <- function(rowCount, condition_era_id, person_id, condition_concept_id, condition_era_start_date, condition_era_end_date, condition_occurrence_count) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect condition_era' AS test, CASE WHEN(SELECT COUNT(*) FROM condition_era WHERE")
+lookup_condition_era <- function(fetchField, condition_era_id, person_id, condition_concept_id, condition_era_start_date, condition_era_end_date, condition_occurrence_count) {
+  statement <- paste0("SELECT ", fetchField , " FROM condition_era WHERE")
   first <- TRUE
   if (!missing(condition_era_id)) {
     if (first) {
@@ -16023,13 +20038,12 @@ expect_count_condition_era <- function(rowCount, condition_era_id, person_id, co
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_cdm_source <- function(rowCount, cdm_source_name, cdm_source_abbreviation, cdm_holder, source_description, source_documentation_reference, cdm_etl_reference, source_release_date, cdm_release_date, cdm_version, vocabulary_version) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cdm_source' AS test, CASE WHEN(SELECT COUNT(*) FROM cdm_source WHERE")
+lookup_cdm_source <- function(fetchField, cdm_source_name, cdm_source_abbreviation, cdm_holder, source_description, source_documentation_reference, cdm_etl_reference, source_release_date, cdm_release_date, cdm_version, vocabulary_version) {
+  statement <- paste0("SELECT ", fetchField , " FROM cdm_source WHERE")
   first <- TRUE
   if (!missing(cdm_source_name)) {
     if (first) {
@@ -16161,13 +20175,12 @@ expect_count_cdm_source <- function(rowCount, cdm_source_name, cdm_source_abbrev
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_cohort <- function(rowCount, cohort_definition_id, subject_id, cohort_start_date, cohort_end_date) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cohort' AS test, CASE WHEN(SELECT COUNT(*) FROM cohort WHERE")
+lookup_cohort <- function(fetchField, cohort_definition_id, subject_id, cohort_start_date, cohort_end_date) {
+  statement <- paste0("SELECT ", fetchField , " FROM cohort WHERE")
   first <- TRUE
   if (!missing(cohort_definition_id)) {
     if (first) {
@@ -16221,13 +20234,12 @@ expect_count_cohort <- function(rowCount, cohort_definition_id, subject_id, coho
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_cohort_definition <- function(rowCount, cohort_definition_id, cohort_definition_name, cohort_definition_description, definition_type_concept_id, cohort_definition_syntax, subject_concept_id, cohort_instantiation_date) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cohort_definition' AS test, CASE WHEN(SELECT COUNT(*) FROM cohort_definition WHERE")
+lookup_cohort_definition <- function(fetchField, cohort_definition_id, cohort_definition_name, cohort_definition_description, definition_type_concept_id, cohort_definition_syntax, subject_concept_id, cohort_instantiation_date) {
+  statement <- paste0("SELECT ", fetchField , " FROM cohort_definition WHERE")
   first <- TRUE
   if (!missing(cohort_definition_id)) {
     if (first) {
@@ -16320,13 +20332,12 @@ expect_count_cohort_definition <- function(rowCount, cohort_definition_id, cohor
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_cohort_attribute <- function(rowCount, cohort_definition_id, cohort_start_date, cohort_end_date, subject_id, attribute_definition_id, value_as_number, value_as_concept_id) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect cohort_attribute' AS test, CASE WHEN(SELECT COUNT(*) FROM cohort_attribute WHERE")
+lookup_cohort_attribute <- function(fetchField, cohort_definition_id, cohort_start_date, cohort_end_date, subject_id, attribute_definition_id, value_as_number, value_as_concept_id) {
+  statement <- paste0("SELECT ", fetchField , " FROM cohort_attribute WHERE")
   first <- TRUE
   if (!missing(cohort_definition_id)) {
     if (first) {
@@ -16419,13 +20430,12 @@ expect_count_cohort_attribute <- function(rowCount, cohort_definition_id, cohort
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
 }
 
-expect_count_attribute_definition <- function(rowCount, attribute_definition_id, attribute_name, attribute_description, attribute_type_concept_id, attribute_syntax) {
-  statement <- paste0("INSERT INTO test_results SELECT ", get("testId", envir = globalenv()), " AS id, '", get("testDescription", envir = globalenv()), "' AS description, 'Expect attribute_definition' AS test, CASE WHEN(SELECT COUNT(*) FROM attribute_definition WHERE")
+lookup_attribute_definition <- function(fetchField, attribute_definition_id, attribute_name, attribute_description, attribute_type_concept_id, attribute_syntax) {
+  statement <- paste0("SELECT ", fetchField , " FROM attribute_definition WHERE")
   first <- TRUE
   if (!missing(attribute_definition_id)) {
     if (first) {
@@ -16492,8 +20502,274 @@ expect_count_attribute_definition <- function(rowCount, attribute_definition_id,
     }
   }
 
-  statement <- paste0(statement, ") != ",rowCount ," THEN 'FAIL' ELSE 'PASS' END AS status;")
-  assign("testSql", c(get("testSql", envir = globalenv()), statement), envir = globalenv())
-  invisible(statement)
+  class(statement) <- "subQuery"
+  return(statement)
+}
+
+lookup_cost <- function(fetchField, cost_id, cost_event_id, cost_domain_id, cost_type_concept_id, currency_concept_id, total_charge, total_cost, total_paid, paid_by_payer, paid_by_patient, paid_patient_copay, paid_patient_coinsurance, paid_patient_deductible, paid_by_primary, paid_ingredient_cost, paid_dispensing_fee, payer_plan_period_id, amount_allowed, revenue_code_concept_id, revenue_code_source_value) {
+  statement <- paste0("SELECT ", fetchField , " FROM cost WHERE")
+  first <- TRUE
+  if (!missing(cost_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_id)) {
+      statement <- paste0(statement, " cost_id IS NULL")
+    } else {
+      statement <- paste0(statement, " cost_id = '", cost_id,"'")
+    }
+  }
+
+  if (!missing(cost_event_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_event_id)) {
+      statement <- paste0(statement, " cost_event_id IS NULL")
+    } else {
+      statement <- paste0(statement, " cost_event_id = '", cost_event_id,"'")
+    }
+  }
+
+  if (!missing(cost_domain_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_domain_id)) {
+      statement <- paste0(statement, " cost_domain_id IS NULL")
+    } else {
+      statement <- paste0(statement, " cost_domain_id = '", cost_domain_id,"'")
+    }
+  }
+
+  if (!missing(cost_type_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(cost_type_concept_id)) {
+      statement <- paste0(statement, " cost_type_concept_id IS NULL")
+    } else {
+      statement <- paste0(statement, " cost_type_concept_id = '", cost_type_concept_id,"'")
+    }
+  }
+
+  if (!missing(currency_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(currency_concept_id)) {
+      statement <- paste0(statement, " currency_concept_id IS NULL")
+    } else {
+      statement <- paste0(statement, " currency_concept_id = '", currency_concept_id,"'")
+    }
+  }
+
+  if (!missing(total_charge)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_charge)) {
+      statement <- paste0(statement, " total_charge IS NULL")
+    } else {
+      statement <- paste0(statement, " total_charge = '", total_charge,"'")
+    }
+  }
+
+  if (!missing(total_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_cost)) {
+      statement <- paste0(statement, " total_cost IS NULL")
+    } else {
+      statement <- paste0(statement, " total_cost = '", total_cost,"'")
+    }
+  }
+
+  if (!missing(total_paid)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(total_paid)) {
+      statement <- paste0(statement, " total_paid IS NULL")
+    } else {
+      statement <- paste0(statement, " total_paid = '", total_paid,"'")
+    }
+  }
+
+  if (!missing(paid_by_payer)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_payer)) {
+      statement <- paste0(statement, " paid_by_payer IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_by_payer = '", paid_by_payer,"'")
+    }
+  }
+
+  if (!missing(paid_by_patient)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_patient)) {
+      statement <- paste0(statement, " paid_by_patient IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_by_patient = '", paid_by_patient,"'")
+    }
+  }
+
+  if (!missing(paid_patient_copay)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_copay)) {
+      statement <- paste0(statement, " paid_patient_copay IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_patient_copay = '", paid_patient_copay,"'")
+    }
+  }
+
+  if (!missing(paid_patient_coinsurance)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_coinsurance)) {
+      statement <- paste0(statement, " paid_patient_coinsurance IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_patient_coinsurance = '", paid_patient_coinsurance,"'")
+    }
+  }
+
+  if (!missing(paid_patient_deductible)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_patient_deductible)) {
+      statement <- paste0(statement, " paid_patient_deductible IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_patient_deductible = '", paid_patient_deductible,"'")
+    }
+  }
+
+  if (!missing(paid_by_primary)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_by_primary)) {
+      statement <- paste0(statement, " paid_by_primary IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_by_primary = '", paid_by_primary,"'")
+    }
+  }
+
+  if (!missing(paid_ingredient_cost)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_ingredient_cost)) {
+      statement <- paste0(statement, " paid_ingredient_cost IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_ingredient_cost = '", paid_ingredient_cost,"'")
+    }
+  }
+
+  if (!missing(paid_dispensing_fee)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(paid_dispensing_fee)) {
+      statement <- paste0(statement, " paid_dispensing_fee IS NULL")
+    } else {
+      statement <- paste0(statement, " paid_dispensing_fee = '", paid_dispensing_fee,"'")
+    }
+  }
+
+  if (!missing(payer_plan_period_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(payer_plan_period_id)) {
+      statement <- paste0(statement, " payer_plan_period_id IS NULL")
+    } else {
+      statement <- paste0(statement, " payer_plan_period_id = '", payer_plan_period_id,"'")
+    }
+  }
+
+  if (!missing(amount_allowed)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(amount_allowed)) {
+      statement <- paste0(statement, " amount_allowed IS NULL")
+    } else {
+      statement <- paste0(statement, " amount_allowed = '", amount_allowed,"'")
+    }
+  }
+
+  if (!missing(revenue_code_concept_id)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_concept_id)) {
+      statement <- paste0(statement, " revenue_code_concept_id IS NULL")
+    } else {
+      statement <- paste0(statement, " revenue_code_concept_id = '", revenue_code_concept_id,"'")
+    }
+  }
+
+  if (!missing(revenue_code_source_value)) {
+    if (first) {
+      first <- FALSE
+    } else {
+      statement <- paste0(statement, " AND")
+    }
+    if (is.null(revenue_code_source_value)) {
+      statement <- paste0(statement, " revenue_code_source_value IS NULL")
+    } else {
+      statement <- paste0(statement, " revenue_code_source_value = '", revenue_code_source_value,"'")
+    }
+  }
+
+  class(statement) <- "subQuery"
+  return(statement)
 }
 

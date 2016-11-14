@@ -1,4 +1,4 @@
-setwd("C:/home/Research/ETLs/HCUP ETL/EtlToV5")
+setwd("C:/home/Research/ETLs/HCUP ETL/EtlToV5/HCUP changes 2016")
 
 source("HcupTestFramework.R")
 
@@ -9,7 +9,19 @@ personIdPlusPlus <- function() {
   return(personId - 1)
 }
 
-set_defaults_core(age = 20) # Else default values create invalid record
+set_defaults_core(age = 20, hospst = "CA", hospstco = "-9999", hospid = 51043)
+
+### Start with tests using new format, because their keys will be ranked first
+
+declareTest(105, "Person id through new source format")
+add_core(key = NULL, key_nis = "10000001", hosp_nis = 123)
+expect_person(person_id = personIdPlusPlus(), person_source_value = "10000001")
+
+declareTest(502, "Care site without location")
+add_core(key = NULL, hospid = NULL, key_nis = "10000002", hospst = NULL, hospstco = NULL, hosp_nis = "888")
+expect_care_site(care_site_id = 888, place_of_service_concept_id = 9201, location_id = NULL, care_site_source_value = 888)
+personIdPlusPlus()
+
 
 ### Person ###
 
@@ -130,6 +142,7 @@ add_core(key = "4200000000501", hospst = "NY", hospstco = "36061", hospid = "999
 expect_care_site(care_site_id = 999, place_of_service_concept_id = 9201, location_id = 2, care_site_source_value = 999)
 personIdPlusPlus()
 
+
 ### Condition occurrence ###
 
 declareTest(601, "Condition occurrence person ID")
@@ -177,7 +190,7 @@ expect_death(person_id = personIdPlusPlus(), death_type_concept_id = 38003566)
 ### Procedure occurrence ###
 
 declareTest(801, "Procedure occurrence person ID")
-add_core(key = "4200000000801")
+add_core(key = "4200000000801", pr1 = "7359")
 expect_procedure_occurrence(person_id = personIdPlusPlus())
 
 declareTest(802, "Procedure occurrence concept mapping")
@@ -207,7 +220,7 @@ add_core(key = "4200000000807", dx1 = "V252")
 expect_procedure_occurrence(person_id = personIdPlusPlus(), procedure_concept_id = 4163273, procedure_source_concept_id = 44833073, procedure_source_value = "V252", procedure_type_concept_id = 38000184)
 
 declareTest(808, "Procedure occurrence visit occurrence id")
-add_core(key = "4200000000808", dx1 = "486")
+add_core(key = "4200000000808", dx1 = "486", pr1 = "7359")
 expect_procedure_occurrence(person_id = personId, visit_occurrence_id = personIdPlusPlus())
 
 
@@ -298,7 +311,8 @@ executeSql(connection, paste(testSql, collapse = "\n"))
 
 querySql(connection, "SELECT * FROM test_results")
 
-querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000001007'")
+querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000000701'")
+querySql(connection, "SELECT person_id FROM person WHERE person_source_value = '4200000000801'")
 querySql(connection, "SELECT * FROM condition_occurrence WHERE person_id = 39")
 
 
