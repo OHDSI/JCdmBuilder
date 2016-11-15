@@ -14,11 +14,11 @@ VALUES (
 	'HCUP National (Nationwide) Inpatient Sample',
 	'HCUP',
 	NULL,
-	'The National (Nationwide) Inpatient Sample (NIS) is part of a family of databases and software tools developed for the Healthcare Cost and Utilization Project (HCUP). The NIS is the largest publicly available all-payer inpatient health care database in the United States, yielding national estimates of hospital inpatient stays. Unweighted, it contains data from more than 7 million hospital stays each year. Weighted, it estimates more than 36 million hospitalizations nationally.',
+	'The HCUP National Inpatient Sample database represents hospital data, collected under sponsorship of the Agency for Healthcare Research and Quality (AHRQ). The data includes diagnoses, procedures, discharge status, demographics, and charges for hospital care in the United States, regardless of payer. Information on drugs and devices is not included. The HCUP data is based on hospital visits, with no information linking multiple visits of the same patient together. Cost information has not yet been included in the CDM.',
 	'https://www.hcup-us.ahrq.gov/nisoverview.jsp',
 	'https://github.com/OHDSI/JCdmBuilder',
 	NULL,
 	'@today',
-	'5.0',
+	'5.0.1',
 	'5.0'
 	);
