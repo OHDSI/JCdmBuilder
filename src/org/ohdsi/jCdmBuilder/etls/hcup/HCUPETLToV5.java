@@ -335,8 +335,7 @@ public class HCUPETLToV5 {
 	}
 	
 	private boolean addToPerson(Row row) {
-		if (row.getInt("AGE") < 0 || (row.getInt("AGE") == 0 && row.getInt("AGEDAY") < 0)) { // No age specified. Cannot create person, since birth year is
-			// required field
+		if (row.getInt("AGE") < 0) { // No age specified. Cannot create person, since birth year is required field
 			etlReport.reportProblem("Person", "No age specified so cannot create row", row.get("KEY"));
 			return false;
 		}
@@ -352,7 +351,16 @@ public class HCUPETLToV5 {
 			person.add("year_of_birth", yearOfBirth);
 			person.add("month_of_birth", "");
 			person.add("day_of_birth", "");
-			
+		} else if (row.get("AGEDAY").equals("") && row.get("AGE_NEONATE").equals("1")) {
+			int yearOfBirth = Integer.parseInt(StringUtilities.daysToCalendarYear(visitStartDate));
+			person.add("year_of_birth", yearOfBirth);
+			person.add("month_of_birth", "");
+			person.add("day_of_birth", "");
+		} else if ((row.get("AGEDAY").equals("") && !row.get("AGE_NEONATE").equals("1")) || row.getInt("AGEDAY") < 0) {
+			long dateOfBirth = visitStartDate - 180;
+			person.add("year_of_birth", StringUtilities.daysToCalendarYear(dateOfBirth));
+			person.add("month_of_birth", "");
+			person.add("day_of_birth", "");
 		} else if (row.getInt("AGEDAY") >= 0) {
 			long dateOfBirth = visitStartDate - row.getInt("AGEDAY");
 			person.add("year_of_birth", StringUtilities.daysToCalendarYear(dateOfBirth));
