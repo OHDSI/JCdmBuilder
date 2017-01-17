@@ -37,7 +37,7 @@ Getting Started
 1. Under the [Releases](https://github.com/OHDSI/JCdmBuilder/releases) tab, download the latest JCDMBuilder jar file.
 2. Double-click on the jar file to start the application.
 
-There is also a command-line-interface. Type `java -jar JCDMBuilder_v?.?.?.jar - usage` for more information.
+There is also a command-line-interface. Type `java -jar JCDMBuilder_v?.?.?.jar -usage` for more information.
 
 Getting Involved
 =============
