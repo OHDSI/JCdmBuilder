@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2016 Observational Health Data Sciences and Informatics
+ * Copyright 2017 Observational Health Data Sciences and Informatics
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +92,7 @@ public class HCUPETLToV5 {
 	private CodeToDomainConceptMap		icd9ProcToConcept;
 	private CodeToDomainConceptMap		drgYearToConcept;
 	
-	public void process(String folder, DbSettings sourceDbSettings, DbSettings targetDbSettings, int maxPersons) {
+	public void process(String folder, DbSettings sourceDbSettings, DbSettings targetDbSettings, int maxPersons, int versionId) {
 		loadMappings(targetDbSettings);
 		
 		sourceConnection = new RichConnection(sourceDbSettings.server, sourceDbSettings.domain, sourceDbSettings.user, sourceDbSettings.password,
@@ -106,6 +106,10 @@ public class HCUPETLToV5 {
 		targetConnection.use(targetDbSettings.database);
 		
 		truncateTables(targetConnection);
+		
+		targetConnection.execute("TRUNCATE TABLE _version");
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		targetConnection.execute("INSERT INTO _version (version_id, version_date) VALUES (" + versionId + ", '" + date + "')");
 		
 		qcSampleConstructor = new QCSampleConstructor(folder + "/sample", QC_SAMPLE_PROBABILITY);
 		etlReport = new EtlReport(folder);

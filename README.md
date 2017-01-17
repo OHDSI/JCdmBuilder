@@ -8,11 +8,12 @@ Features
 * This builder supports the following ETLs:
   * Healthcare Cost and Utilization Project (HCUP) - Nationwide Inpatient Sample (NIS) to CDM version 4
   * Healthcare Cost and Utilization Project (HCUP) - Nationwide Inpatient Sample (NIS) to CDM version 5
+* You can also load data in CDM format from CSV files into the database
 * Creating the database structure and indices for CDM versions 4 or 5
 * Loading the vocabulary from files into the database
-* Load data in CDM format from CSV files into the database
 * Automatically creating condition and drug eras 
 * Supports SQL Server, Oracle and PostgreSQL
+* Command line interface for automated execution
 
 Screenshot
 ===========
@@ -32,7 +33,11 @@ None
  
 Getting Started
 ===============
-JCdmBuilder is still under development. 
+
+1. Under the [Releases](https://github.com/OHDSI/JCdmBuilder/releases) tab, download the latest JCDMBuilder jar file.
+2. Double-click on the jar file to start the application.
+
+There is also a command-line-interface. Type `java -jar JCDMBuilder_v?.?.?.jar - usage` for more information.
 
 Getting Involved
 =============
@@ -51,5 +56,5 @@ Development
 Alpha
 
 Acknowledgements
-===========
+================
 Janssen Pharmaceutical Research & Development, LLC

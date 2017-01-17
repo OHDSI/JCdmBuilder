@@ -1,5 +1,5 @@
 /*********************************************************************************
-# Copyright 2016 Observational Health Data Sciences and Informatics
+# Copyright 2017 Observational Health Data Sciences and Informatics
 #
 # 
 # Licensed under the Apache License, Version 2.0 (the "License")
@@ -15,26 +15,13 @@
 # limitations under the License.
 ********************************************************************************/
 
-/************************
-
- ####### #     # ####### ######      #####  ######  #     #           ####### 
- #     # ##   ## #     # #     #    #     # #     # ##   ##    #    # #       
- #     # # # # # #     # #     #    #       #     # # # # #    #    # #       
- #     # #  #  # #     # ######     #       #     # #  #  #    #    # ######  
- #     # #     # #     # #          #       #     # #     #    #    #       # 
- #     # #     # #     # #          #     # #     # #     #     #  #  #     # 
- ####### #     # ####### #           #####  ######  #     #      ##    #####  
-                                                                              
-
-script to create OMOP common data model, version 5.0 for PostgreSQL database
-
-last revised: 12 Oct 2014
-
-author:  Patrick Ryan
-
-
-*************************/
-
+/***********************
+Unofficial version table
+***********************/
+CREATE TABLE _version (
+	version_id INT,
+	version_date DATE
+);
 
 /************************
 

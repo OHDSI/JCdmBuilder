@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project JCDMBuilder with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="C:/Users/mschuemi/workspace"/>
+    <property name="dir.jarfile" value="C:/home/Software/JCDMBuilder"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/JCDMBuilder.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="org.ohdsi.jCdmBuilder.Launcher"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ dom4j-1.6.1.jar poi-3.9-20121203.jar poi-excelant-3.9-20121203.jar poi-ooxml-3.9-20121203.jar poi-ooxml-schemas-3.9-20121203.jar stax-api-1.0.1.jar xmlbeans-2.3.0.jar jtds-1.2.7.jar ojdbc5.jar ojdbc6.jar postgresql-9.3-1101.jdbc4.jar postgresql-9.3-1101.jdbc41.jar sqljdbc4.jar SqlRender.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.buildfile}/bin"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="dom4j-1.6.1.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="poi-3.9-20121203.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="poi-excelant-3.9-20121203.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="poi-ooxml-3.9-20121203.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="poi-ooxml-schemas-3.9-20121203.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="stax-api-1.0.1.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="xmlbeans-2.3.0.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="jtds-1.2.7.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="ojdbc5.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="ojdbc6.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="postgresql-9.3-1101.jdbc4.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="postgresql-9.3-1101.jdbc41.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="sqljdbc4.jar"/>
+            <zipfileset dir="${dir.buildfile}/lib" includes="SqlRender.jar"/>
+        </jar>
+    </target>
+</project>
