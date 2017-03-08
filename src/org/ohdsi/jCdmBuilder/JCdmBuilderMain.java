@@ -62,12 +62,14 @@ import org.ohdsi.jCdmBuilder.etls.hcup.HCUPETLToV5;
 import org.ohdsi.jCdmBuilder.vocabulary.CopyVocabularyFromSchema;
 import org.ohdsi.jCdmBuilder.vocabulary.InsertVocabularyInServer;
 import org.ohdsi.utilities.StringUtilities;
+import org.ohdsi.utilities.PropertiesManager;
 
 public class JCdmBuilderMain {
 	
 	private JFrame				frame;
 	private JTabbedPane tabbedPane;
 	private JTextField			folderField;
+	private JTextField			settingsField;
 	private JTextField			vocabFileField;
 	private JTextField			vocabSchemaField;
 	private JRadioButton		vocabFileTypeButton;
@@ -97,6 +99,7 @@ public class JCdmBuilderMain {
 	private boolean				executeIndicesWhenReady			= false;
 	
 	private List<JComponent>	componentsToDisableWhenRunning	= new ArrayList<JComponent>();
+
 	
 	public static void main(String[] args) {
 		new JCdmBuilderMain(args);
@@ -124,7 +127,7 @@ public class JCdmBuilderMain {
 		
 		frame.pack();
 		frame.setVisible(true);
-		ObjectExchange.frame = frame;
+		ObjectExchange.frame = frame;		
 		executeParameters(args);
 		if (executeCdmStructureWhenReady || executeVocabWhenReady || executeEtlWhenReady || executeConditionErasWhenReady || executeDrugErasWhenReady
 				|| executeIndicesWhenReady) {
@@ -167,14 +170,46 @@ public class JCdmBuilderMain {
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.5;
 		
+		JPanel settingsPanel = new JPanel();
+		settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.X_AXIS));
+		settingsPanel.setBorder(BorderFactory.createTitledBorder("Settings File"));
+		settingsField = new JTextField();
+		settingsField.setText("");
+		settingsField.setToolTipText("The file containing all the settings");
+		settingsPanel.add(settingsField);
+		JButton loadButton = new JButton("Load");
+		loadButton.setToolTipText("Load Settings");
+		settingsPanel.add(loadButton);
+		loadButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loadSettingsFile();
+			}
+		});
+		componentsToDisableWhenRunning.add(loadButton);
+		
+		JButton saveButton = new JButton("Save");
+		saveButton.setToolTipText("Save Settings");
+		settingsPanel.add(saveButton);
+		saveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				saveSettingsFile();
+			}
+		});		
+		componentsToDisableWhenRunning.add(saveButton);
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 2;
+		panel.add(settingsPanel, c);
+		
 		JPanel folderPanel = new JPanel();
 		folderPanel.setLayout(new BoxLayout(folderPanel, BoxLayout.X_AXIS));
 		folderPanel.setBorder(BorderFactory.createTitledBorder("Working folder"));
 		folderField = new JTextField();
-		folderField.setText((new File("").getAbsolutePath()));
+		folderField.setText(PropertiesManager.get("Workspace"));
 		folderField.setToolTipText("The folder where all output will be written");
 		folderPanel.add(folderField);
-		JButton pickButton = new JButton("Pick folder");
+		JButton pickButton = new JButton("Select");
 		pickButton.setToolTipText("Pick a different working folder");
 		folderPanel.add(pickButton);
 		pickButton.addActionListener(new ActionListener() {
@@ -184,7 +219,7 @@ public class JCdmBuilderMain {
 		});
 		componentsToDisableWhenRunning.add(pickButton);
 		c.gridx = 0;
-		c.gridy = 0;
+		c.gridy = 1;
 		c.gridwidth = 2;
 		panel.add(folderPanel, c);
 		
@@ -247,14 +282,13 @@ public class JCdmBuilderMain {
 		sourceDatabaseField = new JTextField("");
 		sourceDatabaseField.setEnabled(false);
 		sourcePanel.add(sourceDatabaseField);
-		
 		sourcePanel.add(new JLabel("Delimiter"));
 		sourceDelimiterField = new JTextField(",");
 		sourceDelimiterField.setToolTipText("The delimiter that separates values. Enter 'tab' for tab.");
 		sourcePanel.add(sourceDelimiterField);
 		
 		c.gridx = 0;
-		c.gridy = 1;
+		c.gridy = 2;
 		c.gridwidth = 1;
 		panel.add(sourcePanel, c);
 		
@@ -266,26 +300,54 @@ public class JCdmBuilderMain {
 		targetType.setToolTipText("Select the type of server where the CDM and vocabulary will be stored");
 		targetPanel.add(targetType);
 		targetPanel.add(new JLabel("Server location"));
-		targetServerField = new JTextField("");
+		targetServerField = new JTextField(PropertiesManager.get("TargetServerLocation"));
 		targetPanel.add(targetServerField);
 		targetPanel.add(new JLabel("User name"));
-		targetUserField = new JTextField("");
+		targetUserField = new JTextField(PropertiesManager.get("TargetUserName"));
 		targetPanel.add(targetUserField);
 		targetPanel.add(new JLabel("Password"));
 		targetPasswordField = new JPasswordField("");
 		targetPanel.add(targetPasswordField);
-		targetPanel.add(new JLabel("CDM database name"));
-		targetDatabaseField = new JTextField("");
+		targetPanel.add(new JLabel("Database name"));
+		targetDatabaseField = new JTextField(PropertiesManager.get("TargetDatabaseName"));
 		targetPanel.add(targetDatabaseField);
 		targetPanel.add(new JLabel(""));
 		targetPanel.add(new JLabel(""));
 		
+		
 		c.gridx = 1;
-		c.gridy = 1;
+		c.gridy = 2;
 		c.gridwidth = 1;
 		panel.add(targetPanel, c);
 		
 		return panel;
+	}
+	
+	private void loadSettings(){
+		folderField.setText(PropertiesManager.get("WorkspaceFolder"));
+		sourceType.setSelectedItem(PropertiesManager.get("SourceDataType"));
+		sourceServerField.setText(PropertiesManager.get("SourceServerLocation"));
+		sourceUserField.setText(PropertiesManager.get("SourceUserName"));
+		sourceDatabaseField.setText(PropertiesManager.get("SourceDatabaseName"));
+		sourceDelimiterField.setText(PropertiesManager.get("SourceDelimiter"));
+		targetType.setSelectedItem(PropertiesManager.get("TargetDataType"));
+		targetServerField.setText(PropertiesManager.get("TargetServerLocation"));
+		targetUserField.setText(PropertiesManager.get("TargetUserName"));
+		targetDatabaseField.setText(PropertiesManager.get("TargetDatabaseName"));
+	}
+	
+	private void saveSettings(String fileName){
+		PropertiesManager.set("WorkspaceFolder", folderField.getText());
+		PropertiesManager.set("SourceDataType", sourceType.getSelectedItem().toString());
+		PropertiesManager.set("SourceServerLocation", sourceServerField.getText());
+		PropertiesManager.set("SourceUserName", sourceUserField.getText());
+		PropertiesManager.set("SourceDatabaseName", sourceDatabaseField.getText());
+		PropertiesManager.set("SourceDelimiter", sourceDelimiterField.getText());
+		PropertiesManager.set("TargetDataType", targetType.getSelectedItem().toString());
+		PropertiesManager.set("TargetServerLocation", targetServerField.getText());
+		PropertiesManager.set("TargetUserName", targetUserField.getText());
+		PropertiesManager.set("TargetDatabaseName", targetDatabaseField.getText());
+		PropertiesManager.save(fileName);
 	}
 	
 	private JPanel createVocabPanel() {
@@ -660,6 +722,27 @@ public class JCdmBuilderMain {
 		int returnVal = fileChooser.showDialog(frame, "Select folder");
 		if (returnVal == JFileChooser.APPROVE_OPTION)
 			folderField.setText(fileChooser.getSelectedFile().getAbsolutePath());
+	}
+	
+	private void loadSettingsFile() {
+		JFileChooser fileChooser = new JFileChooser(settingsField.getText().isEmpty() ? new File(System.getProperty("user.dir")) : new File(settingsField.getText()));
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		int returnVal = fileChooser.showDialog(frame, "Load");
+		if (returnVal == JFileChooser.APPROVE_OPTION) {
+			settingsField.setText(fileChooser.getSelectedFile().getAbsolutePath());
+			PropertiesManager.load(fileChooser.getSelectedFile().getAbsolutePath());
+			loadSettings();	
+		}			
+	}
+	
+	private void saveSettingsFile() {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setSelectedFile(new File(settingsField.getText()));
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		int returnVal = fileChooser.showDialog(frame, "Save");
+		if (returnVal == JFileChooser.APPROVE_OPTION)
+			settingsField.setText(fileChooser.getSelectedFile().getAbsolutePath());
+		saveSettings(fileChooser.getSelectedFile().getAbsolutePath());
 	}
 	
 	private void pickVocabFile() {
