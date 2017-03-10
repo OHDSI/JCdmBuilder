@@ -37,11 +37,15 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -67,13 +71,18 @@ import org.ohdsi.utilities.PropertiesManager;
 public class JCdmBuilderMain {
 	
 	private JFrame				frame;
-	private JTabbedPane tabbedPane;
+	private JTabbedPane 		tabbedPane;
 	private JTextField			folderField;
-	private JTextField			settingsField;
 	private JTextField			vocabFileField;
 	private JTextField			vocabSchemaField;
 	private JRadioButton		vocabFileTypeButton;
 	private JRadioButton		vocabSchemaTypeButton;
+	private	JCheckBox			executeStructureCheckBox;
+	private	JCheckBox			executeVocabCheckBox;
+	private	JCheckBox			executeETLCheckBox;
+	private	JCheckBox			executeConditionErasCheckBox;
+	private	JCheckBox			executeDrugErasCheckBox;
+	private	JCheckBox			executeIndicesCheckBox;
 	private JComboBox<String>	etlType;
 	private JComboBox<String>	cdmVersion;
 	private JComboBox<String>	cdmVersionForIndices;
@@ -97,6 +106,7 @@ public class JCdmBuilderMain {
 	private boolean				executeDrugErasWhenReady		= false;
 	private boolean				executeConditionErasWhenReady	= false;
 	private boolean				executeIndicesWhenReady			= false;
+	private PropertiesManager 	propertiesManager = new PropertiesManager();
 	
 	private List<JComponent>	componentsToDisableWhenRunning	= new ArrayList<JComponent>();
 
@@ -119,11 +129,14 @@ public class JCdmBuilderMain {
 		});
 		frame.setLayout(new BorderLayout());
 		
+        JMenuBar menuBar = createMenu();
+		
 		JComponent tabsPanel = createTabsPanel();
 		JComponent consolePanel = createConsolePanel();
 		
 		frame.add(consolePanel, BorderLayout.CENTER);
 		frame.add(tabsPanel, BorderLayout.NORTH);
+		frame.setJMenuBar(menuBar);
 		
 		frame.pack();
 		frame.setVisible(true);
@@ -136,6 +149,41 @@ public class JCdmBuilderMain {
 			autoRunThread.start();
 		}
 		
+	}
+	
+	private JMenuBar createMenu() {
+		JMenuBar menuBar = new JMenuBar();
+		JMenu file = new JMenu("File");
+
+		JMenuItem loadMenuItem = new JMenuItem("Load");
+        loadMenuItem.setToolTipText("Load Settings");
+        loadMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {   
+        		loadSettingsFile();
+        	}
+        });
+        file.add(loadMenuItem);
+        
+		JMenuItem saveMenuItem = new JMenuItem("Save");
+        saveMenuItem.setToolTipText("Save Settings");
+        saveMenuItem.addActionListener(new ActionListener()  {
+        	public void actionPerformed(ActionEvent e) {  
+        		saveSettingsFile();
+        	}
+        });
+        file.add(saveMenuItem);
+        
+		JMenuItem exitMenuItem = new JMenuItem("Exit");
+        exitMenuItem.setToolTipText("Exit application");
+        exitMenuItem.addActionListener(new ActionListener()  {
+        	public void actionPerformed(ActionEvent e) { 
+        		System.exit(0);
+        	}
+        });
+        file.add(exitMenuItem);
+
+        menuBar.add(file);
+        return menuBar;
 	}
 
 	private JComponent createTabsPanel() {
@@ -159,6 +207,10 @@ public class JCdmBuilderMain {
 		JPanel indicesPanel = createIndicesPanel();
 		tabbedPane.addTab("Indices", null, indicesPanel, "Create recommended indices to improve performance");
 		
+		JPanel executePanel = createExecutePanel();
+		tabbedPane.addTab("Execute", null, executePanel, "Run multiple steps automatically");
+		
+		
 		return tabbedPane;
 	}
 	
@@ -169,44 +221,12 @@ public class JCdmBuilderMain {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.5;
-		
-		JPanel settingsPanel = new JPanel();
-		settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.X_AXIS));
-		settingsPanel.setBorder(BorderFactory.createTitledBorder("Settings File"));
-		settingsField = new JTextField();
-		settingsField.setText("");
-		settingsField.setToolTipText("The file containing all the settings");
-		settingsPanel.add(settingsField);
-		JButton loadButton = new JButton("Load");
-		loadButton.setToolTipText("Load Settings");
-		settingsPanel.add(loadButton);
-		loadButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				loadSettingsFile();
-			}
-		});
-		componentsToDisableWhenRunning.add(loadButton);
-		
-		JButton saveButton = new JButton("Save");
-		saveButton.setToolTipText("Save Settings");
-		settingsPanel.add(saveButton);
-		saveButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				saveSettingsFile();
-			}
-		});		
-		componentsToDisableWhenRunning.add(saveButton);
-		
-		c.gridx = 0;
-		c.gridy = 0;
-		c.gridwidth = 2;
-		panel.add(settingsPanel, c);
-		
+				
 		JPanel folderPanel = new JPanel();
 		folderPanel.setLayout(new BoxLayout(folderPanel, BoxLayout.X_AXIS));
 		folderPanel.setBorder(BorderFactory.createTitledBorder("Working folder"));
 		folderField = new JTextField();
-		folderField.setText(PropertiesManager.get("Workspace"));
+		folderField.setText("");
 		folderField.setToolTipText("The folder where all output will be written");
 		folderPanel.add(folderField);
 		JButton pickButton = new JButton("Select");
@@ -219,7 +239,7 @@ public class JCdmBuilderMain {
 		});
 		componentsToDisableWhenRunning.add(pickButton);
 		c.gridx = 0;
-		c.gridy = 1;
+		c.gridy = 0;
 		c.gridwidth = 2;
 		panel.add(folderPanel, c);
 		
@@ -288,7 +308,7 @@ public class JCdmBuilderMain {
 		sourcePanel.add(sourceDelimiterField);
 		
 		c.gridx = 0;
-		c.gridy = 2;
+		c.gridy = 1;
 		c.gridwidth = 1;
 		panel.add(sourcePanel, c);
 		
@@ -300,23 +320,23 @@ public class JCdmBuilderMain {
 		targetType.setToolTipText("Select the type of server where the CDM and vocabulary will be stored");
 		targetPanel.add(targetType);
 		targetPanel.add(new JLabel("Server location"));
-		targetServerField = new JTextField(PropertiesManager.get("TargetServerLocation"));
+		targetServerField = new JTextField("");
 		targetPanel.add(targetServerField);
 		targetPanel.add(new JLabel("User name"));
-		targetUserField = new JTextField(PropertiesManager.get("TargetUserName"));
+		targetUserField = new JTextField("");
 		targetPanel.add(targetUserField);
 		targetPanel.add(new JLabel("Password"));
 		targetPasswordField = new JPasswordField("");
 		targetPanel.add(targetPasswordField);
 		targetPanel.add(new JLabel("Database name"));
-		targetDatabaseField = new JTextField(PropertiesManager.get("TargetDatabaseName"));
+		targetDatabaseField = new JTextField("");
 		targetPanel.add(targetDatabaseField);
 		targetPanel.add(new JLabel(""));
 		targetPanel.add(new JLabel(""));
 		
 		
 		c.gridx = 1;
-		c.gridy = 2;
+		c.gridy = 1;
 		c.gridwidth = 1;
 		panel.add(targetPanel, c);
 		
@@ -324,30 +344,75 @@ public class JCdmBuilderMain {
 	}
 	
 	private void loadSettings(){
-		folderField.setText(PropertiesManager.get("WorkspaceFolder"));
-		sourceType.setSelectedItem(PropertiesManager.get("SourceDataType"));
-		sourceServerField.setText(PropertiesManager.get("SourceServerLocation"));
-		sourceUserField.setText(PropertiesManager.get("SourceUserName"));
-		sourceDatabaseField.setText(PropertiesManager.get("SourceDatabaseName"));
-		sourceDelimiterField.setText(PropertiesManager.get("SourceDelimiter"));
-		targetType.setSelectedItem(PropertiesManager.get("TargetDataType"));
-		targetServerField.setText(PropertiesManager.get("TargetServerLocation"));
-		targetUserField.setText(PropertiesManager.get("TargetUserName"));
-		targetDatabaseField.setText(PropertiesManager.get("TargetDatabaseName"));
+		//locations
+		folderField.setText(propertiesManager.get("WorkspaceFolder"));
+		sourceType.setSelectedItem(propertiesManager.get("SourceDataType"));
+		sourceServerField.setText(propertiesManager.get("SourceServerLocation"));
+		sourceUserField.setText(propertiesManager.get("SourceUserName"));
+		sourceDatabaseField.setText(propertiesManager.get("SourceDatabaseName"));
+		sourceDelimiterField.setText(propertiesManager.get("SourceDelimiter"));
+		targetType.setSelectedItem(propertiesManager.get("TargetDataType"));
+		targetServerField.setText(propertiesManager.get("TargetServerLocation"));
+		targetUserField.setText(propertiesManager.get("TargetUserName"));
+		targetDatabaseField.setText(propertiesManager.get("TargetDatabaseName"));
+		
+		//structure
+		cdmVersion.setSelectedItem(propertiesManager.get("CdmVersion"));
+		
+		//ETL
+		versionIdField.setText(propertiesManager.get("VersionIdField"));
+		etlType.setSelectedItem(propertiesManager.get("EtlType"));
+		
+		//vocabulary
+		vocabFileField.setText(propertiesManager.get("VocabFileField"));
+		vocabSchemaField.setText(propertiesManager.get("VocabSchemaField"));
+		
+		//Eras
+		cdmVersionForEras.setSelectedItem(propertiesManager.get("cdmVersionForEras"));
+		if (propertiesManager.get("VocabType").equals("ATHENA CSV files in folder"))
+			vocabFileTypeButton.setSelected(true);
+		else
+			vocabSchemaTypeButton.setSelected(true);
+		
+		//Indices
+		cdmVersionForIndices.setSelectedItem(propertiesManager.get("CdmVersionForIndices"));
 	}
 	
 	private void saveSettings(String fileName){
-		PropertiesManager.set("WorkspaceFolder", folderField.getText());
-		PropertiesManager.set("SourceDataType", sourceType.getSelectedItem().toString());
-		PropertiesManager.set("SourceServerLocation", sourceServerField.getText());
-		PropertiesManager.set("SourceUserName", sourceUserField.getText());
-		PropertiesManager.set("SourceDatabaseName", sourceDatabaseField.getText());
-		PropertiesManager.set("SourceDelimiter", sourceDelimiterField.getText());
-		PropertiesManager.set("TargetDataType", targetType.getSelectedItem().toString());
-		PropertiesManager.set("TargetServerLocation", targetServerField.getText());
-		PropertiesManager.set("TargetUserName", targetUserField.getText());
-		PropertiesManager.set("TargetDatabaseName", targetDatabaseField.getText());
-		PropertiesManager.save(fileName);
+		//locations
+		propertiesManager.set("WorkspaceFolder", folderField.getText());
+		propertiesManager.set("SourceDataType", sourceType.getSelectedItem().toString());
+		propertiesManager.set("SourceServerLocation", sourceServerField.getText());
+		propertiesManager.set("SourceUserName", sourceUserField.getText());
+		propertiesManager.set("SourceDatabaseName", sourceDatabaseField.getText());
+		propertiesManager.set("SourceDelimiter", sourceDelimiterField.getText());
+		propertiesManager.set("TargetDataType", targetType.getSelectedItem().toString());
+		propertiesManager.set("TargetServerLocation", targetServerField.getText());
+		propertiesManager.set("TargetUserName", targetUserField.getText());
+		propertiesManager.set("TargetDatabaseName", targetDatabaseField.getText());
+		
+		//structure
+		propertiesManager.set("CdmVersion", cdmVersion.getSelectedItem().toString());
+		
+		//ETL
+		propertiesManager.set("VersionIdField", versionIdField.getText());
+		propertiesManager.set("EtlType", etlType.getSelectedItem().toString());
+		
+		//vocabulary
+		propertiesManager.set("VocabFileField", vocabFileField.getText());
+		propertiesManager.set("VocabSchemaField", vocabSchemaField.getText());
+		
+		//Eras
+		propertiesManager.set("cdmVersionForEras", cdmVersionForEras.getSelectedItem().toString());
+		if (vocabFileTypeButton.isSelected())
+			propertiesManager.set("VocabType","ATHENA CSV files in folder");
+		else
+			propertiesManager.set("VocabType","Database schema");
+		
+		//Indices
+		propertiesManager.set("CdmVersionForIndices", cdmVersionForIndices.getSelectedItem().toString());
+
+		propertiesManager.save(fileName);
 	}
 	
 	private JPanel createVocabPanel() {
@@ -603,6 +668,73 @@ public class JCdmBuilderMain {
 		return panel;
 	}
 	
+	private JPanel createExecutePanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		executeStructureCheckBox= new JCheckBox("CDM Structure");
+		panel.add(executeStructureCheckBox);
+		executeStructureCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				executeCdmStructureWhenReady = executeStructureCheckBox.isSelected();
+			}
+		});
+		
+		executeVocabCheckBox = new JCheckBox("Vocabulary Loading");
+		panel.add(executeVocabCheckBox);
+		executeVocabCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				executeVocabWhenReady = executeVocabCheckBox.isSelected();
+			}
+		});
+		
+		executeETLCheckBox = new JCheckBox("Perform ETL");
+		panel.add(executeETLCheckBox);
+		executeETLCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				executeVocabWhenReady = executeETLCheckBox.isSelected();
+			}
+		});
+		
+		executeConditionErasCheckBox = new JCheckBox("Create Condition Eras");
+		panel.add(executeConditionErasCheckBox);
+		executeConditionErasCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				executeVocabWhenReady = executeConditionErasCheckBox.isSelected();
+			}
+		});
+		
+		executeDrugErasCheckBox = new JCheckBox("Create Drug Eras");
+		panel.add(executeDrugErasCheckBox);
+		executeDrugErasCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				executeVocabWhenReady = executeDrugErasCheckBox.isSelected();
+			}
+		});
+		
+		executeIndicesCheckBox = new JCheckBox("Create Indices");
+		panel.add(executeIndicesCheckBox);
+		executeIndicesCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				executeVocabWhenReady = executeIndicesCheckBox.isSelected();
+			}
+		});
+		
+		JButton runAllButton = new JButton("Run");
+		panel.add(runAllButton);
+		runAllButton.setBackground(new Color(151, 220, 141));
+		runAllButton.setToolTipText("Run all steps specified above");
+		runAllButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (executeCdmStructureWhenReady || executeVocabWhenReady || executeEtlWhenReady || executeConditionErasWhenReady || executeDrugErasWhenReady
+						|| executeIndicesWhenReady)
+				runAll();
+			}
+		});
+		componentsToDisableWhenRunning.add(runAllButton);
+
+		return panel;
+	}
+	
 	private JComponent createConsolePanel() {
 		JTextArea consoleArea = new JTextArea();
 		consoleArea.setToolTipText("General progress information");
@@ -725,24 +857,31 @@ public class JCdmBuilderMain {
 	}
 	
 	private void loadSettingsFile() {
-		JFileChooser fileChooser = new JFileChooser(settingsField.getText().isEmpty() ? new File(System.getProperty("user.dir")) : new File(settingsField.getText()));
+		JFileChooser fileChooser = new JFileChooser();
+		if (propertiesManager.getSettingFileName() == null) 
+			fileChooser.setSelectedFile(new File(System.getProperty("user.dir")));
+		else
+			fileChooser.setSelectedFile(new File(propertiesManager.getSettingFileName()));
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int returnVal = fileChooser.showDialog(frame, "Load");
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			settingsField.setText(fileChooser.getSelectedFile().getAbsolutePath());
-			PropertiesManager.load(fileChooser.getSelectedFile().getAbsolutePath());
+			propertiesManager.load(fileChooser.getSelectedFile().getAbsolutePath());
 			loadSettings();	
 		}			
 	}
 	
 	private void saveSettingsFile() {
 		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setSelectedFile(new File(settingsField.getText()));
+		if (propertiesManager.getSettingFileName() == null) 
+			fileChooser.setSelectedFile(new File(System.getProperty("user.dir")));
+		else
+			fileChooser.setSelectedFile(new File(propertiesManager.getSettingFileName()));
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int returnVal = fileChooser.showDialog(frame, "Save");
-		if (returnVal == JFileChooser.APPROVE_OPTION)
-			settingsField.setText(fileChooser.getSelectedFile().getAbsolutePath());
-		saveSettings(fileChooser.getSelectedFile().getAbsolutePath());
+		if (returnVal == JFileChooser.APPROVE_OPTION){
+			saveSettings(fileChooser.getSelectedFile().getAbsolutePath());
+			propertiesManager.load(fileChooser.getSelectedFile().getAbsolutePath());
+		}
 	}
 	
 	private void pickVocabFile() {
@@ -1083,6 +1222,12 @@ public class JCdmBuilderMain {
 		message += "\nAn error report has been generated:\n" + errorReportFilename;
 		System.out.println(message);
 		JOptionPane.showMessageDialog(frame, StringUtilities.wordWrap(message, 80), "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	private void runAll(){
+		ObjectExchange.console.setDebugFile(folderField.getText() + "/Console.txt");
+		AutoRunThread autoRunThread = new AutoRunThread();
+		autoRunThread.start();
 	}
 	
 }
