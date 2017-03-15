@@ -33,9 +33,10 @@ import java.util.Properties;
 public class PropertiesManager {
 
 	//the application properties
-	public static HashMap<String, String> listProperties;
+	public  HashMap<String, String> listProperties;
 	
-	private static Properties properties = new Properties();
+	private Properties properties = new Properties();
+	private String settingsFileName;
 
 	/**
 	 * Basic constructor.
@@ -46,7 +47,7 @@ public class PropertiesManager {
 	
 	//GETTERS AND SETTERS
 
-	public static String get(String property){
+	public String get(String property){
 		return  properties.getProperty(property);
 	}
 
@@ -55,12 +56,13 @@ public class PropertiesManager {
 	 * @param key - the name of the property to be updated
 	 * @param value - the new value of the property
 	 */
-	public static void set(String key, String value){
+	public void set(String key, String value){
 		properties.put(key, value);
 	}
 
-	public static void load(String fileName){
+	public void load(String fileName){
 		try {
+			settingsFileName = fileName;
 			File file = new File(fileName);
 			FileInputStream fileInput = new FileInputStream(file);
 			properties.load(fileInput);
@@ -70,9 +72,10 @@ public class PropertiesManager {
 					"\nCheck if the file exists or is not in use.");
 		}
 	}	
-	public static void save(String fileName){
+	public void save(String fileName){
 		try {
-			File file = new File(fileName);
+			settingsFileName = fileName;
+			File file = new File(settingsFileName);
 			OutputStream fileOut = new FileOutputStream(file);
 			properties.store(fileOut, "JCDMBuilder settings");
 			fileOut.close();
@@ -80,6 +83,10 @@ public class PropertiesManager {
 			System.out.println("Unable to update properties file." +
 					"\nCheck if the file exists or is not in use.");
 		}
+	}
+	
+	public String getSettingFileName(){
+		return settingsFileName;
 	}
 	
 }
