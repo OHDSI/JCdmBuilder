@@ -14,6 +14,8 @@ public class CopyVocabularyFromSchema {
 			resourceName = "CopyVocabFromSchema - SQL Server.sql";
 		} else if (dbSettings.dbType == DbType.POSTGRESQL) {
 			resourceName = "CopyVocabFromSchema - PostgreSQL.sql";
+		} else if (dbSettings.dbType == DbType.ORACLE) {
+			resourceName = "CopyVocabFromSchema - Oracle.sql";
 		}
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.use(dbSettings.database);
