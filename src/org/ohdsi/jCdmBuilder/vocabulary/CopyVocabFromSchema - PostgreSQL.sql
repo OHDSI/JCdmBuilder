@@ -1,13 +1,13 @@
-DROP TABLE concept;
-DROP TABLE concept_ancestor;
-DROP TABLE concept_class;
-DROP TABLE concept_relationship;
-DROP TABLE concept_synonym;
-DROP TABLE domain;
-DROP TABLE drug_strength;
-DROP TABLE relationship;
-DROP TABLE source_to_concept_map;
-DROP TABLE vocabulary;
+DROP TABLE IF EXISTS concept;
+DROP TABLE IF EXISTS concept_ancestor;
+DROP TABLE IF EXISTS concept_class;
+DROP TABLE IF EXISTS concept_relationship;
+DROP TABLE IF EXISTS concept_synonym;
+DROP TABLE IF EXISTS domain;
+DROP TABLE IF EXISTS drug_strength;
+DROP TABLE IF EXISTS relationship;
+DROP TABLE IF EXISTS source_to_concept_map;
+DROP TABLE IF EXISTS vocabulary;
 
 CREATE TABLE concept AS 
 SELECT * FROM @vocab_schema.concept;

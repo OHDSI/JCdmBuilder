@@ -45,17 +45,17 @@ import org.ohdsi.utilities.files.WriteCSVFileWithHeader;
 public class RichConnection {
 	public static int				INSERT_BATCH_SIZE	= 100000;
 	private Connection				connection;
-	private Class<?>				context;												// Used for locating resources
+	private Class<?>				context;											// Used for locating resources
 	private boolean					verbose				= false;
 	private static DecimalFormat	decimalFormat		= new DecimalFormat("#.#");
 	private Map<String, String>		localVariables		= new HashMap<String, String>();
 	private DbType					dbType;
-	
+
 	public RichConnection(String server, String domain, String user, String password, DbType dbType) {
 		this.connection = DBConnector.connect(server, domain, user, password, dbType);
 		this.dbType = dbType;
 	}
-	
+
 	/**
 	 * Executes the SQL statement specified in the resource. The first parameter string is the parameter name, the second string the value, etc.
 	 * 
@@ -68,7 +68,7 @@ public class RichConnection {
 			parameterMap.set(parameters[i].toString(), parameters[i + 1].toString());
 		executeResource(resourceName, parameterMap);
 	}
-	
+
 	/**
 	 * Executes the SQL statement specified in the resource
 	 * 
@@ -78,7 +78,7 @@ public class RichConnection {
 	public void executeResource(String resourceName, QueryParameters parameters) {
 		executeResource(context.getResourceAsStream(resourceName), parameters);
 	}
-	
+
 	/**
 	 * Executes the SQL statement specified in the resource
 	 * 
@@ -91,7 +91,7 @@ public class RichConnection {
 			sql = applyVariables(sql, parameters.getMap());
 		execute(sql);
 	}
-	
+
 	/**
 	 * Executes the SQL statement specified in the resource
 	 * 
@@ -100,7 +100,7 @@ public class RichConnection {
 	public void executeResource(InputStream sqlStream) {
 		executeResource(sqlStream, null);
 	}
-	
+
 	/**
 	 * Executes the SQL statement specified in the resource
 	 * 
@@ -111,7 +111,7 @@ public class RichConnection {
 			throw new RuntimeException("Context not specified, unable to load resource");
 		executeResource(context.getResourceAsStream(sql));
 	}
-	
+
 	public void executeAsOne(String sql) {
 		try {
 			Statement statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
@@ -122,7 +122,7 @@ public class RichConnection {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Execute the given SQL statement.
 	 * 
@@ -134,7 +134,7 @@ public class RichConnection {
 			if (sql.length() == 0)
 				return;
 			Statement statement = null;
-			
+
 			statement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 			for (String subQuery : sql.split(";")) {
 				if (verbose) {
@@ -143,7 +143,7 @@ public class RichConnection {
 						abbrSQL = abbrSQL.substring(0, 100).trim() + "...";
 					System.out.println("Adding query to batch: " + abbrSQL);
 				}
-				
+
 				statement.addBatch(subQuery);
 			}
 			long start = System.currentTimeMillis();
@@ -163,17 +163,17 @@ public class RichConnection {
 			}
 		}
 	}
-	
+
 	private String handleSQLDefineStatements(String sql) {
 		sql = extractSQLDefineStatements(sql);
 		sql = applyVariables(sql, localVariables);
 		return sql;
 	}
-	
+
 	private String applyVariables(String sql, Map<String, String> key2Value) {
 		List<String> sortedKeys = new ArrayList<String>(key2Value.keySet());
 		Collections.sort(sortedKeys, new Comparator<String>() {
-			
+
 			@Override
 			public int compare(String o1, String o2) {
 				if (o1.length() > o2.length())
@@ -188,15 +188,15 @@ public class RichConnection {
 			sql = sql.replaceAll(key, key2Value.get(key));
 		return sql.trim();
 	}
-	
+
 	private String extractSQLDefineStatements(String sql) {
 		int start = sql.toLowerCase().indexOf("sqldefine");
-		
+
 		while (start != -1) {
 			int end = sql.indexOf(";", start);
 			if (end == -1)
 				throw new RuntimeException("No closing semicolon found for SQLDEFINE in:\n" + sql);
-			
+
 			String definition = sql.substring(start, end);
 			int as = definition.toLowerCase().indexOf(" as");
 			if (as == -1)
@@ -212,12 +212,12 @@ public class RichConnection {
 				System.out.println("Found definition for " + variableName);
 			localVariables.put(variableName, variableValue);
 			sql = sql.substring(0, start) + " " + sql.substring(end + 1);
-			
+
 			start = sql.toLowerCase().indexOf("sqldefine");
 		}
 		return sql;
 	}
-	
+
 	private void outputQueryStats(Statement statement, long ms) throws SQLException {
 		Throwable warning = statement.getWarnings();
 		if (warning != null)
@@ -233,17 +233,17 @@ public class RichConnection {
 			timeString = decimalFormat.format(ms / 3600000d) + " hours";
 		System.out.println("- Query completed in " + timeString);
 	}
-	
+
 	public QueryResult queryResource(String resourceName) {
 		return queryResource(resourceName, new QueryParameters());
 	}
-	
+
 	public QueryResult queryResource(String resourceName, QueryParameters parameters) {
 		if (context == null)
 			throw new RuntimeException("Context not specified, unable to load resource");
 		return queryResource(context.getResourceAsStream(resourceName), parameters);
 	}
-	
+
 	/**
 	 * Query the database using the SQL statement specified in the resource
 	 * 
@@ -256,7 +256,7 @@ public class RichConnection {
 		sql = applyVariables(sql, parameters.getMap());
 		return query(sql);
 	}
-	
+
 	/**
 	 * Query the database using the SQL statement specified in the resource
 	 * 
@@ -266,7 +266,7 @@ public class RichConnection {
 	public QueryResult queryResource(InputStream sqlStream) {
 		return queryResource(sqlStream, null);
 	}
-	
+
 	/**
 	 * Query the database using the provided SQL statement.
 	 * 
@@ -276,7 +276,7 @@ public class RichConnection {
 	public QueryResult query(String sql) {
 		return new QueryResult(sql);
 	}
-	
+
 	/**
 	 * Switch the database to use.
 	 * 
@@ -292,7 +292,7 @@ public class RichConnection {
 		else
 			execute("USE " + database);
 	}
-	
+
 	public List<String> getDatabaseNames() {
 		List<String> names = new ArrayList<String>();
 		String query = null;
@@ -302,12 +302,12 @@ public class RichConnection {
 			query = "SELECT name FROM master..sysdatabases";
 		else
 			throw new RuntimeException("Database type not supported");
-		
+
 		for (Row row : query(query))
 			names.add(row.get(row.getFieldNames().get(0)));
 		return names;
 	}
-	
+
 	public List<String> getTableNames(String database) {
 		List<String> names = new ArrayList<String>();
 		String query = null;
@@ -323,12 +323,12 @@ public class RichConnection {
 		} else if (dbType == DbType.POSTGRESQL) {
 			query = "SELECT table_name FROM information_schema.tables WHERE table_schema = '" + database.toLowerCase() + "'";
 		}
-		
+
 		for (Row row : query(query))
 			names.add(row.get(row.getFieldNames().get(0)));
 		return names;
 	}
-	
+
 	public List<String> getFieldNames(String table) {
 		List<String> names = new ArrayList<String>();
 		if (dbType == DbType.MSSQL) {
@@ -342,10 +342,10 @@ public class RichConnection {
 				names.add(row.get("column_name"));
 		else
 			throw new RuntimeException("DB type not supported");
-		
+
 		return names;
 	}
-	
+
 	public void dropTableIfExists(String table) {
 		if (dbType == DbType.ORACLE || dbType == DbType.POSTGRESQL) {
 			try {
@@ -369,11 +369,11 @@ public class RichConnection {
 			execute("DROP TABLE " + table + " IF EXISTS");
 		}
 	}
-	
+
 	public void dropDatabaseIfExists(String database) {
 		execute("DROP DATABASE " + database);
 	}
-	
+
 	/**
 	 * Returns the row count of the specified table.
 	 * 
@@ -386,7 +386,7 @@ public class RichConnection {
 		else
 			return Long.parseLong(query("SELECT COUNT(*) FROM " + tableName + ";").iterator().next().getCells().get(0));
 	}
-	
+
 	/**
 	 * Close the connection to the database.
 	 */
@@ -397,15 +397,15 @@ public class RichConnection {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean isVerbose() {
 		return verbose;
 	}
-	
+
 	public void setVerbose(boolean verbose) {
 		this.verbose = verbose;
 	}
-	
+
 	private String loadSQL(InputStream sqlStream) {
 		StringBuilder sql = new StringBuilder();
 		for (String line : new ReadTextFile(sqlStream)) {
@@ -418,38 +418,38 @@ public class RichConnection {
 		}
 		return sql.toString();
 	}
-	
+
 	public Class<?> getContext() {
 		return context;
 	}
-	
+
 	public void setContext(Class<?> context) {
 		this.context = context;
 	}
-	
+
 	public class QueryResult implements Iterable<Row> {
 		private String				sql;
-		
+
 		private List<DBRowIterator>	iterators	= new ArrayList<DBRowIterator>();
-		
+
 		public QueryResult(String sql) {
 			this.sql = sql;
 		}
-		
+
 		@Override
 		public Iterator<Row> iterator() {
 			DBRowIterator iterator = new DBRowIterator(sql);
 			iterators.add(iterator);
 			return iterator;
 		}
-		
+
 		public void close() {
 			for (DBRowIterator iterator : iterators) {
 				iterator.close();
 			}
 		}
 	}
-	
+
 	/**
 	 * Writes the results of a query to the specified file in CSV format.
 	 * 
@@ -462,7 +462,7 @@ public class RichConnection {
 			out.write(row);
 		out.close();
 	}
-	
+
 	/**
 	 * Reads a table from a file in CSV format, and inserts it into the database.
 	 * 
@@ -474,7 +474,7 @@ public class RichConnection {
 	public void readFromFile(String filename, String table, boolean create, boolean emptyStringToNull) {
 		insertIntoTable(new ReadCSVFileWithHeader(filename).iterator(), table, create, emptyStringToNull);
 	}
-	
+
 	/**
 	 * Inserts the rows into a table in the database.
 	 * 
@@ -485,7 +485,7 @@ public class RichConnection {
 	 */
 	public void insertIntoTable(Iterator<Row> iterator, String table, boolean create, boolean emptyStringToNull) {
 		List<Row> batch = new ArrayList<Row>(INSERT_BATCH_SIZE);
-		
+
 		boolean first = true;
 		SimpleCounter counter = new SimpleCounter(1000000, true);
 		while (iterator.hasNext()) {
@@ -505,14 +505,13 @@ public class RichConnection {
 			insert(table, batch, emptyStringToNull);
 		}
 	}
-	
-	
+
 	private void insert(String tableName, List<Row> rows, boolean emptyStringToNull) {
 		List<String> columns = null;
 		columns = rows.get(0).getFieldNames();
 		for (int i = 0; i < columns.size(); i++)
 			columns.set(i, columnNameToSqlName(columns.get(i)));
-		
+
 		String sql = "INSERT INTO " + tableName;
 		sql = sql + " (" + StringUtilities.join(columns, ",") + ")";
 		sql = sql + " VALUES (?";
@@ -525,18 +524,14 @@ public class RichConnection {
 			for (Row row : rows) {
 				for (int i = 0; i < columns.size(); i++) {
 					String value = row.get(columns.get(i));
-					if (value == null)
-						System.out.println(row.toString());
-					if (value.length() == 0 && emptyStringToNull)
+					if (value != null && value.length() == 0 && emptyStringToNull)
 						value = null;
-					// System.out.println(value);
 					if (dbType == DbType.POSTGRESQL) // PostgreSQL does not allow unspecified types
 						statement.setObject(i + 1, value, Types.OTHER);
 					else if (dbType == DbType.ORACLE) {
 						if (isDate(value)) {
-							// System.out.println(value);
 							statement.setDate(i + 1, java.sql.Date.valueOf(value));
-							
+
 						} else
 							statement.setString(i + 1, value);
 					} else
@@ -556,7 +551,7 @@ public class RichConnection {
 			}
 		}
 	}
-	
+
 	private static boolean isDate(String string) {
 		if (string != null && string.length() == 10 && string.charAt(4) == '-' && string.charAt(7) == '-')
 			try {
@@ -575,7 +570,7 @@ public class RichConnection {
 			}
 		return false;
 	}
-	
+
 	private Set<String> createTable(String tableName, List<Row> rows) {
 		Set<String> numericFields = new HashSet<String>();
 		Row firstRow = rows.get(0);
@@ -591,7 +586,7 @@ public class RichConnection {
 					fieldInfo.maxLength = value.length();
 			}
 		}
-		
+
 		StringBuilder sql = new StringBuilder();
 		sql.append("CREATE TABLE " + tableName + " (\n");
 		for (FieldInfo fieldInfo : fields) {
@@ -603,20 +598,20 @@ public class RichConnection {
 		execute(sql.toString());
 		return numericFields;
 	}
-	
+
 	private String columnNameToSqlName(String name) {
 		return name.replaceAll(" ", "_").replace("-", "_").replace(",", "_").replaceAll("_+", "_");
 	}
-	
+
 	private class FieldInfo {
 		public String	name;
 		public boolean	isNumeric	= true;
 		public int		maxLength	= 0;
-		
+
 		public FieldInfo(String name) {
 			this.name = name;
 		}
-		
+
 		public String toString() {
 			if (dbType == DbType.MYSQL) {
 				if (isNumeric)
@@ -639,7 +634,7 @@ public class RichConnection {
 				throw new RuntimeException("Create table syntax not specified for type " + dbType);
 		}
 	}
-	
+
 	public void copyTable(String sourceDatabase, String sourceTable, RichConnection targetConnection, String targetDatabase, String targetTable) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("CREATE TABLE ");
@@ -659,7 +654,7 @@ public class RichConnection {
 			// mysql
 			query = "SELECT COLUMN_NAME,DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" + sourceDatabase + "' AND TABLE_NAME = '"
 					+ sourceTable + "';";
-		
+
 		for (Row row : query(query)) {
 			if (first)
 				first = false;
@@ -687,15 +682,15 @@ public class RichConnection {
 		targetConnection.use(targetDatabase);
 		targetConnection.insertIntoTable(query("SELECT * FROM " + sourceDatabase + ".dbo." + sourceTable).iterator(), targetTable, false, false);
 	}
-	
+
 	private class DBRowIterator implements Iterator<Row> {
-		
+
 		private ResultSet	resultSet;
-		
+
 		private boolean		hasNext;
-		
+
 		private Set<String>	columnNames	= new HashSet<String>();
-		
+
 		public DBRowIterator(String sql) {
 			try {
 				sql.trim();
@@ -719,7 +714,7 @@ public class RichConnection {
 				throw new RuntimeException(e);
 			}
 		}
-		
+
 		public void close() {
 			if (resultSet != null) {
 				try {
@@ -731,12 +726,12 @@ public class RichConnection {
 				hasNext = false;
 			}
 		}
-		
+
 		@Override
 		public boolean hasNext() {
 			return hasNext;
 		}
-		
+
 		@Override
 		public Row next() {
 			try {
@@ -744,14 +739,14 @@ public class RichConnection {
 				ResultSetMetaData metaData;
 				metaData = resultSet.getMetaData();
 				columnNames.clear();
-				
+
 				for (int i = 1; i < metaData.getColumnCount() + 1; i++) {
 					String columnName = metaData.getColumnName(i);
 					if (columnNames.add(columnName)) {
 						String value = resultSet.getString(i);
 						if (value == null)
 							value = "";
-						
+
 						row.add(columnName, value.replace(" 00:00:00", ""));
 					}
 				}
@@ -766,7 +761,7 @@ public class RichConnection {
 				throw new RuntimeException(e);
 			}
 		}
-		
+
 		@Override
 		public void remove() {
 		}

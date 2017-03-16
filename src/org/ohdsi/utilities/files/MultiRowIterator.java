@@ -29,18 +29,19 @@ import org.ohdsi.utilities.files.MultiRowIterator.MultiRowSet;
  * @author MSCHUEMI
  */
 public class MultiRowIterator implements Iterator<MultiRowSet> {
-	
+
 	private Iterator<Row>[]	iterators;
 	private String[]		tableNames;
 	private Row[]			nextRows;
 	private MultiRowSet		buffer;
 	private String			linkingColumn;
 	private boolean			sortedNumerically;
-	
+
+	@SafeVarargs
 	public MultiRowIterator(String linkingColumn, String[] tableNames, Iterator<Row>... tableIterators) {
 		this(linkingColumn, false, tableNames, tableIterators);
 	}
-	
+
 	public MultiRowIterator(String linkingColumn, boolean sortedNumerically, String[] tableNames, Iterator<Row>[] tableIterators) {
 		this.iterators = tableIterators;
 		this.linkingColumn = linkingColumn;
@@ -48,7 +49,7 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 		this.sortedNumerically = sortedNumerically;
 		startRead();
 	}
-	
+
 	private void startRead() {
 		nextRows = new Row[iterators.length];
 		for (int i = 0; i < iterators.length; i++)
@@ -58,19 +59,19 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 				nextRows[i] = null;
 		readNext();
 	}
-	
+
 	@Override
 	public boolean hasNext() {
 		return (buffer != null);
 	}
-	
+
 	@Override
 	public MultiRowSet next() {
 		MultiRowSet result = buffer;
 		readNext();
 		return result;
 	}
-	
+
 	private void readNext() {
 		String lowestLinkingColumn = findLowestLinkingColumn(nextRows);
 		if (lowestLinkingColumn == null) {
@@ -90,7 +91,7 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 			}
 		}
 	}
-	
+
 	private String findLowestLinkingColumn(Row[] rows) {
 		String linkingId = null;
 		for (Row row : rows)
@@ -98,14 +99,14 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 				linkingId = row.get(linkingColumn);
 		return linkingId;
 	}
-	
+
 	private int compare(String value1, String value2) {
 		if (sortedNumerically)
 			return efficientLongCompare(value1, value2);
 		else
 			return value1.compareTo(value2);
 	}
-	
+
 	private int efficientLongCompare(String value1, String value2) {
 		if (value1.length() > value2.length())
 			return 1;
@@ -114,23 +115,23 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 		else
 			return value1.compareTo(value2);
 	}
-	
+
 	@Override
 	public void remove() {
 		System.err.println("Calling unimplemented remove method in class " + this.getClass().getName());
 	}
-	
+
 	public static class MultiRowSet extends HashMap<String, List<Row>> {
 		private static final long	serialVersionUID	= 1164317535150664720L;
-		
+
 		public String				linkingId;
-		
+
 		public MultiRowSet(String[] tableNames) {
 			for (String tableName : tableNames) {
 				put(tableName, new ArrayList<Row>());
 			}
 		}
-		
+
 		public List<String> getNonEmptyTableNames() {
 			List<String> result = new ArrayList<String>();
 			for (String tableName : keySet())
@@ -138,7 +139,7 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 					result.add(tableName);
 			return result;
 		}
-		
+
 		/**
 		 * returns the total number of rows (summed across the tables)
 		 * 
@@ -150,7 +151,7 @@ public class MultiRowIterator implements Iterator<MultiRowSet> {
 				size += rows.size();
 			return size;
 		}
-		
+
 	}
-	
+
 }

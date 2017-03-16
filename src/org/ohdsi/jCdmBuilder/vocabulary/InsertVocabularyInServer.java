@@ -23,8 +23,8 @@ import java.util.Set;
 
 import org.ohdsi.databases.RichConnection;
 import org.ohdsi.jCdmBuilder.DbSettings;
+import org.ohdsi.jCdmBuilder.utilities.ReadAthenaFile;
 import org.ohdsi.utilities.StringUtilities;
-import org.ohdsi.utilities.files.ReadCSVFileWithHeader;
 import org.ohdsi.utilities.files.Row;
 
 public class InsertVocabularyInServer {
@@ -46,7 +46,7 @@ public class InsertVocabularyInServer {
 				if (tables.contains(table.toLowerCase())) {
 					StringUtilities.outputWithTime("Inserting data for table " + table);
 					connection.execute("TRUNCATE " + table);
-					Iterator<Row> iterator = new ReadCSVFileWithHeader(file.getAbsolutePath(), '\t').iterator();
+					Iterator<Row> iterator = new ReadAthenaFile(file.getAbsolutePath()).iterator();
 					Iterator<Row> filteredIterator = new RowFilterIterator(iterator, connection.getFieldNames(table), table);
 					connection.insertIntoTable(filteredIterator, table, false, true);
 				}
