@@ -154,12 +154,15 @@ public class RichConnection {
 				outputQueryStats(statement, System.currentTimeMillis() - start);
 			statement.close();
 		} catch (SQLException e) {
+			String message = e.getMessage();
 			System.err.println(sql);
 			e.printStackTrace();
 			e = e.getNextException();
 			if (e != null) {
+				message = message + "\n" + e.getMessage();
 				System.err.println("Error: " + e.getMessage());
 				e.printStackTrace();
+				throw new RuntimeException(message);
 			}
 		}
 	}
@@ -549,6 +552,7 @@ public class RichConnection {
 			if (e instanceof BatchUpdateException) {
 				System.err.println(((BatchUpdateException) e).getNextException().getMessage());
 			}
+			throw new RuntimeException(e);
 		}
 	}
 

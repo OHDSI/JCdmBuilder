@@ -52,7 +52,7 @@ public class Cdm {
 
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setContext(cdm.getClass());
-		connection.setVerbose(true);
+//		connection.setVerbose(true);
 		connection.use(dbSettings.database);
 		StringUtilities.outputWithTime("Deleting old tables if they exist");
 		for (String line : new ReadTextFile(cdm.getClass().getResourceAsStream(resourceName))) {
@@ -87,7 +87,6 @@ public class Cdm {
 
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setContext(cdm.getClass());
-		connection.setVerbose(true);
 
 		StringUtilities.outputWithTime("Creating CDM indices");
 		connection.use(dbSettings.database);

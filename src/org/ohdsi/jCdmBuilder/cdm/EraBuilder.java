@@ -42,7 +42,6 @@ public class EraBuilder {
 
 		sql = SqlTranslate.translateSql(sql, "sql server", dbms);
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
-		connection.setVerbose(false);
 		connection.use(dbSettings.database);
 		connection.execute(sql);
 		StringUtilities.outputWithTime("Finished constructing eras");
