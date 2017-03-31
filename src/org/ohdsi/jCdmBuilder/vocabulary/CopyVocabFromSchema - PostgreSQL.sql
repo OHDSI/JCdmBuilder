@@ -34,7 +34,7 @@ CREATE TABLE relationship AS
 SELECT * FROM @vocab_schema.relationship;
 
 CREATE TABLE source_to_concept_map AS 
-SELECT * FROM @vocab_schema.source_to_concept_map
+SELECT * FROM @vocab_schema.source_to_concept_map;
 
 CREATE TABLE vocabulary AS 
 SELECT * FROM @vocab_schema.vocabulary;

@@ -110,6 +110,7 @@ public class JCdmBuilderMain {
 	private boolean				executeDrugErasWhenReady		= false;
 	private boolean				executeConditionErasWhenReady	= false;
 	private boolean				executeIndicesWhenReady			= false;
+	private boolean				idsToBigInt						= false;
 	private PropertiesManager	propertiesManager				= new PropertiesManager();
 	
 	private List<JComponent>	componentsToDisableWhenRunning	= new ArrayList<JComponent>();
@@ -147,7 +148,7 @@ public class JCdmBuilderMain {
 		executeParameters(args);
 		if (executeCdmStructureWhenReady || executeVocabWhenReady || executeEtlWhenReady || executeConditionErasWhenReady || executeDrugErasWhenReady
 				|| executeIndicesWhenReady) {
-			ObjectExchange.console.setDebugFile(folderField.getText() + "/Console.txt");
+			//ObjectExchange.console.setDebugFile(folderField.getText() + "/Console.txt");
 			AutoRunThread autoRunThread = new AutoRunThread();
 			autoRunThread.start();
 		}
@@ -426,7 +427,7 @@ public class JCdmBuilderMain {
 		buttonGroup.add(vocabFileTypeButton);
 		vocabFileTypeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				((CardLayout)vocabCards.getLayout()).show(vocabCards, VOCABFOLDER);
+				((CardLayout) vocabCards.getLayout()).show(vocabCards, VOCABFOLDER);
 			}
 		});
 		vocabSourceTypePanel.add(Box.createHorizontalGlue());
@@ -436,7 +437,7 @@ public class JCdmBuilderMain {
 		vocabFileTypeButton.setSelected(true);
 		vocabSchemaTypeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				((CardLayout)vocabCards.getLayout()).show(vocabCards, VOCABSCHEMA);
+				((CardLayout) vocabCards.getLayout()).show(vocabCards, VOCABSCHEMA);
 			}
 		});
 		panel.add(vocabSourceTypePanel);
@@ -700,11 +701,6 @@ public class JCdmBuilderMain {
 		System.out.println("");
 		System.out.println("Options are:");
 		System.out.println("-folder <folder>            Set working folder");
-		System.out.println("-sourcetype <type>          Set source type, e.g. '-sourcetype \"SQL Server\"'");
-		System.out.println("-sourceserver <server>      Set source server, e.g. '-sourceserver myserver.mycompany.com'");
-		System.out.println("-sourcedatabase <database>  Set source database, e.g. '-sourcedatabase [hcup-nis]'");
-		System.out.println("-sourceuser <user>          Set source database user");
-		System.out.println("-sourcepassword <password>  Set source database password");
 		System.out.println("-targettype <type>          Set target type, e.g. '-targettype \"SQL Server\"'");
 		System.out.println("-targetserver <server>      Set target server, e.g. '-targetserver myserver.mycompany.com'");
 		System.out.println("-targetdatabase <database>  Set target database, e.g. '-targetdatabase cdm_hcup'");
@@ -715,8 +711,13 @@ public class JCdmBuilderMain {
 		System.out.println("-vocabSchemaField <schema>  Set vocab schema name (assumed to be on target server)");
 		System.out.println("-etlnumber <number>         Set ETL number, e.g. '-etlnumber 4' for HCUP ETL to CDM version 5'");
 		System.out.println("-versionid <id>             Set version ID (integer) to be loaded into _version table");
-		System.out.println("-vocabSchemaField <schema>  Set vocab schema name (assumed to be on target server)");
-		System.out.println("-vocabSchemaField <schema>  Set vocab schema name (assumed to be on target server)");
+		System.out.println("-sourcetype <type>          Set source type, e.g. '-sourcetype \"SQL Server\"'");
+		System.out.println("-sourceserver <server>      Set source server, e.g. '-sourceserver myserver.mycompany.com'");
+		System.out.println("-sourcedatabase <database>  Set source database, e.g. '-sourcedatabase [hcup-nis]'");
+		System.out.println("-sourceuser <user>          Set source database user");
+		System.out.println("-sourcepassword <password>  Set source database password");
+		System.out.println("-sourcefolder <folder>      Set source folder containing CSV files");
+		System.out.println("-idtobigint  				When creating the CDM structure, use BIGINT instead of INT for all IDs");
 		System.out.println("");
 		System.out.println("The following options allow the steps to be automatically executed. Steps are executed in order:");
 		System.out.println("-executecdmstructure        Create default CDM structure on startup");
@@ -744,6 +745,10 @@ public class JCdmBuilderMain {
 					executeConditionErasWhenReady = true;
 				if (mode.equals("-executeindices"))
 					executeIndicesWhenReady = true;
+				if (mode.equals("-idstobigint")) {
+					idsToBigInt = true;
+					System.out.println("IDs will be converted to BIGINT");
+				}
 			} else {
 				if (mode.equals("-folder"))
 					folderField.setText(arg);
@@ -773,6 +778,8 @@ public class JCdmBuilderMain {
 					else
 						vocabFileTypeButton.doClick();
 				}
+				if (mode.equals("-sourcefolder"))
+					sourceFolderField.setText(arg);
 				if (mode.equals("-vocabfolder")) {
 					vocabFileField.setText(arg);
 				}
@@ -1063,7 +1070,7 @@ public class JCdmBuilderMain {
 			try {
 				DbSettings dbSettings = getTargetDbSettings();
 				int version = targetCdmVersion.getSelectedItem().equals("5.0.1") ? 5 : 4;
-				Cdm.createStructure(dbSettings, version);
+				Cdm.createStructure(dbSettings, version, idsToBigInt);
 			} catch (Exception e) {
 				handleError(e);
 			} finally {

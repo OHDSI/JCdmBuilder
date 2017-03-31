@@ -43,7 +43,7 @@ FROM @vocab_schema.dbo.relationship;
 
 SELECT * 
 INTO source_to_concept_map
-FROM @vocab_schema.dbo.source_to_concept_map
+FROM @vocab_schema.dbo.source_to_concept_map;
 
 SELECT * 
 INTO vocabulary

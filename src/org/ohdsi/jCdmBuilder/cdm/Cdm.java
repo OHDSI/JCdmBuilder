@@ -15,6 +15,11 @@
  ******************************************************************************/
 package org.ohdsi.jCdmBuilder.cdm;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.ohdsi.databases.DbType;
 import org.ohdsi.databases.RichConnection;
 import org.ohdsi.jCdmBuilder.DbSettings;
@@ -30,17 +35,17 @@ import org.ohdsi.utilities.files.ReadTextFile;
  * 
  */
 public class Cdm {
-
+	
 	public static int	VERSION_4	= 4;
 	public static int	VERSION_5	= 5;
-
-	public static void createStructure(DbSettings dbSettings, int version) {
+	
+	public static void createStructure(DbSettings dbSettings, int version, boolean idsToBigInt) {
 		CdmVx cdm;
 		if (version == VERSION_4)
 			cdm = new CdmV4();
 		else
 			cdm = new CdmV5();
-
+		
 		String resourceName = null;
 		if (dbSettings.dbType == DbType.ORACLE) {
 			resourceName = cdm.structureOracle();
@@ -49,33 +54,44 @@ public class Cdm {
 		} else if (dbSettings.dbType == DbType.POSTGRESQL) {
 			resourceName = cdm.structurePostgreSQL();
 		}
-
+		List<String> sqlLines = new ArrayList<>();
+		for (String line : new ReadTextFile(cdm.getClass().getResourceAsStream(resourceName)))
+			sqlLines.add(line);
+		
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setContext(cdm.getClass());
-//		connection.setVerbose(true);
 		connection.use(dbSettings.database);
 		StringUtilities.outputWithTime("Deleting old tables if they exist");
-		for (String line : new ReadTextFile(cdm.getClass().getResourceAsStream(resourceName))) {
+		for (String line : sqlLines) {
 			String tableName = StringUtilities.findBetween(line, "CREATE TABLE ", " (").trim();
-			if (tableName.length() != 0) {
+			if (tableName.length() != 0)
 				connection.dropTableIfExists(tableName);
+		}
+		
+		StringUtilities.outputWithTime("Creating CDM data structure");
+		if (idsToBigInt) {
+			System.out.println("- Converting IDs to BIGINT");
+			Pattern pattern = Pattern.compile("[^t]_id\\s+integer");
+			for (int i = 0; i < sqlLines.size(); i++) {
+				String line = sqlLines.get(i);
+				Matcher matcher = pattern.matcher(line.toLowerCase());
+				if (matcher.find())
+					sqlLines.set(i, line.replace("INTEGER", "BIGINT"));
 			}
 		}
-
-		StringUtilities.outputWithTime("Creating CDM data structure");
-		connection.executeResource(resourceName);
-
+		connection.execute(StringUtilities.join(sqlLines, "\n"));
+		
 		connection.close();
 		StringUtilities.outputWithTime("Done");
 	}
-
+	
 	public static void createIndices(DbSettings dbSettings, int version) {
 		CdmVx cdm;
 		if (version == VERSION_4)
 			cdm = new CdmV4();
 		else
 			cdm = new CdmV5();
-
+		
 		String resourceName = null;
 		if (dbSettings.dbType == DbType.ORACLE) {
 			resourceName = cdm.indexesOracle();
@@ -84,14 +100,14 @@ public class Cdm {
 		} else if (dbSettings.dbType == DbType.POSTGRESQL) {
 			resourceName = cdm.indexesPostgreSQL();
 		}
-
+		
 		RichConnection connection = new RichConnection(dbSettings.server, dbSettings.domain, dbSettings.user, dbSettings.password, dbSettings.dbType);
 		connection.setContext(cdm.getClass());
-
+		
 		StringUtilities.outputWithTime("Creating CDM indices");
 		connection.use(dbSettings.database);
 		connection.executeResource(resourceName);
-
+		
 		connection.close();
 		StringUtilities.outputWithTime("Done");
 	}
