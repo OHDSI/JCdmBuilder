@@ -52,7 +52,7 @@ JCdmBuilder is licensed under Apache License 2.0
 Development
 ===========
 
-###Development status
+### Development status
 Alpha
 
 Acknowledgements
